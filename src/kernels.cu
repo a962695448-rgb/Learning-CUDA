@@ -2,7 +2,55 @@
 #include <cuda_fp16.h>
 
 #include "../tester/utils.h"
+template <typename T>
+__device__ float toFloat(T value) {
+  return static_cast<float>(value);
+}
 
+template <>
+__device__ float toFloat<half>(half value) {
+  return __half2float(value);
+}
+
+template <typename T>
+__device__ T fromFloat(float value) {
+  return static_cast<T>(value);
+}
+
+template <>
+__device__ half fromFloat<half>(float value) {
+  return __float2half(value);
+}
+template <typename T>
+__global__ void rmsNormKernel(const T* input, const T* weight, T* output,
+                              size_t rows, size_t hidden_dim, float eps) {
+  size_t row = blockIdx.x * blockDim.x + threadIdx.x;
+
+  if (row >= rows) {
+    return;
+  }
+
+  size_t row_offset = row * hidden_dim;
+  float sum_square = 0.0f;
+
+  for (size_t col = 0; col < hidden_dim; ++col) {
+    float value = toFloat(input[row_offset + col]);
+    sum_square += value * value;
+  }
+
+  float mean_square =
+      sum_square / static_cast<float>(hidden_dim);
+
+  float inverse_rms = rsqrtf(mean_square + eps);
+
+  for (size_t col = 0; col < hidden_dim; ++col) {
+    float value = toFloat(input[row_offset + col]);
+    float scale = toFloat(weight[col]);
+
+    output[row_offset + col] =
+        fromFloat<T>(value * inverse_rms * scale);
+  }
+}
 /**
  * @brief Computes RMSNorm over the last dimension of a 2D tensor.
  *
@@ -26,6 +74,52 @@ void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
               std::vector<T>& h_output, size_t rows, size_t hidden_dim,
               float eps) {
   // TODO: Implement the rmsNorm function
+  if (rows == 0 || hidden_dim == 0) {
+    return;
+  }
+
+  T* d_input = nullptr;
+  T* d_weight = nullptr;
+  T* d_output = nullptr;
+
+  size_t input_bytes = rows * hidden_dim * sizeof(T);
+  size_t weight_bytes = hidden_dim * sizeof(T);
+
+  RUNTIME_CHECK(cudaMalloc(
+      reinterpret_cast<void**>(&d_input), input_bytes));
+
+  RUNTIME_CHECK(cudaMalloc(
+      reinterpret_cast<void**>(&d_weight), weight_bytes));
+
+  RUNTIME_CHECK(cudaMalloc(
+      reinterpret_cast<void**>(&d_output), input_bytes));
+
+  RUNTIME_CHECK(cudaMemcpy(
+      d_input, h_input.data(), input_bytes,
+      cudaMemcpyHostToDevice));
+
+  RUNTIME_CHECK(cudaMemcpy(
+      d_weight, h_weight.data(), weight_bytes,
+      cudaMemcpyHostToDevice));
+
+  int threads = 256;
+  int blocks =
+      static_cast<int>((rows + threads - 1) / threads);
+
+  rmsNormKernel<T><<<blocks, threads>>>(
+      d_input, d_weight, d_output,
+      rows, hidden_dim, eps);
+
+  RUNTIME_CHECK(cudaGetLastError());
+  RUNTIME_CHECK(cudaDeviceSynchronize());
+
+  RUNTIME_CHECK(cudaMemcpy(
+      h_output.data(), d_output, input_bytes,
+      cudaMemcpyDeviceToHost));
+
+  RUNTIME_CHECK(cudaFree(d_input));
+  RUNTIME_CHECK(cudaFree(d_weight));
+  RUNTIME_CHECK(cudaFree(d_output));
 }
 
 /**
