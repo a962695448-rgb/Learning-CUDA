@@ -17,6 +17,14 @@ size_t checkedMultiply(size_t lhs, size_t rhs) {
   return lhs * rhs;
 }
 
+size_t checkedAdd(size_t lhs, size_t rhs) {
+  if (rhs > std::numeric_limits<size_t>::max() - lhs) {
+    throw std::overflow_error("tensor size overflow");
+  }
+
+  return lhs + rhs;
+}
+
 }  // namespace
 
 template <typename T>
@@ -159,7 +167,7 @@ void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
 }
 
 template <typename T>
-__global__ void fusedAttentionKernel(
+__global__ void serialAttentionKernel(
     const T* q,
     const T* k,
     const T* v,
@@ -312,6 +320,144 @@ __global__ void fusedAttentionKernel(
   }
 }
 
+template <typename T>
+__global__ void sharedAttentionKernel(
+    const T* q,
+    const T* k,
+    const T* v,
+    T* output,
+    int batch_size,
+    int target_seq_len,
+    int src_seq_len,
+    int query_heads,
+    int kv_heads,
+    int head_dim,
+    bool is_causal) {
+  // A block owns one [batch, target position, query head] row.
+  size_t row = static_cast<size_t>(blockIdx.x);
+  size_t total_rows =
+      static_cast<size_t>(batch_size) * target_seq_len * query_heads;
+
+  if (row >= total_rows) {
+    return;
+  }
+
+  size_t rows_per_batch =
+      static_cast<size_t>(target_seq_len) * query_heads;
+  size_t batch = row / rows_per_batch;
+  size_t row_in_batch = row % rows_per_batch;
+  int target_pos = static_cast<int>(row_in_batch / query_heads);
+  int query_head = static_cast<int>(row_in_batch % query_heads);
+
+  int group_size = query_heads / kv_heads;
+  int kv_head = query_head / group_size;
+
+  size_t q_offset =
+      (((batch * target_seq_len + target_pos)
+          * query_heads + query_head)
+          * head_dim);
+
+  int valid_src_len = src_seq_len;
+  if (is_causal && target_pos < src_seq_len - 1) {
+    valid_src_len = target_pos + 1;
+  }
+
+  // Dynamic shared memory holds Q, unscaled dot products, and softmax scalars.
+  extern __shared__ float shared_values[];
+  float* q_cache = shared_values;
+  float* score_cache = q_cache + head_dim;
+  float* max_score_cache = score_cache + src_seq_len;
+  float* inverse_sum = max_score_cache + 1;
+  float* scale_cache = inverse_sum + 1;
+
+  for (int d = threadIdx.x; d < head_dim; d += blockDim.x) {
+    q_cache[d] = toFloat(q[q_offset + d]);
+  }
+
+  if (threadIdx.x == 0) {
+    *scale_cache =
+        1.0f / sqrtf(static_cast<float>(head_dim));
+  }
+
+  __syncthreads();
+
+  // Source positions are independent; each score keeps the original d order.
+  float scale = *scale_cache;
+  for (int src_pos = threadIdx.x;
+       src_pos < valid_src_len;
+       src_pos += blockDim.x) {
+    size_t k_offset =
+        (((batch * src_seq_len + src_pos)
+            * kv_heads + kv_head)
+            * head_dim);
+    float score = 0.0f;
+
+    for (int d = 0; d < head_dim; ++d) {
+      score = __fmaf_rn(
+          q_cache[d],
+          toFloat(k[k_offset + d]),
+          score);
+    }
+
+    score_cache[src_pos] = score;
+  }
+
+  __syncthreads();
+
+  if (threadIdx.x == 0) {
+    // Reductions remain serial and ordered by src_pos for bitwise stability.
+    float max_score = -INFINITY;
+    for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
+      float score = score_cache[src_pos] * scale;
+      max_score = fmaxf(max_score, score);
+    }
+
+    float sum_exp = 0.0f;
+    for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
+      float score = score_cache[src_pos] * scale;
+      sum_exp += expf(score - max_score);
+    }
+
+    *max_score_cache = max_score;
+    *inverse_sum = sum_exp == 0.0f ? 0.0f : 1.0f / sum_exp;
+  }
+
+  __syncthreads();
+
+  float max_score = *max_score_cache;
+  float inverse = *inverse_sum;
+
+  for (int src_pos = threadIdx.x;
+       src_pos < valid_src_len;
+       src_pos += blockDim.x) {
+    float score = score_cache[src_pos] * scale;
+    score_cache[src_pos] =
+        expf(score - max_score) * inverse;
+  }
+
+  __syncthreads();
+
+  // Threads split output dimensions while preserving src_pos accumulation order.
+  for (int d = threadIdx.x; d < head_dim; d += blockDim.x) {
+    float result = 0.0f;
+
+    for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
+      float probability = score_cache[src_pos];
+      size_t v_offset =
+          (((batch * src_seq_len + src_pos)
+              * kv_heads + kv_head)
+              * head_dim + d);
+
+      result = __fmaf_rn(
+          probability,
+          toFloat(v[v_offset]),
+          result);
+    }
+
+    output[q_offset + d] = fromFloat<T>(result);
+  }
+}
+
 /**
  * @brief Computes flash attention for given query, key, and value tensors.
  * 
@@ -376,16 +522,34 @@ void flashAttention(const std::vector<T>& h_q, const std::vector<T>& h_k,
   size_t v_bytes = checkedMultiply(v_elements, sizeof(T));
   size_t output_bytes = checkedMultiply(output_elements, sizeof(T));
 
-  const int threads = 256;
+  const int serial_threads = 256;
   size_t block_count =
-      attention_rows / threads +
-      static_cast<size_t>(attention_rows % threads != 0);
+      attention_rows / serial_threads +
+      static_cast<size_t>(attention_rows % serial_threads != 0);
 
   if (block_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
     throw std::overflow_error("attention grid is too large");
   }
 
   int attention_blocks = static_cast<int>(block_count);
+
+  size_t shared_elements = checkedAdd(checkedAdd(dim, source), 3);
+  size_t shared_bytes = checkedMultiply(shared_elements, sizeof(float));
+
+  int device = 0;
+  int max_shared_bytes = 0;
+  RUNTIME_CHECK(cudaGetDevice(&device));
+  RUNTIME_CHECK(cudaDeviceGetAttribute(
+      &max_shared_bytes,
+      cudaDevAttrMaxSharedMemoryPerBlock,
+      device));
+
+  bool use_shared_kernel =
+      shared_bytes <= static_cast<size_t>(max_shared_bytes) &&
+      attention_rows <= static_cast<size_t>(std::numeric_limits<int>::max());
+
+  // Use enough lanes to parallelize long source sequences as well as Q/V dims.
+  constexpr int row_threads = 128;
 
   T* d_q = nullptr;
   T* d_k = nullptr;
@@ -422,18 +586,34 @@ void flashAttention(const std::vector<T>& h_q, const std::vector<T>& h_k,
       v_bytes,
       cudaMemcpyHostToDevice));
 
-  fusedAttentionKernel<T><<<attention_blocks, threads>>>(
-      d_q,
-      d_k,
-      d_v,
-      d_output,
-      batch_size,
-      target_seq_len,
-      src_seq_len,
-      query_heads,
-      kv_heads,
-      head_dim,
-      is_causal);
+  if (use_shared_kernel) {
+    sharedAttentionKernel<T><<<
+        static_cast<int>(attention_rows), row_threads, shared_bytes>>>(
+        d_q,
+        d_k,
+        d_v,
+        d_output,
+        batch_size,
+        target_seq_len,
+        src_seq_len,
+        query_heads,
+        kv_heads,
+        head_dim,
+        is_causal);
+  } else {
+    serialAttentionKernel<T><<<attention_blocks, serial_threads>>>(
+        d_q,
+        d_k,
+        d_v,
+        d_output,
+        batch_size,
+        target_seq_len,
+        src_seq_len,
+        query_heads,
+        kv_heads,
+        head_dim,
+        is_causal);
+  }
 
   RUNTIME_CHECK(cudaGetLastError());
   RUNTIME_CHECK(cudaDeviceSynchronize());
