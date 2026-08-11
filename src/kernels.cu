@@ -25,7 +25,7 @@ size_t checkedAdd(size_t lhs, size_t rhs) {
   return lhs + rhs;
 }
 
-}  // namespace
+}  // 匿名命名空间
 
 template <typename T>
 __device__ float toFloat(T value) {
@@ -179,7 +179,7 @@ __global__ void serialAttentionKernel(
     int kv_heads,
     int head_dim,
     bool is_causal) {
-  // One thread owns one [batch, target position, query head] row.
+  // 每个线程负责一个 [batch, target_pos, query_head] 对应的行。
   size_t row =
       static_cast<size_t>(blockIdx.x) * blockDim.x + threadIdx.x;
 
@@ -198,7 +198,7 @@ __global__ void serialAttentionKernel(
   int target_pos = static_cast<int>(row_in_batch / query_heads);
   int query_head = static_cast<int>(row_in_batch % query_heads);
 
-  // GQA assigns each contiguous group of query heads to one K/V head.
+  // GQA 将每组连续的查询头映射到同一个 K/V 头。
   int group_size = query_heads / kv_heads;
   int kv_head = query_head / group_size;
 
@@ -207,7 +207,7 @@ __global__ void serialAttentionKernel(
           * query_heads + query_head)
           * head_dim);
 
-  // Keep the query and output accumulator local to avoid a score matrix.
+  // 将查询向量和输出累加器保存在本地，避免生成完整的分数矩阵。
   float q_cache[kMaxHeadDim];
   float output_acc[kMaxHeadDim] = {0.0f};
 
@@ -218,7 +218,7 @@ __global__ void serialAttentionKernel(
   float scale =
       1.0f / sqrtf(static_cast<float>(head_dim));
 
-  // Pass 1 finds the row maximum for a numerically stable softmax.
+  // 第一遍计算每行最大值，用于数值稳定的 softmax。
   float max_score = -INFINITY;
 
   for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
@@ -244,7 +244,7 @@ __global__ void serialAttentionKernel(
     max_score = fmaxf(max_score, score);
   }
 
-  // Pass 2 recomputes scores and accumulates the softmax denominator.
+  // 第二遍重新计算分数，并累加 softmax 的分母。
   float sum_exp = 0.0f;
 
   for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
@@ -276,7 +276,7 @@ __global__ void serialAttentionKernel(
     inverse_sum = 1.0f / sum_exp;
   }
 
-  // Pass 3 recomputes probabilities and immediately accumulates P * V.
+  // 第三遍重新计算概率，并立即累加 P * V。
   for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
     if (is_causal && src_pos > target_pos) {
       continue;
@@ -333,7 +333,7 @@ __global__ void sharedAttentionKernel(
     int kv_heads,
     int head_dim,
     bool is_causal) {
-  // A block owns one [batch, target position, query head] row.
+  // 每个线程块负责一个 [batch, target_pos, query_head] 对应的行。
   size_t row = static_cast<size_t>(blockIdx.x);
   size_t total_rows =
       static_cast<size_t>(batch_size) * target_seq_len * query_heads;
@@ -362,7 +362,7 @@ __global__ void sharedAttentionKernel(
     valid_src_len = target_pos + 1;
   }
 
-  // Dynamic shared memory holds Q, unscaled dot products, and softmax scalars.
+  // 动态共享内存依次保存 Q、未缩放点积和 softmax 标量。
   extern __shared__ float shared_values[];
   float* q_cache = shared_values;
   float* score_cache = q_cache + head_dim;
@@ -381,7 +381,7 @@ __global__ void sharedAttentionKernel(
 
   __syncthreads();
 
-  // Source positions are independent; each score keeps the original d order.
+  // 各 src_pos 相互独立；每个点积仍按原始 d 顺序累加。
   float scale = *scale_cache;
   for (int src_pos = threadIdx.x;
        src_pos < valid_src_len;
@@ -405,7 +405,7 @@ __global__ void sharedAttentionKernel(
   __syncthreads();
 
   if (threadIdx.x == 0) {
-    // Reductions remain serial and ordered by src_pos for bitwise stability.
+    // 按 src_pos 顺序串行归约，保证浮点结果的位级稳定性。
     float max_score = -INFINITY;
     for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
       float score = score_cache[src_pos] * scale;
@@ -437,7 +437,7 @@ __global__ void sharedAttentionKernel(
 
   __syncthreads();
 
-  // Threads split output dimensions while preserving src_pos accumulation order.
+  // 线程按输出维度分工，同时保持 src_pos 的累加顺序。
   for (int d = threadIdx.x; d < head_dim; d += blockDim.x) {
     float result = 0.0f;
 
@@ -548,7 +548,7 @@ void flashAttention(const std::vector<T>& h_q, const std::vector<T>& h_k,
       shared_bytes <= static_cast<size_t>(max_shared_bytes) &&
       attention_rows <= static_cast<size_t>(std::numeric_limits<int>::max());
 
-  // Use enough lanes to parallelize long source sequences as well as Q/V dims.
+  // 使用足够的线程，同时并行处理长源序列和 Q/V 维度。
   constexpr int row_threads = 128;
 
   T* d_q = nullptr;
