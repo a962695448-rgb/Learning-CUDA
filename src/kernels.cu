@@ -1,7 +1,24 @@
+#include <limits>
+#include <stdexcept>
 #include <vector>
 #include <cuda_fp16.h>
 
 #include "../tester/utils.h"
+
+namespace {
+
+constexpr int kMaxHeadDim = 256;
+
+size_t checkedMultiply(size_t lhs, size_t rhs) {
+  if (lhs != 0 && rhs > std::numeric_limits<size_t>::max() / lhs) {
+    throw std::overflow_error("tensor size overflow");
+  }
+
+  return lhs * rhs;
+}
+
+}  // namespace
+
 template <typename T>
 __device__ float toFloat(T value) {
   return static_cast<float>(value);
@@ -21,10 +38,12 @@ template <>
 __device__ half fromFloat<half>(float value) {
   return __float2half(value);
 }
+
 template <typename T>
 __global__ void rmsNormKernel(const T* input, const T* weight, T* output,
                               size_t rows, size_t hidden_dim, float eps) {
-  size_t row = blockIdx.x * blockDim.x + threadIdx.x;
+  size_t row =
+      static_cast<size_t>(blockIdx.x) * blockDim.x + threadIdx.x;
 
   if (row >= rows) {
     return;
@@ -59,7 +78,7 @@ __global__ void rmsNormKernel(const T* input, const T* weight, T* output,
  *
  *   output[i, j] = input[i, j] * rsqrt(mean(input[i, :]^2) + eps) * weight[j]
  *
- * The output vector is preallocated with rows * hidden_dim elements.
+ * The output vector is resized to rows * hidden_dim elements.
  *
  * @tparam T Data type of input, weight, and output tensors.
  * @param[in] h_input Flattened input matrix of shape [rows, hidden_dim].
@@ -73,8 +92,19 @@ template <typename T>
 void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
               std::vector<T>& h_output, size_t rows, size_t hidden_dim,
               float eps) {
-  // TODO: Implement the rmsNorm function
-  if (rows == 0 || hidden_dim == 0) {
+  size_t output_elements = checkedMultiply(rows, hidden_dim);
+
+  if (h_input.size() < output_elements) {
+    throw std::invalid_argument("h_input is smaller than rows * hidden_dim");
+  }
+
+  if (h_weight.size() < hidden_dim) {
+    throw std::invalid_argument("h_weight is smaller than hidden_dim");
+  }
+
+  h_output.resize(output_elements);
+
+  if (output_elements == 0) {
     return;
   }
 
@@ -82,8 +112,18 @@ void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
   T* d_weight = nullptr;
   T* d_output = nullptr;
 
-  size_t input_bytes = rows * hidden_dim * sizeof(T);
-  size_t weight_bytes = hidden_dim * sizeof(T);
+  size_t input_bytes = checkedMultiply(output_elements, sizeof(T));
+  size_t weight_bytes = checkedMultiply(hidden_dim, sizeof(T));
+
+  const int threads = 256;
+  size_t block_count =
+      rows / threads + static_cast<size_t>(rows % threads != 0);
+
+  if (block_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
+    throw std::overflow_error("RMSNorm grid is too large");
+  }
+
+  int blocks = static_cast<int>(block_count);
 
   RUNTIME_CHECK(cudaMalloc(
       reinterpret_cast<void**>(&d_input), input_bytes));
@@ -102,10 +142,6 @@ void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
       d_weight, h_weight.data(), weight_bytes,
       cudaMemcpyHostToDevice));
 
-  int threads = 256;
-  int blocks =
-      static_cast<int>((rows + threads - 1) / threads);
-
   rmsNormKernel<T><<<blocks, threads>>>(
       d_input, d_weight, d_output,
       rows, hidden_dim, eps);
@@ -121,6 +157,7 @@ void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
   RUNTIME_CHECK(cudaFree(d_weight));
   RUNTIME_CHECK(cudaFree(d_output));
 }
+
 template <typename T>
 __global__ void attentionScoreKernel(
     const T* q, const T* k, float* scores,
@@ -168,7 +205,7 @@ __global__ void attentionScoreKernel(
           * kv_heads + kv_head)
           * head_dim);
 
-    float dot = 0.0f;
+  float dot = 0.0f;
 
   for (int d = 0; d < head_dim; ++d) {
     float q_value = toFloat(q[q_offset + d]);
@@ -300,34 +337,37 @@ __global__ void fusedAttentionKernel(
     int kv_heads,
     int head_dim,
     bool is_causal) {
-  int row =
-      static_cast<int>(blockIdx.x) * blockDim.x + threadIdx.x;
+  // One thread owns one [batch, target position, query head] row.
+  size_t row =
+      static_cast<size_t>(blockIdx.x) * blockDim.x + threadIdx.x;
 
-  int total_rows =
-      batch_size * target_seq_len * query_heads;
+  size_t total_rows =
+      static_cast<size_t>(batch_size) * target_seq_len * query_heads;
 
   if (row >= total_rows) {
     return;
   }
 
-  int rows_per_batch =
-      target_seq_len * query_heads;
+  size_t rows_per_batch =
+      static_cast<size_t>(target_seq_len) * query_heads;
 
-  int batch = row / rows_per_batch;
-  int row_in_batch = row % rows_per_batch;
-  int target_pos = row_in_batch / query_heads;
-  int query_head = row_in_batch % query_heads;
+  size_t batch = row / rows_per_batch;
+  size_t row_in_batch = row % rows_per_batch;
+  int target_pos = static_cast<int>(row_in_batch / query_heads);
+  int query_head = static_cast<int>(row_in_batch % query_heads);
 
+  // GQA assigns each contiguous group of query heads to one K/V head.
   int group_size = query_heads / kv_heads;
   int kv_head = query_head / group_size;
 
-  int q_offset =
+  size_t q_offset =
       (((batch * target_seq_len + target_pos)
           * query_heads + query_head)
           * head_dim);
 
-  float q_cache[256];
-  float output_acc[256] = {0.0f};
+  // Keep the query and output accumulator local to avoid a score matrix.
+  float q_cache[kMaxHeadDim];
+  float output_acc[kMaxHeadDim] = {0.0f};
 
   for (int d = 0; d < head_dim; ++d) {
     q_cache[d] = toFloat(q[q_offset + d]);
@@ -336,6 +376,7 @@ __global__ void fusedAttentionKernel(
   float scale =
       1.0f / sqrtf(static_cast<float>(head_dim));
 
+  // Pass 1 finds the row maximum for a numerically stable softmax.
   float max_score = -INFINITY;
 
   for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
@@ -343,7 +384,7 @@ __global__ void fusedAttentionKernel(
       continue;
     }
 
-    int k_offset =
+    size_t k_offset =
         (((batch * src_seq_len + src_pos)
             * kv_heads + kv_head)
             * head_dim);
@@ -361,6 +402,7 @@ __global__ void fusedAttentionKernel(
     max_score = fmaxf(max_score, score);
   }
 
+  // Pass 2 recomputes scores and accumulates the softmax denominator.
   float sum_exp = 0.0f;
 
   for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
@@ -368,7 +410,7 @@ __global__ void fusedAttentionKernel(
       continue;
     }
 
-    int k_offset =
+    size_t k_offset =
         (((batch * src_seq_len + src_pos)
             * kv_heads + kv_head)
             * head_dim);
@@ -392,12 +434,13 @@ __global__ void fusedAttentionKernel(
     inverse_sum = 1.0f / sum_exp;
   }
 
+  // Pass 3 recomputes probabilities and immediately accumulates P * V.
   for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
     if (is_causal && src_pos > target_pos) {
       continue;
     }
 
-    int k_offset =
+    size_t k_offset =
         (((batch * src_seq_len + src_pos)
             * kv_heads + kv_head)
             * head_dim);
@@ -416,7 +459,7 @@ __global__ void fusedAttentionKernel(
     float probability =
         expf(score - max_score) * inverse_sum;
 
-    int v_offset =
+    size_t v_offset =
         (((batch * src_seq_len + src_pos)
             * kv_heads + kv_head)
             * head_dim);
@@ -434,6 +477,7 @@ __global__ void fusedAttentionKernel(
         fromFloat<T>(output_acc[d]);
   }
 }
+
 /**
  * @brief Computes flash attention for given query, key, and value tensors.
  * 
@@ -447,37 +491,67 @@ __global__ void fusedAttentionKernel(
  * @param[in] src_seq_len Source sequence length  
  * @param[in] query_heads Number of query attention heads
  * @param[in] kv_heads Number of key/value heads (supports grouped query attention)
- * @param[in] head_dim Dimension size of each attention head
+ * @param[in] head_dim Dimension size of each attention head (1 to 256)
  * @param[in] is_causal Whether to apply causal masking
  */
 template <typename T>
 void flashAttention(const std::vector<T>& h_q, const std::vector<T>& h_k,
                     const std::vector<T>& h_v, std::vector<T>& h_o,
-                    int batch_size, int target_seq_len, int src_seq_len, 
-                    int query_heads, int kv_heads, int head_dim, bool is_causal) {       
-  // TODO: Implement the flash attention function
-  size_t q_elements =
-      static_cast<size_t>(batch_size) *
-      target_seq_len *
-      query_heads *
-      head_dim;
+                    int batch_size, int target_seq_len, int src_seq_len,
+                    int query_heads, int kv_heads, int head_dim,
+                    bool is_causal) {
+  if (batch_size <= 0 || target_seq_len <= 0 || src_seq_len <= 0 ||
+      query_heads <= 0 || kv_heads <= 0 || head_dim <= 0) {
+    throw std::invalid_argument("attention dimensions must be positive");
+  }
 
-  size_t k_elements =
-      static_cast<size_t>(batch_size) *
-      src_seq_len *
-      kv_heads *
-      head_dim;
+  if (head_dim > kMaxHeadDim) {
+    throw std::invalid_argument("head_dim exceeds the kernel limit of 256");
+  }
+
+  if (query_heads % kv_heads != 0) {
+    throw std::invalid_argument("query_heads must be divisible by kv_heads");
+  }
+
+  size_t batch = static_cast<size_t>(batch_size);
+  size_t target = static_cast<size_t>(target_seq_len);
+  size_t source = static_cast<size_t>(src_seq_len);
+  size_t q_heads = static_cast<size_t>(query_heads);
+  size_t kv_head_count = static_cast<size_t>(kv_heads);
+  size_t dim = static_cast<size_t>(head_dim);
+
+  size_t attention_rows =
+      checkedMultiply(checkedMultiply(batch, target), q_heads);
+  size_t q_elements = checkedMultiply(attention_rows, dim);
+  size_t kv_rows =
+      checkedMultiply(checkedMultiply(batch, source), kv_head_count);
+  size_t k_elements = checkedMultiply(kv_rows, dim);
 
   size_t v_elements = k_elements;
-
   size_t output_elements = q_elements;
+
+  if (h_q.size() < q_elements || h_k.size() < k_elements ||
+      h_v.size() < v_elements) {
+    throw std::invalid_argument("attention input vector has an invalid size");
+  }
 
   h_o.resize(output_elements);
 
-  size_t q_bytes = q_elements * sizeof(T);
-  size_t k_bytes = k_elements * sizeof(T);
-  size_t v_bytes = v_elements * sizeof(T);
-  size_t output_bytes = output_elements * sizeof(T);
+  size_t q_bytes = checkedMultiply(q_elements, sizeof(T));
+  size_t k_bytes = checkedMultiply(k_elements, sizeof(T));
+  size_t v_bytes = checkedMultiply(v_elements, sizeof(T));
+  size_t output_bytes = checkedMultiply(output_elements, sizeof(T));
+
+  const int threads = 256;
+  size_t block_count =
+      attention_rows / threads +
+      static_cast<size_t>(attention_rows % threads != 0);
+
+  if (block_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
+    throw std::overflow_error("attention grid is too large");
+  }
+
+  int attention_blocks = static_cast<int>(block_count);
 
   T* d_q = nullptr;
   T* d_k = nullptr;
@@ -513,16 +587,6 @@ void flashAttention(const std::vector<T>& h_q, const std::vector<T>& h_k,
       h_v.data(),
       v_bytes,
       cudaMemcpyHostToDevice));
-
-  const int threads = 256;
-
-  size_t attention_rows =
-      static_cast<size_t>(batch_size) *
-      target_seq_len *
-      query_heads;
-
-  int attention_blocks = static_cast<int>(
-      (attention_rows + threads - 1) / threads);
 
   fusedAttentionKernel<T><<<attention_blocks, threads>>>(
       d_q,
