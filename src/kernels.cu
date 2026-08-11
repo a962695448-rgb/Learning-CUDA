@@ -362,7 +362,7 @@ __global__ void sharedAttentionKernel(
     valid_src_len = target_pos + 1;
   }
 
-  // Dynamic shared memory holds Q, scaled scores, and softmax scalars.
+  // Dynamic shared memory holds Q, unscaled dot products, and softmax scalars.
   extern __shared__ float shared_values[];
   float* q_cache = shared_values;
   float* score_cache = q_cache + head_dim;
@@ -399,7 +399,7 @@ __global__ void sharedAttentionKernel(
           score);
     }
 
-    score_cache[src_pos] = score * scale;
+    score_cache[src_pos] = score;
   }
 
   __syncthreads();
@@ -408,12 +408,14 @@ __global__ void sharedAttentionKernel(
     // Reductions remain serial and ordered by src_pos for bitwise stability.
     float max_score = -INFINITY;
     for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
-      max_score = fmaxf(max_score, score_cache[src_pos]);
+      float score = score_cache[src_pos] * scale;
+      max_score = fmaxf(max_score, score);
     }
 
     float sum_exp = 0.0f;
     for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
-      sum_exp += expf(score_cache[src_pos] - max_score);
+      float score = score_cache[src_pos] * scale;
+      sum_exp += expf(score - max_score);
     }
 
     *max_score_cache = max_score;
@@ -428,8 +430,9 @@ __global__ void sharedAttentionKernel(
   for (int src_pos = threadIdx.x;
        src_pos < valid_src_len;
        src_pos += blockDim.x) {
+    float score = score_cache[src_pos] * scale;
     score_cache[src_pos] =
-        expf(score_cache[src_pos] - max_score) * inverse;
+        expf(score - max_score) * inverse;
   }
 
   __syncthreads();
