@@ -1,8 +1,83 @@
+#include <limits>
+#include <stdexcept>
 #include <vector>
 #include <musa_fp16.h>
 
 #include "../tester/utils.h"
 
+namespace {
+
+constexpr int kMaxHeadDim = 256;
+
+size_t checkedMultiply(size_t lhs, size_t rhs) {
+  if (lhs != 0 && rhs > std::numeric_limits<size_t>::max() / lhs) {
+    throw std::overflow_error("tensor size overflow");
+  }
+
+  return lhs * rhs;
+}
+
+size_t checkedAdd(size_t lhs, size_t rhs) {
+  if (rhs > std::numeric_limits<size_t>::max() - lhs) {
+    throw std::overflow_error("tensor size overflow");
+  }
+
+  return lhs + rhs;
+}
+
+}  // 匿名命名空间
+
+template <typename T>
+__device__ float toFloat(T value) {
+  return static_cast<float>(value);
+}
+
+template <>
+__device__ float toFloat<half>(half value) {
+  return __half2float(value);
+}
+
+template <typename T>
+__device__ T fromFloat(float value) {
+  return static_cast<T>(value);
+}
+
+template <>
+__device__ half fromFloat<half>(float value) {
+  return __float2half(value);
+}
+
+template <typename T>
+__global__ void rmsNormKernel(const T* input, const T* weight, T* output,
+                              size_t rows, size_t hidden_dim, float eps) {
+  size_t row =
+      static_cast<size_t>(blockIdx.x) * blockDim.x + threadIdx.x;
+
+  if (row >= rows) {
+    return;
+  }
+
+  size_t row_offset = row * hidden_dim;
+  float sum_square = 0.0f;
+
+  for (size_t col = 0; col < hidden_dim; ++col) {
+    float value = toFloat(input[row_offset + col]);
+    sum_square += value * value;
+  }
+
+  float mean_square =
+      sum_square / static_cast<float>(hidden_dim);
+
+  float inverse_rms = rsqrtf(mean_square + eps);
+
+  for (size_t col = 0; col < hidden_dim; ++col) {
+    float value = toFloat(input[row_offset + col]);
+    float scale = toFloat(weight[col]);
+
+    output[row_offset + col] =
+        fromFloat<T>(value * inverse_rms * scale);
+  }
+}
 /**
  * @brief Computes RMSNorm over the last dimension of a 2D tensor.
  *
@@ -11,7 +86,7 @@
  *
  *   output[i, j] = input[i, j] * rsqrt(mean(input[i, :]^2) + eps) * weight[j]
  *
- * The output vector is preallocated with rows * hidden_dim elements.
+ * The output vector is resized to rows * hidden_dim elements.
  *
  * @tparam T Data type of input, weight, and output tensors.
  * @param[in] h_input Flattened input matrix of shape [rows, hidden_dim].
@@ -25,7 +100,362 @@ template <typename T>
 void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
               std::vector<T>& h_output, size_t rows, size_t hidden_dim,
               float eps) {
-  // TODO: Implement the rmsNorm function
+  size_t output_elements = checkedMultiply(rows, hidden_dim);
+
+  if (h_input.size() < output_elements) {
+    throw std::invalid_argument("h_input is smaller than rows * hidden_dim");
+  }
+
+  if (h_weight.size() < hidden_dim) {
+    throw std::invalid_argument("h_weight is smaller than hidden_dim");
+  }
+
+  h_output.resize(output_elements);
+
+  if (output_elements == 0) {
+    return;
+  }
+
+  T* d_input = nullptr;
+  T* d_weight = nullptr;
+  T* d_output = nullptr;
+
+  size_t input_bytes = checkedMultiply(output_elements, sizeof(T));
+  size_t weight_bytes = checkedMultiply(hidden_dim, sizeof(T));
+
+  const int threads = 256;
+  size_t block_count =
+      rows / threads + static_cast<size_t>(rows % threads != 0);
+
+  if (block_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
+    throw std::overflow_error("RMSNorm grid is too large");
+  }
+
+  int blocks = static_cast<int>(block_count);
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_input), input_bytes));
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_weight), weight_bytes));
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_output), input_bytes));
+
+  RUNTIME_CHECK(musaMemcpy(
+      d_input, h_input.data(), input_bytes,
+      musaMemcpyHostToDevice));
+
+  RUNTIME_CHECK(musaMemcpy(
+      d_weight, h_weight.data(), weight_bytes,
+      musaMemcpyHostToDevice));
+
+  rmsNormKernel<T><<<blocks, threads>>>(
+      d_input, d_weight, d_output,
+      rows, hidden_dim, eps);
+
+  RUNTIME_CHECK(musaGetLastError());
+  RUNTIME_CHECK(musaDeviceSynchronize());
+
+  RUNTIME_CHECK(musaMemcpy(
+      h_output.data(), d_output, input_bytes,
+      musaMemcpyDeviceToHost));
+
+  RUNTIME_CHECK(musaFree(d_input));
+  RUNTIME_CHECK(musaFree(d_weight));
+  RUNTIME_CHECK(musaFree(d_output));
+}
+
+template <typename T>
+__global__ void serialAttentionKernel(
+    const T* q,
+    const T* k,
+    const T* v,
+    T* output,
+    int batch_size,
+    int target_seq_len,
+    int src_seq_len,
+    int query_heads,
+    int kv_heads,
+    int head_dim,
+    bool is_causal) {
+  // 每个线程负责一个 [batch, target_pos, query_head] 对应的行。
+  size_t row =
+      static_cast<size_t>(blockIdx.x) * blockDim.x + threadIdx.x;
+
+  size_t total_rows =
+      static_cast<size_t>(batch_size) * target_seq_len * query_heads;
+
+  if (row >= total_rows) {
+    return;
+  }
+
+  size_t rows_per_batch =
+      static_cast<size_t>(target_seq_len) * query_heads;
+
+  size_t batch = row / rows_per_batch;
+  size_t row_in_batch = row % rows_per_batch;
+  int target_pos = static_cast<int>(row_in_batch / query_heads);
+  int query_head = static_cast<int>(row_in_batch % query_heads);
+
+  // GQA 将每组连续的查询头映射到同一个 K/V 头。
+  int group_size = query_heads / kv_heads;
+  int kv_head = query_head / group_size;
+
+  size_t q_offset =
+      (((batch * target_seq_len + target_pos)
+          * query_heads + query_head)
+          * head_dim);
+
+  // 将查询向量和输出累加器保存在本地，避免生成完整的分数矩阵。
+  float q_cache[kMaxHeadDim];
+  float output_acc[kMaxHeadDim] = {0.0f};
+
+  for (int d = 0; d < head_dim; ++d) {
+    q_cache[d] = toFloat(q[q_offset + d]);
+  }
+
+  float scale =
+      1.0f / sqrtf(static_cast<float>(head_dim));
+
+  // 第一遍计算每行最大值，用于数值稳定的 softmax。
+  float max_score = -INFINITY;
+
+  for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
+    if (is_causal && src_pos > target_pos) {
+      continue;
+    }
+
+    size_t k_offset =
+        (((batch * src_seq_len + src_pos)
+            * kv_heads + kv_head)
+            * head_dim);
+
+    float score = 0.0f;
+
+    for (int d = 0; d < head_dim; ++d) {
+      score = __fmaf_rn(
+          q_cache[d],
+          toFloat(k[k_offset + d]),
+          score);
+    }
+
+    score *= scale;
+    max_score = fmaxf(max_score, score);
+  }
+
+  // 第二遍重新计算分数，并累加 softmax 的分母。
+  float sum_exp = 0.0f;
+
+  for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
+    if (is_causal && src_pos > target_pos) {
+      continue;
+    }
+
+    size_t k_offset =
+        (((batch * src_seq_len + src_pos)
+            * kv_heads + kv_head)
+            * head_dim);
+
+    float score = 0.0f;
+
+    for (int d = 0; d < head_dim; ++d) {
+      score = __fmaf_rn(
+          q_cache[d],
+          toFloat(k[k_offset + d]),
+          score);
+    }
+
+    score *= scale;
+    sum_exp += expf(score - max_score);
+  }
+
+  float inverse_sum = 0.0f;
+
+  if (sum_exp != 0.0f) {
+    inverse_sum = 1.0f / sum_exp;
+  }
+
+  // 第三遍重新计算概率，并立即累加 P * V。
+  for (int src_pos = 0; src_pos < src_seq_len; ++src_pos) {
+    if (is_causal && src_pos > target_pos) {
+      continue;
+    }
+
+    size_t k_offset =
+        (((batch * src_seq_len + src_pos)
+            * kv_heads + kv_head)
+            * head_dim);
+
+    float score = 0.0f;
+
+    for (int d = 0; d < head_dim; ++d) {
+      score = __fmaf_rn(
+          q_cache[d],
+          toFloat(k[k_offset + d]),
+          score);
+    }
+
+    score *= scale;
+
+    float probability =
+        expf(score - max_score) * inverse_sum;
+
+    size_t v_offset =
+        (((batch * src_seq_len + src_pos)
+            * kv_heads + kv_head)
+            * head_dim);
+
+    for (int d = 0; d < head_dim; ++d) {
+      output_acc[d] = __fmaf_rn(
+          probability,
+          toFloat(v[v_offset + d]),
+          output_acc[d]);
+    }
+  }
+
+  for (int d = 0; d < head_dim; ++d) {
+    output[q_offset + d] =
+        fromFloat<T>(output_acc[d]);
+  }
+}
+
+template <typename T>
+__global__ void sharedAttentionKernel(
+    const T* q,
+    const T* k,
+    const T* v,
+    T* output,
+    int batch_size,
+    int target_seq_len,
+    int src_seq_len,
+    int query_heads,
+    int kv_heads,
+    int head_dim,
+    bool is_causal) {
+  // 每个线程块负责一个 [batch, target_pos, query_head] 对应的行。
+  size_t row = static_cast<size_t>(blockIdx.x);
+  size_t total_rows =
+      static_cast<size_t>(batch_size) * target_seq_len * query_heads;
+
+  if (row >= total_rows) {
+    return;
+  }
+
+  size_t rows_per_batch =
+      static_cast<size_t>(target_seq_len) * query_heads;
+  size_t batch = row / rows_per_batch;
+  size_t row_in_batch = row % rows_per_batch;
+  int target_pos = static_cast<int>(row_in_batch / query_heads);
+  int query_head = static_cast<int>(row_in_batch % query_heads);
+
+  int group_size = query_heads / kv_heads;
+  int kv_head = query_head / group_size;
+
+  size_t q_offset =
+      (((batch * target_seq_len + target_pos)
+          * query_heads + query_head)
+          * head_dim);
+
+  int valid_src_len = src_seq_len;
+  if (is_causal && target_pos < src_seq_len - 1) {
+    valid_src_len = target_pos + 1;
+  }
+
+  // 动态共享内存依次保存 Q、未缩放点积和 softmax 标量。
+  extern __shared__ float shared_values[];
+  float* q_cache = shared_values;
+  float* score_cache = q_cache + head_dim;
+  float* max_score_cache = score_cache + src_seq_len;
+  float* inverse_sum = max_score_cache + 1;
+  float* scale_cache = inverse_sum + 1;
+
+  for (int d = threadIdx.x; d < head_dim; d += blockDim.x) {
+    q_cache[d] = toFloat(q[q_offset + d]);
+  }
+
+  if (threadIdx.x == 0) {
+    *scale_cache =
+        1.0f / sqrtf(static_cast<float>(head_dim));
+  }
+
+  __syncthreads();
+
+  // 各 src_pos 相互独立；每个点积仍按原始 d 顺序累加。
+  float scale = *scale_cache;
+  for (int src_pos = threadIdx.x;
+       src_pos < valid_src_len;
+       src_pos += blockDim.x) {
+    size_t k_offset =
+        (((batch * src_seq_len + src_pos)
+            * kv_heads + kv_head)
+            * head_dim);
+    float score = 0.0f;
+
+    for (int d = 0; d < head_dim; ++d) {
+      score = __fmaf_rn(
+          q_cache[d],
+          toFloat(k[k_offset + d]),
+          score);
+    }
+
+    score_cache[src_pos] = score;
+  }
+
+  __syncthreads();
+
+  if (threadIdx.x == 0) {
+    // 按 src_pos 顺序串行归约，保证浮点结果的位级稳定性。
+    float max_score = -INFINITY;
+    for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
+      float score = score_cache[src_pos] * scale;
+      max_score = fmaxf(max_score, score);
+    }
+
+    float sum_exp = 0.0f;
+    for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
+      float score = score_cache[src_pos] * scale;
+      sum_exp += expf(score - max_score);
+    }
+
+    *max_score_cache = max_score;
+    *inverse_sum = sum_exp == 0.0f ? 0.0f : 1.0f / sum_exp;
+  }
+
+  __syncthreads();
+
+  float max_score = *max_score_cache;
+  float inverse = *inverse_sum;
+
+  for (int src_pos = threadIdx.x;
+       src_pos < valid_src_len;
+       src_pos += blockDim.x) {
+    float score = score_cache[src_pos] * scale;
+    score_cache[src_pos] =
+        expf(score - max_score) * inverse;
+  }
+
+  __syncthreads();
+
+  // 线程按输出维度分工，同时保持 src_pos 的累加顺序。
+  for (int d = threadIdx.x; d < head_dim; d += blockDim.x) {
+    float result = 0.0f;
+
+    for (int src_pos = 0; src_pos < valid_src_len; ++src_pos) {
+      float probability = score_cache[src_pos];
+      size_t v_offset =
+          (((batch * src_seq_len + src_pos)
+              * kv_heads + kv_head)
+              * head_dim + d);
+
+      result = __fmaf_rn(
+          probability,
+          toFloat(v[v_offset]),
+          result);
+    }
+
+    output[q_offset + d] = fromFloat<T>(result);
+  }
 }
 
 /**
@@ -41,15 +471,163 @@ void rmsNorm(const std::vector<T>& h_input, const std::vector<T>& h_weight,
  * @param[in] src_seq_len Source sequence length  
  * @param[in] query_heads Number of query attention heads
  * @param[in] kv_heads Number of key/value heads (supports grouped query attention)
- * @param[in] head_dim Dimension size of each attention head
+ * @param[in] head_dim Dimension size of each attention head (1 to 256)
  * @param[in] is_causal Whether to apply causal masking
  */
 template <typename T>
 void flashAttention(const std::vector<T>& h_q, const std::vector<T>& h_k,
                     const std::vector<T>& h_v, std::vector<T>& h_o,
-                    int batch_size, int target_seq_len, int src_seq_len, 
-                    int query_heads, int kv_heads, int head_dim, bool is_causal) {       
-  // TODO: Implement the flash attention function
+                    int batch_size, int target_seq_len, int src_seq_len,
+                    int query_heads, int kv_heads, int head_dim,
+                    bool is_causal) {
+  if (batch_size <= 0 || target_seq_len <= 0 || src_seq_len <= 0 ||
+      query_heads <= 0 || kv_heads <= 0 || head_dim <= 0) {
+    throw std::invalid_argument("attention dimensions must be positive");
+  }
+
+  if (head_dim > kMaxHeadDim) {
+    throw std::invalid_argument("head_dim exceeds the kernel limit of 256");
+  }
+
+  if (query_heads % kv_heads != 0) {
+    throw std::invalid_argument("query_heads must be divisible by kv_heads");
+  }
+
+  size_t batch = static_cast<size_t>(batch_size);
+  size_t target = static_cast<size_t>(target_seq_len);
+  size_t source = static_cast<size_t>(src_seq_len);
+  size_t q_heads = static_cast<size_t>(query_heads);
+  size_t kv_head_count = static_cast<size_t>(kv_heads);
+  size_t dim = static_cast<size_t>(head_dim);
+
+  size_t attention_rows =
+      checkedMultiply(checkedMultiply(batch, target), q_heads);
+  size_t q_elements = checkedMultiply(attention_rows, dim);
+  size_t kv_rows =
+      checkedMultiply(checkedMultiply(batch, source), kv_head_count);
+  size_t k_elements = checkedMultiply(kv_rows, dim);
+
+  size_t v_elements = k_elements;
+  size_t output_elements = q_elements;
+
+  if (h_q.size() < q_elements || h_k.size() < k_elements ||
+      h_v.size() < v_elements) {
+    throw std::invalid_argument("attention input vector has an invalid size");
+  }
+
+  h_o.resize(output_elements);
+
+  size_t q_bytes = checkedMultiply(q_elements, sizeof(T));
+  size_t k_bytes = checkedMultiply(k_elements, sizeof(T));
+  size_t v_bytes = checkedMultiply(v_elements, sizeof(T));
+  size_t output_bytes = checkedMultiply(output_elements, sizeof(T));
+
+  const int serial_threads = 256;
+  size_t block_count =
+      attention_rows / serial_threads +
+      static_cast<size_t>(attention_rows % serial_threads != 0);
+
+  if (block_count > static_cast<size_t>(std::numeric_limits<int>::max())) {
+    throw std::overflow_error("attention grid is too large");
+  }
+
+  int attention_blocks = static_cast<int>(block_count);
+
+  size_t shared_elements = checkedAdd(checkedAdd(dim, source), 3);
+  size_t shared_bytes = checkedMultiply(shared_elements, sizeof(float));
+
+  int device = 0;
+  int max_shared_bytes = 0;
+  RUNTIME_CHECK(musaGetDevice(&device));
+  RUNTIME_CHECK(musaDeviceGetAttribute(
+      &max_shared_bytes,
+      musaDevAttrMaxSharedMemoryPerBlock,
+      device));
+
+  bool use_shared_kernel =
+      shared_bytes <= static_cast<size_t>(max_shared_bytes) &&
+      attention_rows <= static_cast<size_t>(std::numeric_limits<int>::max());
+
+  // 使用足够的线程，同时并行处理长源序列和 Q/V 维度。
+  constexpr int row_threads = 128;
+
+  T* d_q = nullptr;
+  T* d_k = nullptr;
+  T* d_v = nullptr;
+  T* d_output = nullptr;
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_q), q_bytes));
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_k), k_bytes));
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_v), v_bytes));
+
+  RUNTIME_CHECK(musaMalloc(
+      reinterpret_cast<void**>(&d_output), output_bytes));
+
+  RUNTIME_CHECK(musaMemcpy(
+      d_q,
+      h_q.data(),
+      q_bytes,
+      musaMemcpyHostToDevice));
+
+  RUNTIME_CHECK(musaMemcpy(
+      d_k,
+      h_k.data(),
+      k_bytes,
+      musaMemcpyHostToDevice));
+
+  RUNTIME_CHECK(musaMemcpy(
+      d_v,
+      h_v.data(),
+      v_bytes,
+      musaMemcpyHostToDevice));
+
+  if (use_shared_kernel) {
+    sharedAttentionKernel<T><<<
+        static_cast<int>(attention_rows), row_threads, shared_bytes>>>(
+        d_q,
+        d_k,
+        d_v,
+        d_output,
+        batch_size,
+        target_seq_len,
+        src_seq_len,
+        query_heads,
+        kv_heads,
+        head_dim,
+        is_causal);
+  } else {
+    serialAttentionKernel<T><<<attention_blocks, serial_threads>>>(
+        d_q,
+        d_k,
+        d_v,
+        d_output,
+        batch_size,
+        target_seq_len,
+        src_seq_len,
+        query_heads,
+        kv_heads,
+        head_dim,
+        is_causal);
+  }
+
+  RUNTIME_CHECK(musaGetLastError());
+  RUNTIME_CHECK(musaDeviceSynchronize());
+
+  RUNTIME_CHECK(musaMemcpy(
+      h_o.data(),
+      d_output,
+      output_bytes,
+      musaMemcpyDeviceToHost));
+
+  RUNTIME_CHECK(musaFree(d_q));
+  RUNTIME_CHECK(musaFree(d_k));
+  RUNTIME_CHECK(musaFree(d_v));
+  RUNTIME_CHECK(musaFree(d_output));
 }
 
 // *********************************************************************
