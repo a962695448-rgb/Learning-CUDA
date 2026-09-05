@@ -15,6 +15,11 @@
 #include <string>
 #include <vector>
 
+#ifndef HADAMARD_ASCEND_VECTOR_SCALE
+#define HADAMARD_ASCEND_VECTOR_SCALE 0
+#endif
+constexpr bool kVectorScaleEnabled = HADAMARD_ASCEND_VECTOR_SCALE != 0;
+
 namespace api = hadamard::ascend;
 #define CHECK(call) do { aclError e_ = (call); if (e_ != ACL_SUCCESS) \
     throw std::runtime_error(std::string(#call) + " returned ACL error " + std::to_string(e_)); } while (0)
@@ -385,6 +390,43 @@ template<class T> void contract_tests(aclrtStream stream, Summary& summary) {
             throw std::runtime_error("positive/negative ties-to-even test failed");
         input.download(stream, true, "after-ties-quantize");
         ++summary.contract_checks;
+
+        // 已观测的除法中点回归：1/(FP32(1/7))与0.5/(FP32(1/7))应量化为7、3。
+        // 近似除法可能把第二项抬至3.5，错误地产生0x47。预期完全固定，不从actual生成。
+        Guarded<T> chain_input(2, stream, "division-chain.input"),
+                   chain_transform(2, stream, "division-chain.transform");
+        Guarded<std::uint8_t> chain_split(1, stream, "division-chain.split"),
+                              chain_fused(1, stream, "division-chain.fused");
+        Guarded<float> chain_split_scale(1, stream, "division-chain.split_scale"),
+                       chain_fused_scale(1, stream, "division-chain.fused_scale");
+        const std::vector<T> chain_values{rounded<T>(0.75f), rounded<T>(0.25f)};
+        const std::array<T, 2> expected_transform{{rounded<T>(1.0f), rounded<T>(0.5f)}};
+        constexpr std::uint8_t expected_packed = 0x37;
+        constexpr std::uint32_t expected_scale_bits = 0x3e124925u;
+        chain_input.upload(chain_values, stream);
+        std::cout << "CONTRACT_PROGRESS method=" << method_name << " phase=division-chain" << std::endl;
+        CHECK(launch_transform(chain_input.data(), chain_transform.data(), 1, 2, 1.0f, stream, method));
+        CHECK(launch_quantize(chain_transform.data(), chain_split.data(), chain_split_scale.data(), 1, 2, stream, method));
+        CHECK(launch_fused(chain_input.data(), chain_fused.data(), chain_fused_scale.data(), 1, 2, 1.0f, stream, method));
+        chain_input.download(stream, true, "division-chain-complete");
+        const auto chain_y = chain_transform.download(stream, false, "division-chain-complete");
+        const auto chain_qs = chain_split.download(stream, false, "division-chain-complete");
+        const auto chain_qf = chain_fused.download(stream, false, "division-chain-complete");
+        const auto chain_ss = chain_split_scale.download(stream, false, "division-chain-complete");
+        const auto chain_sf = chain_fused_scale.download(stream, false, "division-chain-complete");
+        if (std::memcmp(chain_y.data(), expected_transform.data(), 2 * sizeof(T))
+            || chain_qs[0] != expected_packed || chain_qf[0] != expected_packed
+            || float_bits(chain_ss[0]) != expected_scale_bits || float_bits(chain_sf[0]) != expected_scale_bits) {
+            std::cerr << "DIVISION_CHAIN_FAIL method=" << method_name
+                      << " split_packed=" << unsigned(chain_qs[0]) << " fused_packed=" << unsigned(chain_qf[0])
+                      << " split_scale_bits=" << float_bits(chain_ss[0]) << " fused_scale_bits=" << float_bits(chain_sf[0]) << std::endl;
+            throw std::runtime_error("fixed transform/quantize/fused division-chain regression failed");
+        }
+        ++summary.contract_checks;  // 每个dtype/Method计一个串联回归，不把其中三次API发射算成三个用例。
+        std::cout << "DIVISION_CHAIN_PASS dtype=" << (storage<T>() == api::StorageType::FP16 ? "fp16" : "bf16")
+                  << " method=" << method_name
+                  << " input=[0.75,0.25] transform=[1,0.5] scale_bits=0x3e124925 packed=0x37 split_fused_exact=true guards=true contract_increment=1"
+                  << std::endl;
     }
     const auto invalid = static_cast<api::Method>(-1);
     reject(launch_transform(input.data(), output.data(), 1, 8, 1, stream, invalid));
@@ -515,7 +557,8 @@ template<class T> void benchmark(aclrtStream stream, const char* dtype, const Op
                 csv << dtype << ',' << shape.b << ',' << shape.s << ',' << shape.h << ',' << shape.n << ',' << rows
                     << ',' << names[which] << ',' << group << ',' << order << ',' << o.repeats << ',' << std::setprecision(12) << us
                     << ',' << logical_bytes << ',' << logical_bytes / us / 1000.0 << ',' << count * sizeof(T)
-                    << ",2909,true,1," << configured_blocks << ',' << o.warmup << ",acl_timeline_event_ms\n";
+                    << ",2909,true,1," << configured_blocks << ',' << o.warmup << ",acl_timeline_event_ms,"
+                    << (kVectorScaleEnabled ? "true" : "false") << ',' << us / 1000.0 << '\n';
                 csv.flush();
             }
         }
@@ -568,7 +611,8 @@ int main(int argc, char** argv) {
         CHECK(aclrtCreateStream(&stream));
         const char* soc = aclrtGetSocName();
         if (!soc || std::string(soc) != "Ascend910B1") throw std::runtime_error("this build requires observed SOC Ascend910B1");
-        std::cout << "DEVICE soc=" << soc << " execution=npu block_dim=" << configured_blocks << std::endl;
+        std::cout << "DEVICE soc=" << soc << " execution=npu block_dim=" << configured_blocks
+                  << " vector_scale_enabled=" << (kVectorScaleEnabled ? "true" : "false") << std::endl;
         Summary fp16, bf16;
         if (options.validate) {
             if (options.dtype != "bf16") fp16 = validate<FP16Bits>(stream, "fp16", options);
@@ -579,6 +623,7 @@ int main(int argc, char** argv) {
                  << ",\"full_suite_complete\":" << ((!options.quick && !options.custom_shape && !options.skip_stress && options.dtype == "both") ? "true" : "false")
                  << ",\"execution\":\"npu\",\"soc\":\"Ascend910B1\",\"main_block_dim\":" << configured_blocks
                  << ",\"methods\":[\"scalar_butterfly\",\"vector_gather\"]"
+                 << ",\"vector_scale_enabled\":" << (kVectorScaleEnabled ? "true" : "false")
                  << ",\"oracle\":\"FP32 CPU FWHT exact output bits plus all-element dtype-rounded FP64 dense\",\"fp16_tolerance_strict\":0.01,\"bf16_tolerance_strict\":0.05,"
                  << "\"large_m_definition\":\"262145 rows, N1, both transforms and vector in-place, block_dim32; no large-M INT4 claim; does not exercise indices above 2^32\","
                  << "\"large_m_skipped\":" << ((options.quick || options.custom_shape || options.skip_stress) ? "true" : "false") << ','
@@ -592,7 +637,7 @@ int main(int argc, char** argv) {
         if (options.benchmark) {
             std::ofstream csv(options.csv);
             if (!csv) throw std::runtime_error("cannot create benchmark CSV " + options.csv);
-            csv << "dtype,batch,seq,heads,dim,rows,method,group,order,repeats,kernel_us,logical_io_bytes,logical_GBs,input_working_set_bytes,seed,input_read_only,scale,block_dim,warmup,timer\n";
+            csv << "dtype,batch,seq,heads,dim,rows,method,group,order,repeats,kernel_us,logical_io_bytes,logical_GBs,input_working_set_bytes,seed,input_read_only,scale,block_dim,warmup,timer,vector_scale_enabled,kernel_ms\n";
             if (options.dtype != "bf16") benchmark<FP16Bits>(stream, "fp16", options, csv);
             if (options.dtype != "fp16") benchmark<BF16Bits>(stream, "bf16", options, csv);
             if (!csv) throw std::runtime_error("failed writing benchmark CSV");

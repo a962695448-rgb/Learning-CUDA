@@ -1,7 +1,11 @@
 #include "kernel_operator.h"
 
+#ifndef HADAMARD_ASCEND_VECTOR_SCALE
+#define HADAMARD_ASCEND_VECTOR_SCALE 0
+#endif
+
 // 本项目原生 Ascend C 实现；数学顺序沿用本项目 FWHT，不复制厂商 SDK 实现。
-// ScalarButterfly 与 VectorGather 共用搬运、scale乘法、RNE与量化，只改变蝶形方式。
+// 默认两方法共用标量scale；可选宏仅让VectorGather改用Muls，RNE与标量除法量化不变。
 template<class T, bool Transform, bool Quantize> class HadamardKernel {
 public:
     __aicore__ inline void Run(GM_ADDR input, GM_ADDR output, GM_ADDR packed_output,
@@ -75,12 +79,20 @@ public:
             AscendC::PipeBarrier<PIPE_V>();
             if constexpr (Transform) {
                 if (method == 1) VectorButterfly(current, next);
-                Fence<AscendC::HardEvent::V_S>();
-                if (method == 0) ScalarButterfly(current);
-                // 两条蝶形路径使用完全相同的设备标量乘法与输出转换。
-                for (uint32_t i = 0; i < n; ++i)
-                    current.SetValue(i, current.GetValue(i) * transform_scale);
-                Fence<AscendC::HardEvent::S_V>();
+                #if HADAMARD_ASCEND_VECTOR_SCALE
+                if (method == 1) {
+                    // count重载原位逐元素相乘；不产生跨repeat的源/目标依赖。
+                    AscendC::Muls(current, current, transform_scale, static_cast<int32_t>(n));
+                    AscendC::PipeBarrier<PIPE_V>();
+                } else
+                #endif
+                {
+                    Fence<AscendC::HardEvent::V_S>();
+                    if (method == 0) ScalarButterfly(current);
+                    for (uint32_t i = 0; i < n; ++i)
+                        current.SetValue(i, current.GetValue(i) * transform_scale);
+                    Fence<AscendC::HardEvent::S_V>();
+                }
                 AscendC::Cast(typed_output, current, AscendC::RoundMode::CAST_RINT, n);
                 AscendC::PipeBarrier<PIPE_V>();
                 if constexpr (Quantize) {

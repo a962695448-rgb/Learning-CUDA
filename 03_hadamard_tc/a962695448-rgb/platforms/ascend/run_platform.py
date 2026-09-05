@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -16,6 +17,11 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = Path(__file__).resolve().parent
+BENCHMARK_COLUMNS = (
+    "dtype,batch,seq,heads,dim,rows,method,group,order,repeats,kernel_us,logical_io_bytes,logical_GBs,"
+    "input_working_set_bytes,seed,input_read_only,scale,block_dim,warmup,timer,vector_scale_enabled,kernel_ms"
+).split(",")
+VECTOR_SCALE_SCOPE = ["vector_transform", "vector_split", "vector_fused"]
 
 
 def digest(path):
@@ -33,7 +39,7 @@ def capture(command, environment):
 
 
 def save(path, report):
-    path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
 
 
 def run(command, log, report, manifest, environment, expected=0):
@@ -79,30 +85,68 @@ def environment_for(cann):
     return environment, setup
 
 
-def summarize(path):
+def summarize(path, expected_vector_scale=None):
     groups = {}
+    groups_ms = {}
+    observed_vector_scale = None
     with path.open(newline="", encoding="utf-8") as stream:
-        for row in csv.DictReader(stream):
+        reader = csv.DictReader(stream)
+        if reader.fieldnames != BENCHMARK_COLUMNS:
+            raise RuntimeError("unexpected benchmark CSV columns; vector_scale_enabled and kernel_ms are required")
+        for row in reader:
+            if None in row or any(value is None for value in row.values()):
+                raise RuntimeError("malformed benchmark CSV row")
             if row["timer"] != "acl_timeline_event_ms":
                 raise RuntimeError("unexpected benchmark timing source")
+            if row["vector_scale_enabled"] not in ("true", "false"):
+                raise RuntimeError("invalid benchmark vector_scale_enabled flag")
+            enabled = row["vector_scale_enabled"] == "true"
+            if expected_vector_scale is not None and enabled != expected_vector_scale:
+                raise RuntimeError("benchmark does not match requested vector-scale build")
+            if observed_vector_scale is not None and enabled != observed_vector_scale:
+                raise RuntimeError("mixed vector-scale builds in one benchmark CSV")
+            observed_vector_scale = enabled
+            microseconds = float(row["kernel_us"])
+            milliseconds = float(row["kernel_ms"])
+            if not (math.isfinite(microseconds) and math.isfinite(milliseconds)
+                    and microseconds > 0 and milliseconds > 0):
+                raise RuntimeError("benchmark us/ms must both be finite and positive")
+            # 两列均以12位有效数字序列化；只容纳序列化误差，不容纳单位或样本错配。
+            if not math.isclose(microseconds, milliseconds * 1000.0, rel_tol=2e-11, abs_tol=0.0):
+                raise RuntimeError("benchmark kernel_us/kernel_ms unit conversion mismatch")
             key = tuple(row[field] for field in ("dtype", "batch", "seq", "heads", "dim", "block_dim", "method"))
-            groups.setdefault(key, []).append(float(row["kernel_us"]))
+            groups.setdefault(key, []).append(microseconds)
+            groups_ms.setdefault(key, []).append(milliseconds)
     if not groups:
         raise RuntimeError("empty benchmark CSV")
     series = []
     medians = {key: statistics.median(values) for key, values in groups.items()}
+    if not all(math.isfinite(value) for value in medians.values()):
+        raise RuntimeError("nonfinite benchmark median")
     for key, values in groups.items():
+        values_ms = groups_ms[key]
+        median_ms = statistics.median(values_ms)
+        if not math.isfinite(median_ms):
+            raise RuntimeError("nonfinite benchmark millisecond median")
         series.append(dict(zip(("dtype", "batch", "seq", "heads", "dim", "block_dim", "method"), key),
                            raw_samples_us=values, median_us=statistics.median(values),
-                           minimum_us=min(values), maximum_us=max(values)))
+                           minimum_us=min(values), maximum_us=max(values),
+                           raw_samples_ms=values_ms, median_ms=median_ms,
+                           minimum_ms=min(values_ms), maximum_ms=max(values_ms)))
     comparisons = []
     for key, value in medians.items():
         if key[-1].startswith("scalar_"):
             peer = key[:-1] + (key[-1].replace("scalar_", "vector_"),)
+            ratio = value / medians[peer]
+            if not math.isfinite(ratio):
+                raise RuntimeError("nonfinite benchmark comparison")
             comparisons.append({"shape_dtype_blocks": key[:-1], "operation": key[-1][7:],
                                 "scalar_median_us": value, "vector_median_us": medians[peer],
-                                "scalar_over_vector_same_blocks": value / medians[peer]})
+                                "scalar_over_vector_same_blocks": ratio})
     return {"timer": "ACL_EVENT_TIME_LINE events; aclrtEventElapsedTime milliseconds converted to microseconds",
+            "unit_relationship": "kernel_ms = kernel_us / 1000; same samples, not additional timing or precision",
+            "vector_scale_enabled": observed_vector_scale,
+            "vector_scale_scope": VECTOR_SCALE_SCOPE if observed_vector_scale else [],
             "not_timed": ["allocation", "copies", "validation", "event creation/destruction", "warmup"],
             "cache_condition": "same seeded read-only inputs reused; warm-cache samples",
             "quant_only": "one shared NPU scalar-division quantization implementation; not two different algorithms",
@@ -125,6 +169,8 @@ def main():
     parser.add_argument("--repeats", "--iterations", type=int, default=5)
     parser.add_argument("--groups", type=int, default=5)
     parser.add_argument("--warmup", type=int, default=3)
+    parser.add_argument("--vector-scale", action="store_true",
+                        help="编译启用VectorGather的Muls scale候选；默认关闭，量化仍用NPU标量除法")
     args = parser.parse_args()
     if not 1 <= args.block_dim <= 32 or not 1 <= args.build_jobs <= 8:
         parser.error("block-dim must be 1..32; build-jobs must be 1..8")
@@ -150,6 +196,8 @@ def main():
               "platform": "ascend", "run_mode": "npu", "soc_target": "Ascend910B1", "host_architecture": platform.machine(),
               "cann_root": str(cann), "sdk_environment_setup": setup, "build_directory": str(build),
               "quick": args.quick, "skip_stress": args.skip_stress, "requested_dtype": args.dtype, "block_dim": args.block_dim,
+              "vector_scale_enabled": args.vector_scale,
+              "vector_scale_scope": VECTOR_SCALE_SCOPE if args.vector_scale else [],
               "benchmark_requested": args.benchmark or args.pilot_benchmark, "pilot_benchmark": args.pilot_benchmark,
               "source_sha256": {str(path.relative_to(ROOT)): digest(path) for path in files},
               "python_version": sys.version, "cmake_version": capture([args.cmake, "--version"], environment),
@@ -162,8 +210,14 @@ def main():
     code = 1
     try:
         run([args.cmake, "-S", SOURCE, "-B", build, "-DCMAKE_BUILD_TYPE=Release", "-DRUN_MODE=npu", "-DBUILD_VALIDATION=ON",
+             "-DENABLE_VECTOR_SCALE=" + ("ON" if args.vector_scale else "OFF"),
              "-DSOC_VERSION=Ascend910B1", "-DASCEND_CANN_PACKAGE_PATH=" + str(cann)],
             destination / "configure.log", report, manifest, environment)
+        expected_cache = "ENABLE_VECTOR_SCALE:BOOL=" + ("ON" if args.vector_scale else "OFF")
+        if expected_cache not in (build / "CMakeCache.txt").read_text(encoding="utf-8").splitlines():
+            raise RuntimeError("CMake cache does not match requested vector-scale build")
+        report["vector_scale_cmake_cache"] = expected_cache
+        save(manifest, report)
         run([args.cmake, "--build", build, "--target", "validate_and_benchmark", "-j", str(args.build_jobs)],
             destination / "build.log", report, manifest, environment)
         binary = build / "validate_and_benchmark"
@@ -188,6 +242,8 @@ def main():
         report["validation"] = validation
         if validation.get("status") != "PASS" or validation.get("execution") != "npu" or validation.get("main_block_dim") != args.block_dim:
             raise RuntimeError("validation JSON does not confirm requested NPU execution")
+        if validation.get("vector_scale_enabled") is not args.vector_scale:
+            raise RuntimeError("validation JSON does not confirm requested vector-scale build")
         if not args.quick and args.dtype == "both":
             if validation.get("full_matrix") is not True or (not args.skip_stress and validation.get("full_suite_complete") is not True):
                 raise RuntimeError("full validation JSON is incomplete")
@@ -198,7 +254,7 @@ def main():
             if args.pilot_benchmark:
                 command += ["--batch", "1", "--seq", "17", "--heads", "1", "--dim", "128"]
             run(command, destination / "benchmark.log", report, manifest, environment)
-            report["benchmark"] = summarize(destination / "benchmark.csv")
+            report["benchmark"] = summarize(destination / "benchmark.csv", expected_vector_scale=args.vector_scale)
         report["status"] = "PASS"
         code = 0
     except KeyboardInterrupt:
