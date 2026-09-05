@@ -93,7 +93,7 @@ struct Options {
     bool self_test = false, benchmark = false, normalized = false;
     std::size_t batch = 4, seq = 128, heads = 8, dim = 256;
     std::string dtype = "fp16", csv;
-    int repetitions = 200, warmup = 20;
+    int repetitions = 200, warmup = 20, block_threads = 128;
     std::size_t rows() const { return product(product(batch, seq), heads); }
     std::size_t elements() const { return product(rows(), dim); }
     float scale() const { return normalized ? 1.0f / std::sqrt(static_cast<float>(dim)) : 1.0f; }
@@ -108,6 +108,8 @@ void help() {
               << "  --scale 1|normalized         Default 1; normalized means 1/sqrt(N)\n"
               << "  --normalize                  Alias for --scale normalized\n"
               << "  --repetitions R --warmup W    Default 200,20; R positive, W nonnegative\n"
+              << "  --block-threads 128|256       Warp transform/quantize/split/fused; default 128\n"
+              << "                               Naive, Tensor Core and CPU paths are unchanged\n"
               << "  --csv FILE                   Append measured rows, with header if empty\n"
               << "No mode selects --self-test. Self-tests always cover both dtypes/scales.\n"
               << "INT4: rowwise symmetric [-7,7], scale=max(abs(y))/7 (zero row:1),\n"
@@ -139,6 +141,12 @@ Options parse(int argc, char** argv) {
         else if (argument == "--dim") options.dim = unsigned_number(next(), argument);
         else if (argument == "--dtype") options.dtype = next();
         else if (argument == "--csv") options.csv = next();
+        else if (argument == "--block-threads") {
+            const auto value = unsigned_number(next(), argument);
+            if (value != 128 && value != 256)
+                throw std::invalid_argument("--block-threads must be 128 or 256");
+            options.block_threads = static_cast<int>(value);
+        }
         else if (argument == "--scale") {
             const auto value = next();
             if (value == "1" || value == "1.0") options.normalized = false;
@@ -163,15 +171,15 @@ Options parse(int argc, char** argv) {
 
 template <class T> class Runner {
 public:
-    Runner(std::size_t row_count, int dimension, float transform_scale)
-        : rows(row_count), dim(dimension), scale(transform_scale), count(product(rows, dim)),
+    Runner(std::size_t row_count, int dimension, float transform_scale, int warp_block_threads = 128)
+        : rows(row_count), dim(dimension), scale(transform_scale), block_threads(warp_block_threads), count(product(rows, dim)),
           input(count), output(count), scratch_a(count), scratch_b(count),
           matrix(dim >= 16 ? dim * dim : 0),
           packed(product(rows, (dim + 1) / 2)), quant_scales(rows) {
         cudaDeviceProp properties{};
         CUDA_CHECK(cudaGetDeviceProperties(&properties, 0));
         if (divide_up(count, 256) > static_cast<std::size_t>(properties.maxGridSize[0]) ||
-            divide_up(rows, 4) > static_cast<std::size_t>(properties.maxGridSize[0]))
+            divide_up(rows, block_threads / 32) > static_cast<std::size_t>(properties.maxGridSize[0]))
             throw std::invalid_argument("shape exceeds CUDA launch grid limits");
         if (dim >= 16) {
             std::vector<T> h(dim * dim);
@@ -213,6 +221,7 @@ public:
     std::size_t rows;
     int dim;
     float scale;
+    int block_threads;
     std::size_t count;
     DeviceBuffer<T> input, output;
     DeviceBuffer<float> scratch_a, scratch_b;
@@ -222,7 +231,7 @@ public:
 
 private:
     template <int N> void specialized(Method method) {
-        const auto blocks = static_cast<unsigned int>(divide_up(rows, 4));
+        const auto blocks = static_cast<unsigned int>(divide_up(rows, block_threads / 32));
         if (method == Method::TensorCore) {
             if constexpr (N >= 16) {
                 const dim3 grid(static_cast<unsigned int>(divide_up(rows, 16)), N / 16);
@@ -230,13 +239,13 @@ private:
                 CUDA_CHECK(cudaGetLastError());
             } else throw std::invalid_argument("tensor_core requires dim >= 16");
         } else if (method == Method::FusedInt4) {
-            hadamard::warp_kernel<T, N, true, true><<<blocks, 128>>>(input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale);
+            hadamard::warp_kernel<T, N, true, true><<<blocks, block_threads>>>(input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale);
             CUDA_CHECK(cudaGetLastError());
         } else {
-            hadamard::warp_kernel<T, N, true, false><<<blocks, 128>>>(input.data(), output.data(), nullptr, nullptr, rows, scale);
+            hadamard::warp_kernel<T, N, true, false><<<blocks, block_threads>>>(input.data(), output.data(), nullptr, nullptr, rows, scale);
             CUDA_CHECK(cudaGetLastError());
             if (method == Method::SplitInt4) {
-                hadamard::warp_kernel<T, N, false, true><<<blocks, 128>>>(output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1);
+                hadamard::warp_kernel<T, N, false, true><<<blocks, block_threads>>>(output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1);
                 CUDA_CHECK(cudaGetLastError());
             }
         }
@@ -353,7 +362,7 @@ Validation validate(Runner<T>& runner, const std::vector<T>& input, bool all_row
     return validation;
 }
 
-template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, Validation& totals) {
+template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, Validation& totals, int block_threads) {
     auto record = [&](const Validation& validation) {
         totals.max_error = std::max(totals.max_error, validation.max_error);
         totals.dense_rows += validation.dense_rows;
@@ -366,7 +375,7 @@ template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, V
         for (const bool normalized : {false, true})
             for (const std::size_t rows : {1u, 3u, 17u, 65u}) {
                 const float scale = normalized ? 1.0f / std::sqrt(static_cast<float>(dim)) : 1.0f;
-                Runner<T> runner(rows, dim, scale);
+                Runner<T> runner(rows, dim, scale, block_threads);
                 auto test = [&](const char* pattern, std::uint32_t seed) {
                     const auto input = make_input<T>(rows, dim, pattern, seed);
                     try {
@@ -387,7 +396,7 @@ template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, V
     }
     // Larger, non-multiple batch: full split/fused/CPU-quant comparison, 32 dense rows.
     for (const bool normalized : {false, true}) {
-        Runner<T> runner(1025, 256, normalized ? 1.0f / 16.0f : 1.0f);
+        Runner<T> runner(1025, 256, normalized ? 1.0f / 16.0f : 1.0f, block_threads);
         record(validate(runner, make_input<T>(1025, 256, "random", 95811), false));
     }
 }
@@ -427,19 +436,29 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
     CUDA_CHECK(cudaRuntimeGetVersion(&runtime));
     CUDA_CHECK(cudaDriverGetVersion(&driver));
     std::ofstream csv;
+    const std::string csv_header = "timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms";
     bool header = false;
     if (!options.csv.empty()) {
         const std::filesystem::path path(options.csv);
         if (path.has_parent_path()) std::filesystem::create_directories(path.parent_path());
         header = !std::filesystem::exists(path) || std::filesystem::file_size(path) == 0;
+        if (!header) {
+            std::ifstream existing(path);
+            std::string first_line;
+            std::getline(existing, first_line);
+            if (!first_line.empty() && first_line.back() == '\r') first_line.pop_back();
+            if (first_line != csv_header)
+                throw std::runtime_error("CSV header differs; choose a new file to preserve existing results");
+        }
         csv.open(path, std::ios::app);
         if (!csv) throw std::runtime_error("cannot open CSV file: " + options.csv);
         if (header)
-            csv << "timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows\n";
+            csv << csv_header << '\n';
     }
     std::cout << "BENCHMARK shape=[" << options.batch << ',' << options.seq << ',' << options.heads << ','
               << options.dim << "] dtype=" << options.dtype << " scale=" << options.scale()
-              << " rows=" << options.rows() << " dense_oracle_rows=" << dense_rows << '\n';
+              << " rows=" << options.rows() << " dense_oracle_rows=" << dense_rows
+              << " warp_block_threads=" << options.block_threads << '\n';
     std::cout << "Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;\n"
               << "cpu_compute=FP32 FWHT host wall time, input reset excluded;\n"
               << "host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.\n"
@@ -448,19 +467,25 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
         const double throughput = static_cast<double>(options.elements()) * 1e6 / measured.microseconds;
         std::cout << std::left << std::setw(20) << measured.method << std::setw(16) << measured.scope
                   << std::right << std::fixed << std::setprecision(3) << std::setw(12) << measured.microseconds
-                  << " us  " << std::scientific << std::setprecision(4) << throughput << " elements/s\n";
-        if (csv)
+                  << " us (" << std::setprecision(6) << measured.microseconds / 1000.0 << " ms)  "
+                  << std::scientific << std::setprecision(4) << throughput << " elements/s\n";
+        if (csv) {
+            const bool uses_warp = measured.method == "warp" || measured.method == "split_int4" ||
+                                   measured.method == "fused_int4" || measured.method == "warp_h2d_d2h";
             csv << timestamp() << ',' << csv_quote(gpu.name) << ',' << gpu.major << gpu.minor << ','
                 << runtime << ',' << driver << ',' << options.batch << ',' << options.seq << ',' << options.heads
                 << ',' << options.dim << ',' << options.dtype << ',' << std::setprecision(9) << options.scale()
                 << ',' << measured.method << ',' << measured.scope << ',' << measured.repetitions << ','
-                << std::setprecision(12) << measured.microseconds << ',' << throughput << ',' << max_error << ',' << dense_rows << '\n';
+                << std::setprecision(12) << measured.microseconds << ',' << throughput << ',' << max_error << ',' << dense_rows << ',';
+            if (uses_warp) csv << options.block_threads;
+            csv << ',' << measured.microseconds / 1000.0 << '\n';
+        }
     }
     if (csv) { csv.flush(); if (!csv) throw std::runtime_error("failed writing CSV"); }
 }
 
 template <class T> void benchmark(const Options& options, const cudaDeviceProp& gpu) {
-    Runner<T> runner(options.rows(), static_cast<int>(options.dim), options.scale());
+    Runner<T> runner(options.rows(), static_cast<int>(options.dim), options.scale(), options.block_threads);
     const auto input = make_input<T>(runner.rows, runner.dim, "random", 20260905);
     const auto validation = validate(runner, input, false);
     std::vector<Measurement> measurements;
@@ -517,13 +542,14 @@ int main(int argc, char** argv) {
         if (options.self_test) {
             std::size_t cases = 0;
             Validation totals;
-            self_test_dtype<__half>("fp16", cases, totals);
-            self_test_dtype<__nv_bfloat16>("bf16", cases, totals);
+            self_test_dtype<__half>("fp16", cases, totals, options.block_threads);
+            self_test_dtype<__nv_bfloat16>("bf16", cases, totals, options.block_threads);
             std::cout << "SELF_TEST PASS cases=" << cases << " max_abs_error=" << totals.max_error
                       << " CPU/split/fused_INT4_bytes=exact scales=exact"
                       << " rounded_warp_vs_dense_elements=" << totals.rounded_warp_mismatches
                       << " dense_quant_differing_bytes=" << totals.dense_quant_byte_mismatches
-                      << " dense_quant_differing_scales=" << totals.dense_quant_scale_mismatches << '\n';
+                      << " dense_quant_differing_scales=" << totals.dense_quant_scale_mismatches
+                      << " warp_block_threads=" << options.block_threads << '\n';
         }
         if (options.benchmark) {
             if (options.dtype == "fp16") benchmark<__half>(options, gpu);
