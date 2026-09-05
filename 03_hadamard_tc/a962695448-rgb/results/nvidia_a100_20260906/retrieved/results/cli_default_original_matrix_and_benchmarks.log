@@ -1,0 +1,32 @@
+PASS --self-test
+PASS --benchmark --dim 0
+PASS --benchmark --dim 3
+PASS --benchmark --dim 512
+PASS --benchmark --batch -1
+PASS --benchmark --seq 0
+PASS --benchmark --heads abc
+PASS --benchmark --dtype fp32
+PASS --benchmark --scale nan
+PASS --benchmark --scale 2
+PASS --benchmark --batch 18446744073709551615 --seq 2
+PASS --benchmark --batch 18446744073709551616
+PASS --benchmark --repetitions 0
+PASS --benchmark --warmup -1
+PASS --benchmark --dim
+PASS --unsupported
+PASS --benchmark --batch 1 --seq 1 --heads 1 --dim 1 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 1 --heads 1 --dim 16 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 1 --heads 17 --dim 256 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 128 --heads 8 --dim 16 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 128 --heads 8 --dim 64 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 128 --heads 8 --dim 256 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 512 --heads 8 --dim 256 --dtype fp16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 257 --heads 1 --dim 256 --dtype fp16 --normalize --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 1 --heads 1 --dim 1 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 1 --heads 1 --dim 16 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 1 --heads 17 --dim 256 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 128 --heads 8 --dim 16 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 128 --heads 8 --dim 64 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 128 --heads 8 --dim 256 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 4 --seq 512 --heads 8 --dim 256 --dtype bf16 --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv
+PASS --benchmark --batch 1 --seq 257 --heads 1 --dim 256 --dtype bf16 --normalize --repetitions 300 --warmup 30 --csv /home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv

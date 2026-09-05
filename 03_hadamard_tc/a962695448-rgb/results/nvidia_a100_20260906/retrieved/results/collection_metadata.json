@@ -1,0 +1,49 @@
+{
+  "state_status": "PASS",
+  "environment": {
+    "gpu": {
+      "exit": 0,
+      "stdout": "name, mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 210 MHz, 18.87 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+      "stderr": ""
+    }
+  },
+  "binary_inspection": {
+    "cli": {
+      "file": "source/build/hadamard",
+      "bytes": 2034808,
+      "sha256": "aadc59aa1e8c2ba40dd0763c89db945b0dc53f5f35699828162f1381b13c6263",
+      "cuobjdump_exit": 0,
+      "cuobjdump_stdout": "ELF file    1: main.sm_80.cubin\nELF file    2: main.sm_80.cubin\n",
+      "cuobjdump_stderr": ""
+    },
+    "default_extension": {
+      "file": "build_default/infinitensor_hadamard_cuda.so",
+      "bytes": 967688,
+      "sha256": "4f1f44550a6e57b39ec654394f6175048bb806f6d08d1e3989473c674ce5ddb0",
+      "cuobjdump_exit": 0,
+      "cuobjdump_stdout": "ELF file    1: torch_binding.sm_80.cubin\n",
+      "cuobjdump_stderr": ""
+    },
+    "dao_reference": {
+      "file": ".venv/lib/python3.12/site-packages/fast_hadamard_transform_cuda.cpython-312-x86_64-linux-gnu.so",
+      "bytes": 41230248,
+      "sha256": "faa31572adfbf82c0261a27ebfaed6a2c5fb6261b81a499e9d3a9bc4819726e5",
+      "cuobjdump_exit": 0,
+      "cuobjdump_stdout": "ELF file    1: fast_hadamard_transform_cuda.sm_75.cubin\nELF file    2: fast_hadamard_transform_cuda.sm_80.cubin\nELF file    3: fast_hadamard_transform_cuda.sm_87.cubin\nELF file    4: fast_hadamard_transform_cuda.sm_90.cubin\n",
+      "cuobjdump_stderr": ""
+    },
+    "thread_extension": {
+      "file": "build_checker/infinitensor_hadamard_block_threads_check.so",
+      "bytes": 967760,
+      "sha256": "0857075b7199d2040457da62610a98daec4f6cd6d4ae1cb0a3972cc16737291d",
+      "cuobjdump_exit": 0,
+      "cuobjdump_stdout": "ELF file    1: torch_binding.sm_80.cubin\n",
+      "cuobjdump_stderr": ""
+    }
+  }
+}

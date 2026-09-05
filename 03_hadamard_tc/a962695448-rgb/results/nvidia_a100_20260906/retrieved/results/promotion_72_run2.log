@@ -1,0 +1,55 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/vipuser/infinitensor-2026/hadamard-cuda-a100/build_checker/build.ninja...
+Building extension module infinitensor_hadamard_block_threads_check...
+Using envvar MAX_JOBS (1) as the number of workers...
+ninja: no work to do.
+Loading extension module infinitensor_hadamard_block_threads_check...
+PROGRESS {"dtype": "fp16", "N": 16, "M": 4095, "normalized": false, "benchmarks": 2}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 4095, "normalized": true, "benchmarks": 4}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 4096, "normalized": false, "benchmarks": 6}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 4096, "normalized": true, "benchmarks": 8}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 4097, "normalized": false, "benchmarks": 10}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 4097, "normalized": true, "benchmarks": 12}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 16383, "normalized": false, "benchmarks": 13}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 16383, "normalized": true, "benchmarks": 14}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 16384, "normalized": false, "benchmarks": 15}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 16384, "normalized": true, "benchmarks": 16}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 16385, "normalized": false, "benchmarks": 17}
+PROGRESS {"dtype": "fp16", "N": 16, "M": 16385, "normalized": true, "benchmarks": 18}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 4095, "normalized": false, "benchmarks": 20}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 4095, "normalized": true, "benchmarks": 22}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 4096, "normalized": false, "benchmarks": 24}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 4096, "normalized": true, "benchmarks": 26}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 4097, "normalized": false, "benchmarks": 28}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 4097, "normalized": true, "benchmarks": 30}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 16383, "normalized": false, "benchmarks": 31}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 16383, "normalized": true, "benchmarks": 32}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 16384, "normalized": false, "benchmarks": 33}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 16384, "normalized": true, "benchmarks": 34}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 16385, "normalized": false, "benchmarks": 35}
+PROGRESS {"dtype": "fp16", "N": 64, "M": 16385, "normalized": true, "benchmarks": 36}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 4095, "normalized": false, "benchmarks": 38}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 4095, "normalized": true, "benchmarks": 40}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 4096, "normalized": false, "benchmarks": 42}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 4096, "normalized": true, "benchmarks": 44}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 4097, "normalized": false, "benchmarks": 46}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 4097, "normalized": true, "benchmarks": 48}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 16383, "normalized": false, "benchmarks": 49}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 16383, "normalized": true, "benchmarks": 50}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 16384, "normalized": false, "benchmarks": 51}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 16384, "normalized": true, "benchmarks": 52}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 16385, "normalized": false, "benchmarks": 53}
+PROGRESS {"dtype": "bf16", "N": 16, "M": 16385, "normalized": true, "benchmarks": 54}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 4095, "normalized": false, "benchmarks": 56}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 4095, "normalized": true, "benchmarks": 58}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 4096, "normalized": false, "benchmarks": 60}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 4096, "normalized": true, "benchmarks": 62}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 4097, "normalized": false, "benchmarks": 64}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 4097, "normalized": true, "benchmarks": 66}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 16383, "normalized": false, "benchmarks": 67}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 16383, "normalized": true, "benchmarks": 68}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 16384, "normalized": false, "benchmarks": 69}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 16384, "normalized": true, "benchmarks": 70}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 16385, "normalized": false, "benchmarks": 71}
+PROGRESS {"dtype": "bf16", "N": 64, "M": 16385, "normalized": true, "benchmarks": 72}
+{"status": "PASS", "summary": {"unique_shape_dtype_scale_cases": 48, "correctness_input_cases": 336, "benchmark_configurations": 72}, "output": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/run2.json"}

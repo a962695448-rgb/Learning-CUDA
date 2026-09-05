@@ -1,0 +1,5 @@
+Collecting ninja==1.11.1.3
+  Downloading ninja-1.11.1.3-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.3 kB)
+Downloading ninja-1.11.1.3-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (422 kB)
+Installing collected packages: ninja
+Successfully installed ninja-1.11.1.3

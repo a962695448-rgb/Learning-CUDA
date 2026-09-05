@@ -1,0 +1,352 @@
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--self-test']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+SELF_TEST fp16 dim=1 PASS
+SELF_TEST fp16 dim=2 PASS
+SELF_TEST fp16 dim=4 PASS
+SELF_TEST fp16 dim=8 PASS
+SELF_TEST fp16 dim=16 PASS
+SELF_TEST fp16 dim=32 PASS
+SELF_TEST fp16 dim=64 PASS
+SELF_TEST fp16 dim=128 PASS
+SELF_TEST fp16 dim=256 PASS
+SELF_TEST bf16 dim=1 PASS
+SELF_TEST bf16 dim=2 PASS
+SELF_TEST bf16 dim=4 PASS
+SELF_TEST bf16 dim=8 PASS
+SELF_TEST bf16 dim=16 PASS
+SELF_TEST bf16 dim=32 PASS
+SELF_TEST bf16 dim=64 PASS
+SELF_TEST bf16 dim=128 PASS
+SELF_TEST bf16 dim=256 PASS
+SELF_TEST PASS cases=1876 max_abs_error=0.0078125 CPU/split/fused_INT4_bytes=exact scales=exact rounded_warp_vs_dense_elements=35 dense_quant_differing_bytes=0 dense_quant_differing_scales=0 warp_block_threads=128
+EXIT_CODE 0; ELAPSED_SECONDS 1.853
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--dim', '0']
+Argument error: --dim requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--dim', '3']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--dim', '512']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '-1']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--seq', '0']
+Argument error: --seq requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--heads', 'abc']
+Argument error: --heads requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--dtype', 'fp32']
+Argument error: --dtype must be fp16 or bf16
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--scale', 'nan']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--scale', '2']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '18446744073709551615', '--seq', '2']
+Argument error: shape or allocation size overflows size_t
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '18446744073709551616']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--repetitions', '0']
+Argument error: --repetitions requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--warmup', '-1']
+Argument error: --warmup requires a valid nonnegative integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--dim']
+Argument error: missing value for --dim
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--unsupported']
+Argument error: unknown option: --unsupported
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '1', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,1,1,1] dtype=fp16 scale=1 rows=1 dense_oracle_rows=1 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only            6.598 us (0.006598 ms)  1.5156e+05 elements/s
+warp                kernel_only            3.502 us (0.003502 ms)  2.8554e+05 elements/s
+split_int4          kernel_only            7.342 us (0.007342 ms)  1.3620e+05 elements/s
+fused_int4          kernel_only            3.864 us (0.003864 ms)  2.5881e+05 elements/s
+cpu_fp32_fwht       cpu_compute            0.023 us (0.000023 ms)  4.2735e+07 elements/s
+warp_h2d_d2h        host_e2e              21.789 us (0.021789 ms)  4.5896e+04 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.325
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '16', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,1,1,16] dtype=fp16 scale=1 rows=1 dense_oracle_rows=1 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           15.664 us (0.015664 ms)  1.0215e+06 elements/s
+warp                kernel_only            2.693 us (0.002693 ms)  5.9411e+06 elements/s
+tensor_core         kernel_only            3.133 us (0.003133 ms)  5.1062e+06 elements/s
+split_int4          kernel_only            5.734 us (0.005734 ms)  2.7902e+06 elements/s
+fused_int4          kernel_only            3.130 us (0.003130 ms)  5.1118e+06 elements/s
+cpu_fp32_fwht       cpu_compute            0.068 us (0.000068 ms)  2.3392e+08 elements/s
+warp_h2d_d2h        host_e2e              21.843 us (0.021843 ms)  7.3248e+05 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.280
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '17', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,1,17,256] dtype=fp16 scale=1 rows=17 dense_oracle_rows=17 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           25.682 us (0.025682 ms)  1.6946e+08 elements/s
+warp                kernel_only            2.942 us (0.002942 ms)  1.4791e+09 elements/s
+tensor_core         kernel_only           12.353 us (0.012353 ms)  3.5231e+08 elements/s
+split_int4          kernel_only            6.612 us (0.006612 ms)  6.5823e+08 elements/s
+fused_int4          kernel_only            3.850 us (0.003850 ms)  1.1303e+09 elements/s
+cpu_fp32_fwht       cpu_compute           10.523 us (0.010523 ms)  4.1356e+08 elements/s
+warp_h2d_d2h        host_e2e              23.508 us (0.023508 ms)  1.8513e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.292
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '16', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,128,8,16] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           16.811 us (0.016811 ms)  3.8985e+09 elements/s
+warp                kernel_only            3.516 us (0.003516 ms)  1.8641e+10 elements/s
+tensor_core         kernel_only            3.768 us (0.003768 ms)  1.7391e+10 elements/s
+split_int4          kernel_only            7.516 us (0.007516 ms)  8.7193e+09 elements/s
+fused_int4          kernel_only            4.045 us (0.004045 ms)  1.6203e+10 elements/s
+cpu_fp32_fwht       cpu_compute          151.195 us (0.151195 ms)  4.3345e+08 elements/s
+warp_h2d_d2h        host_e2e              55.579 us (0.055579 ms)  1.1791e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.299
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '64', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,128,8,64] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           27.713 us (0.027713 ms)  9.4593e+09 elements/s
+warp                kernel_only            3.734 us (0.003734 ms)  7.0201e+10 elements/s
+tensor_core         kernel_only            7.878 us (0.007878 ms)  3.3276e+10 elements/s
+split_int4          kernel_only            7.670 us (0.007670 ms)  3.4179e+10 elements/s
+fused_int4          kernel_only            4.417 us (0.004417 ms)  5.9351e+10 elements/s
+cpu_fp32_fwht       cpu_compute          617.369 us (0.617369 ms)  4.2461e+08 elements/s
+warp_h2d_d2h        host_e2e             120.240 us (0.120240 ms)  2.1802e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.323
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,128,8,256] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           58.941 us (0.058941 ms)  1.7790e+10 elements/s
+warp                kernel_only            5.195 us (0.005195 ms)  2.0184e+11 elements/s
+tensor_core         kernel_only           51.087 us (0.051087 ms)  2.0525e+10 elements/s
+split_int4          kernel_only           10.851 us (0.010851 ms)  9.6634e+10 elements/s
+fused_int4          kernel_only            6.977 us (0.006977 ms)  1.5029e+11 elements/s
+cpu_fp32_fwht       cpu_compute         2620.581 us (2.620581 ms)  4.0013e+08 elements/s
+warp_h2d_d2h        host_e2e             421.641 us (0.421641 ms)  2.4869e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.452
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '512', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,512,8,256] dtype=fp16 scale=1 rows=16384 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          226.208 us (0.226208 ms)  1.8542e+10 elements/s
+warp                kernel_only           10.725 us (0.010725 ms)  3.9109e+11 elements/s
+tensor_core         kernel_only          171.455 us (0.171455 ms)  2.4463e+10 elements/s
+split_int4          kernel_only           22.289 us (0.022289 ms)  1.8818e+11 elements/s
+fused_int4          kernel_only           16.224 us (0.016224 ms)  2.5853e+11 elements/s
+cpu_fp32_fwht       cpu_compute        10600.584 us (10.600584 ms)  3.9567e+08 elements/s
+warp_h2d_d2h        host_e2e            1376.426 us (1.376426 ms)  3.0472e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.933
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '257', '--heads', '1', '--dim', '256', '--dtype', 'fp16', '--normalize', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,257,1,256] dtype=fp16 scale=0.0625 rows=257 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           28.051 us (0.028051 ms)  2.3455e+09 elements/s
+warp                kernel_only            3.024 us (0.003024 ms)  2.1755e+10 elements/s
+tensor_core         kernel_only           13.554 us (0.013554 ms)  4.8539e+09 elements/s
+split_int4          kernel_only            6.782 us (0.006782 ms)  9.7006e+09 elements/s
+fused_int4          kernel_only            3.942 us (0.003942 ms)  1.6688e+10 elements/s
+cpu_fp32_fwht       cpu_compute          162.591 us (0.162591 ms)  4.0465e+08 elements/s
+warp_h2d_d2h        host_e2e              56.028 us (0.056028 ms)  1.1743e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.303
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '1', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,1,1,1] dtype=bf16 scale=1 rows=1 dense_oracle_rows=1 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only            5.110 us (0.005110 ms)  1.9570e+05 elements/s
+warp                kernel_only            2.693 us (0.002693 ms)  3.7132e+05 elements/s
+split_int4          kernel_only            5.635 us (0.005635 ms)  1.7745e+05 elements/s
+fused_int4          kernel_only            3.065 us (0.003065 ms)  3.2625e+05 elements/s
+cpu_fp32_fwht       cpu_compute            0.025 us (0.000025 ms)  4.0568e+07 elements/s
+warp_h2d_d2h        host_e2e              20.323 us (0.020323 ms)  4.9206e+04 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.275
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '16', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,1,1,16] dtype=bf16 scale=1 rows=1 dense_oracle_rows=1 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           15.452 us (0.015452 ms)  1.0355e+06 elements/s
+warp                kernel_only            2.717 us (0.002717 ms)  5.8888e+06 elements/s
+tensor_core         kernel_only            3.195 us (0.003195 ms)  5.0080e+06 elements/s
+split_int4          kernel_only            5.728 us (0.005728 ms)  2.7935e+06 elements/s
+fused_int4          kernel_only            3.185 us (0.003185 ms)  5.0241e+06 elements/s
+cpu_fp32_fwht       cpu_compute            0.070 us (0.000070 ms)  2.2890e+08 elements/s
+warp_h2d_d2h        host_e2e              21.672 us (0.021672 ms)  7.3826e+05 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.279
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '17', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,1,17,256] dtype=bf16 scale=1 rows=17 dense_oracle_rows=17 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           26.723 us (0.026723 ms)  1.6286e+08 elements/s
+warp                kernel_only            2.973 us (0.002973 ms)  1.4638e+09 elements/s
+tensor_core         kernel_only           13.329 us (0.013329 ms)  3.2650e+08 elements/s
+split_int4          kernel_only            6.656 us (0.006656 ms)  6.5385e+08 elements/s
+fused_int4          kernel_only            3.990 us (0.003990 ms)  1.0907e+09 elements/s
+cpu_fp32_fwht       cpu_compute           10.917 us (0.010917 ms)  3.9863e+08 elements/s
+warp_h2d_d2h        host_e2e              23.962 us (0.023962 ms)  1.8162e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.290
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '16', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,128,8,16] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           16.521 us (0.016521 ms)  3.9669e+09 elements/s
+warp                kernel_only            3.465 us (0.003465 ms)  1.8916e+10 elements/s
+tensor_core         kernel_only            3.697 us (0.003697 ms)  1.7729e+10 elements/s
+split_int4          kernel_only            7.448 us (0.007448 ms)  8.7993e+09 elements/s
+fused_int4          kernel_only            4.086 us (0.004086 ms)  1.6040e+10 elements/s
+cpu_fp32_fwht       cpu_compute          149.369 us (0.149369 ms)  4.3875e+08 elements/s
+warp_h2d_d2h        host_e2e              55.003 us (0.055003 ms)  1.1915e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.296
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '64', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,128,8,64] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           26.481 us (0.026481 ms)  9.8995e+09 elements/s
+warp                kernel_only            3.703 us (0.003703 ms)  7.0783e+10 elements/s
+tensor_core         kernel_only            7.516 us (0.007516 ms)  3.4877e+10 elements/s
+split_int4          kernel_only            7.601 us (0.007601 ms)  3.4486e+10 elements/s
+fused_int4          kernel_only            4.256 us (0.004256 ms)  6.1588e+10 elements/s
+cpu_fp32_fwht       cpu_compute          610.998 us (0.610998 ms)  4.2904e+08 elements/s
+warp_h2d_d2h        host_e2e             135.355 us (0.135355 ms)  1.9367e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.317
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,128,8,256] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           60.252 us (0.060252 ms)  1.7403e+10 elements/s
+warp                kernel_only            5.048 us (0.005048 ms)  2.0771e+11 elements/s
+tensor_core         kernel_only           52.371 us (0.052371 ms)  2.0022e+10 elements/s
+split_int4          kernel_only           10.725 us (0.010725 ms)  9.7772e+10 elements/s
+fused_int4          kernel_only            7.144 us (0.007144 ms)  1.4677e+11 elements/s
+cpu_fp32_fwht       cpu_compute         2610.526 us (2.610526 ms)  4.0167e+08 elements/s
+warp_h2d_d2h        host_e2e             334.822 us (0.334822 ms)  3.1317e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.442
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '4', '--seq', '512', '--heads', '8', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[4,512,8,256] dtype=bf16 scale=1 rows=16384 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          227.034 us (0.227034 ms)  1.8474e+10 elements/s
+warp                kernel_only           10.776 us (0.010776 ms)  3.8923e+11 elements/s
+tensor_core         kernel_only          174.285 us (0.174285 ms)  2.4066e+10 elements/s
+split_int4          kernel_only           22.548 us (0.022548 ms)  1.8601e+11 elements/s
+fused_int4          kernel_only           16.558 us (0.016558 ms)  2.5331e+11 elements/s
+cpu_fp32_fwht       cpu_compute        10542.734 us (10.542734 ms)  3.9784e+08 elements/s
+warp_h2d_d2h        host_e2e            2032.466 us (2.032466 ms)  2.0637e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.922
+
+COMMAND ['/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard', '--benchmark', '--batch', '1', '--seq', '257', '--heads', '1', '--dim', '256', '--dtype', 'bf16', '--normalize', '--repetitions', '300', '--warmup', '30', '--csv', '/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/results/benchmark_a100_default128.csv']
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,257,1,256] dtype=bf16 scale=0.0625 rows=257 dense_oracle_rows=32 warp_block_threads=128
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           27.795 us (0.027795 ms)  2.3671e+09 elements/s
+warp                kernel_only            2.990 us (0.002990 ms)  2.2003e+10 elements/s
+tensor_core         kernel_only           14.244 us (0.014244 ms)  4.6190e+09 elements/s
+split_int4          kernel_only            6.588 us (0.006588 ms)  9.9870e+09 elements/s
+fused_int4          kernel_only            3.867 us (0.003867 ms)  1.7012e+10 elements/s
+cpu_fp32_fwht       cpu_compute          169.741 us (0.169741 ms)  3.8760e+08 elements/s
+warp_h2d_d2h        host_e2e              58.194 us (0.058194 ms)  1.1306e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.302
+

@@ -1,0 +1,6 @@
+{
+  "worker_pid": 14764,
+  "worker_sha256": "4450f1c9a92ad067327e81098e8d80cc8c36b041d6b7b22367bf82f82ae12d93",
+  "root": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100",
+  "source_commit": "12c76d8331ef7cf3fd4c8c14a049162559be4302"
+}

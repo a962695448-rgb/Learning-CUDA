@@ -1,0 +1,19 @@
+CHECKED dtype=fp16 dim=1 cases=100 failures=0
+CHECKED dtype=fp16 dim=2 cases=200 failures=0
+CHECKED dtype=fp16 dim=4 cases=300 failures=0
+CHECKED dtype=fp16 dim=8 cases=400 failures=0
+CHECKED dtype=fp16 dim=16 cases=500 failures=0
+CHECKED dtype=fp16 dim=32 cases=600 failures=0
+CHECKED dtype=fp16 dim=64 cases=700 failures=0
+CHECKED dtype=fp16 dim=128 cases=800 failures=0
+CHECKED dtype=fp16 dim=256 cases=900 failures=0
+CHECKED dtype=bf16 dim=1 cases=1000 failures=0
+CHECKED dtype=bf16 dim=2 cases=1100 failures=0
+CHECKED dtype=bf16 dim=4 cases=1200 failures=0
+CHECKED dtype=bf16 dim=8 cases=1300 failures=0
+CHECKED dtype=bf16 dim=16 cases=1400 failures=0
+CHECKED dtype=bf16 dim=32 cases=1500 failures=0
+CHECKED dtype=bf16 dim=64 cases=1600 failures=0
+CHECKED dtype=bf16 dim=128 cases=1700 failures=0
+CHECKED dtype=bf16 dim=256 cases=1800 failures=0
+{"status": "PASS", "json": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/dao_default.json", "summary": {"cases": 1800, "failures": 0, "max_abs_error_by_dtype": {"fp16": 0.0, "bf16": 0.0}}, "error": null}

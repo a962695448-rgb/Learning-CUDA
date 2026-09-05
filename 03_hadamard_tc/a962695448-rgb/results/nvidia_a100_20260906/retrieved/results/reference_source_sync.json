@@ -1,0 +1,213 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-05T18:55:30.221642+00:00",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100",
+        "check-ref-format",
+        "--branch",
+        "master"
+      ],
+      "started_utc": "2026-09-05T18:55:30.222356+00:00",
+      "returncode": 0,
+      "stdout": "master\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "init",
+        "--quiet"
+      ],
+      "started_utc": "2026-09-05T18:55:30.728578+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "config",
+        "core.autocrlf",
+        "false"
+      ],
+      "started_utc": "2026-09-05T18:55:30.732265+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "config",
+        "core.filemode",
+        "true"
+      ],
+      "started_utc": "2026-09-05T18:55:30.735003+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "add",
+        "--force",
+        "--pathspec-from-file=/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03/.git/archive-source-paths",
+        "--pathspec-file-nul"
+      ],
+      "started_utc": "2026-09-05T18:55:30.737668+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "write-tree"
+      ],
+      "started_utc": "2026-09-05T18:55:30.743293+00:00",
+      "returncode": 0,
+      "stdout": "0d464b6162be2f0363fb0ad0af1637c1af3ba96d\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "hash-object",
+        "-t",
+        "commit",
+        "-w",
+        "--stdin"
+      ],
+      "started_utc": "2026-09-05T18:55:30.747966+00:00",
+      "returncode": 0,
+      "stdout": "e7706faf8d1c3b9f241e36860640ad1dac644ede\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "update-ref",
+        "refs/heads/master",
+        "e7706faf8d1c3b9f241e36860640ad1dac644ede"
+      ],
+      "started_utc": "2026-09-05T18:55:30.750543+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "symbolic-ref",
+        "HEAD",
+        "refs/heads/master"
+      ],
+      "started_utc": "2026-09-05T18:55:30.753485+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/Dao-AILab/fast-hadamard-transform.git"
+      ],
+      "started_utc": "2026-09-05T18:55:30.758107+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "remote",
+        "add",
+        "upstream",
+        "https://github.com/Dao-AILab/fast-hadamard-transform.git"
+      ],
+      "started_utc": "2026-09-05T18:55:30.761046+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "started_utc": "2026-09-05T18:55:30.767168+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+        "fsck",
+        "--connectivity-only",
+        "--no-reflogs"
+      ],
+      "started_utc": "2026-09-05T18:55:30.770820+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "repositories": [
+    {
+      "owner": "Dao-AILab",
+      "name": "fast-hadamard-transform",
+      "branch": "master",
+      "commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+      "tree_sha": "0d464b6162be2f0363fb0ad0af1637c1af3ba96d",
+      "target": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+      "archive_url": "https://codeload.github.com/Dao-AILab/fast-hadamard-transform/tar.gz/e7706faf8d1c3b9f241e36860640ad1dac644ede",
+      "status": "RESTORED",
+      "archive_reused": false,
+      "archive": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-cache/Dao-AILab-fast-hadamard-transform-e7706faf8d1c3b9f241e36860640ad1dac644ede.tar.gz",
+      "archive_bytes": 19934,
+      "archive_sha256": "f5d11d1ebd7e73dbd9e65c9f4b3f186551a5f750571315993ea955e92f166217",
+      "archive_hash_note": "Observed transfer digest; authenticity is checked by reconstructed Git tree/commit hashes",
+      "staging": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.git-sync-staging/fast-hadamard-transform-2b9af6bad56e4b4c90d115f4e85edb03",
+      "verified_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+      "verified_tree": "0d464b6162be2f0363fb0ad0af1637c1af3ba96d",
+      "source_files": 16,
+      "shallow_boundary": "e7706faf8d1c3b9f241e36860640ad1dac644ede"
+    }
+  ],
+  "finished_utc": "2026-09-05T18:55:30.782497+00:00"
+}

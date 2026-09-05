@@ -1,0 +1,20 @@
+GPU=NVIDIA A100-SXM4-40GB sm=80
+SELF_TEST fp16 dim=1 PASS
+SELF_TEST fp16 dim=2 PASS
+SELF_TEST fp16 dim=4 PASS
+SELF_TEST fp16 dim=8 PASS
+SELF_TEST fp16 dim=16 PASS
+SELF_TEST fp16 dim=32 PASS
+SELF_TEST fp16 dim=64 PASS
+SELF_TEST fp16 dim=128 PASS
+SELF_TEST fp16 dim=256 PASS
+SELF_TEST bf16 dim=1 PASS
+SELF_TEST bf16 dim=2 PASS
+SELF_TEST bf16 dim=4 PASS
+SELF_TEST bf16 dim=8 PASS
+SELF_TEST bf16 dim=16 PASS
+SELF_TEST bf16 dim=32 PASS
+SELF_TEST bf16 dim=64 PASS
+SELF_TEST bf16 dim=128 PASS
+SELF_TEST bf16 dim=256 PASS
+SELF_TEST PASS cases=1876 max_abs_error=0.0078125 CPU/split/fused_INT4_bytes=exact scales=exact rounded_warp_vs_dense_elements=35 dense_quant_differing_bytes=0 dense_quant_differing_scales=0 warp_block_threads=256

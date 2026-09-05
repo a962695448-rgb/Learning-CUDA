@@ -1,0 +1,13 @@
+{
+  "repositories": [
+    {
+      "owner": "Dao-AILab",
+      "name": "fast-hadamard-transform",
+      "branch": "master",
+      "commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+      "tree_sha": "0d464b6162be2f0363fb0ad0af1637c1af3ba96d",
+      "commit_object_b64": "dHJlZSAwZDQ2NGI2MTYyYmUyZjAzNjNmYjBhZDBhZjE2MzdjMWFmM2JhOTZkCnBhcmVudCAyOWM2NTJlNjBiOGYzMGQyZmI0Mzk0ZWMyOTJlNjBmYmY3ZmI2NjVhCmF1dGhvciBUcmkgRGFvIDx0cmlkcHFAZ21haWwuY29tPiAxNzczMTMzMDExICswNzAwCmNvbW1pdHRlciBUcmkgRGFvIDx0cmlkcHFAZ21haWwuY29tPiAxNzczMTMzMDExICswNzAwCgpbQ0ldIEdhdGUgYzEwOjpEZXZpY2VHdWFyZCBieSB0b3JjaCB2ZXJzaW9uCg==",
+      "upstream": "https://github.com/Dao-AILab/fast-hadamard-transform.git"
+    }
+  ]
+}

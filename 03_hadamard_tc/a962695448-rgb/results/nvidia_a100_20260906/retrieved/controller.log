@@ -1,0 +1,27 @@
+START create_private_venv 14769
+EXIT create_private_venv 0
+START private_environment 14779
+EXIT private_environment 0
+START ninja_pypi 14787
+EXIT ninja_pypi 0
+START build_arch80_cpu_test 14791
+EXIT build_arch80_cpu_test 0
+START cli_default_original_matrix_and_benchmarks 14843
+EXIT cli_default_original_matrix_and_benchmarks 0
+START cli_explicit256_original_matrix 14968
+EXIT cli_explicit256_original_matrix 0
+START restore_reference 14976
+EXIT restore_reference 0
+START build_install_reference 14992
+EXIT build_install_reference 0
+START dao_original1800_default128_and_12_benchmarks 15279
+EXIT dao_original1800_default128_and_12_benchmarks 0
+START thread_api_original1800 15325
+EXIT thread_api_original1800 0
+START promotion_72_run1 15371
+EXIT promotion_72_run1 0
+START promotion_72_run2 15396
+EXIT promotion_72_run2 0
+START promotion_72_run3 15421
+EXIT promotion_72_run3 0
+{"status": "PASS", "completed": ["create_private_venv", "private_environment", "ninja_pypi", "build_arch80_cpu_test", "cli_default_original_matrix_and_benchmarks", "cli_explicit256_original_matrix", "restore_reference", "build_install_reference", "dao_original1800_default128_and_12_benchmarks", "thread_api_original1800", "promotion_72_run1", "promotion_72_run2", "promotion_72_run3"], "optional_unverified": []}

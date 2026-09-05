@@ -1,0 +1,583 @@
+{
+  "status": "PASS",
+  "source_commit": "12c76d8331ef7cf3fd4c8c14a049162559be4302",
+  "started_utc": "2026-09-05T18:55:05.155565+00:00",
+  "worker_pid": 14764,
+  "stop_new_work_by": "2026-09-06T05:00:00+08:00",
+  "stages": [
+    {
+      "name": "create_private_venv",
+      "args": [
+        "/home/vipuser/miniconda3/bin/python",
+        "-m",
+        "venv",
+        "--system-site-packages",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:05.229555+00:00",
+      "gpu_stage": false,
+      "pid": 14769,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:07.450471+00:00",
+      "log": "create_private_venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "private_environment",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "-c",
+        "import torch,numpy,json,sys; assert torch.cuda.is_available() and torch.cuda.get_device_capability()==(8,0) and 'A100' in torch.cuda.get_device_name(); assert torch.__version__=='2.5.0+cu124'; print(json.dumps({'python':sys.executable,'torch':torch.__version__,'numpy':numpy.__version__,'cuda':torch.version.cuda,'gpu':torch.cuda.get_device_name(),'capability':torch.cuda.get_device_capability(),'cxx11_abi':torch._C._GLIBCXX_USE_CXX11_ABI}))"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:07.483756+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 210 MHz, 18.87 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 14779,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:10.697922+00:00",
+      "log": "private_environment.log",
+      "log_sha256": "13e69fbe5f48ad49116a4b97ed6cd7b1dfa9cc3a2d5743ed6f3ce2b37b276d91",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 210 MHz, 18.89 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "ninja_pypi",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "--no-cache-dir",
+        "--timeout",
+        "30",
+        "--retries",
+        "1",
+        "--index-url",
+        "https://pypi.org/simple",
+        "ninja==1.11.1.3"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:10.740701+00:00",
+      "gpu_stage": false,
+      "pid": 14787,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:12.510934+00:00",
+      "log": "ninja_pypi.log",
+      "log_sha256": "0903ca2fd0ea8258bd3028099ea0d4190a5c5525872fe305cb29cc0b795f5385"
+    },
+    {
+      "name": "build_arch80_cpu_test",
+      "args": [
+        "make",
+        "-j1",
+        "CUDA_HOME=/usr/local/cuda-12.4",
+        "ARCH=80",
+        "all",
+        "cpu-test"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:12.511458+00:00",
+      "gpu_stage": false,
+      "pid": 14791,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:19.999505+00:00",
+      "log": "build_arch80_cpu_test.log",
+      "log_sha256": "5b9eb99a52d4eb8b8b91e30bf681801d2bcc4307f4bdff1ee943eeb096ed0078"
+    },
+    {
+      "name": "cli_default_original_matrix_and_benchmarks",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "scripts/run_validation.py",
+        "--label",
+        "a100_default128",
+        "--benchmark"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:20.042189+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 210 MHz, 18.89 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 14843,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:28.367197+00:00",
+      "log": "cli_default_original_matrix_and_benchmarks.log",
+      "log_sha256": "9a0e605dea3fe063817e2a0f4f8276875ea16a51ceb34150509b364de87b408a",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 17 %, 14 MiB, 35, 1410 MHz, 40.94 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "cli_explicit256_original_matrix",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/source/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "256"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:28.431688+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 17 %, 14 MiB, 35, 1410 MHz, 39.57 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 14968,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:30.133092+00:00",
+      "log": "cli_explicit256_original_matrix.log",
+      "log_sha256": "e72a427f257489b5731627d0e18ef2b1e43816689c1fe7de1f817170f69ef317",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 8 %, 14 MiB, 35, 1095 MHz, 27.19 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "restore_reference",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/sync_reference.py",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/reference_source.json",
+        "--json",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/reference_source_sync.json"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:30.171975+00:00",
+      "gpu_stage": false,
+      "pid": 14976,
+      "exit": 0,
+      "finished_utc": "2026-09-05T18:55:30.837903+00:00",
+      "log": "restore_reference.log",
+      "log_sha256": "889f63eaf41e03650f0c65fef69386d4c2d16a41794d0bf9c173f9363d2728bb"
+    },
+    {
+      "name": "build_install_reference",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "--no-build-isolation",
+        "--no-cache-dir",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T18:55:30.838633+00:00",
+      "gpu_stage": false,
+      "pid": 14992,
+      "exit": 0,
+      "finished_utc": "2026-09-05T19:03:02.446452+00:00",
+      "log": "build_install_reference.log",
+      "log_sha256": "a11b17a3b64fe33c5c62a9c7031570bb3728b9d758253760f6cec1c32350f25b"
+    },
+    {
+      "name": "dao_original1800_default128_and_12_benchmarks",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "scripts/compare_reference.py",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+        "--benchmark",
+        "--build-directory",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/build_default",
+        "--json",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/dao_default.json"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T19:03:02.479071+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 210 MHz, 18.89 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 15279,
+      "exit": 0,
+      "finished_utc": "2026-09-05T19:03:50.686823+00:00",
+      "log": "dao_original1800_default128_and_12_benchmarks.log",
+      "log_sha256": "c4fb693584601f6836d5a04bb1c86425b3c0f2fb437253545df09afdc9850e90",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 35, 1410 MHz, 43.29 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "thread_api_original1800",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "scripts/verify_block_threads.py",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+        "--build-directory",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/build_checker",
+        "--json",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/api_threads.json"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T19:03:50.756977+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 12 %, 14 MiB, 34, 1410 MHz, 39.11 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 15325,
+      "exit": 0,
+      "finished_utc": "2026-09-05T19:04:37.801721+00:00",
+      "log": "thread_api_original1800.log",
+      "log_sha256": "35d217f5346cb77f419fd4121fdc318dbb551dbc0013a1cfe6d0e9c201e16562",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 1095 MHz, 25.32 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "promotion_72_run1",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/promotion_a100.py",
+        "--run-index",
+        "1",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+        "--output",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/run1.json"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T19:04:37.877919+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 1095 MHz, 25.32 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 15371,
+      "exit": 0,
+      "finished_utc": "2026-09-05T19:04:56.816312+00:00",
+      "log": "promotion_72_run1.log",
+      "log_sha256": "34a41224d3ba44ff5b97924e1cd7a04d8e9d52b4a9a9eab421586e22bcedbfcb",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 10 %, 14 MiB, 37, 1410 MHz, 45.09 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "promotion_72_run2",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/promotion_a100.py",
+        "--run-index",
+        "2",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+        "--output",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/run2.json"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T19:04:56.881280+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 10 %, 14 MiB, 37, 1410 MHz, 39.57 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 15396,
+      "exit": 0,
+      "finished_utc": "2026-09-05T19:05:16.323621+00:00",
+      "log": "promotion_72_run2.log",
+      "log_sha256": "9cf42ae7265ee8a4d81039f530f051c8664d646fc9998fadd8494ecee717e7d6",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 14 %, 14 MiB, 39, 1410 MHz, 45.09 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "promotion_72_run3",
+      "args": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/promotion_a100.py",
+        "--run-index",
+        "3",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+        "--output",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/results/run3.json"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-05T19:05:16.390372+00:00",
+      "gpu_stage": true,
+      "before": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 14 %, 14 MiB, 39, 1410 MHz, 40.52 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      },
+      "pid": 15421,
+      "exit": 0,
+      "finished_utc": "2026-09-05T19:05:35.373535+00:00",
+      "log": "promotion_72_run3.log",
+      "log_sha256": "6709692d28fa2a2984d46719c57cb841063d92a88c3aa5b18a93a03117ecd1f5",
+      "after": {
+        "gpu": {
+          "exit": 0,
+          "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 40, 1410 MHz, 43.65 W\n",
+          "stderr": ""
+        },
+        "processes": {
+          "exit": 0,
+          "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+          "stderr": ""
+        }
+      }
+    }
+  ],
+  "completed": [
+    "create_private_venv",
+    "private_environment",
+    "ninja_pypi",
+    "build_arch80_cpu_test",
+    "cli_default_original_matrix_and_benchmarks",
+    "cli_explicit256_original_matrix",
+    "restore_reference",
+    "build_install_reference",
+    "dao_original1800_default128_and_12_benchmarks",
+    "thread_api_original1800",
+    "promotion_72_run1",
+    "promotion_72_run2",
+    "promotion_72_run3"
+  ],
+  "optional_unverified": [],
+  "source_manifest": {
+    "commit": "12c76d8331ef7cf3fd4c8c14a049162559be4302",
+    "subtree_git_sha1": "a6e08f789ecfcd789c5dc78dc0b79ae703275af7",
+    "files": {
+      "source/Makefile": {
+        "bytes": 984,
+        "sha256": "0b49603da398c685867234dd12f18c0403d19dce576690466684bf4086a1d825",
+        "git_blob": "721ec9d9bb0d09a7aabe4bd5827cc40138ce27a4"
+      },
+      "source/README.md": {
+        "bytes": 24852,
+        "sha256": "330f29cecde1cae4a0c3f6ecf9ab87c234084e9297b5beb1880fce49da64d3b1",
+        "git_blob": "0053fe8f5d6b2f15c32807de54c50507cc0ebe2a"
+      },
+      "source/include/kernels.cuh": {
+        "bytes": 6024,
+        "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+        "git_blob": "4618f3fd2964dff2341b6cdbfd402da00e55ae26"
+      },
+      "source/include/reference.hpp": {
+        "bytes": 3572,
+        "sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+        "git_blob": "e06ce3fef99a5b431ef0a0c23e0e59bbb5a582a7"
+      },
+      "source/src/main.cu": {
+        "bytes": 29429,
+        "sha256": "26deccf5154314b88e4e4cd8fbc2526f09070e1f3d78f04d088721e14b1016f7",
+        "git_blob": "8d553802d6e306e43e36e29891d7a86409350926"
+      },
+      "source/src/torch_binding.cu": {
+        "bytes": 5752,
+        "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+        "git_blob": "323d6441742ad1509b6d086fecb6bc311027e77e"
+      },
+      "source/tests/cpu_reference_test.cpp": {
+        "bytes": 1478,
+        "sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+        "git_blob": "9895de71da56836136db12ef0904e71e3f4bbc96"
+      },
+      "source/scripts/run_validation.py": {
+        "bytes": 3433,
+        "sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+        "git_blob": "c309ce669a5fae89783251d2fd2c05f6e0135d92"
+      },
+      "source/scripts/compare_reference.py": {
+        "bytes": 21015,
+        "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+        "git_blob": "392acd6158c2c0ae651cfc3b28e18232b8b50a39"
+      },
+      "source/scripts/build_torch_extension.py": {
+        "bytes": 2486,
+        "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+        "git_blob": "8883aa543690dbb1ba61052b62842fcd222482fb"
+      },
+      "source/scripts/verify_block_threads.py": {
+        "bytes": 6903,
+        "sha256": "3f5df6bc935b8ed310d159c1df7868e699c66eaa74b7ea48edb40bc99523ba64",
+        "git_blob": "7297b67c673971e413aa36e94eff0a5111639aa1"
+      }
+    },
+    "auxiliary_files": {
+      "worker.py": {
+        "bytes": 11060,
+        "sha256": "4450f1c9a92ad067327e81098e8d80cc8c36b041d6b7b22367bf82f82ae12d93"
+      },
+      "promotion_a100.py": {
+        "bytes": 14366,
+        "sha256": "f19f94444fb7e86583676985c2294d1a72b7a35936029581e51775944170f576"
+      },
+      "sync_reference.py": {
+        "bytes": 17871,
+        "sha256": "fe93c071891a70db8987bb1d243b93bcb585007be2c48d15d6823b8f3b550846"
+      },
+      "reference_source.json": {
+        "bytes": 706,
+        "sha256": "1947de246b19ac1c47a009b1e50bb048791dbdf467c15e0513f375311198a43a"
+      }
+    }
+  },
+  "before": {
+    "gpu": {
+      "exit": 0,
+      "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 0 %, 14 MiB, 33, 210 MHz, 18.87 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+      "stderr": ""
+    }
+  },
+  "active": null,
+  "cli_binary_sha256": "aadc59aa1e8c2ba40dd0763c89db945b0dc53f5f35699828162f1381b13c6263",
+  "mandatory_correctness_and_original12": "PASS",
+  "after": {
+    "gpu": {
+      "exit": 0,
+      "stdout": "name, memory.total [MiB], mig.mode.current, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 40960 MiB, Disabled, 550.127.05, 14 %, 14 MiB, 40, 1410 MHz, 43.65 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+      "stderr": ""
+    }
+  },
+  "finished_utc": "2026-09-05T19:05:35.444944+00:00"
+}

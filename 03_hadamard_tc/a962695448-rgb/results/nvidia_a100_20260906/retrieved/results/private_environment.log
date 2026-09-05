@@ -1,0 +1,1 @@
+{"python": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python", "torch": "2.5.0+cu124", "numpy": "2.1.3", "cuda": "12.4", "gpu": "NVIDIA A100-SXM4-40GB", "capability": [8, 0], "cxx11_abi": false}

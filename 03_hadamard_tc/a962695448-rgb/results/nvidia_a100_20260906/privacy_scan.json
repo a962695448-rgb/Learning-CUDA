@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "public_files_scanned_including_report": 62,
+  "sensitive_findings_count": 0,
+  "compiled_files_count": 0,
+  "raw_file_transformations": 0,
+  "derived_path_changes_documented_in": "public_derivation_provenance.json",
+  "scope": "All public archive text plus reports/a100-validation.md; connection endpoints, connection commands, access material, private locations and binary formats checked. No sensitive values are reproduced in this record."
+}

@@ -1,0 +1,1 @@
+/usr/local/cuda-12.4/bin/nvcc -O3 -std=c++17 -lineinfo -arch=sm_80

@@ -1,0 +1,47 @@
+{
+  "raw_files_changed": 0,
+  "raw_files_preserved": 48,
+  "private_originals_retained": true,
+  "analyzer": {
+    "private_original_sha256": "05ee76b68ba463fc000c61d1d6e0427c71bff12e9c69c158ecb2571188239e77",
+    "public_sha256": "651afceb8bcfa088a22e51bf3a3484d7d85ba2a5befe12e09fd3286dc2bdf4a5",
+    "change": "Output input_root as a relative path when inside archive; no mathematical/validation logic changes."
+  },
+  "summary": {
+    "private_original_sha256": "3db729ba45ca2d12f2f6469fef02c2db80056b8d25efcdbe01542128dfbbc0bf",
+    "public_sha256": "370dab75fdd28c7f48e8190da14dc11da02e02d40f6650edec6468105e444736",
+    "changed_fields": [
+      "generated_utc",
+      "input_root"
+    ],
+    "recomputed_from_same_raw": true,
+    "all_other_fields_equal": true
+  },
+  "csv_results": [
+    {
+      "file": "derived/dao_all_configurations.csv",
+      "private_sha256": "c4dac5a8f3760f237fe431d0126e252a171dcbd6885e285fadc5c8a01e857cdf",
+      "public_sha256": "c4dac5a8f3760f237fe431d0126e252a171dcbd6885e285fadc5c8a01e857cdf",
+      "byte_equal": true
+    },
+    {
+      "file": "derived/promotion_all_configurations.csv",
+      "private_sha256": "26463bc86b1ea822facb4c9eb2c92d19709cf7b17b00ef74fc1cdbeb850852b3",
+      "public_sha256": "26463bc86b1ea822facb4c9eb2c92d19709cf7b17b00ef74fc1cdbeb850852b3",
+      "byte_equal": true
+    },
+    {
+      "file": "derived/cli_all_measurements.csv",
+      "private_sha256": "b173f07acdbbdd2687bde90c2deae79be9d0a8ab4c75b2e4f577159b87e9368f",
+      "public_sha256": "b173f07acdbbdd2687bde90c2deae79be9d0a8ab4c75b2e4f577159b87e9368f",
+      "byte_equal": true
+    },
+    {
+      "file": "derived/all_configurations.csv",
+      "private_sha256": "b5a6dce407f0050b9b5fb7eb950fc83b99f44ce1065b4e8856bbc71bd14d83ed",
+      "public_sha256": "b5a6dce407f0050b9b5fb7eb950fc83b99f44ce1065b4e8856bbc71bd14d83ed",
+      "byte_equal": true
+    }
+  ],
+  "note": "These are derived artifacts. Their new hashes are not represented as original server file hashes. Original server files retain transfer_manifest hashes."
+}

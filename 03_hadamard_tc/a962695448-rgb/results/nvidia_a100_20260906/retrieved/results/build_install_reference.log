@@ -1,0 +1,12 @@
+Processing /home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: fast_hadamard_transform
+  Building wheel for fast_hadamard_transform (setup.py): started
+  Building wheel for fast_hadamard_transform (setup.py): still running...
+  Building wheel for fast_hadamard_transform (setup.py): finished with status 'done'
+  Created wheel for fast_hadamard_transform: filename=fast_hadamard_transform-1.1.0-cp312-cp312-linux_x86_64.whl size=22421573 sha256=4df819b5381ef187ac7a352aa413cfe2a9872b8abc3c7eb961cf5e57ebf1cead
+  Stored in directory: /tmp/pip-ephem-wheel-cache-std919u7/wheels/45/2f/60/fd2ea11b29e1b6eeab2f4496731a23857b22467023e89c2442
+Successfully built fast_hadamard_transform
+Installing collected packages: fast_hadamard_transform
+Successfully installed fast_hadamard_transform-1.1.0
