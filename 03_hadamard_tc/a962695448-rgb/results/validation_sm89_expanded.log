@@ -1,0 +1,352 @@
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--self-test']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+SELF_TEST fp16 dim=1 PASS
+SELF_TEST fp16 dim=2 PASS
+SELF_TEST fp16 dim=4 PASS
+SELF_TEST fp16 dim=8 PASS
+SELF_TEST fp16 dim=16 PASS
+SELF_TEST fp16 dim=32 PASS
+SELF_TEST fp16 dim=64 PASS
+SELF_TEST fp16 dim=128 PASS
+SELF_TEST fp16 dim=256 PASS
+SELF_TEST bf16 dim=1 PASS
+SELF_TEST bf16 dim=2 PASS
+SELF_TEST bf16 dim=4 PASS
+SELF_TEST bf16 dim=8 PASS
+SELF_TEST bf16 dim=16 PASS
+SELF_TEST bf16 dim=32 PASS
+SELF_TEST bf16 dim=64 PASS
+SELF_TEST bf16 dim=128 PASS
+SELF_TEST bf16 dim=256 PASS
+SELF_TEST PASS cases=1876 max_abs_error=0.0078125 CPU/split/fused_INT4_bytes=exact scales=exact rounded_warp_vs_dense_elements=35 dense_quant_differing_bytes=0 dense_quant_differing_scales=0
+EXIT_CODE 0; ELAPSED_SECONDS 2.609
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim', '0']
+Argument error: --dim requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.013
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim', '3']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.013
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim', '512']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.013
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '-1']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.013
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--seq', '0']
+Argument error: --seq requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--heads', 'abc']
+Argument error: --heads requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dtype', 'fp32']
+Argument error: --dtype must be fp16 or bf16
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--scale', 'nan']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--scale', '2']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '18446744073709551615', '--seq', '2']
+Argument error: shape or allocation size overflows size_t
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.013
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '18446744073709551616']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.013
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--repetitions', '0']
+Argument error: --repetitions requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--warmup', '-1']
+Argument error: --warmup requires a valid nonnegative integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim']
+Argument error: missing value for --dim
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--unsupported']
+Argument error: unknown option: --unsupported
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.012
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '1', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,1,1,1] dtype=fp16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           30.450 us  3.2840e+04 elements/s
+warp                kernel_only           11.799 us  8.4753e+04 elements/s
+split_int4          kernel_only           24.054 us  4.1574e+04 elements/s
+fused_int4          kernel_only           11.438 us  8.7427e+04 elements/s
+cpu_fp32_fwht       cpu_compute            0.028 us  3.5524e+07 elements/s
+warp_h2d_d2h        host_e2e              89.963 us  1.1116e+04 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.368
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '16', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,1,1,16] dtype=fp16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           92.959 us  1.7212e+05 elements/s
+warp                kernel_only           11.561 us  1.3840e+06 elements/s
+tensor_core         kernel_only           12.359 us  1.2946e+06 elements/s
+split_int4          kernel_only           40.601 us  3.9408e+05 elements/s
+fused_int4          kernel_only           19.251 us  8.3112e+05 elements/s
+cpu_fp32_fwht       cpu_compute            0.085 us  1.8890e+08 elements/s
+warp_h2d_d2h        host_e2e             128.203 us  1.2480e+05 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.392
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '17', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,1,17,256] dtype=fp16 scale=1 rows=17 dense_oracle_rows=17
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          218.672 us  1.9902e+07 elements/s
+warp                kernel_only           24.447 us  1.7802e+08 elements/s
+tensor_core         kernel_only           22.685 us  1.9184e+08 elements/s
+split_int4          kernel_only           35.962 us  1.2102e+08 elements/s
+fused_int4          kernel_only           11.812 us  3.6843e+08 elements/s
+cpu_fp32_fwht       cpu_compute            7.557 us  5.7589e+08 elements/s
+warp_h2d_d2h        host_e2e              71.074 us  6.1232e+07 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.451
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '16', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,128,8,16] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           88.603 us  7.3966e+08 elements/s
+warp                kernel_only           10.848 us  6.0411e+09 elements/s
+tensor_core         kernel_only           11.674 us  5.6140e+09 elements/s
+split_int4          kernel_only           22.876 us  2.8648e+09 elements/s
+fused_int4          kernel_only           11.094 us  5.9075e+09 elements/s
+cpu_fp32_fwht       cpu_compute          106.760 us  6.1387e+08 elements/s
+warp_h2d_d2h        host_e2e             198.084 us  3.3085e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.386
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '64', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,128,8,64] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          166.885 us  1.5708e+09 elements/s
+warp                kernel_only           18.318 us  1.4310e+10 elements/s
+tensor_core         kernel_only           17.801 us  1.4727e+10 elements/s
+split_int4          kernel_only           36.574 us  7.1675e+09 elements/s
+fused_int4          kernel_only           17.251 us  1.5196e+10 elements/s
+cpu_fp32_fwht       cpu_compute          470.665 us  5.5697e+08 elements/s
+warp_h2d_d2h        host_e2e             280.874 us  9.3332e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.442
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,128,8,256] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          132.502 us  7.9137e+09 elements/s
+warp                kernel_only           24.996 us  4.1950e+10 elements/s
+tensor_core         kernel_only          175.063 us  5.9897e+09 elements/s
+split_int4          kernel_only           32.918 us  3.1855e+10 elements/s
+fused_int4          kernel_only           17.056 us  6.1477e+10 elements/s
+cpu_fp32_fwht       cpu_compute         1889.384 us  5.5498e+08 elements/s
+warp_h2d_d2h        host_e2e             618.116 us  1.6964e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.585
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '512', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,512,8,256] dtype=fp16 scale=1 rows=16384 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          718.950 us  5.8339e+09 elements/s
+warp                kernel_only           35.338 us  1.1869e+11 elements/s
+tensor_core         kernel_only          514.314 us  8.1551e+09 elements/s
+split_int4          kernel_only           57.361 us  7.3121e+10 elements/s
+fused_int4          kernel_only           43.510 us  9.6399e+10 elements/s
+cpu_fp32_fwht       cpu_compute         7552.285 us  5.5537e+08 elements/s
+warp_h2d_d2h        host_e2e            1740.572 us  2.4097e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 1.297
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '257', '--heads', '1', '--dim', '256', '--dtype', 'fp16', '--normalize', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,257,1,256] dtype=fp16 scale=0.0625 rows=257 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          128.160 us  5.1336e+08 elements/s
+warp                kernel_only           13.107 us  5.0195e+09 elements/s
+tensor_core         kernel_only           18.062 us  3.6425e+09 elements/s
+split_int4          kernel_only           22.948 us  2.8670e+09 elements/s
+fused_int4          kernel_only           11.745 us  5.6016e+09 elements/s
+cpu_fp32_fwht       cpu_compute          113.461 us  5.7987e+08 elements/s
+warp_h2d_d2h        host_e2e             172.628 us  3.8112e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.427
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '1', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,1,1,1] dtype=bf16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           22.787 us  4.3884e+04 elements/s
+warp                kernel_only           16.554 us  6.0410e+04 elements/s
+split_int4          kernel_only           44.537 us  2.2453e+04 elements/s
+fused_int4          kernel_only           23.343 us  4.2839e+04 elements/s
+cpu_fp32_fwht       cpu_compute            0.031 us  3.2362e+07 elements/s
+warp_h2d_d2h        host_e2e              92.568 us  1.0803e+04 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.369
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '16', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,1,1,16] dtype=bf16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          124.559 us  1.2845e+05 elements/s
+warp                kernel_only           21.664 us  7.3857e+05 elements/s
+tensor_core         kernel_only           23.733 us  6.7417e+05 elements/s
+split_int4          kernel_only           47.162 us  3.3926e+05 elements/s
+fused_int4          kernel_only           23.368 us  6.8471e+05 elements/s
+cpu_fp32_fwht       cpu_compute            0.060 us  2.6823e+08 elements/s
+warp_h2d_d2h        host_e2e              96.703 us  1.6546e+05 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.415
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '17', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,1,17,256] dtype=bf16 scale=1 rows=17 dense_oracle_rows=17
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          148.937 us  2.9220e+07 elements/s
+warp                kernel_only           11.953 us  3.6408e+08 elements/s
+tensor_core         kernel_only           31.225 us  1.3937e+08 elements/s
+split_int4          kernel_only           54.412 us  7.9982e+07 elements/s
+fused_int4          kernel_only           27.101 us  1.6058e+08 elements/s
+cpu_fp32_fwht       cpu_compute            7.576 us  5.7444e+08 elements/s
+warp_h2d_d2h        host_e2e             186.408 us  2.3347e+07 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.437
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '16', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,128,8,16] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          121.398 us  5.3985e+08 elements/s
+warp                kernel_only           10.985 us  5.9659e+09 elements/s
+tensor_core         kernel_only           11.018 us  5.9480e+09 elements/s
+split_int4          kernel_only           21.916 us  2.9903e+09 elements/s
+fused_int4          kernel_only           11.008 us  5.9535e+09 elements/s
+cpu_fp32_fwht       cpu_compute          109.423 us  5.9892e+08 elements/s
+warp_h2d_d2h        host_e2e             202.183 us  3.2414e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.429
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '64', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,128,8,64] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          128.034 us  2.0475e+09 elements/s
+warp                kernel_only           13.923 us  1.8828e+10 elements/s
+tensor_core         kernel_only           17.592 us  1.4901e+10 elements/s
+split_int4          kernel_only           24.972 us  1.0498e+10 elements/s
+fused_int4          kernel_only           13.360 us  1.9622e+10 elements/s
+cpu_fp32_fwht       cpu_compute          451.941 us  5.8004e+08 elements/s
+warp_h2d_d2h        host_e2e             287.607 us  9.1147e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.432
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,128,8,256] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          154.337 us  6.7941e+09 elements/s
+warp                kernel_only           14.554 us  7.2048e+10 elements/s
+tensor_core         kernel_only          176.606 us  5.9374e+09 elements/s
+split_int4          kernel_only           50.910 us  2.0597e+10 elements/s
+fused_int4          kernel_only           24.701 us  4.2450e+10 elements/s
+cpu_fp32_fwht       cpu_compute         1948.698 us  5.3809e+08 elements/s
+warp_h2d_d2h        host_e2e             688.907 us  1.5221e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.599
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '512', '--heads', '8', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[4,512,8,256] dtype=bf16 scale=1 rows=16384 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          678.789 us  6.1791e+09 elements/s
+warp                kernel_only           37.431 us  1.1206e+11 elements/s
+tensor_core         kernel_only          506.352 us  8.2834e+09 elements/s
+split_int4          kernel_only           58.494 us  7.1704e+10 elements/s
+fused_int4          kernel_only           44.195 us  9.4904e+10 elements/s
+cpu_fp32_fwht       cpu_compute         7561.405 us  5.5470e+08 elements/s
+warp_h2d_d2h        host_e2e            1747.475 us  2.4002e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 1.240
+
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '257', '--heads', '1', '--dim', '256', '--dtype', 'bf16', '--normalize', '--repetitions', '300', '--warmup', '30', '--csv', '/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_sm89_expanded.csv']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+BENCHMARK shape=[1,257,1,256] dtype=bf16 scale=0.0625 rows=257 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          149.521 us  4.4002e+08 elements/s
+warp                kernel_only           31.635 us  2.0797e+09 elements/s
+tensor_core         kernel_only           42.687 us  1.5413e+09 elements/s
+split_int4          kernel_only           63.529 us  1.0356e+09 elements/s
+fused_int4          kernel_only           12.475 us  5.2741e+09 elements/s
+cpu_fp32_fwht       cpu_compute          117.404 us  5.6039e+08 elements/s
+warp_h2d_d2h        host_e2e             149.514 us  4.4004e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.452
+

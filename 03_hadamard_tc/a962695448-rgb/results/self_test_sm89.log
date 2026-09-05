@@ -1,0 +1,23 @@
+COMMAND ['/mnt/c/Users/xxl/Projects/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--self-test']
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU sm=89
+SELF_TEST fp16 dim=1 PASS
+SELF_TEST fp16 dim=2 PASS
+SELF_TEST fp16 dim=4 PASS
+SELF_TEST fp16 dim=8 PASS
+SELF_TEST fp16 dim=16 PASS
+SELF_TEST fp16 dim=32 PASS
+SELF_TEST fp16 dim=64 PASS
+SELF_TEST fp16 dim=128 PASS
+SELF_TEST fp16 dim=256 PASS
+SELF_TEST bf16 dim=1 PASS
+SELF_TEST bf16 dim=2 PASS
+SELF_TEST bf16 dim=4 PASS
+SELF_TEST bf16 dim=8 PASS
+SELF_TEST bf16 dim=16 PASS
+SELF_TEST bf16 dim=32 PASS
+SELF_TEST bf16 dim=64 PASS
+SELF_TEST bf16 dim=128 PASS
+SELF_TEST bf16 dim=256 PASS
+SELF_TEST PASS cases=580 max_abs_error=0 CPU/split/fused_INT4_bytes=exact scales=exact
+EXIT_CODE 0
+ELAPSED_SECONDS 1.212
