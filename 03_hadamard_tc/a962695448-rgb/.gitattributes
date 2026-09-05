@@ -13,3 +13,7 @@ platforms/biren/hadamard_api.h text eol=lf
 platforms/biren/hadamard_api.su text eol=lf
 platforms/biren/validate_and_benchmark.su text eol=lf
 platforms/biren/run_platform.py text eol=lf
+platforms/ascend/*.h text eol=lf
+platforms/ascend/*.cpp text eol=lf
+platforms/ascend/*.py text eol=lf
+platforms/ascend/CMakeLists.txt text eol=lf
