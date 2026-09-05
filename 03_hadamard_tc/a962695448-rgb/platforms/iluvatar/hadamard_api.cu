@@ -136,6 +136,131 @@ __global__ void optimized_kernel(const T* input, T* output, std::uint8_t* packed
     }
 }
 
+#if defined(HADAMARD_ILUVATAR_WARP64) && defined(__ILUVATAR__)
+
+// 仅在天数 COREX 构建中启用。legacy shuffle 的 width=64 已由实机独立探针验证。
+// 这里不使用 NVIDIA 的 32 位 active mask，也不将 32-lane 测试当作正确性证据。
+__device__ int warp64_quantized_nibble(float value, float scale) {
+    const float x = value / scale;
+    const float lower = floorf(x);
+    const float fraction = x - lower;
+    int q = static_cast<int>(lower);
+    if (fraction > 0.5f || (fraction == 0.5f && q % 2 != 0)) ++q;
+    q = q < -7 ? -7 : (q > 7 ? 7 : q);
+    return q & 15;
+}
+
+template<class T, bool Transform, bool Quantize, int N>
+__global__ void warp64_kernel(const T* input, T* output, std::uint8_t* packed,
+                              float* scales, std::size_t rows, float scale) {
+    constexpr int width = 64;
+    constexpr int rows_per_block = 4;
+    constexpr int registers = N > width ? N / width : 1;
+    const int lane = threadIdx.x % width;
+    const int warp = threadIdx.x / width;
+    const std::size_t first_row = static_cast<std::size_t>(blockIdx.x) * rows_per_block + warp;
+    const std::size_t row_stride = static_cast<std::size_t>(gridDim.x) * rows_per_block;
+    // 同一 warp 的 64 个 lane 具有相同 row 与循环次数。尾行只跳过完整 warp，
+    // 所有参与行均有完整的 64 个 lane 执行每次 shuffle。
+    for (std::size_t row = first_row; row < rows; row += row_stride) {
+        const std::size_t offset = row * N;
+        float values[registers];
+        #pragma unroll
+        for (int r = 0; r < registers; ++r) {
+            const int i = lane + r * width;
+            values[r] = i < N ? read_value(input[offset + i]) : 0.0f;
+        }
+        if constexpr (Transform) {
+            #pragma unroll
+            for (int stride = 1; stride < (N < width ? N : width); stride *= 2) {
+                #pragma unroll
+                for (int r = 0; r < registers; ++r) {
+                    const float current = values[r];
+                    const float peer = __shfl_xor(current, stride, width);
+                    values[r] = (lane & stride) ? peer - current : current + peer;
+                }
+            }
+            // stride=64/128 的搭档位于同一 lane 的其他寄存器中，
+            // 顺序与标量共享内存 FWHT 的从低位到高位阶段一致。
+            if constexpr (N >= 128) {
+                const float a = values[0], b = values[1];
+                values[0] = a + b;
+                values[1] = a - b;
+            }
+            if constexpr (N == 256) {
+                const float c = values[2], d = values[3];
+                values[2] = c + d;
+                values[3] = c - d;
+                const float a = values[0], b = values[2];
+                const float e = values[1], f = values[3];
+                values[0] = a + b;
+                values[2] = a - b;
+                values[1] = e + f;
+                values[3] = e - f;
+            }
+        }
+        if constexpr (!Quantize) {
+            #pragma unroll
+            for (int r = 0; r < registers; ++r) {
+                const int i = lane + r * width;
+                if (i < N) output[offset + i] = store_value<T>(values[r] * scale);
+            }
+        } else {
+            float magnitude = 0.0f;
+            #pragma unroll
+            for (int r = 0; r < registers; ++r) {
+                if constexpr (Transform) values[r] = read_value(store_value<T>(values[r] * scale));
+                magnitude = fmaxf(magnitude, fabsf(values[r]));
+            }
+            #pragma unroll
+            for (int stride = width / 2; stride > 0; stride /= 2)
+                magnitude = fmaxf(magnitude, __shfl_xor(magnitude, stride, width));
+            const float row_scale = magnitude == 0.0f ? 1.0f : magnitude / 7.0f;
+            if (lane == 0) scales[row] = row_scale;
+            #pragma unroll
+            for (int r = 0; r < registers; ++r) {
+                // shuffle 在分支之前：奇数 lane 同样必须提供其相邻元素。
+                const float peer = __shfl_xor(values[r], 1, width);
+                const int i = lane + r * width;
+                if ((lane & 1) == 0 && i < N) {
+                    const int low = warp64_quantized_nibble(values[r], row_scale);
+                    const int high = i + 1 < N ? warp64_quantized_nibble(peer, row_scale) : 0;
+                    packed[row * ((N + 1) / 2) + i / 2]
+                        = static_cast<std::uint8_t>(low | (high << 4));
+                }
+            }
+        }
+    }
+}
+
+template<class T, bool Transform, bool Quantize>
+cudaError_t launch_warp64(const T* input, T* output, std::uint8_t* packed, float* scales,
+                          std::size_t rows, int n, float scale, cudaStream_t stream) {
+    // rows <= SIZE_MAX/4 已由 launch 校验，因此 (rows+3)/4 不会溢出。
+    const std::size_t requested = (rows + 3) / 4;
+    const unsigned int blocks = static_cast<unsigned int>(requested < 65535 ? requested : 65535);
+    #define LAUNCH_WARP64(N) case N: \
+        warp64_kernel<T, Transform, Quantize, N><<<blocks, 256, 0, stream>>>( \
+            input, output, packed, scales, rows, scale); \
+        break
+    switch (n) {
+        LAUNCH_WARP64(1);
+        LAUNCH_WARP64(2);
+        LAUNCH_WARP64(4);
+        LAUNCH_WARP64(8);
+        LAUNCH_WARP64(16);
+        LAUNCH_WARP64(32);
+        LAUNCH_WARP64(64);
+        LAUNCH_WARP64(128);
+        LAUNCH_WARP64(256);
+        default: return cudaErrorInvalidValue;
+    }
+    #undef LAUNCH_WARP64
+    return cudaGetLastError();
+}
+
+#endif  // HADAMARD_ILUVATAR_WARP64
+
 bool valid_range(const void* pointer, std::size_t bytes, std::size_t alignment) {
     const auto address = reinterpret_cast<std::uintptr_t>(pointer);
     return pointer != nullptr && address % alignment == 0
@@ -155,7 +280,7 @@ cudaError_t launch(const T* input, T* output, std::uint8_t* packed, float* scale
                    std::size_t rows, int n, float scale, cudaStream_t stream, Method method) {
     if (n < 1 || n > 256 || (n & (n - 1)) != 0
         || !std::isfinite(scale) || scale <= 0
-        || (method != Method::Baseline && method != Method::Optimized))
+        || (method != Method::Baseline && method != Method::Optimized && method != Method::Warp64))
         return cudaErrorInvalidValue;
     if (rows == 0) return cudaSuccess;
 
@@ -177,6 +302,14 @@ cudaError_t launch(const T* input, T* output, std::uint8_t* packed, float* scale
         if (!valid_range(output, input_bytes, alignof(T))
             || (input != output && overlaps(input, input_bytes, output, input_bytes)))
             return cudaErrorInvalidValue;
+    }
+
+    if (method == Method::Warp64) {
+        #if defined(HADAMARD_ILUVATAR_WARP64) && defined(__ILUVATAR__)
+        return launch_warp64<T, Transform, Quantize>(input, output, packed, scales, rows, n, scale, stream);
+        #else
+        return cudaErrorNotSupported;
+        #endif
     }
 
     // 保守上限兼容不同设备的 grid.x 限制，超过上限由 block 顺序处理多行。

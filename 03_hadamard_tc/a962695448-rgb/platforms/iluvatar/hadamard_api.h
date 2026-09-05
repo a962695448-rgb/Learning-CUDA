@@ -8,7 +8,12 @@
 
 namespace hadamard::iluvatar {
 
-enum class Method { Baseline, Optimized };
+enum class Method { Baseline, Optimized, Warp64 };
+
+// Warp64 为天数 64-lane warp 专用候选，须使用
+// -DHADAMARD_ILUVATAR_WARP64 且由 COREX (__ILUVATAR__) 编译；其他构建的
+// 非空操作返回 cudaErrorNotSupported。调用方必须预先确认当前设备 warpSize=64；
+// API 不在发射路径中查询设备属性。rows=0 仍遵循下方的无操作约定。
 
 // 连续设备内存：[rows, n]，n 为 1..256 的二次幂。scale 必须有限且为正数。
 // 支持 FP16/BF16 存储，内部 FP32；输入应有限，变换后的值应在输出类型范围内。

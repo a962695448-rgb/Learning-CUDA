@@ -62,6 +62,12 @@ def summarize_benchmark(path):
         comparisons.append({"shape_dtype": key[:-1], "operation": key[-1][9:],
                             "baseline_median_us": value, "optimized_median_us": medians[peer],
                             "baseline_over_optimized": value / medians[peer]})
+        warp_peer = key[:-1] + (key[-1].replace("baseline_", "warp64_"),)
+        if warp_peer in medians:
+            comparisons.append({"shape_dtype": key[:-1], "operation": key[-1][9:], "candidate": "warp64",
+                                "baseline_median_us": value, "optimized_median_us": medians[peer],
+                                "warp64_median_us": medians[warp_peer], "baseline_over_warp64": value / medians[warp_peer],
+                                "optimized_over_warp64": medians[peer] / medians[warp_peer]})
     return {"metric": "CUDA-compatible events; warmup excluded; no allocation/copy in interval",
             "working_set": "same seeded read-only input reused; warm-cache timing",
             "logical_GBs_note": "logical tensor I/O estimate, not measured physical memory bandwidth",
@@ -75,6 +81,7 @@ def main():
     parser.add_argument("--output", type=Path, help="必须是新的结果目录，防止覆盖既有证据")
     parser.add_argument("--quick", action="store_true", help="仅运行快速调试矩阵，不代表完整验收")
     parser.add_argument("--no-benchmark", action="store_true")
+    parser.add_argument("--warp64", action="store_true", help="显式启用仅供真实 warp64 设备验证的 COREX 专用路径")
     parser.add_argument("--repeats", type=int, default=100)
     parser.add_argument("--groups", type=int, default=5)
     args = parser.parse_args()
@@ -91,7 +98,8 @@ def main():
     sources = [PLATFORM / "hadamard_api.h", PLATFORM / "hadamard_api.cu",
                PLATFORM / "validate_and_benchmark.cu", PLATFORM / "run_platform.py", ROOT / "include/reference.hpp"]
     report = {"status": "RUNNING", "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-              "quick": args.quick, "source_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sources},
+              "quick": args.quick, "warp64_enabled": args.warp64,
+              "source_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sources},
               "git_head": capture(["git", "rev-parse", "HEAD"]),
               "git_status": capture(["git", "status", "--short"]),
               "compiler": capture([str(compiler), "--version"]),
@@ -103,6 +111,8 @@ def main():
                    PLATFORM / "hadamard_api.cu", PLATFORM / "validate_and_benchmark.cu",
                    "-L" + str(args.corex_root / "lib"), "-Wl,-rpath," + str(args.corex_root / "lib"),
                    "-lcudart", "-o", binary]
+        if args.warp64:
+            command.insert(6, "-DHADAMARD_ILUVATAR_WARP64")
         run(command, destination / "build.log", report["stages"])
         report["binary_sha256"] = sha256(binary)
         # CLI 验证在创建设备上下文之前执行。错误输入必须明确返回 2。
@@ -123,6 +133,8 @@ def main():
         report["validation"] = json.loads((destination / "validation.json").read_text(encoding="utf-8"))
         if report["validation"]["status"] != "PASS" or (not args.quick and not report["validation"]["full_matrix"]):
             raise RuntimeError("validation JSON does not confirm requested matrix")
+        if report["validation"]["warp64_enabled"] != args.warp64:
+            raise RuntimeError("validation JSON does not match requested Warp64 build")
         if not args.no_benchmark:
             command = [binary, "--benchmark", "--csv", destination / "benchmark.csv",
                        "--groups", str(args.groups), "--repeats", str(args.repeats)]
