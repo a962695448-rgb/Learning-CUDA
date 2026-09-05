@@ -5,3 +5,7 @@ platforms/iluvatar/hadamard_api.h text eol=lf
 platforms/iluvatar/hadamard_api.cu text eol=lf
 platforms/iluvatar/validate_and_benchmark.cu text eol=lf
 platforms/iluvatar/run_platform.py text eol=lf
+platforms/metax/hadamard_api.h text eol=lf
+platforms/metax/hadamard_api.cu text eol=lf
+platforms/metax/validate_and_benchmark.cu text eol=lf
+platforms/metax/run_platform.py text eol=lf
