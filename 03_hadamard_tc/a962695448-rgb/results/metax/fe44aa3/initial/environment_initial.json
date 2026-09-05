@@ -1,0 +1,82 @@
+{
+  "python": "3.10.10 | packaged by conda-forge | (main, Mar 24 2023, 20:08:06) [GCC 11.3.0]",
+  "executable": "/opt/conda/bin/python",
+  "tools": {
+    "mx-smi": "/opt/mxdriver/bin/mx-smi",
+    "mc-smi": null,
+    "mxcc": "/opt/maca/mxgpu_llvm/bin/mxcc",
+    "cucc": null,
+    "git": null,
+    "rg": null
+  },
+  "paths": {
+    "/opt/maca": true,
+    "/opt/maca/mxgpu_llvm/bin/mxcc": true,
+    "/opt/maca/tools/cu-bridge/bin/cucc": true
+  },
+  "/opt/maca/mxgpu_llvm/bin/mxcc": {
+    "exit": 0,
+    "stdout": "mxcc version 1.0.0 (df29922f9c)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /opt/maca/mxgpu_llvm/bin\n",
+    "stderr": ""
+  },
+  "/opt/maca/tools/cu-bridge/bin/cucc": {
+    "exit": 0,
+    "stdout": "mxcc version 1.0.0 (df29922f9c)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /opt/maca/mxgpu_llvm/bin\n",
+    "stderr": ""
+  },
+  "mx_smi": {
+    "exit": 0,
+    "stdout": "mx-smi  version: 2.2.6\n\n=================== MetaX System Management Interface Log ===================\nTimestamp                                         : Sat Sep  5 13:51:38 2026\n\nAttached GPUs                                     : 1\n+---------------------------------------------------------------------------------+\n| MX-SMI 2.2.6                        Kernel Mode Driver Version: 3.8.30          |\n| MACA Version: 3.0.0.8               BIOS Version: 1.33.5.0                      |\n|------------------------------------+---------------------+----------------------+\n| GPU     NAME         Persistence-M | Bus-id              | GPU-Util      sGPU-M |\n| Temp    Pwr:Usage/Cap         Perf | Memory-Usage        | GPU-State            |\n|====================================+=====================+======================|\n| 0       MetaX C500             Off | 0000:10:00.0        | 0%             *sGPU |\n| 35C     56W / 350W              P0 | 826/65536 MiB       | Available            |\n+------------------------------------+---------------------+----------------------+\n\n+---------------------------------------------------------------------------------+\n| Sliced GPU                                                                      |\n|------------------------------------+---------------------+----------------------+\n| Minor    GPU    sGPU-Id    Compute | Vram Quota          | sGPU-Util            |\n|====================================+=====================+======================|\n| 005      0      1          25%     | 0/16000 MiB         | 0%                   |\n+------------------------------------+---------------------+----------------------+\n\n+---------------------------------------------------------------------------------+\n| Process:                                                                        |\n|  GPU                    PID         Process Name                 GPU Memory     |\n|                                                                  Usage(MiB)     |\n|=================================================================================|\n|  no process found                                                               |\n+---------------------------------------------------------------------------------+\n\nEnd of Log\n",
+    "stderr": ""
+  },
+  "headers": {
+    "/opt/maca/tools/cu-bridge/include/cuda_runtime.h": true,
+    "/opt/maca/tools/cu-bridge/include/cuda_fp16.h": true,
+    "/opt/maca/tools/cu-bridge/include/cuda_bf16.h": true
+  },
+  "top_dirs": {
+    "/opt/maca/tools/cu-bridge": [
+      "bin",
+      "cmake_module",
+      "extras",
+      "include",
+      "lib",
+      "tools"
+    ],
+    "/opt/maca/include": [
+      "common",
+      "cub",
+      "cute",
+      "flash_attn",
+      "mcblas",
+      "mcc",
+      "mccl.h",
+      "mcctrl",
+      "mccub",
+      "mcdnn",
+      "mcfft",
+      "mcfile.h",
+      "mcflashinfer",
+      "mcimage",
+      "mcjpeg",
+      "mckl",
+      "mclog",
+      "mcpti",
+      "mcr",
+      "mcrand",
+      "mcsolver",
+      "mcsolverIt",
+      "mcsparse",
+      "mctlass",
+      "mctlassEx",
+      "mctx",
+      "misc",
+      "mxc",
+      "mxccl.h",
+      "mxkw",
+      "mxsml",
+      "thrust"
+    ]
+  },
+  "os": "PRETTY_NAME=\"Ubuntu 22.04.3 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.3 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n"
+}

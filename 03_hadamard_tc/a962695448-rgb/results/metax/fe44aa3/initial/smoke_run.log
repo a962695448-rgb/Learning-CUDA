@@ -1,0 +1,5 @@
+DEVICE name=MetaX C500 count=1 warp=64 multiprocessors=104 max_threads_per_block=1024 shared_bytes_per_block=65536 visible_memory_bytes=16341008384 runtime=11060 driver=11060
+STORAGE_ARITHMETIC_PASS dtype=fp16 elements=257 guard_elements=17 input_unchanged=yes storage_alignment=2 rne_reference=host_integer native_bf16_acceleration=not_determined
+STORAGE_ARITHMETIC_PASS dtype=bf16 elements=257 guard_elements=17 input_unchanged=yes storage_alignment=2 rne_reference=host_integer native_bf16_acceleration=not_determined
+SHUFFLE_PASS operation=legacy___shfl_xor_int width=64 complete_warps=2 distances=6 observations=768 guards=pass
+METAX_SMOKE_PASS all_checks_passed=yes

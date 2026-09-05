@@ -1,0 +1,249 @@
+#include <cuda_runtime.h>
+#include <cuda_fp16.h>
+#include <cuda_bf16.h>
+
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+#define CHECK(call) do { const cudaError_t error = (call); if (error != cudaSuccess) \
+    throw std::runtime_error(std::string(#call) + ": " + cudaGetErrorString(error)); } while (0)
+
+std::uint32_t float_bits(float value) {
+    std::uint32_t bits;
+    std::memcpy(&bits, &value, sizeof(bits));
+    return bits;
+}
+
+float bits_float(std::uint32_t bits) {
+    float value;
+    std::memcpy(&value, &bits, sizeof(value));
+    return value;
+}
+
+// 独立的宿主机整数舍入参考，不调用 CUDA/MACA 的宿主机半精度转换。
+std::uint32_t shift_round_even(std::uint32_t value, unsigned shift) {
+    const std::uint32_t quotient = value >> shift;
+    const std::uint32_t remainder = value & ((std::uint32_t(1) << shift) - 1);
+    const std::uint32_t half = std::uint32_t(1) << (shift - 1);
+    return quotient + (remainder > half || (remainder == half && (quotient & 1)));
+}
+
+std::uint16_t expected_half(float value) {
+    const std::uint32_t bits = float_bits(value);
+    const std::uint16_t sign = static_cast<std::uint16_t>((bits >> 16) & 0x8000);
+    const int exponent = static_cast<int>((bits >> 23) & 255) - 127;
+    const std::uint32_t fraction = bits & 0x7fffff;
+    if (exponent > 15) return static_cast<std::uint16_t>(sign | 0x7c00);
+    if (exponent < -25) return sign;
+    if (exponent < -14)
+        return static_cast<std::uint16_t>(sign | shift_round_even(fraction | 0x800000, -exponent - 1));
+    return static_cast<std::uint16_t>(sign | (((exponent + 15) << 10) + shift_round_even(fraction, 13)));
+}
+
+float half_float(std::uint16_t bits) {
+    const int exponent = (bits >> 10) & 31;
+    const int fraction = bits & 1023;
+    float magnitude;
+    if (exponent == 0) magnitude = std::ldexp(static_cast<float>(fraction), -24);
+    else magnitude = std::ldexp(static_cast<float>(1024 + fraction), exponent - 25);
+    return (bits & 0x8000) ? -magnitude : magnitude;
+}
+
+std::uint16_t expected_bf16(float value) {
+    const auto bits = float_bits(value);
+    return static_cast<std::uint16_t>((bits + 0x7fffu + ((bits >> 16) & 1u)) >> 16);
+}
+
+template<class T> class Guarded {
+    static constexpr std::size_t guard = 17;
+    T* raw_ = nullptr;
+    std::size_t count_;
+    std::string label_;
+    std::vector<unsigned char> initial_;
+public:
+    Guarded(std::size_t count, const char* label, cudaStream_t stream)
+        : count_(count), label_(label), initial_((count + 2 * guard) * sizeof(T), 0xa5) {
+        CHECK(cudaMalloc(reinterpret_cast<void**>(&raw_), initial_.size()));
+        CHECK(cudaMemcpyAsync(raw_, initial_.data(), initial_.size(), cudaMemcpyHostToDevice, stream));
+    }
+    ~Guarded() { if (raw_) cudaFree(raw_); }
+    Guarded(const Guarded&) = delete;
+    Guarded& operator=(const Guarded&) = delete;
+    T* data() { return raw_ + guard; }
+    void upload(const std::vector<T>& values, cudaStream_t stream) {
+        if (values.size() != count_) throw std::runtime_error("host upload size mismatch");
+        // 上传可能改写初始向量，先确保使用该向量的初始化复制已经完成。
+        CHECK(cudaStreamSynchronize(stream));
+        std::memcpy(initial_.data() + guard * sizeof(T), values.data(), count_ * sizeof(T));
+        CHECK(cudaMemcpyAsync(raw_, initial_.data(), initial_.size(), cudaMemcpyHostToDevice, stream));
+    }
+    std::vector<T> download(cudaStream_t stream, bool unchanged = false) {
+        std::vector<unsigned char> bytes(initial_.size());
+        CHECK(cudaMemcpyAsync(bytes.data(), raw_, bytes.size(), cudaMemcpyDeviceToHost, stream));
+        CHECK(cudaStreamSynchronize(stream));
+        const std::size_t first = guard * sizeof(T), last = first + count_ * sizeof(T);
+        for (std::size_t i = 0; i < bytes.size(); ++i) {
+            if ((unchanged || i < first || i >= last) && bytes[i] != initial_[i]) {
+                char detail[256];
+                std::snprintf(detail, sizeof(detail),
+                    "MEMORY_MISMATCH buffer=%s region=%s raw_byte=%zu expected=%u actual=%u",
+                    label_.c_str(), i < first ? "prefix" : (i >= last ? "suffix" : "payload"),
+                    i, static_cast<unsigned>(initial_[i]), static_cast<unsigned>(bytes[i]));
+                throw std::runtime_error(detail);
+            }
+        }
+        std::vector<T> result(count_);
+        std::memcpy(result.data(), bytes.data() + first, count_ * sizeof(T));
+        return result;
+    }
+};
+
+template<class T> __device__ T to_storage(float value);
+template<> __device__ __half to_storage(float value) { return __float2half_rn(value); }
+template<> __device__ __nv_bfloat16 to_storage(float value) { return __float2bfloat16_rn(value); }
+template<class T> __device__ float from_storage(T value);
+template<> __device__ float from_storage(__half value) { return __half2float(value); }
+template<> __device__ float from_storage(__nv_bfloat16 value) { return __bfloat162float(value); }
+
+template<class T> __global__ void store_converted(const float* input, T* output, int n) {
+    const int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < n) output[i] = to_storage<T>(input[i]);
+}
+
+template<class T> __global__ void read_and_compute(const T* input, float* output, int n) {
+    const int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < n) output[i] = from_storage(input[i]) * 2.0f + 1.0f;
+}
+
+template<class T> void validate_storage(cudaStream_t stream, bool bf16) {
+    constexpr int n = 257;
+    const char* dtype = bf16 ? "bf16" : "fp16";
+    std::vector<float> input(n);
+    std::uint32_t seed = 0x725ac019;
+    for (int i = 0; i < n; ++i) {
+        seed = seed * 1664525u + 1013904223u;
+        input[i] = (static_cast<float>(seed >> 8) / 16777216.0f - 0.5f) * 32.0f;
+    }
+    const float anchors[] = {
+        0.0f, -0.0f, 1.0f, -1.0f, 1.00048828125f, 1.00146484375f,
+        -1.00048828125f, -1.00146484375f, 1.00390625f, 1.01171875f,
+        -1.00390625f, -1.01171875f, 0.00006103515625f, 0.000000059604644775390625f
+    };
+    std::copy(std::begin(anchors), std::end(anchors), input.begin());
+    if (bf16) {
+        input[14] = 1e-20f;
+        input[15] = 1e20f;
+    }
+    Guarded<float> x(n, "input", stream), arithmetic(n, "arithmetic", stream);
+    Guarded<std::uint16_t> storage(n, "typed_storage_2byte_aligned", stream);
+    x.download(stream, true);
+    arithmetic.download(stream, true);
+    storage.download(stream, true);
+    x.upload(input, stream);
+    auto* typed = reinterpret_cast<T*>(storage.data());
+    store_converted<T><<<3, 128, 0, stream>>>(x.data(), typed, n);
+    CHECK(cudaGetLastError());
+    read_and_compute<T><<<3, 128, 0, stream>>>(typed, arithmetic.data(), n);
+    CHECK(cudaGetLastError());
+    const auto stored = storage.download(stream);
+    const auto observed = arithmetic.download(stream);
+    x.download(stream, true);
+    for (int i = 0; i < n; ++i) {
+        const std::uint16_t wanted = bf16 ? expected_bf16(input[i]) : expected_half(input[i]);
+        const float rounded = bf16 ? bits_float(static_cast<std::uint32_t>(wanted) << 16) : half_float(wanted);
+        const float expected = rounded * 2.0f + 1.0f;
+        if (stored[i] != wanted || float_bits(observed[i]) != float_bits(expected)) {
+            std::printf("CONVERSION_FAILURE dtype=%s index=%d input_bits=%08x storage_expected=%04x storage_actual=%04x arithmetic_expected=%08x arithmetic_actual=%08x\n",
+                dtype, i, float_bits(input[i]), static_cast<unsigned>(wanted),
+                static_cast<unsigned>(stored[i]), float_bits(expected), float_bits(observed[i]));
+            throw std::runtime_error("device conversion/arithmetic differs from independent host reference");
+        }
+    }
+    std::printf("STORAGE_ARITHMETIC_PASS dtype=%s elements=%d guard_elements=17 input_unchanged=yes storage_alignment=2 rne_reference=host_integer native_bf16_acceleration=not_determined\n", dtype, n);
+}
+
+#if defined(__MACACC__)
+__global__ void shuffle_probe(int* output, int width, int distances) {
+    const int tid = threadIdx.x;
+    const int lane = tid % width;
+    const int warp = tid / width;
+    const int value = 1000 * warp + lane;
+    for (int k = 0; k < distances; ++k)
+        output[k * (2 * width) + tid] = __shfl_xor(value, 1 << k, width);
+}
+#endif
+
+bool validate_shuffle(cudaStream_t stream, const cudaDeviceProp& prop) {
+    if (prop.warpSize != 32 && prop.warpSize != 64) {
+        std::printf("SHUFFLE_SKIP reason=unsupported_warp_width width=%d supported=32,64\n", prop.warpSize);
+        return false;
+    }
+#if defined(__MACACC__)
+    const int width = prop.warpSize;
+    const int distances = width == 64 ? 6 : 5;
+    if (prop.maxThreadsPerBlock < 2 * width) {
+        std::puts("SHUFFLE_SKIP reason=insufficient_threads_for_two_complete_warps");
+        return false;
+    }
+    Guarded<int> output(2 * width * distances, "shuffle_output", stream);
+    output.download(stream, true);
+    shuffle_probe<<<1, 2 * width, 0, stream>>>(output.data(), width, distances);
+    CHECK(cudaGetLastError());
+    const auto actual = output.download(stream);
+    for (int k = 0; k < distances; ++k) {
+        for (int tid = 0; tid < 2 * width; ++tid) {
+            const int expected = 1000 * (tid / width) + ((tid % width) ^ (1 << k));
+            if (actual[k * 2 * width + tid] != expected) {
+                std::printf("SHUFFLE_FAILURE width=%d xor_distance=%d tid=%d expected=%d actual=%d\n",
+                    width, 1 << k, tid, expected, actual[k * 2 * width + tid]);
+                throw std::runtime_error("legacy integer shuffle mismatch");
+            }
+        }
+    }
+    std::printf("SHUFFLE_PASS operation=legacy___shfl_xor_int width=%d complete_warps=2 distances=%d observations=%d guards=pass\n",
+                width, distances, 2 * width * distances);
+    return true;
+#else
+    (void)stream;
+    std::puts("SHUFFLE_SKIP reason=not_MACA_compiler no_METAX_hardware_validation_claim");
+    return false;
+#endif
+}
+
+int main() {
+    cudaStream_t stream = nullptr;
+    try {
+        int count = 0;
+        CHECK(cudaGetDeviceCount(&count));
+        if (count < 1) throw std::runtime_error("no visible GPU");
+        CHECK(cudaSetDevice(0));
+        cudaDeviceProp prop{};
+        CHECK(cudaGetDeviceProperties(&prop, 0));
+        int driver = 0, runtime = 0;
+        CHECK(cudaDriverGetVersion(&driver));
+        CHECK(cudaRuntimeGetVersion(&runtime));
+        std::printf("DEVICE name=%s count=%d warp=%d multiprocessors=%d max_threads_per_block=%d shared_bytes_per_block=%zu visible_memory_bytes=%zu runtime=%d driver=%d\n",
+            prop.name, count, prop.warpSize, prop.multiProcessorCount, prop.maxThreadsPerBlock,
+            static_cast<std::size_t>(prop.sharedMemPerBlock), static_cast<std::size_t>(prop.totalGlobalMem), runtime, driver);
+        CHECK(cudaStreamCreateWithFlags(&stream, cudaStreamNonBlocking));
+        validate_storage<__half>(stream, false);
+        validate_storage<__nv_bfloat16>(stream, true);
+        const bool shuffle_pass = validate_shuffle(stream, prop);
+        CHECK(cudaStreamSynchronize(stream));
+        CHECK(cudaStreamDestroy(stream));
+        stream = nullptr;
+        if (!shuffle_pass) { std::puts("SMOKE_INCOMPLETE"); return 3; }
+        std::puts("METAX_SMOKE_PASS all_checks_passed=yes");
+        return 0;
+    } catch (const std::exception& error) {
+        std::fprintf(stderr, "METAX_SMOKE_FAIL %s\n", error.what());
+        if (stream) { cudaStreamSynchronize(stream); cudaStreamDestroy(stream); }
+        return 1;
+    }
+}

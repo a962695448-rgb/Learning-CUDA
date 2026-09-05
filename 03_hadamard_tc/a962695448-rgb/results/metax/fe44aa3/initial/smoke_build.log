@@ -1,0 +1,21 @@
+/data/infinitensor-2026/metax_smoke.cu:178:41: warning: '__shfl_xor' is deprecated [-Wdeprecated-declarations]
+        output[k * (2 * width) + tid] = __shfl_xor(value, 1 << k, width);
+                                        ^
+/opt/maca-3.0.0/mxgpu_llvm/lib/clang/12.0.0/include/__clang_maca_device_functions.h:2136:3: note: '__shfl_xor' has been explicitly marked deprecated here
+[[deprecated]] __device__ MACA_INLINE int __shfl_xor(int var, int laneMask,
+  ^
+1 warning generated when compiling for xcore1000.
+/data/infinitensor-2026/metax_smoke.cu:178:41: warning: '__shfl_xor' is deprecated [-Wdeprecated-declarations]
+        output[k * (2 * width) + tid] = __shfl_xor(value, 1 << k, width);
+                                        ^
+/opt/maca-3.0.0/mxgpu_llvm/lib/clang/12.0.0/include/__clang_maca_device_functions.h:2136:3: note: '__shfl_xor' has been explicitly marked deprecated here
+[[deprecated]] __device__ MACA_INLINE int __shfl_xor(int var, int laneMask,
+  ^
+1 warning generated when compiling for xcore1000.
+/data/infinitensor-2026/metax_smoke.cu:178:41: warning: '__shfl_xor' is deprecated [-Wdeprecated-declarations]
+        output[k * (2 * width) + tid] = __shfl_xor(value, 1 << k, width);
+                                        ^
+/opt/maca-3.0.0/mxgpu_llvm/lib/clang/12.0.0/include/__clang_maca_device_functions.h:2136:3: note: '__shfl_xor' has been explicitly marked deprecated here
+[[deprecated]] __device__ MACA_INLINE int __shfl_xor(int var, int laneMask,
+  ^
+1 warning generated when compiling for host.

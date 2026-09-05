@@ -1,0 +1,50 @@
+[
+  {
+    "run": 2,
+    "started_utc": "2026-09-05T14:06:40Z",
+    "binary_sha256": "8f7ac15ea904a47de0b26635094cdc0740a49b9bc4039490d5dde0e52cbf35e1",
+    "sdk_environment": {
+      "MACA_PATH": "/opt/maca-3.0.0",
+      "CUDA_PATH": "/opt/maca-3.0.0/tools/cu-bridge",
+      "CUCC_PATH": "/opt/maca-3.0.0/tools/cu-bridge"
+    },
+    "mx_smi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/metax-api-full-fe44aa3/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/metax-api-full-fe44aa3/benchmark_run2.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "mx_smi_after_exit": 0,
+    "finished_utc": "2026-09-05T14:06:47Z"
+  },
+  {
+    "run": 3,
+    "started_utc": "2026-09-05T14:06:47Z",
+    "binary_sha256": "8f7ac15ea904a47de0b26635094cdc0740a49b9bc4039490d5dde0e52cbf35e1",
+    "sdk_environment": {
+      "MACA_PATH": "/opt/maca-3.0.0",
+      "CUDA_PATH": "/opt/maca-3.0.0/tools/cu-bridge",
+      "CUCC_PATH": "/opt/maca-3.0.0/tools/cu-bridge"
+    },
+    "mx_smi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/metax-api-full-fe44aa3/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/metax-api-full-fe44aa3/benchmark_run3.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "mx_smi_after_exit": 0,
+    "finished_utc": "2026-09-05T14:06:55Z"
+  }
+]
