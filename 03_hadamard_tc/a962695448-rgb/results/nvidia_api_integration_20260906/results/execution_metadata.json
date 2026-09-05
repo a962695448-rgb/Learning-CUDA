@@ -1,0 +1,12 @@
+{
+  "job": "had_api_integration_v1",
+  "pid": 47560,
+  "exit": 0,
+  "args": [
+    "/data/infinitensor-2026/.venv/bin/python",
+    "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/integration_runner.py"
+  ],
+  "gpu_final": "0 %, 456 MiB, 30, 210 MHz, 20.37 W",
+  "running_jobs": [],
+  "context_note": "Preexisting 448MiB NVML resident context host PID not fully mapped; no exclusive-device claim."
+}

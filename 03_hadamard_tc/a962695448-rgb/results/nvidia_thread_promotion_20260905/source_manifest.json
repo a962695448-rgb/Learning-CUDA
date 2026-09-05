@@ -1,0 +1,25 @@
+{
+  "scope": "Only explicit block size 128/256, dim16/64; original CUDA kernels copied unchanged.",
+  "files": {
+    "sources/build_torch_extension.py": {
+      "bytes": 2486,
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a"
+    },
+    "sources/compare_reference.py": {
+      "bytes": 21015,
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171"
+    },
+    "sources/kernels.cuh": {
+      "bytes": 6024,
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe"
+    },
+    "sources/torch_binding_experiment.cu": {
+      "bytes": 5344,
+      "sha256": "b4d468ecd3e8f67bbaadb66f2efe542e776becb10bb10c9b293b6bf5878d701b"
+    },
+    "sources/torch_binding_original.cu": {
+      "bytes": 5104,
+      "sha256": "6264e1b04a2d98cb9a0a19fca2ca127953916ea5a885f8120699b7c1b22105fc"
+    }
+  }
+}

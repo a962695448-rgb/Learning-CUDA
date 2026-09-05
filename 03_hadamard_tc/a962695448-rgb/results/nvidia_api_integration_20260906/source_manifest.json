@@ -1,0 +1,53 @@
+{
+  "base_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+  "files": {
+    "project/Makefile": {
+      "bytes": 1016,
+      "sha256": "47ac2069f84e73e191967daa318d814ec3b74810f21c59d598bb382e7c1b494c"
+    },
+    "project/include/kernels.cuh": {
+      "bytes": 6162,
+      "sha256": "cb662c045a346b6dbd71f04db8bd44e50c96e0c31bf822f805f04e45d9eea860"
+    },
+    "project/include/reference.hpp": {
+      "bytes": 3663,
+      "sha256": "7855bbc2402751cdc7dfee0dc529a4d24975b53b69e6f05623fec7ed809d19a8"
+    },
+    "project/src/main.cu": {
+      "bytes": 29945,
+      "sha256": "5d5aec80f9b9f0ac6b518bcee9fc2c7feea660ae7d422d9c73ead6525335097b"
+    },
+    "project/src/torch_binding.cu": {
+      "bytes": 5752,
+      "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec"
+    },
+    "project/tests/cpu_reference_test.cpp": {
+      "bytes": 1512,
+      "sha256": "34786980a34e254261ac4fec93982d46500acac6801c145b866e15af637c09ef"
+    },
+    "project/scripts/run_validation.py": {
+      "bytes": 3506,
+      "sha256": "7ba22a135df047a2efde46331031ad5630e126276562c67bbdfe8d8d12a9df42"
+    },
+    "project/scripts/compare_reference.py": {
+      "bytes": 21373,
+      "sha256": "c5a55bc0f5e2b566b5936570b3f973e22011b3f623c696908b3d57daa6b812b8"
+    },
+    "project/scripts/build_torch_extension.py": {
+      "bytes": 2548,
+      "sha256": "e9b097e41df63dc87bc7c4b3b2ed4b3b021c58a74fdcdf1038cb23c5ba7862d4"
+    },
+    "project/scripts/verify_block_threads.py": {
+      "bytes": 6903,
+      "sha256": "3f5df6bc935b8ed310d159c1df7868e699c66eaa74b7ea48edb40bc99523ba64"
+    },
+    "integration_runner.py": {
+      "bytes": 8739,
+      "sha256": "d882c57f2a00b96dd7d63134d60ebaf77b7e74ec6849530aeb708bc9d025cc65"
+    },
+    "graph_measure.py": {
+      "bytes": 3586,
+      "sha256": "ce4fe80b2ebf946c12921be58dda1cd8a9597716be1aba3a1a737b921f9d193d"
+    }
+  }
+}

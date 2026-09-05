@@ -1,0 +1,31 @@
+STAGE build_cli_cpu 0
+STAGE default_matrix_and_existing_cli 0
+STAGE explicit256_matrix 0
+STAGE invalid_threads_0 2
+STAGE invalid_threads_1 2
+STAGE invalid_threads_2 2
+STAGE invalid_threads_3 2
+STAGE invalid_threads_4 2
+STAGE invalid_threads_5 2
+STAGE invalid_threads_6 2
+STAGE invalid_threads_7 2
+STAGE invalid_threads_8 2
+STAGE invalid_threads_9 2
+STAGE missing_threads_value 2
+STAGE units_threads128 0
+STAGE units_threads256 0
+STAGE reject_legacy_csv_append 1
+STAGE pytorch_1800_and_compatibility 0
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/torch_cache/block_threads_check/build.ninja...
+Building extension module infinitensor_hadamard_block_threads_check...
+Using envvar MAX_JOBS (1) as the number of workers...
+ninja: no work to do.
+Loading extension module infinitensor_hadamard_block_threads_check...
+GRAPH_SMOKE transform 4096 16 fp16 14.326111670267938
+GRAPH_SMOKE transform 4096 64 bf16 8.94440916219702
+GRAPH_SMOKE transform 16384 16 fp16 25.34166025384401
+GRAPH_SMOKE transform 16384 64 bf16 10.715825092195674
+GRAPH_SMOKE fused_int4 4096 16 fp16 8.818347547157956
+GRAPH_SMOKE fused_int4 4096 64 bf16 7.117907371021737
+{"status": "PASS", "functional_summary": {"cli_matrix_distinct_cases": 1876, "cli_thread_modes": [128, 256], "dao_matrix_distinct_cases": 1800, "default_128_256_bitwise_exact": true, "thread_invalid_cli_cases": 11, "existing_invalid_cli_cases": 15, "thread_invalid_pytorch_cases": 27, "non_default_stream": "PASS", "unit_conversion_and_csv_thread_scope": "PASS", "old_csv_unchanged_on_rejection": true}, "graph_cases": 6}

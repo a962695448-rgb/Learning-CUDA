@@ -1,0 +1,114 @@
+{
+  "build_cli_cpu.log": {
+    "bytes": 329,
+    "sha256": "ddb4c0e364c4aabd573f7efd5015d78720215d17d7d3430b7174a5b2dbd9c9ad"
+  },
+  "build_ninja.txt": {
+    "bytes": 2719,
+    "sha256": "dbe49716610ed320e26ee45c73f676378f551b73f76bbe66e39081ade9262cc2"
+  },
+  "cli_build_config.txt": {
+    "bytes": 67,
+    "sha256": "2cd0f2c925ba399df68799c881a41b48fa4725ad6005865f8d8127f642930e60"
+  },
+  "controller.log": {
+    "bytes": 1645,
+    "sha256": "0cfeda994e25c5005e11c0c4de1555343f32e2cc494fb817fb1b3ce0a267a232"
+  },
+  "default_matrix_and_existing_cli.log": {
+    "bytes": 466,
+    "sha256": "a5eb9ffeed574e61cea80a11234037995be36d0339b3fac83e30533e10985598"
+  },
+  "execution_metadata.json": {
+    "bytes": 422,
+    "sha256": "56300963aca7c6bcc81774388526af7391c6c90560616fc588868cc647114616"
+  },
+  "explicit256_matrix.log": {
+    "bytes": 730,
+    "sha256": "6108aa30294ded69a7fec84853912f95e47631bf72bc379166359466bb98f8f1"
+  },
+  "integration_summary.json": {
+    "bytes": 29560,
+    "sha256": "6a9f825321756517d0b09d871b63abe1225163249a12e96f9c51d112a9d69901"
+  },
+  "invalid_threads_0.log": {
+    "bytes": 88,
+    "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+  },
+  "invalid_threads_1.log": {
+    "bytes": 73,
+    "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+  },
+  "invalid_threads_2.log": {
+    "bytes": 73,
+    "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+  },
+  "invalid_threads_3.log": {
+    "bytes": 73,
+    "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+  },
+  "invalid_threads_4.log": {
+    "bytes": 73,
+    "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+  },
+  "invalid_threads_5.log": {
+    "bytes": 73,
+    "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+  },
+  "invalid_threads_6.log": {
+    "bytes": 88,
+    "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+  },
+  "invalid_threads_7.log": {
+    "bytes": 88,
+    "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+  },
+  "invalid_threads_8.log": {
+    "bytes": 88,
+    "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+  },
+  "invalid_threads_9.log": {
+    "bytes": 73,
+    "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+  },
+  "legacy_header.csv": {
+    "bytes": 29,
+    "sha256": "c64d5774a7211396f023cf4c180485c6ce2c860f4a9c5c306ba5d0c91ae4bc43"
+  },
+  "missing_threads_value.log": {
+    "bytes": 72,
+    "sha256": "98cdab73c60deac586c3ee08716825b6a338a769950bede714d1f0779bd92895"
+  },
+  "pytorch_1800.json": {
+    "bytes": 946506,
+    "sha256": "721295f085f8e2289bd25d5df020df38bce8cb262fbed23cbf3f5275aed04158"
+  },
+  "pytorch_1800_and_compatibility.log": {
+    "bytes": 2919,
+    "sha256": "364b50c4b5bc6d6d1afad383396947cdd3761104ee12c0c550af61bf60f82b75"
+  },
+  "reject_legacy_csv_append.log": {
+    "bytes": 108,
+    "sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6"
+  },
+  "units_threads128.csv": {
+    "bytes": 1279,
+    "sha256": "889d891b86438198535d45980710eccc4ef6ebb845100e751dc80096b40fc45f"
+  },
+  "units_threads128.log": {
+    "bytes": 1048,
+    "sha256": "b7789fe6f6679aaf6c0e3955be7a6f81497e7d8fafe185b0f85b76179d8f2e8f"
+  },
+  "units_threads256.csv": {
+    "bytes": 1280,
+    "sha256": "41b5e523477ad785777805eb20de01be4616858a10cea9bf6a8194b0a1e48f16"
+  },
+  "units_threads256.log": {
+    "bytes": 1048,
+    "sha256": "7763bad32ce3f1bbe41c7fdb8456d0caa64a408067e4219eecbc0dc3b0dff613"
+  },
+  "validation_integration_default.log": {
+    "bytes": 4662,
+    "sha256": "3197da02b4d6a456e762ad4b87905769178f6044be06e20e8e7f127533fa0fe0"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "BUILD_PASS",
+  "started_utc": "2026-09-05T15:41:10Z",
+  "run_index": 1,
+  "build_only": true,
+  "before": {
+    "utc": "2026-09-05T15:41:10Z",
+    "device_exit": 0,
+    "device": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA GeForce RTX 4090, 570.124.06, 0 %, 456 MiB, 30, 210 MHz, 20.25 W\n",
+    "device_stderr": "",
+    "process_exit": 0,
+    "processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n"
+  },
+  "correctness": [],
+  "benchmarks": [],
+  "process_isolation_note": "Other project reported idle and agreed not to launch during this experiment. Preflight NVML lists a resident 448MiB context whose host PID cannot be fully mapped from the container; this is not proof of exclusive GPU tenancy.",
+  "source_manifest": {
+    "scope": "Only explicit block size 128/256, dim16/64; original CUDA kernels copied unchanged.",
+    "files": {
+      "sources/build_torch_extension.py": {
+        "bytes": 2486,
+        "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a"
+      },
+      "sources/compare_reference.py": {
+        "bytes": 21015,
+        "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171"
+      },
+      "sources/kernels.cuh": {
+        "bytes": 6024,
+        "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe"
+      },
+      "sources/torch_binding_experiment.cu": {
+        "bytes": 5344,
+        "sha256": "b4d468ecd3e8f67bbaadb66f2efe542e776becb10bb10c9b293b6bf5878d701b"
+      },
+      "sources/torch_binding_original.cu": {
+        "bytes": 5104,
+        "sha256": "6264e1b04a2d98cb9a0a19fca2ca127953916ea5a885f8120699b7c1b22105fc"
+      }
+    }
+  },
+  "experiment_script_sha256": "0a7a13e869c29fb3479847e26fbc495da714ef7192c3b00a7f185f938642f553",
+  "reference": {
+    "repository": "https://github.com/Dao-AILab/fast-hadamard-transform",
+    "commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+    "verification": "clean pinned source checkout and local module/install provenance",
+    "package_version": "1.1.0",
+    "python_module": "/data/infinitensor-2026/.venv/lib/python3.12/site-packages/fast_hadamard_transform/__init__.py",
+    "cuda_module": "/data/infinitensor-2026/.venv/lib/python3.12/site-packages/fast_hadamard_transform_cuda.cpython-312-x86_64-linux-gnu.so",
+    "cuda_module_sha256": "2e38b886e3fc6c31c3b837a4fd7354e844dd81d4a20b30f39fbd0c351d8620a4"
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "numpy": "1.26.4",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "sm": [
+      8,
+      9
+    ],
+    "cpp11_abi": true,
+    "extension_file": "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/build/hadamard_thread_promotion_20260905.so",
+    "extension_sha256": "f20b3f74ab70cbaa025a083323952d14b88c967d3801ac855b22b4f15f10f305",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+    "compile_concurrency": "1",
+    "torch_cuda_arch_list": "8.9"
+  },
+  "scope": "64 independent retained outputs per private CUDA Graph;25 API warmups;5 graph warmups;20 replays x5 groups; fixed input/read-only addresses, all functions same condition. Times are amortized captured GPU work plus replay scheduling, not isolated kernel latency or host end-to-end. No old fixed-buffer pilot values are divided into these results.",
+  "summary": {
+    "unique_shape_dtype_scale_cases": 0,
+    "correctness_input_cases": 0,
+    "benchmark_configurations": 0
+  },
+  "after": {
+    "utc": "2026-09-05T15:41:55Z",
+    "device_exit": 0,
+    "device": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA GeForce RTX 4090, 570.124.06, 0 %, 456 MiB, 30, 210 MHz, 20.31 W\n",
+    "device_stderr": "",
+    "process_exit": 0,
+    "processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n"
+  },
+  "finished_utc": "2026-09-05T15:41:55Z"
+}

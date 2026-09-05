@@ -1,0 +1,42 @@
+{
+  "build.json": {
+    "bytes": 4222,
+    "sha256": "a7da557fbb236765eeb6559e1710e7d1af9ea7cd4c9bd7a8d0298cb66416ff05"
+  },
+  "build.log": {
+    "bytes": 2145,
+    "sha256": "64afd9013ef55816ca27035cd5be729f046724e3d9db0d91e6ebcf1a2c62b4cf"
+  },
+  "build_ninja.txt": {
+    "bytes": 2707,
+    "sha256": "a6704ffa1bfb6ad060d1a2a90c3d8f59f361a847da8d725078cb3cc8ff4ceae3"
+  },
+  "execution_metadata.json": {
+    "bytes": 2071,
+    "sha256": "c725a422320b49435f93360d1b623ab35b68a6103b3f14fe334f70ec75850095"
+  },
+  "run1.json": {
+    "bytes": 331904,
+    "sha256": "ed94854c2762e20cce857af7627212b2ef29c1ffd5254bae6edf159ed4caafc9"
+  },
+  "run1.log": {
+    "bytes": 4721,
+    "sha256": "30d54f2a5d23167eebf1881cc9f74975839e4b522cc40e4c2008499141b86c48"
+  },
+  "run2.json": {
+    "bytes": 331879,
+    "sha256": "8e5a2b0746cd31b576cab8730223050ccee4b96fdb4c767bcb56cd056c4cf67f"
+  },
+  "run2.log": {
+    "bytes": 4721,
+    "sha256": "b4e2c94aa126a27c001306629d06645dea0b183c8602258394a9ca5d8b97a1be"
+  },
+  "run3.json": {
+    "bytes": 331837,
+    "sha256": "8c709dba9880509d7fb213bcfa0de32886e1540362809bcd7a0c4dd4e1d1d0d6"
+  },
+  "run3.log": {
+    "bytes": 4721,
+    "sha256": "2bcb558a7f756578c9cd18a231eb700799d5566a6570844f37318cda940ba261"
+  }
+}

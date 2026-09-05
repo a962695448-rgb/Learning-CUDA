@@ -1,0 +1,98 @@
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--self-test']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+SELF_TEST fp16 dim=1 PASS
+SELF_TEST fp16 dim=2 PASS
+SELF_TEST fp16 dim=4 PASS
+SELF_TEST fp16 dim=8 PASS
+SELF_TEST fp16 dim=16 PASS
+SELF_TEST fp16 dim=32 PASS
+SELF_TEST fp16 dim=64 PASS
+SELF_TEST fp16 dim=128 PASS
+SELF_TEST fp16 dim=256 PASS
+SELF_TEST bf16 dim=1 PASS
+SELF_TEST bf16 dim=2 PASS
+SELF_TEST bf16 dim=4 PASS
+SELF_TEST bf16 dim=8 PASS
+SELF_TEST bf16 dim=16 PASS
+SELF_TEST bf16 dim=32 PASS
+SELF_TEST bf16 dim=64 PASS
+SELF_TEST bf16 dim=128 PASS
+SELF_TEST bf16 dim=256 PASS
+SELF_TEST PASS cases=1876 max_abs_error=0.0078125 CPU/split/fused_INT4_bytes=exact scales=exact rounded_warp_vs_dense_elements=35 dense_quant_differing_bytes=0 dense_quant_differing_scales=0 warp_block_threads=128
+EXIT_CODE 0; ELAPSED_SECONDS 1.326
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--dim', '0']
+Argument error: --dim requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.004
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--dim', '3']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.004
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--dim', '512']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--batch', '-1']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--seq', '0']
+Argument error: --seq requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.004
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--heads', 'abc']
+Argument error: --heads requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--dtype', 'fp32']
+Argument error: --dtype must be fp16 or bf16
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.003
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--scale', 'nan']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.005
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--scale', '2']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.001
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--batch', '18446744073709551615', '--seq', '2']
+Argument error: shape or allocation size overflows size_t
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.003
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--batch', '18446744073709551616']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.003
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--repetitions', '0']
+Argument error: --repetitions requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--warmup', '-1']
+Argument error: --warmup requires a valid nonnegative integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.005
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--benchmark', '--dim']
+Argument error: missing value for --dim
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.003
+
+COMMAND ['/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard', '--unsupported']
+Argument error: unknown option: --unsupported
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.005
+

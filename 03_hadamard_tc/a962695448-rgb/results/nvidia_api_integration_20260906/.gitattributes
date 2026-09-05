@@ -1,0 +1,2 @@
+# Preserve captured text bytes; do not normalize CRLF/LF in immutable evidence.
+** -text

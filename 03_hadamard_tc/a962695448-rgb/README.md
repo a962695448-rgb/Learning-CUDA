@@ -13,12 +13,14 @@
 - 与固定版本 `fast_hadamard_transform` 的 **1,800 组真实 GPU 对照通过**，FP16 和 BF16 的最大绝对差均为 0；10 项非法张量输入检查、非默认 CUDA stream 检查通过。单卡环境没有验证多 GPU 切换。
 - 第三方比较另完成 12 组 CUDA Graph 性能测量，且每个捕获输出均与 eager 输出一致。本轮大批量 6 组的 `Dao 时间 / 本项目时间` 为 `1.200～1.926`；`[17,256]` 两种精度下本项目稍慢，负例完整保留。
 - Nsight Systems 已成功导出时间线和 kernel 统计。Nsight Compute 因 `ERR_NVGPUCTRPERM` 无法读取 GPU 性能计数器，失败日志保留，没有虚构带宽利用率或占用率结论。
+- NVIDIA 新增显式 `block_threads=128/256`（CLI 为 `--block-threads`），**默认仍为128**。两种选择均通过同一1,876组CLI矩阵；原1,800组Dao矩阵逐输入确认旧默认、显式128、显式256位一致，测试重复不累计为新用例。
+- 256线程的原24个候选与48个邻近配置，在64份独立输出的CUDA Graph条件下三轮均减少耗时至少5%，实测范围为6.53%～25.58%；仅覆盖下文明确的N=16/64范围，不自动派发、不保证其他形状更快。
 - 本目录尚无 A100 实测或上游合并结果。Hadamard 跨卡复测与九齿项目要求的 A100 验证分别记录。
 - 天数 MR-V100 已完成独立 COREX 原生适配：三种实现通过 1,504 组变换、180 项接口及 14 项命令行检查，三轮性能原始样本完整保存。源码和原始结果见下方平台入口，不与 NVIDIA 的测试数量相加。
 - 沐曦 C500 的 25% sGPU / 16000 MiB 配额也完成独立 MACA 原生验证：相同 1,504 组矩阵、180 项接口和 14 项命令行检查通过，三轮共 4,050 条计时样本。重复同一矩阵的跨平台执行不累计为更多独立算法用例。
 - 壁仞 106M 完成原生 SUPA 适配，显式处理旧 SDK 的 BF16 截断与项目最近偶数舍入约定的差异。完整矩阵、量化一致性、三轮基准及小批量留出验证通过；同时保留 Warp32 比共享实现更慢的形状和未推广的实验。
 
-命令行结果对应实现基线 `6f8e15a2db63a1816c2da6632848a1945380cf21`；初轮 eager 比较使用修复本地安装来源识别后的脚本 `766283ba7352250d5def06fbe62428c74e546917`；CUDA Graph 与 profiler 记录对应 `0b29fcf9031193f49319b2d4132df4d1ef6a4a74`。原始文件及 SHA-256 清单见[实测证据](#实测证据)。
+下文初轮命令行结果对应实现基线 `6f8e15a2db63a1816c2da6632848a1945380cf21`；初轮 eager 比较使用修复本地安装来源识别后的脚本 `766283ba7352250d5def06fbe62428c74e546917`；CUDA Graph 与 profiler 记录对应 `0b29fcf9031193f49319b2d4132df4d1ef6a4a74`。原始文件及 SHA-256 清单见[实测证据](#实测证据)。
 
 ## 平台入口
 
@@ -129,6 +131,38 @@ assert torch.equal(row_scales, split_scales)
 
 输入必须是连续、非空的 CUDA FP16/BF16 张量，形状为 `[rows, dim]` 或 `[batch, seq, heads, dim]`，最后一维取前述 1～256 的二次幂。接口是前向计算，不支持 `requires_grad=True`。`packed` 的 dtype 为 `uint8`，最后一维为 `ceil(dim/2)`；`row_scales` 为 FP32，形状是输入去掉最后一维。接口使用调用者当前 CUDA stream。
 
+## 显式选择 NVIDIA 线程数
+
+省略参数仍使用128线程；256仅是可选配置，不会根据形状自动切换。 本次接口源码可定位至[`24849f6`](https://github.com/a962695448-rgb/Learning-CUDA/commit/24849f61ef06350f4e8bcd224ef93d97622c9744)；实机原字节与提交后的LF内容核查分别保存在下方归档。正确性已覆盖原全部dim=1～256的二次幂，性能证据仅覆盖N=16/64：变换M=4096/16384及各自M±1，融合INT4为M=4096及M±1。更一般的M范围和A100需要分别验证。
+
+```python
+# 保留原调用；x仍须满足前述CUDA/形状/连续存储约束。
+y_default = op.hadamard(x)                  # 默认128
+# scale仍为原来的第二个参数；block_threads追加为可选参数。
+y_256 = op.hadamard(x, 1.0, block_threads=256)
+packed, row_scales = op.hadamard_int4(x, 1.0, block_threads=256)
+split_packed, split_scales = op.quantize_int4(y_256, block_threads=256)
+```
+
+```bash
+# 同一1,876组完整矩阵，明确选择256线程；默认命令仍使用128。
+./build/hadamard --self-test --block-threads 256
+./build/hadamard --benchmark --batch 4 --seq 128 --heads 8 \
+  --dim 64 --dtype fp16 --block-threads 256 --csv results/threads256-new-run.csv
+
+# 独立构建缓存；复用原1,800组Dao矩阵比较默认/128/256，输出文件须为新文件。
+python scripts/verify_block_threads.py \
+  --reference-repo /data/infinitensor-2026/fast-hadamard-transform \
+  --build-directory /tmp/hadamard-thread-check-new-run \
+  --json results/thread-api-check-new-run.json
+```
+
+CLI选项只影响warp变换、独立量化、split/fused和warp含复制路径；naive、Tensor Core和CPU路径不变。不支持的线程值会明确拒绝。输入检查、设备guard、当前CUDA stream和原来的输出精度/INT4舍入语义均保留。
+
+计时日志同时显示us和ms。CSV保留原18列及`mean_us`，在末尾追加`warp_block_threads`和`mean_ms`，后者严格按`mean_us/1000`换算；不涉及warp的行将线程字段留空。已有旧表头的CSV会被拒绝追加，请使用新的结果文件，避免不同格式混写。
+
+[256线程独立Graph复核与原始源码](results/nvidia_thread_promotion_20260905/README.md)保存三轮全部72配置及原始采样；[生产接口集成验证](results/nvidia_api_integration_20260906/README.md)保存28个原始文件及对应源码SHA。集成后只复测了六个既有代表配置，256线程相对128减少耗时7.12%～25.34%，没有扩大性能搜索。Graph均摊时间仍不等于独立单kernel延迟或端到端时间；未知驻留CUDA上下文及单卡限制均在归档中说明。
+
 ## 固定第三方版本并复现比较
 
 参考库固定为 Dao-AILab 的提交 `e7706faf8d1c3b9f241e36860640ad1dac644ede`。下面使用实测服务器的源码目录；已有干净的固定版本目录时，直接复用，不重复 clone。
@@ -207,7 +241,7 @@ python scripts/compare_reference.py --reference-repo "$REFERENCE_ROOT" \
 | `[17,256]` | BF16 | 1.1464 | 1.0687 | **0.9322** |
 | `[4,128,8,256]` | BF16 | 2.8104 | 3.3712 | 1.1995 |
 
-本轮大批量配置有明确的时间差，小规模 dim=16/64 的结果接近，不能据约 1% 的差距推广出稳定优势。`[17,256]` 的两种精度均是本项目更慢。更严格的 Graph 口径缩小了 eager 比较中的优势，说明前面的两倍左右比值不能简单归因于蝶形计算本身。当前仍是单卡、一次运行中的分组重复测量，没有跨设备或跨日期置信区间。
+本轮大批量配置有明确的时间差，小规模 dim=16/64 的结果接近，不能据约 1% 的差距推广出稳定优势。`[17,256]` 的两种精度均是本项目更慢。更严格的 Graph 口径缩小了 eager 比较中的优势，说明前面的两倍左右比值不能简单归因于蝶形计算本身。上述12组仍是单卡、一次运行中的分组重复测量，没有跨设备或跨日期置信区间。
 
 ## Profiler 复现与结论边界
 

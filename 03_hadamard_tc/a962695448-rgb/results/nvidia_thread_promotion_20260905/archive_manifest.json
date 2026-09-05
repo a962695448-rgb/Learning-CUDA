@@ -1,0 +1,287 @@
+{
+  "archive": "nvidia_thread_promotion_20260905",
+  "line_endings": "Raw captured text bytes are preserved using local .gitattributes ** -text. LF SHA is a separate content-comparison fingerprint, not a replacement for raw SHA.",
+  "compiled_binaries_included": false,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 89,
+      "sha256": "b7b5e7892511bc98a82a508ba4edfd28067c4d24e0c61599a7e95e336c61f57f",
+      "lf_bytes": 89,
+      "lf_sha256": "b7b5e7892511bc98a82a508ba4edfd28067c4d24e0c61599a7e95e336c61f57f",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "analyze_results.py",
+      "bytes": 6415,
+      "sha256": "386bf1ba314f92e28a3fcd03e0d0f00f0760ec3abee017e64b9c58946916af2d",
+      "lf_bytes": 6415,
+      "lf_sha256": "386bf1ba314f92e28a3fcd03e0d0f00f0760ec3abee017e64b9c58946916af2d",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "binding_changes.patch",
+      "bytes": 7248,
+      "sha256": "b11c8f5a20c2d263d8918a2b8f302812a2b8927cbac010254e018d4cc06c82d4",
+      "lf_bytes": 7125,
+      "lf_sha256": "433609b63caf0e5b82d2d7e3ad179708eb20fe2578286ab13b568d86f9c54641",
+      "crlf_count": 123,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "EXPERIMENT.md",
+      "bytes": 2428,
+      "sha256": "470337dca70b393cf8cc4e28a472b297de2e41d7665c3c7f5c5e56a2a3418fb4",
+      "lf_bytes": 2428,
+      "lf_sha256": "470337dca70b393cf8cc4e28a472b297de2e41d7665c3c7f5c5e56a2a3418fb4",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "prepare.py",
+      "bytes": 3346,
+      "sha256": "272c22ae09201d1d8db4af7655e3b4260658df95de76576ce2666050f5fd8e01",
+      "lf_bytes": 3346,
+      "lf_sha256": "272c22ae09201d1d8db4af7655e3b4260658df95de76576ce2666050f5fd8e01",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2643,
+      "sha256": "10853f665828bbfd1469d41b95452184ec46488aee29b493c3640452d766e72c",
+      "lf_bytes": 2643,
+      "lf_sha256": "10853f665828bbfd1469d41b95452184ec46488aee29b493c3640452d766e72c",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "results/analysis_manifest.json",
+      "bytes": 1813,
+      "sha256": "5d8673511537448277afeca081acaeea11481f7b06682ef50483b2c33ae1585e",
+      "lf_bytes": 1757,
+      "lf_sha256": "08690c2581f6958f278aacdbc2e78036537d2dd4f4cb4607dca1e9d496d34708",
+      "crlf_count": 56,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "results/build.json",
+      "bytes": 4222,
+      "sha256": "a7da557fbb236765eeb6559e1710e7d1af9ea7cd4c9bd7a8d0298cb66416ff05",
+      "lf_bytes": 4222,
+      "lf_sha256": "a7da557fbb236765eeb6559e1710e7d1af9ea7cd4c9bd7a8d0298cb66416ff05",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/build.log",
+      "bytes": 2145,
+      "sha256": "64afd9013ef55816ca27035cd5be729f046724e3d9db0d91e6ebcf1a2c62b4cf",
+      "lf_bytes": 2145,
+      "lf_sha256": "64afd9013ef55816ca27035cd5be729f046724e3d9db0d91e6ebcf1a2c62b4cf",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/build_ninja.txt",
+      "bytes": 2707,
+      "sha256": "a6704ffa1bfb6ad060d1a2a90c3d8f59f361a847da8d725078cb3cc8ff4ceae3",
+      "lf_bytes": 2707,
+      "lf_sha256": "a6704ffa1bfb6ad060d1a2a90c3d8f59f361a847da8d725078cb3cc8ff4ceae3",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/comparison.csv",
+      "bytes": 24403,
+      "sha256": "04c1ed39fd85c73ba36ea9c5b6b295f298816697dcd61875180cdce879e261e7",
+      "lf_bytes": 24330,
+      "lf_sha256": "5b414df91e39ac136fd51de1a52196a6430974d9d836f6386b4e705a4fd3df5a",
+      "crlf_count": 73,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "results/execution_metadata.json",
+      "bytes": 2071,
+      "sha256": "c725a422320b49435f93360d1b623ab35b68a6103b3f14fe334f70ec75850095",
+      "lf_bytes": 2071,
+      "lf_sha256": "c725a422320b49435f93360d1b623ab35b68a6103b3f14fe334f70ec75850095",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/run1.json",
+      "bytes": 331904,
+      "sha256": "ed94854c2762e20cce857af7627212b2ef29c1ffd5254bae6edf159ed4caafc9",
+      "lf_bytes": 331904,
+      "lf_sha256": "ed94854c2762e20cce857af7627212b2ef29c1ffd5254bae6edf159ed4caafc9",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/run1.log",
+      "bytes": 4721,
+      "sha256": "30d54f2a5d23167eebf1881cc9f74975839e4b522cc40e4c2008499141b86c48",
+      "lf_bytes": 4721,
+      "lf_sha256": "30d54f2a5d23167eebf1881cc9f74975839e4b522cc40e4c2008499141b86c48",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/run2.json",
+      "bytes": 331879,
+      "sha256": "8e5a2b0746cd31b576cab8730223050ccee4b96fdb4c767bcb56cd056c4cf67f",
+      "lf_bytes": 331879,
+      "lf_sha256": "8e5a2b0746cd31b576cab8730223050ccee4b96fdb4c767bcb56cd056c4cf67f",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/run2.log",
+      "bytes": 4721,
+      "sha256": "b4e2c94aa126a27c001306629d06645dea0b183c8602258394a9ca5d8b97a1be",
+      "lf_bytes": 4721,
+      "lf_sha256": "b4e2c94aa126a27c001306629d06645dea0b183c8602258394a9ca5d8b97a1be",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/run3.json",
+      "bytes": 331837,
+      "sha256": "8c709dba9880509d7fb213bcfa0de32886e1540362809bcd7a0c4dd4e1d1d0d6",
+      "lf_bytes": 331837,
+      "lf_sha256": "8c709dba9880509d7fb213bcfa0de32886e1540362809bcd7a0c4dd4e1d1d0d6",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/run3.log",
+      "bytes": 4721,
+      "sha256": "2bcb558a7f756578c9cd18a231eb700799d5566a6570844f37318cda940ba261",
+      "lf_bytes": 4721,
+      "lf_sha256": "2bcb558a7f756578c9cd18a231eb700799d5566a6570844f37318cda940ba261",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/summary.json",
+      "bytes": 25729,
+      "sha256": "637330fbe3dd8a2c3db5849981fe01b7a94391657d830a92e537ee6ad0eae728",
+      "lf_bytes": 25092,
+      "lf_sha256": "ecdee0c5ad32d28f2005e72f8aa5e90dee7a601d973ed4e00ccde743f93193de",
+      "crlf_count": 637,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "results/transfer_manifest.json",
+      "bytes": 1289,
+      "sha256": "7e1d23c7bf660983a53df34c8d668effb07284e102ef475392847c8995f441e9",
+      "lf_bytes": 1247,
+      "lf_sha256": "c14b70c0bf877a574b86cc8422c6d75cf0fa4dd9e933098cf231ce29107a3c25",
+      "crlf_count": 42,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "RESULTS.md",
+      "bytes": 4693,
+      "sha256": "f95a475dcd33ed18bafbacf993a38e3b464f38bac2980aa336c0557ad7445299",
+      "lf_bytes": 4693,
+      "lf_sha256": "f95a475dcd33ed18bafbacf993a38e3b464f38bac2980aa336c0557ad7445299",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "run_experiment.py",
+      "bytes": 14582,
+      "sha256": "0a7a13e869c29fb3479847e26fbc495da714ef7192c3b00a7f185f938642f553",
+      "lf_bytes": 14582,
+      "lf_sha256": "0a7a13e869c29fb3479847e26fbc495da714ef7192c3b00a7f185f938642f553",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "source_manifest.json",
+      "bytes": 896,
+      "sha256": "64e469c2b9826d197db359624dedb38a878298d067a91640007c1299d6875394",
+      "lf_bytes": 871,
+      "lf_sha256": "38e733647aca1653f841813bdf29c4afd4829d05161bcdade8c6dbb3597fd8bb",
+      "crlf_count": 25,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "sources/build_torch_extension.py",
+      "bytes": 2486,
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "lf_bytes": 2486,
+      "lf_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "sources/compare_reference.py",
+      "bytes": 21015,
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "lf_bytes": 21015,
+      "lf_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "sources/kernels.cuh",
+      "bytes": 6024,
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "lf_bytes": 6024,
+      "lf_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "sources/torch_binding_experiment.cu",
+      "bytes": 5344,
+      "sha256": "b4d468ecd3e8f67bbaadb66f2efe542e776becb10bb10c9b293b6bf5878d701b",
+      "lf_bytes": 5344,
+      "lf_sha256": "b4d468ecd3e8f67bbaadb66f2efe542e776becb10bb10c9b293b6bf5878d701b",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "sources/torch_binding_original.cu",
+      "bytes": 5104,
+      "sha256": "6264e1b04a2d98cb9a0a19fca2ca127953916ea5a885f8120699b7c1b22105fc",
+      "lf_bytes": 5104,
+      "lf_sha256": "6264e1b04a2d98cb9a0a19fca2ca127953916ea5a885f8120699b7c1b22105fc",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    }
+  ]
+}

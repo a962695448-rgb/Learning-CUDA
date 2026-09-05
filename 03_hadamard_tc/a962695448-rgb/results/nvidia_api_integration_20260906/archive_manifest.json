@@ -1,0 +1,458 @@
+{
+  "archive": "nvidia_api_integration_20260906",
+  "line_endings": "Raw captured text bytes are preserved using local .gitattributes ** -text. LF SHA is a separate content-comparison fingerprint, not a replacement for raw SHA.",
+  "compiled_binaries_included": false,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 89,
+      "sha256": "b7b5e7892511bc98a82a508ba4edfd28067c4d24e0c61599a7e95e336c61f57f",
+      "lf_bytes": 89,
+      "lf_sha256": "b7b5e7892511bc98a82a508ba4edfd28067c4d24e0c61599a7e95e336c61f57f",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "graph_measure.py",
+      "bytes": 3586,
+      "sha256": "ce4fe80b2ebf946c12921be58dda1cd8a9597716be1aba3a1a737b921f9d193d",
+      "lf_bytes": 3512,
+      "lf_sha256": "ab06cb36999def64e00cda738f2641e093596a21f74895f800b08d5b237b987c",
+      "crlf_count": 74,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "integration_runner.py",
+      "bytes": 8739,
+      "sha256": "d882c57f2a00b96dd7d63134d60ebaf77b7e74ec6849530aeb708bc9d025cc65",
+      "lf_bytes": 8739,
+      "lf_sha256": "d882c57f2a00b96dd7d63134d60ebaf77b7e74ec6849530aeb708bc9d025cc65",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/include/kernels.cuh",
+      "bytes": 6162,
+      "sha256": "cb662c045a346b6dbd71f04db8bd44e50c96e0c31bf822f805f04e45d9eea860",
+      "lf_bytes": 6024,
+      "lf_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "crlf_count": 138,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/include/reference.hpp",
+      "bytes": 3663,
+      "sha256": "7855bbc2402751cdc7dfee0dc529a4d24975b53b69e6f05623fec7ed809d19a8",
+      "lf_bytes": 3572,
+      "lf_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "crlf_count": 91,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/Makefile",
+      "bytes": 1016,
+      "sha256": "47ac2069f84e73e191967daa318d814ec3b74810f21c59d598bb382e7c1b494c",
+      "lf_bytes": 984,
+      "lf_sha256": "0b49603da398c685867234dd12f18c0403d19dce576690466684bf4086a1d825",
+      "crlf_count": 32,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/scripts/build_torch_extension.py",
+      "bytes": 2548,
+      "sha256": "e9b097e41df63dc87bc7c4b3b2ed4b3b021c58a74fdcdf1038cb23c5ba7862d4",
+      "lf_bytes": 2486,
+      "lf_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "crlf_count": 62,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/scripts/compare_reference.py",
+      "bytes": 21373,
+      "sha256": "c5a55bc0f5e2b566b5936570b3f973e22011b3f623c696908b3d57daa6b812b8",
+      "lf_bytes": 21015,
+      "lf_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "crlf_count": 358,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/scripts/run_validation.py",
+      "bytes": 3506,
+      "sha256": "7ba22a135df047a2efde46331031ad5630e126276562c67bbdfe8d8d12a9df42",
+      "lf_bytes": 3433,
+      "lf_sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "crlf_count": 73,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/scripts/verify_block_threads.py",
+      "bytes": 6903,
+      "sha256": "3f5df6bc935b8ed310d159c1df7868e699c66eaa74b7ea48edb40bc99523ba64",
+      "lf_bytes": 6903,
+      "lf_sha256": "3f5df6bc935b8ed310d159c1df7868e699c66eaa74b7ea48edb40bc99523ba64",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/src/main.cu",
+      "bytes": 29945,
+      "sha256": "5d5aec80f9b9f0ac6b518bcee9fc2c7feea660ae7d422d9c73ead6525335097b",
+      "lf_bytes": 29429,
+      "lf_sha256": "26deccf5154314b88e4e4cd8fbc2526f09070e1f3d78f04d088721e14b1016f7",
+      "crlf_count": 516,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/src/torch_binding.cu",
+      "bytes": 5752,
+      "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "lf_bytes": 5752,
+      "lf_sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "project/tests/cpu_reference_test.cpp",
+      "bytes": 1512,
+      "sha256": "34786980a34e254261ac4fec93982d46500acac6801c145b866e15af637c09ef",
+      "lf_bytes": 1478,
+      "lf_sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "crlf_count": 34,
+      "lone_cr_count": 0,
+      "kind": "source_snapshot"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5103,
+      "sha256": "328640e29c5868d30a990ea02d29431d088848ef5e3cfa34fe513d630f930ed0",
+      "lf_bytes": 5103,
+      "lf_sha256": "328640e29c5868d30a990ea02d29431d088848ef5e3cfa34fe513d630f930ed0",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "results/build_cli_cpu.log",
+      "bytes": 329,
+      "sha256": "ddb4c0e364c4aabd573f7efd5015d78720215d17d7d3430b7174a5b2dbd9c9ad",
+      "lf_bytes": 329,
+      "lf_sha256": "ddb4c0e364c4aabd573f7efd5015d78720215d17d7d3430b7174a5b2dbd9c9ad",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/build_ninja.txt",
+      "bytes": 2719,
+      "sha256": "dbe49716610ed320e26ee45c73f676378f551b73f76bbe66e39081ade9262cc2",
+      "lf_bytes": 2719,
+      "lf_sha256": "dbe49716610ed320e26ee45c73f676378f551b73f76bbe66e39081ade9262cc2",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/cli_build_config.txt",
+      "bytes": 67,
+      "sha256": "2cd0f2c925ba399df68799c881a41b48fa4725ad6005865f8d8127f642930e60",
+      "lf_bytes": 67,
+      "lf_sha256": "2cd0f2c925ba399df68799c881a41b48fa4725ad6005865f8d8127f642930e60",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/controller.log",
+      "bytes": 1645,
+      "sha256": "0cfeda994e25c5005e11c0c4de1555343f32e2cc494fb817fb1b3ce0a267a232",
+      "lf_bytes": 1645,
+      "lf_sha256": "0cfeda994e25c5005e11c0c4de1555343f32e2cc494fb817fb1b3ce0a267a232",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/default_matrix_and_existing_cli.log",
+      "bytes": 466,
+      "sha256": "a5eb9ffeed574e61cea80a11234037995be36d0339b3fac83e30533e10985598",
+      "lf_bytes": 466,
+      "lf_sha256": "a5eb9ffeed574e61cea80a11234037995be36d0339b3fac83e30533e10985598",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/execution_metadata.json",
+      "bytes": 422,
+      "sha256": "56300963aca7c6bcc81774388526af7391c6c90560616fc588868cc647114616",
+      "lf_bytes": 422,
+      "lf_sha256": "56300963aca7c6bcc81774388526af7391c6c90560616fc588868cc647114616",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/explicit256_matrix.log",
+      "bytes": 730,
+      "sha256": "6108aa30294ded69a7fec84853912f95e47631bf72bc379166359466bb98f8f1",
+      "lf_bytes": 730,
+      "lf_sha256": "6108aa30294ded69a7fec84853912f95e47631bf72bc379166359466bb98f8f1",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/integration_summary.json",
+      "bytes": 29560,
+      "sha256": "6a9f825321756517d0b09d871b63abe1225163249a12e96f9c51d112a9d69901",
+      "lf_bytes": 29560,
+      "lf_sha256": "6a9f825321756517d0b09d871b63abe1225163249a12e96f9c51d112a9d69901",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_0.log",
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "lf_bytes": 88,
+      "lf_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_1.log",
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "lf_bytes": 73,
+      "lf_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_2.log",
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "lf_bytes": 73,
+      "lf_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_3.log",
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "lf_bytes": 73,
+      "lf_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_4.log",
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "lf_bytes": 73,
+      "lf_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_5.log",
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "lf_bytes": 73,
+      "lf_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_6.log",
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "lf_bytes": 88,
+      "lf_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_7.log",
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "lf_bytes": 88,
+      "lf_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_8.log",
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "lf_bytes": 88,
+      "lf_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/invalid_threads_9.log",
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "lf_bytes": 73,
+      "lf_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/legacy_header.csv",
+      "bytes": 29,
+      "sha256": "c64d5774a7211396f023cf4c180485c6ce2c860f4a9c5c306ba5d0c91ae4bc43",
+      "lf_bytes": 29,
+      "lf_sha256": "c64d5774a7211396f023cf4c180485c6ce2c860f4a9c5c306ba5d0c91ae4bc43",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/missing_threads_value.log",
+      "bytes": 72,
+      "sha256": "98cdab73c60deac586c3ee08716825b6a338a769950bede714d1f0779bd92895",
+      "lf_bytes": 72,
+      "lf_sha256": "98cdab73c60deac586c3ee08716825b6a338a769950bede714d1f0779bd92895",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/pytorch_1800.json",
+      "bytes": 946506,
+      "sha256": "721295f085f8e2289bd25d5df020df38bce8cb262fbed23cbf3f5275aed04158",
+      "lf_bytes": 946506,
+      "lf_sha256": "721295f085f8e2289bd25d5df020df38bce8cb262fbed23cbf3f5275aed04158",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/pytorch_1800_and_compatibility.log",
+      "bytes": 2919,
+      "sha256": "364b50c4b5bc6d6d1afad383396947cdd3761104ee12c0c550af61bf60f82b75",
+      "lf_bytes": 2919,
+      "lf_sha256": "364b50c4b5bc6d6d1afad383396947cdd3761104ee12c0c550af61bf60f82b75",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/reject_legacy_csv_append.log",
+      "bytes": 108,
+      "sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6",
+      "lf_bytes": 108,
+      "lf_sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/transfer_manifest.json",
+      "bytes": 3868,
+      "sha256": "3d375b4bb6ddf846a7e98903eeea375971a849de1913a4b1fc45037971f440ad",
+      "lf_bytes": 3754,
+      "lf_sha256": "854be8e37424eeb5e4fd733d5858e472b750db0e42ed223040cb9237b7677a31",
+      "crlf_count": 114,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "results/units_threads128.csv",
+      "bytes": 1279,
+      "sha256": "889d891b86438198535d45980710eccc4ef6ebb845100e751dc80096b40fc45f",
+      "lf_bytes": 1279,
+      "lf_sha256": "889d891b86438198535d45980710eccc4ef6ebb845100e751dc80096b40fc45f",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/units_threads128.log",
+      "bytes": 1048,
+      "sha256": "b7789fe6f6679aaf6c0e3955be7a6f81497e7d8fafe185b0f85b76179d8f2e8f",
+      "lf_bytes": 1048,
+      "lf_sha256": "b7789fe6f6679aaf6c0e3955be7a6f81497e7d8fafe185b0f85b76179d8f2e8f",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/units_threads256.csv",
+      "bytes": 1280,
+      "sha256": "41b5e523477ad785777805eb20de01be4616858a10cea9bf6a8194b0a1e48f16",
+      "lf_bytes": 1280,
+      "lf_sha256": "41b5e523477ad785777805eb20de01be4616858a10cea9bf6a8194b0a1e48f16",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/units_threads256.log",
+      "bytes": 1048,
+      "sha256": "7763bad32ce3f1bbe41c7fdb8456d0caa64a408067e4219eecbc0dc3b0dff613",
+      "lf_bytes": 1048,
+      "lf_sha256": "7763bad32ce3f1bbe41c7fdb8456d0caa64a408067e4219eecbc0dc3b0dff613",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "results/validation_integration_default.log",
+      "bytes": 4662,
+      "sha256": "3197da02b4d6a456e762ad4b87905769178f6044be06e20e8e7f127533fa0fe0",
+      "lf_bytes": 4662,
+      "lf_sha256": "3197da02b4d6a456e762ad4b87905769178f6044be06e20e8e7f127533fa0fe0",
+      "crlf_count": 0,
+      "lone_cr_count": 0,
+      "kind": "captured_raw"
+    },
+    {
+      "path": "source_equivalence_main_lf.json",
+      "bytes": 8944,
+      "sha256": "6ca826c0986bb52e8bb799fef3c9dd8cea1a6cc1dddf241ade6be249eecc8a14",
+      "lf_bytes": 8753,
+      "lf_sha256": "ed46c2a2e07c9ea3b7c66ce16e0f462ced3f95b837b0942ca0688ba1a9a87874",
+      "crlf_count": 191,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    },
+    {
+      "path": "source_manifest.json",
+      "bytes": 1928,
+      "sha256": "99dc925fab892ab2bc57d2008c69ea098ecbaaed6e4c6b11399e48209bba9a0a",
+      "lf_bytes": 1875,
+      "lf_sha256": "9abb07eb565650f2c32f7ecfd937e1eb28c27cafa2e9d0902ab5c28bef07ec28",
+      "crlf_count": 53,
+      "lone_cr_count": 0,
+      "kind": "derived_or_documentation"
+    }
+  ],
+  "canonical_source_commit": "24849f61ef06350f4e8bcd224ef93d97622c9744"
+}

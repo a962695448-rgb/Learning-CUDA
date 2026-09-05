@@ -1,0 +1,1030 @@
+{
+  "status": "PASS",
+  "base_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+  "started_utc": "2026-09-05T16:07:43Z",
+  "before": {
+    "gpu": {
+      "exit": 0,
+      "stdout": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA GeForce RTX 4090, 570.124.06, 0 %, 456 MiB, 30, 210 MHz, 20.28 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "stderr": ""
+    }
+  },
+  "stages": [
+    {
+      "label": "build_cli_cpu",
+      "args": [
+        "make",
+        "-j1",
+        "CUDA_HOME=/usr/local/cuda-12.8",
+        "ARCH=89",
+        "all",
+        "cpu-test"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 8.577884808182716,
+      "log_sha256": "ddb4c0e364c4aabd573f7efd5015d78720215d17d7d3430b7174a5b2dbd9c9ad"
+    },
+    {
+      "label": "default_matrix_and_existing_cli",
+      "args": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "scripts/run_validation.py",
+        "--label",
+        "integration_default"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 1.4404961168766022,
+      "log_sha256": "a5eb9ffeed574e61cea80a11234037995be36d0339b3fac83e30533e10985598"
+    },
+    {
+      "label": "explicit256_matrix",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "256"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 1.3087457567453384,
+      "log_sha256": "6108aa30294ded69a7fec84853912f95e47631bf72bc379166359466bb98f8f1"
+    },
+    {
+      "label": "invalid_threads_0",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "0"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.004379704594612122,
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "label": "invalid_threads_1",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "32"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.003932207822799683,
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "label": "invalid_threads_2",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "64"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.003893151879310608,
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "label": "invalid_threads_3",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "127"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.0030583441257476807,
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "label": "invalid_threads_4",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "129"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.0016418993473052979,
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "label": "invalid_threads_5",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "512"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.001659199595451355,
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "label": "invalid_threads_6",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "-1"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.003935173153877258,
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "label": "invalid_threads_7",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "128.5"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.005194365978240967,
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "label": "invalid_threads_8",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "x"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.003347739577293396,
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "label": "invalid_threads_9",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "2147483648"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.0039186179637908936,
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "label": "missing_threads_value",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--block-threads"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_seconds": 0.0035683661699295044,
+      "log_sha256": "98cdab73c60deac586c3ee08716825b6a338a769950bede714d1f0779bd92895"
+    },
+    {
+      "label": "units_threads128",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "64",
+        "--block-threads",
+        "128",
+        "--repetitions",
+        "5",
+        "--warmup",
+        "1",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/results/units_threads128.csv"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.09190544486045837,
+      "log_sha256": "b7789fe6f6679aaf6c0e3955be7a6f81497e7d8fafe185b0f85b76179d8f2e8f"
+    },
+    {
+      "label": "units_threads256",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "64",
+        "--block-threads",
+        "256",
+        "--repetitions",
+        "5",
+        "--warmup",
+        "1",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/results/units_threads256.csv"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.08009251952171326,
+      "log_sha256": "7763bad32ce3f1bbe41c7fdb8456d0caa64a408067e4219eecbc0dc3b0dff613"
+    },
+    {
+      "label": "reject_legacy_csv_append",
+      "args": [
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/project/build/hadamard",
+        "--benchmark",
+        "--dim",
+        "1",
+        "--batch",
+        "1",
+        "--seq",
+        "1",
+        "--heads",
+        "1",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/results/legacy_header.csv"
+      ],
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.08068518340587616,
+      "log_sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6"
+    },
+    {
+      "label": "pytorch_1800_and_compatibility",
+      "args": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "scripts/verify_block_threads.py",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform",
+        "--build-directory",
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/torch_cache/block_threads_check",
+        "--json",
+        "/data/infinitensor-2026/experiments/nvidia-api-integration-20260906-v1/results/pytorch_1800.json"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 48.733870670199394,
+      "log_sha256": "364b50c4b5bc6d6d1afad383396947cdd3761104ee12c0c550af61bf60f82b75"
+    }
+  ],
+  "graph_smoke": [
+    {
+      "mode": "transform",
+      "rows": 4096,
+      "dim": 16,
+      "dtype": "fp16",
+      "samples_us": {
+        "baseline128": [
+          1.7000000923871994,
+          1.69840008020401,
+          1.6968000680208206,
+          1.6968000680208206,
+          1.6976000741124153
+        ],
+        "candidate256": [
+          1.4568000100553036,
+          1.4551999978721142,
+          1.4543999917805195,
+          1.4543999917805195,
+          1.4543999917805195
+        ],
+        "dao": [
+          3.2655999064445496,
+          3.26480008661747,
+          3.2655999064445496,
+          3.26480008661747,
+          3.2655999064445496
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "baseline128": [
+          2.1760001182556152,
+          2.173952102661133,
+          2.1719040870666504,
+          2.1719040870666504,
+          2.1729280948638916
+        ],
+        "candidate256": [
+          1.8647040128707886,
+          1.8626559972763062,
+          1.861631989479065,
+          1.861631989479065,
+          1.861631989479065
+        ],
+        "dao": [
+          4.179967880249023,
+          4.178944110870361,
+          4.179967880249023,
+          4.178944110870361,
+          4.179967880249023
+        ]
+      },
+      "median_us": {
+        "baseline128": 1.6976000741124153,
+        "candidate256": 1.4543999917805195,
+        "dao": 3.2655999064445496
+      },
+      "baseline_over_candidate": 1.167216779226025,
+      "candidate_time_reduction_percent": 14.326111670267938,
+      "group_order": [
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ],
+        [
+          "dao",
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ]
+      ],
+      "captured_outputs_per_graph": 64,
+      "independent_output_buffers": true,
+      "groups": 5,
+      "replays_per_group": 20,
+      "api_warmup_calls": 25,
+      "graph_warmup_replays": 5,
+      "captured_outputs_bitwise_equal_eager_before_and_after": true,
+      "dao_over_candidate": 2.2453244808167976,
+      "dao_over_baseline": 1.9236567883351194,
+      "median_ms": {
+        "baseline128": 0.0016976000741124153,
+        "candidate256": 0.0014543999917805196,
+        "dao": 0.0032655999064445497
+      }
+    },
+    {
+      "mode": "transform",
+      "rows": 4096,
+      "dim": 64,
+      "dtype": "bf16",
+      "samples_us": {
+        "baseline128": [
+          1.738400012254715,
+          1.7359999939799309,
+          1.7359999939799309,
+          1.7359999939799309,
+          1.7359999939799309
+        ],
+        "candidate256": [
+          1.5799999237060547,
+          1.5807999297976494,
+          1.5799999237060547,
+          1.5807250514626503,
+          1.5807999297976494
+        ],
+        "dao": [
+          3.29120010137558,
+          3.2896000891923904,
+          3.29120010137558,
+          3.29039990901947,
+          3.29039990901947
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "baseline128": [
+          2.225152015686035,
+          2.2220799922943115,
+          2.2220799922943115,
+          2.2220799922943115,
+          2.2220799922943115
+        ],
+        "candidate256": [
+          2.02239990234375,
+          2.023423910140991,
+          2.02239990234375,
+          2.0233280658721924,
+          2.023423910140991
+        ],
+        "dao": [
+          4.212736129760742,
+          4.21068811416626,
+          4.212736129760742,
+          4.211711883544922,
+          4.211711883544922
+        ]
+      },
+      "median_us": {
+        "baseline128": 1.7359999939799309,
+        "candidate256": 1.5807250514626503,
+        "dao": 3.29039990901947
+      },
+      "baseline_over_candidate": 1.0982302028892401,
+      "candidate_time_reduction_percent": 8.94440916219702,
+      "group_order": [
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ],
+        [
+          "dao",
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ]
+      ],
+      "captured_outputs_per_graph": 64,
+      "independent_output_buffers": true,
+      "groups": 5,
+      "replays_per_group": 20,
+      "api_warmup_calls": 25,
+      "graph_warmup_replays": 5,
+      "captured_outputs_bitwise_equal_eager_before_and_after": true,
+      "dao_over_candidate": 2.081576366474898,
+      "dao_over_baseline": 1.8953916592337898,
+      "median_ms": {
+        "baseline128": 0.001735999993979931,
+        "candidate256": 0.0015807250514626504,
+        "dao": 0.00329039990901947
+      }
+    },
+    {
+      "mode": "transform",
+      "rows": 16384,
+      "dim": 16,
+      "dtype": "fp16",
+      "samples_us": {
+        "baseline128": [
+          3.2680001109838486,
+          3.2671499997377396,
+          3.2655999064445496,
+          3.2680001109838486,
+          3.2655999064445496
+        ],
+        "candidate256": [
+          2.4399999529123306,
+          2.439199946820736,
+          2.4383999407291412,
+          2.4375999346375465,
+          2.4399999529123306
+        ],
+        "dao": [
+          9.478399902582169,
+          9.476800262928009,
+          9.478399902582169,
+          9.477599710226059,
+          9.477599710226059
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "baseline128": [
+          4.183040142059326,
+          4.181951999664307,
+          4.179967880249023,
+          4.183040142059326,
+          4.179967880249023
+        ],
+        "candidate256": [
+          3.123199939727783,
+          3.122175931930542,
+          3.121151924133301,
+          3.1201279163360596,
+          3.123199939727783
+        ],
+        "dao": [
+          12.132351875305176,
+          12.130304336547852,
+          12.132351875305176,
+          12.131327629089355,
+          12.131327629089355
+        ]
+      },
+      "median_us": {
+        "baseline128": 3.2671499997377396,
+        "candidate256": 2.439199946820736,
+        "dao": 9.477599710226059
+      },
+      "baseline_over_candidate": 1.3394350897703804,
+      "candidate_time_reduction_percent": 25.34166025384401,
+      "group_order": [
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ],
+        [
+          "dao",
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ]
+      ],
+      "captured_outputs_per_graph": 64,
+      "independent_output_buffers": true,
+      "groups": 5,
+      "replays_per_group": 20,
+      "api_warmup_calls": 25,
+      "graph_warmup_replays": 5,
+      "captured_outputs_bitwise_equal_eager_before_and_after": true,
+      "dao_over_candidate": 3.8855362073040403,
+      "dao_over_baseline": 2.900876822608954,
+      "median_ms": {
+        "baseline128": 0.0032671499997377396,
+        "candidate256": 0.002439199946820736,
+        "dao": 0.009477599710226058
+      }
+    },
+    {
+      "mode": "transform",
+      "rows": 16384,
+      "dim": 64,
+      "dtype": "bf16",
+      "samples_us": {
+        "baseline128": [
+          3.0991999432444572,
+          3.0959999188780785,
+          3.075125068426132,
+          3.05589996278286,
+          3.055199980735779
+        ],
+        "candidate256": [
+          2.7672000229358673,
+          2.7687249705195427,
+          2.7456000447273254,
+          2.7432000264525414,
+          2.7408000081777573
+        ],
+        "dao": [
+          8.801600337028503,
+          8.799975365400314,
+          8.799199759960175,
+          8.67839977145195,
+          8.673600107431412
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "baseline128": [
+          3.9669759273529053,
+          3.9628798961639404,
+          3.936160087585449,
+          3.9115519523620605,
+          3.910655975341797
+        ],
+        "candidate256": [
+          3.54201602935791,
+          3.5439679622650146,
+          3.5143680572509766,
+          3.511296033859253,
+          3.5082240104675293
+        ],
+        "dao": [
+          11.266048431396484,
+          11.263968467712402,
+          11.262975692749023,
+          11.108351707458496,
+          11.102208137512207
+        ]
+      },
+      "median_us": {
+        "baseline128": 3.075125068426132,
+        "candidate256": 2.7456000447273254,
+        "dao": 8.799199759960175
+      },
+      "baseline_over_candidate": 1.1200193102894318,
+      "candidate_time_reduction_percent": 10.715825092195674,
+      "group_order": [
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ],
+        [
+          "dao",
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "baseline128",
+          "candidate256",
+          "dao"
+        ],
+        [
+          "candidate256",
+          "dao",
+          "baseline128"
+        ]
+      ],
+      "captured_outputs_per_graph": 64,
+      "independent_output_buffers": true,
+      "groups": 5,
+      "replays_per_group": 20,
+      "api_warmup_calls": 25,
+      "graph_warmup_replays": 5,
+      "captured_outputs_bitwise_equal_eager_before_and_after": true,
+      "dao_over_candidate": 3.204836690201195,
+      "dao_over_baseline": 2.861411995988722,
+      "median_ms": {
+        "baseline128": 0.003075125068426132,
+        "candidate256": 0.0027456000447273255,
+        "dao": 0.008799199759960175
+      }
+    },
+    {
+      "mode": "fused_int4",
+      "rows": 4096,
+      "dim": 16,
+      "dtype": "fp16",
+      "samples_us": {
+        "baseline128": [
+          1.8160000443458557,
+          1.8136000260710716,
+          1.8144000321626663,
+          1.814349927008152,
+          1.815200038254261
+        ],
+        "candidate256": [
+          1.655150018632412,
+          1.6543999314308167,
+          1.6543999314308167,
+          1.6551999375224113,
+          1.6543999314308167
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "baseline128": [
+          2.3244800567626953,
+          2.3214080333709717,
+          2.322432041168213,
+          2.3223679065704346,
+          2.323456048965454
+        ],
+        "candidate256": [
+          2.1185920238494873,
+          2.1176319122314453,
+          2.1176319122314453,
+          2.1186559200286865,
+          2.1176319122314453
+        ]
+      },
+      "median_us": {
+        "baseline128": 1.8144000321626663,
+        "candidate256": 1.6543999314308167
+      },
+      "baseline_over_candidate": 1.0967118637350721,
+      "candidate_time_reduction_percent": 8.818347547157956,
+      "group_order": [
+        [
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "candidate256",
+          "baseline128"
+        ],
+        [
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "candidate256",
+          "baseline128"
+        ],
+        [
+          "baseline128",
+          "candidate256"
+        ]
+      ],
+      "captured_outputs_per_graph": 64,
+      "independent_output_buffers": true,
+      "groups": 5,
+      "replays_per_group": 20,
+      "api_warmup_calls": 25,
+      "graph_warmup_replays": 5,
+      "captured_outputs_bitwise_equal_eager_before_and_after": true,
+      "median_ms": {
+        "baseline128": 0.0018144000321626663,
+        "candidate256": 0.0016543999314308166
+      }
+    },
+    {
+      "mode": "fused_int4",
+      "rows": 4096,
+      "dim": 64,
+      "dtype": "bf16",
+      "samples_us": {
+        "baseline128": [
+          1.8319999799132347,
+          1.83119997382164,
+          1.8383249640464783,
+          1.83119997382164,
+          1.834375038743019
+        ],
+        "candidate256": [
+          1.7023999243974686,
+          1.7015999183058739,
+          1.7015999183058739,
+          1.7007999122142792,
+          1.703999936580658
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "baseline128": [
+          2.3449599742889404,
+          2.343935966491699,
+          2.353055953979492,
+          2.343935966491699,
+          2.3480000495910645
+        ],
+        "candidate256": [
+          2.1790719032287598,
+          2.1780478954315186,
+          2.1780478954315186,
+          2.1770238876342773,
+          2.181119918823242
+        ]
+      },
+      "median_us": {
+        "baseline128": 1.8319999799132347,
+        "candidate256": 1.7015999183058739
+      },
+      "baseline_over_candidate": 1.0766337963492547,
+      "candidate_time_reduction_percent": 7.117907371021737,
+      "group_order": [
+        [
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "candidate256",
+          "baseline128"
+        ],
+        [
+          "baseline128",
+          "candidate256"
+        ],
+        [
+          "candidate256",
+          "baseline128"
+        ],
+        [
+          "baseline128",
+          "candidate256"
+        ]
+      ],
+      "captured_outputs_per_graph": 64,
+      "independent_output_buffers": true,
+      "groups": 5,
+      "replays_per_group": 20,
+      "api_warmup_calls": 25,
+      "graph_warmup_replays": 5,
+      "captured_outputs_bitwise_equal_eager_before_and_after": true,
+      "median_ms": {
+        "baseline128": 0.0018319999799132347,
+        "candidate256": 0.0017015999183058739
+      }
+    }
+  ],
+  "source_manifest": {
+    "base_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+    "files": {
+      "project/Makefile": {
+        "bytes": 1016,
+        "sha256": "47ac2069f84e73e191967daa318d814ec3b74810f21c59d598bb382e7c1b494c"
+      },
+      "project/include/kernels.cuh": {
+        "bytes": 6162,
+        "sha256": "cb662c045a346b6dbd71f04db8bd44e50c96e0c31bf822f805f04e45d9eea860"
+      },
+      "project/include/reference.hpp": {
+        "bytes": 3663,
+        "sha256": "7855bbc2402751cdc7dfee0dc529a4d24975b53b69e6f05623fec7ed809d19a8"
+      },
+      "project/src/main.cu": {
+        "bytes": 29945,
+        "sha256": "5d5aec80f9b9f0ac6b518bcee9fc2c7feea660ae7d422d9c73ead6525335097b"
+      },
+      "project/src/torch_binding.cu": {
+        "bytes": 5752,
+        "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec"
+      },
+      "project/tests/cpu_reference_test.cpp": {
+        "bytes": 1512,
+        "sha256": "34786980a34e254261ac4fec93982d46500acac6801c145b866e15af637c09ef"
+      },
+      "project/scripts/run_validation.py": {
+        "bytes": 3506,
+        "sha256": "7ba22a135df047a2efde46331031ad5630e126276562c67bbdfe8d8d12a9df42"
+      },
+      "project/scripts/compare_reference.py": {
+        "bytes": 21373,
+        "sha256": "c5a55bc0f5e2b566b5936570b3f973e22011b3f623c696908b3d57daa6b812b8"
+      },
+      "project/scripts/build_torch_extension.py": {
+        "bytes": 2548,
+        "sha256": "e9b097e41df63dc87bc7c4b3b2ed4b3b021c58a74fdcdf1038cb23c5ba7862d4"
+      },
+      "project/scripts/verify_block_threads.py": {
+        "bytes": 6903,
+        "sha256": "3f5df6bc935b8ed310d159c1df7868e699c66eaa74b7ea48edb40bc99523ba64"
+      },
+      "integration_runner.py": {
+        "bytes": 8739,
+        "sha256": "d882c57f2a00b96dd7d63134d60ebaf77b7e74ec6849530aeb708bc9d025cc65"
+      },
+      "graph_measure.py": {
+        "bytes": 3586,
+        "sha256": "ce4fe80b2ebf946c12921be58dda1cd8a9597716be1aba3a1a737b921f9d193d"
+      }
+    }
+  },
+  "cli_binary_sha256": "e34ed01a8b436abbb039884263a4eb97702939bda08ef77ef6445f2a09268163",
+  "functional_summary": {
+    "cli_matrix_distinct_cases": 1876,
+    "cli_thread_modes": [
+      128,
+      256
+    ],
+    "dao_matrix_distinct_cases": 1800,
+    "default_128_256_bitwise_exact": true,
+    "thread_invalid_cli_cases": 11,
+    "existing_invalid_cli_cases": 15,
+    "thread_invalid_pytorch_cases": 27,
+    "non_default_stream": "PASS",
+    "unit_conversion_and_csv_thread_scope": "PASS",
+    "old_csv_unchanged_on_rejection": true
+  },
+  "extension_binary_sha256": "b8243f890b2285585e523fab9eaee4bf35faf4452ad6351ac60bbc76d3d8f57d",
+  "after": {
+    "gpu": {
+      "exit": 0,
+      "stdout": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA GeForce RTX 4090, 570.124.06, 2 %, 950 MiB, 32, 2760 MHz, 78.29 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n940454, [Not Found], 490 MiB\n",
+      "stderr": ""
+    }
+  },
+  "finished_utc": "2026-09-05T16:08:47Z",
+  "artifacts": {
+    "invalid_threads_8.log": {
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    "invalid_threads_4.log": {
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    "default_matrix_and_existing_cli.log": {
+      "bytes": 466,
+      "sha256": "a5eb9ffeed574e61cea80a11234037995be36d0339b3fac83e30533e10985598"
+    },
+    "units_threads256.csv": {
+      "bytes": 1280,
+      "sha256": "41b5e523477ad785777805eb20de01be4616858a10cea9bf6a8194b0a1e48f16"
+    },
+    "reject_legacy_csv_append.log": {
+      "bytes": 108,
+      "sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6"
+    },
+    "pytorch_1800_and_compatibility.log": {
+      "bytes": 2919,
+      "sha256": "364b50c4b5bc6d6d1afad383396947cdd3761104ee12c0c550af61bf60f82b75"
+    },
+    "invalid_threads_0.log": {
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    "invalid_threads_1.log": {
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    "invalid_threads_2.log": {
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    "explicit256_matrix.log": {
+      "bytes": 730,
+      "sha256": "6108aa30294ded69a7fec84853912f95e47631bf72bc379166359466bb98f8f1"
+    },
+    "invalid_threads_3.log": {
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    "invalid_threads_5.log": {
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    "missing_threads_value.log": {
+      "bytes": 72,
+      "sha256": "98cdab73c60deac586c3ee08716825b6a338a769950bede714d1f0779bd92895"
+    },
+    "invalid_threads_9.log": {
+      "bytes": 73,
+      "sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    "units_threads128.csv": {
+      "bytes": 1279,
+      "sha256": "889d891b86438198535d45980710eccc4ef6ebb845100e751dc80096b40fc45f"
+    },
+    "legacy_header.csv": {
+      "bytes": 29,
+      "sha256": "c64d5774a7211396f023cf4c180485c6ce2c860f4a9c5c306ba5d0c91ae4bc43"
+    },
+    "pytorch_1800.json": {
+      "bytes": 946506,
+      "sha256": "721295f085f8e2289bd25d5df020df38bce8cb262fbed23cbf3f5275aed04158"
+    },
+    "invalid_threads_7.log": {
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    "units_threads128.log": {
+      "bytes": 1048,
+      "sha256": "b7789fe6f6679aaf6c0e3955be7a6f81497e7d8fafe185b0f85b76179d8f2e8f"
+    },
+    "validation_integration_default.log": {
+      "bytes": 4662,
+      "sha256": "3197da02b4d6a456e762ad4b87905769178f6044be06e20e8e7f127533fa0fe0"
+    },
+    "build_cli_cpu.log": {
+      "bytes": 329,
+      "sha256": "ddb4c0e364c4aabd573f7efd5015d78720215d17d7d3430b7174a5b2dbd9c9ad"
+    },
+    "units_threads256.log": {
+      "bytes": 1048,
+      "sha256": "7763bad32ce3f1bbe41c7fdb8456d0caa64a408067e4219eecbc0dc3b0dff613"
+    },
+    "invalid_threads_6.log": {
+      "bytes": 88,
+      "sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    }
+  }
+}

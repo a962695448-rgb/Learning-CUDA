@@ -1,0 +1,61 @@
+{
+  "jobs": {
+    "had_promo256_build_v1": {
+      "pid": 45829,
+      "exit": 0,
+      "args": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/run_experiment.py",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/results/build.json",
+        "--build-only"
+      ]
+    },
+    "had_promo256_run1_v1": {
+      "pid": 45965,
+      "exit": 0,
+      "args": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/run_experiment.py",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/results/run1.json",
+        "--run-index",
+        "1"
+      ]
+    },
+    "had_promo256_run2_v1": {
+      "pid": 46099,
+      "exit": 0,
+      "args": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/run_experiment.py",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/results/run2.json",
+        "--run-index",
+        "2"
+      ]
+    },
+    "had_promo256_run3_v1": {
+      "pid": 46251,
+      "exit": 0,
+      "args": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/run_experiment.py",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-thread-promotion-20260905-v1/results/run3.json",
+        "--run-index",
+        "3"
+      ]
+    }
+  },
+  "final_gpu_status": "0 %, 456 MiB, 30, 210 MHz, 20.09 W",
+  "any_running_jobs": []
+}
