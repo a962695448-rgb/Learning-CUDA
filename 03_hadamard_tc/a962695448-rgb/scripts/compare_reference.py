@@ -161,8 +161,9 @@ def run(args, report):
     if device.type != "cuda":
         raise ValueError("--device must name a CUDA device")
     torch.cuda.set_device(device)
-    if args.reference_repo:
-        sys.path.insert(0, str(Path(args.reference_repo).resolve()))
+    # The checkout verifies provenance; imports must resolve to the installed
+    # package. Prepending the source tree can shadow its PEP 610 metadata with
+    # setup.py's source egg-info and incorrectly reject a verified local build.
     import fast_hadamard_transform as reference_package
     import fast_hadamard_transform_cuda as reference_backend
     reference = reference_package.hadamard_transform
