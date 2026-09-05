@@ -84,11 +84,14 @@ def main():
     parser.add_argument("--no-benchmark", action="store_true")
     parser.add_argument("--warp32", action="store_true", help="显式启用真实 warp32 壁仞设备的 SUPA 路径")
     parser.add_argument("--balanced-pack", action="store_true", help="Warp32 INT4 打包消融候选；须同时使用 --warp32，变换路径不变")
+    parser.add_argument("--small-batch-warp", action="store_true", help="小批量 Warp32 发射消融候选；须同时使用 --warp32，仅影响 rows<=64")
     parser.add_argument("--repeats", type=int, default=100)
     parser.add_argument("--groups", type=int, default=5)
     args = parser.parse_args()
     if args.balanced_pack and not args.warp32:
         parser.error("--balanced-pack requires --warp32")
+    if args.small_batch_warp and not args.warp32:
+        parser.error("--small-batch-warp requires --warp32")
     if args.repeats < 1 or args.repeats > 10000 or args.groups < 1 or args.groups > 10000:
         parser.error("repeats/groups must be between 1 and 10000")
     sdk = args.sdk_root.resolve()
@@ -115,6 +118,10 @@ def main():
               "quick": args.quick, "warp32_enabled": args.warp32,
               "balanced_pack_enabled": args.balanced_pack,
               "balanced_pack_scope": ["warp32_split", "warp32_fused"] if args.balanced_pack else [],
+              "small_batch_warp_enabled": args.small_batch_warp,
+              "small_batch_warp_scope": {"methods": ["warp32_transform", "warp32_split", "warp32_fused"],
+                                          "max_rows": 64, "rows_per_block": 1, "threads_per_block": 32}
+                                         if args.small_batch_warp else {},
               "sdk_environment": {key: runtime_env[key] for key in ("SUPA_PATH", "BIREN_HOME")},
               "source_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sources},
               "git_head": capture(["git", "rev-parse", "HEAD"]),
@@ -130,6 +137,8 @@ def main():
             command.append("-DHADAMARD_BIREN_WARP32")
         if args.balanced_pack:
             command.append("-DHADAMARD_BIREN_BALANCED_PACK")
+        if args.small_batch_warp:
+            command.append("-DHADAMARD_BIREN_SMALL_BATCH")
         command += [PLATFORM / "hadamard_api.su", PLATFORM / "validate_and_benchmark.su",
                     "-L" + str(supa / "lib"), "-lsupa-runtime", "-Wl,-rpath," + str(supa / "lib"), "-o", binary]
         run(command, destination / "build.log", report["stages"], env=runtime_env)
@@ -156,6 +165,8 @@ def main():
             raise RuntimeError("validation JSON does not match requested Warp32 build")
         if report["validation"]["balanced_pack_enabled"] != args.balanced_pack:
             raise RuntimeError("validation JSON does not match requested balanced-pack build")
+        if report["validation"]["small_batch_warp_enabled"] != args.small_batch_warp:
+            raise RuntimeError("validation JSON does not match requested small-batch-warp build")
         if not args.no_benchmark:
             command = [binary, "--benchmark", "--csv", destination / "benchmark.csv",
                        "--groups", str(args.groups), "--repeats", str(args.repeats)]

@@ -169,11 +169,12 @@ __device__ int warp32_quantized_nibble(float value, float scale) {
     return q & 15;
 }
 
-template<class T, bool Transform, bool Quantize, int N>
+template<class T, bool Transform, bool Quantize, int N, int RowsPerBlock = 4>
 __global__ void warp32_kernel(const T* input, T* output, std::uint8_t* packed,
                               float* scales, std::size_t rows, float scale) {
+    static_assert(RowsPerBlock == 1 || RowsPerBlock == 4, "supported row counts per block are 1 and 4");
     constexpr int width = 32;
-    constexpr int rows_per_block = 4;
+    constexpr int rows_per_block = RowsPerBlock;
     constexpr int registers = N > width ? N / width : 1;
     const int lane = threadIdx.x % width;
     const int warp = threadIdx.x / width;
@@ -262,18 +263,41 @@ __global__ void warp32_kernel(const T* input, T* output, std::uint8_t* packed,
     }
 }
 
+template<class T, bool Transform, bool Quantize, int N>
+suError_t enqueue_warp32_shape(unsigned int blocks, int rows_per_block,
+                              suStream_t stream, void** arguments) {
+    #if defined(HADAMARD_BIREN_SMALL_BATCH)
+    if (rows_per_block == 1) {
+        return suLaunchKernelSingleDevice(
+            reinterpret_cast<const void*>(warp32_kernel<T, Transform, Quantize, N, 1>),
+            dim3(blocks), dim3(32), 0, stream, arguments);
+    }
+    #else
+    (void)rows_per_block;
+    #endif
+    return suLaunchKernelSingleDevice(
+        reinterpret_cast<const void*>(warp32_kernel<T, Transform, Quantize, N, 4>),
+        dim3(blocks), dim3(128), 0, stream, arguments);
+}
+
 template<class T, bool Transform, bool Quantize>
 suError_t launch_warp32(const T* input, T* output, std::uint8_t* packed, float* scales,
                           std::size_t rows, int n, float scale, suStream_t stream) {
-    // rows <= SIZE_MAX/4 已由 launch 校验，因此 (rows+3)/4 不会溢出。
-    const std::size_t requested = (rows + 3) / 4;
+    // 待验证的小批量候选：当前 106M 报告 64 个 SM，增加可调度 block 数。
+    // 阈值按设备规模提出，不针对特定测量行数；仍需在 32/63/64/65 等边界外测。
+    #if defined(HADAMARD_BIREN_SMALL_BATCH)
+    const int rows_per_block = rows <= 64 ? 1 : 4;
+    #else
+    const int rows_per_block = 4;
+    #endif
+    // rows <= SIZE_MAX/4 已由 launch 校验；加数最多 3，不会溢出。
+    const std::size_t requested = (rows + rows_per_block - 1) / rows_per_block;
     const unsigned int blocks = static_cast<unsigned int>(requested < 65535 ? requested : 65535);
     void* arguments[] = {&input, &output, &packed, &scales, &rows, &scale};
     suError_t status = suSuccess;
     #define LAUNCH_WARP32(N) case N: \
-        status = suLaunchKernelSingleDevice( \
-            reinterpret_cast<const void*>(warp32_kernel<T, Transform, Quantize, N>), \
-            dim3(blocks), dim3(128), 0, stream, arguments); \
+        status = enqueue_warp32_shape<T, Transform, Quantize, N>( \
+            blocks, rows_per_block, stream, arguments); \
         break
     switch (n) {
         LAUNCH_WARP32(1);
