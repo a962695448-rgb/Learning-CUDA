@@ -235,6 +235,18 @@ __global__ void warp32_kernel(const T* input, T* output, std::uint8_t* packed,
             if (lane == 0) scales[row] = row_scale;
             #pragma unroll
             for (int r = 0; r < registers; ++r) {
+                #if defined(HADAMARD_BIREN_BALANCED_PACK)
+                // 消融候选：每个 lane 仅量化自己的元素，再交换整数 nibble。
+                // 完整 warp 在条件写入之前参与 shuffle，不依赖 SDK 的 mask 参数筛选。
+                const int nibble = warp32_quantized_nibble(values[r], row_scale);
+                const int peer = __shfl_xor_sync(0xffffffffu, nibble, 1, width);
+                const int i = lane + r * width;
+                if ((lane & 1) == 0 && i < N) {
+                    const int high = i + 1 < N ? peer : 0;
+                    packed[row * ((N + 1) / 2) + i / 2]
+                        = static_cast<std::uint8_t>(nibble | (high << 4));
+                }
+                #else
                 // shuffle 在分支之前：奇数 lane 同样必须提供其相邻元素。
                 const float peer = __shfl_xor_sync(0xffffffffu, values[r], 1, width);
                 const int i = lane + r * width;
@@ -244,6 +256,7 @@ __global__ void warp32_kernel(const T* input, T* output, std::uint8_t* packed,
                     packed[row * ((N + 1) / 2) + i / 2]
                         = static_cast<std::uint8_t>(low | (high << 4));
                 }
+                #endif
             }
         }
     }

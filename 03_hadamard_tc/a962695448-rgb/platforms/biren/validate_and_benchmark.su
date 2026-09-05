@@ -537,6 +537,11 @@ int main(int argc, char** argv) {
 #else
                  << ",\"warp32_enabled\":false,\"methods\":[\"baseline\",\"optimized\"]"
 #endif
+#if defined(HADAMARD_BIREN_BALANCED_PACK) && defined(HADAMARD_BIREN_WARP32) && defined(__SUPACC__)
+                 << ",\"balanced_pack_enabled\":true"
+#else
+                 << ",\"balanced_pack_enabled\":false"
+#endif
                  << ",\"oracle\":\"all-element FP64 dense, rounded to output dtype\",\"fp16_tolerance_strict\":0.01,\"bf16_tolerance_strict\":0.05,"
                  << "\"warmup_not_counted\":true,\"dtypes\":{";
             bool comma = false;

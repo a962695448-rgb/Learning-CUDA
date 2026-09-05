@@ -168,7 +168,7 @@ def analyze(paths):
         "status": "ANALYSIS_COMPLETE", "correctness_status": "NOT_INFERRED_FROM_TIMING_CSV",
         "inputs": [{k: v for k, v in run.items() if k != "buckets"} for run in runs],
         "methodology": {
-            "metric": "kernel_us is CUDA-compatible event interval divided by repeats, then median across groups per run. Split methods include transform and quantization kernel launches.",
+            "metric": "kernel_us is the backend device event interval divided by repeats, then median across groups per run. The backend API is identified in the run manifest, not inferred from CSV. Split methods include transform and quantization kernel launches.",
             "excluded_from_interval": ["allocation", "H2D/D2H", "warmup", "validation"],
             "scope_limits": "Not host end-to-end or isolated single-kernel timing. Event interval may include device idle gaps between host launches; same seeded read-only input is reused, with warm-cache effects.",
             "logical_GBs": "Reported logical tensor-I/O estimate only; not measured physical memory bandwidth.",
