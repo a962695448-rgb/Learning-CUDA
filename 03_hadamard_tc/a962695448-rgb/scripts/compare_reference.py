@@ -147,10 +147,75 @@ def benchmark_pair(torch, ours, reference, values, scale, groups, repetitions, w
             finish.synchronize()
             samples[name].append(begin.elapsed_time(finish) * 1000 / repetitions)
     medians = {name: statistics.median(times) for name, times in samples.items()}
-    return {"samples_us": samples, "median_us": medians,
+    return {"method": "eager_api", "samples_us": samples, "median_us": medians,
             "dao_over_ours": medians["dao"] / medians["ours"],
             "groups": groups, "repetitions_per_group": repetitions, "warmup": warmup,
-            "scope": "CUDA-event interval around allocating PyTorch API calls; no H2D, D2H, build, or validation"}
+            "scope": "CUDA-event interval around allocating PyTorch API calls, including GPU idle gaps from host dispatch; no H2D, D2H, build, or validation"}
+
+
+def benchmark_graph_pair(torch, ours, reference, values, scale, groups, captured_calls,
+                         replays, warmup, graph_warmup):
+    """Measure captured GPU work with Python dispatch amortized over many calls."""
+    functions = {"ours": lambda: ours(values, scale), "dao": lambda: reference(values, scale)}
+    graphs, outputs, expected = {}, {}, {}
+    capture_stream = torch.cuda.Stream(device=values.device)
+    capture_stream.wait_stream(torch.cuda.current_stream(values.device))
+    with torch.cuda.stream(capture_stream):
+        for name, function in functions.items():
+            for _ in range(warmup):
+                function()
+            expected[name] = function()
+    capture_stream.synchronize()
+    for name, function in functions.items():
+        graph = torch.cuda.CUDAGraph()
+        # Retain every output for both implementations. Each captured call gets
+        # its own allocation, and replays reuse those fixed allocations. Separate
+        # private graph pools allow the alternating measurement order below.
+        with torch.cuda.graph(graph, stream=capture_stream):
+            outputs[name] = [function() for _ in range(captured_calls)]
+        graphs[name] = graph
+    torch.cuda.synchronize(values.device)
+    for graph in graphs.values():
+        # Always execute once before validating, even when warmup is disabled.
+        graph.replay()
+    torch.cuda.synchronize(values.device)
+    for name, tensors in outputs.items():
+        for index, output in enumerate(tensors):
+            if not torch.equal(output, expected[name]):
+                raise RuntimeError(f"CUDA graph output differs from eager output: {name}, call {index}")
+
+    for graph in graphs.values():
+        for _ in range(graph_warmup):
+            graph.replay()
+    torch.cuda.synchronize(values.device)
+
+    intervals = {name: [] for name in functions}
+    samples = {name: [] for name in functions}
+    orders = []
+    for group in range(groups):
+        order = ("ours", "dao") if group % 2 == 0 else ("dao", "ours")
+        orders.append(list(order))
+        for name in order:
+            begin, finish = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+            begin.record()
+            for _ in range(replays):
+                graphs[name].replay()
+            finish.record()
+            finish.synchronize()
+            elapsed_ms = begin.elapsed_time(finish)
+            intervals[name].append(elapsed_ms)
+            samples[name].append(elapsed_ms * 1000 / (replays * captured_calls))
+    medians = {name: statistics.median(times) for name, times in samples.items()}
+    return {"method": "cuda_graph", "samples_us": samples, "median_us": medians,
+            "raw_event_intervals_ms": intervals,
+            "dao_over_ours": medians["dao"] / medians["ours"],
+            "groups": groups, "captured_calls_per_graph": captured_calls,
+            "replays_per_group": replays, "calls_per_group": replays * captured_calls,
+            "api_warmup_calls": warmup, "graph_warmup_replays": graph_warmup,
+            "validation_replays": 1, "all_captured_outputs_equal_eager": True,
+            "group_order": orders,
+            "output_lifetime": "One output per captured call retained through measurement; separate private graph pools; fixed input and output addresses on replay",
+            "scope": "CUDA-event interval around graph replays divided by captured calls; includes captured GPU work and amortized replay scheduling, excludes per-call Python dispatch and allocation, capture, validation, H2D and D2H; not standalone kernel latency"}
 
 
 def run(args, report):
@@ -229,6 +294,7 @@ def run(args, report):
                 raise RuntimeError("device guard failed to preserve caller device/output device")
             report["multi_device_guard"] = "PASS"
         report["benchmarks"] = []
+        report["graph_benchmarks"] = []
         if args.benchmark:
             for dtype_name, dtype in (("fp16", torch.float16), ("bf16", torch.bfloat16)):
                 for dim in (16, 64, 256):
@@ -238,6 +304,12 @@ def run(args, report):
                                                args.groups, args.repetitions, args.warmup)
                         entry.update({"dtype": dtype_name, "shape": list(shape), "scale": 1.0})
                         report["benchmarks"].append(entry)
+                        graph_entry = benchmark_graph_pair(
+                            torch, extension.hadamard, reference, values, 1.0,
+                            args.groups, args.graph_calls, args.graph_replays,
+                            args.warmup, args.graph_warmup)
+                        graph_entry.update({"dtype": dtype_name, "shape": list(shape), "scale": 1.0})
+                        report["graph_benchmarks"].append(graph_entry)
     maxima = {}
     for dtype in ("fp16", "bf16"):
         errors = [case["max_abs_error"] for case in report["cases"] if case["dtype"] == dtype]
@@ -253,15 +325,18 @@ def main():
     parser.add_argument("--json", default="results/third_party_reference.json")
     parser.add_argument("--reference-repo", help="Optional clean pinned checkout used to build the installed reference")
     parser.add_argument("--device", default="cuda:0")
-    parser.add_argument("--benchmark", action="store_true")
+    parser.add_argument("--benchmark", action="store_true", help="Run both eager API and CUDA Graph benchmarks")
     parser.add_argument("--groups", type=int, default=5)
     parser.add_argument("--repetitions", type=int, default=200)
     parser.add_argument("--warmup", type=int, default=25)
+    parser.add_argument("--graph-calls", type=int, default=64, help="Independent API calls captured in each CUDA graph")
+    parser.add_argument("--graph-replays", type=int, default=20, help="CUDA graph replays per timing group")
+    parser.add_argument("--graph-warmup", type=int, default=5, help="Untimed graph warmup replays after validating one replay")
     parser.add_argument("--build-directory")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
-    if min(args.groups, args.repetitions) < 1 or args.warmup < 0:
-        parser.error("groups/repetitions must be positive and warmup nonnegative")
+    if min(args.groups, args.repetitions, args.graph_calls, args.graph_replays) < 1 or min(args.warmup, args.graph_warmup) < 0:
+        parser.error("groups/repetitions/graph-calls/graph-replays must be positive and warmups nonnegative")
     output = Path(args.json)
     output.parent.mkdir(parents=True, exist_ok=True)
     report = {"status": "RUNNING", "reference_commit_required": REFERENCE_COMMIT,
