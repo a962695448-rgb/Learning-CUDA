@@ -94,7 +94,7 @@ python3 platforms/biren/run_platform.py \
 
 `--sdk-root` 默认 `/usr/local/birensupa/sdk/latest`，`--compiler` 默认该 SDK 下的 `brcc/bin/brcc`；runner 根据实际解析的 SDK 目录读取 `supa/include` 与 `supa/lib`。编译参数为 `-x supa -std=c++17 -O2`、项目/SDK include 路径、两个 `.su` 文件以及 `-lsupa-runtime` 和相应 rpath；`--warp32` 额外定义项目专用宏。这里的 `--warp32` 是 runner 的构建选项，不是生成二进制的运行参数。
 
-runner 仅为子进程设置 `SUPA_PATH`、`BIREN_HOME`、工具搜索路径及实际存在的 SUPA/brcc 库目录，不修改用户系统环境或替换框架。缺失编译器、构建失败、检查失败都应以非零退出码结束；结果目录已存在则拒绝覆盖。
+runner 仅为子进程设置 `SUPA_PATH=SDK/supa`、`BIREN_HOME=SDK`、工具搜索路径及实际存在的 SUPA/brcc 库目录，不修改用户系统环境或替换框架。设备库搜索需要前者指向 `supa` 子目录，不能误指整个 SDK 根目录。缺失编译器、构建失败、检查失败都应以非零退出码结束；结果目录已存在则拒绝覆盖。
 
 按当前设计，Warp32 完整模式应包含 1504 组变换、180 项 API 契约检查、14 项 CLI 拒绝检查，另外有 12 项独立写出的主机 BF16 RNE 边界检查；九路径基准每轮 1350 条组样本。**这些是代码的计划矩阵，不是壁仞实机已经通过的数字。**最终应读取 `validation.json` 和各进程退出码，不将主机检查、探针观察值或重复运行叠加为 GPU 覆盖。
 

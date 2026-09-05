@@ -95,7 +95,7 @@ def main():
     if not compiler.is_file():
         parser.error("SUPA brcc compiler is missing: " + str(compiler))
     # 仅配置本次子进程环境；不改系统环境、驱动或用户现有开发环境。
-    runtime_env = dict(os.environ, SUPA_PATH=str(sdk), BIREN_HOME=str(sdk))
+    runtime_env = dict(os.environ, SUPA_PATH=str(supa), BIREN_HOME=str(sdk))
     runtime_env["PATH"] = os.pathsep.join([str(brcc / "bin"), str(supa / "bin"), os.environ.get("PATH", "")])
     library_paths = [str(p) for p in (supa / "lib", brcc / "lib") if p.is_dir()]
     inherited_libraries = os.environ.get("LD_LIBRARY_PATH", "")
