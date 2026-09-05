@@ -1,0 +1,34 @@
+DEVICE name=Iluvatar MR-V100 warp=64 runtime=10020 driver=10020
+VALIDATION_PROGRESS dtype=fp16 n=1 cases=44
+VALIDATION_PROGRESS dtype=fp16 n=2 cases=132
+VALIDATION_PROGRESS dtype=fp16 n=4 cases=220
+VALIDATION_PROGRESS dtype=fp16 n=8 cases=308
+VALIDATION_PROGRESS dtype=fp16 n=16 cases=396
+VALIDATION_PROGRESS dtype=fp16 n=32 cases=484
+VALIDATION_PROGRESS dtype=fp16 n=64 cases=572
+VALIDATION_PROGRESS dtype=fp16 n=128 cases=660
+VALIDATION_PROGRESS dtype=fp16 n=256 cases=748
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+VALIDATION_PASS dtype=fp16 cases=750 elements=3318829 max_rounded_error=0.00390625 max_unrounded_error=0.0156202316284 contract_checks=61
+VALIDATION_PROGRESS dtype=bf16 n=1 cases=44
+VALIDATION_PROGRESS dtype=bf16 n=2 cases=132
+VALIDATION_PROGRESS dtype=bf16 n=4 cases=220
+VALIDATION_PROGRESS dtype=bf16 n=8 cases=308
+VALIDATION_PROGRESS dtype=bf16 n=16 cases=396
+VALIDATION_PROGRESS dtype=bf16 n=32 cases=484
+VALIDATION_PROGRESS dtype=bf16 n=64 cases=572
+VALIDATION_PROGRESS dtype=bf16 n=128 cases=660
+VALIDATION_PROGRESS dtype=bf16 n=256 cases=748
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+VALIDATION_PASS dtype=bf16 cases=750 elements=3318829 max_rounded_error=3.81469726562e-06 max_unrounded_error=0.124984741211 contract_checks=61
+PASS requested validation/benchmark operations completed

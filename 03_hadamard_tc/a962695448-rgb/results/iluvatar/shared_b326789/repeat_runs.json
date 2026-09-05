@@ -1,0 +1,40 @@
+[
+  {
+    "run": 2,
+    "started_utc": "2026-09-05T13:25:27Z",
+    "binary_sha256": "86e38be3a739548104616831a489799901d1bdba9dc9b26d825b60c030fdb93b",
+    "ixsmi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/iluvatar-api-full-b326789/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/iluvatar-api-full-b326789/benchmark_run2.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "ixsmi_after_exit": 0,
+    "finished_utc": "2026-09-05T13:25:33Z"
+  },
+  {
+    "run": 3,
+    "started_utc": "2026-09-05T13:25:33Z",
+    "binary_sha256": "86e38be3a739548104616831a489799901d1bdba9dc9b26d825b60c030fdb93b",
+    "ixsmi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/iluvatar-api-full-b326789/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/iluvatar-api-full-b326789/benchmark_run3.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "ixsmi_after_exit": 0,
+    "finished_utc": "2026-09-05T13:25:40Z"
+  }
+]

@@ -1,0 +1,280 @@
+{
+  "status": "FAIL",
+  "started_utc": "2026-09-05T13:20:52Z",
+  "quick": true,
+  "source_sha256": {
+    "platforms/iluvatar/hadamard_api.h": "008f7a81b413234f918cb1fc3a40565b80f8c6361b2756c5a7be87bc1dcf4228",
+    "platforms/iluvatar/hadamard_api.cu": "9a583ba41f6a15d7d1e00607f52eec763edbc2d18b9d2d1b51587ee8f2989a30",
+    "platforms/iluvatar/validate_and_benchmark.cu": "321b3ecc7287bdc80d0aceb989187503b6aefed6ac84297ba26ae78f5a81dd0d",
+    "platforms/iluvatar/run_platform.py": "9444395f31051286f48ae80667af7c544552ab035075d8858772853b1614602b",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "git_head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "output": "e508f98b570a58d89bda683de17c292699162821\n"
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "returncode": 0,
+    "output": " M platforms/iluvatar/validate_and_benchmark.cu\n"
+  },
+  "compiler": {
+    "command": [
+      "/usr/local/corex/bin/clang++",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "clang version 18.1.8 (4.4.0 862f87fe94c5eaa2928bda965ed6abb85a25eb7c)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/local/corex/bin\n"
+  },
+  "python_version": "3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]",
+  "stages": [
+    {
+      "command": [
+        "/usr/local/corex/bin/clang++",
+        "-x",
+        "ivcore",
+        "-std=c++17",
+        "-O2",
+        "-I/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/include",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/iluvatar/hadamard_api.cu",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/iluvatar/validate_and_benchmark.cu",
+        "-L/usr/local/corex/lib",
+        "-Wl,-rpath,/usr/local/corex/lib",
+        "-lcudart",
+        "-o",
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark"
+      ],
+      "log": "build.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 5.688053257763386,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark"
+      ],
+      "log": "invalid_00.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.010830074548721313,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "0"
+      ],
+      "log": "invalid_01.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.010250300168991089,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "3"
+      ],
+      "log": "invalid_02.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.010160833597183228,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "512"
+      ],
+      "log": "invalid_03.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.010081134736537933,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--dtype",
+        "fp32"
+      ],
+      "log": "invalid_04.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009979814291000366,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--batch",
+        "-1"
+      ],
+      "log": "invalid_05.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009957849979400635,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--seq",
+        "0"
+      ],
+      "log": "invalid_06.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009961418807506561,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--heads",
+        "x"
+      ],
+      "log": "invalid_07.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009968973696231842,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--batch",
+        "18446744073709551615",
+        "--seq",
+        "2"
+      ],
+      "log": "invalid_08.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009826160967350006,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--heads",
+        "999999999999999999999999999999"
+      ],
+      "log": "invalid_09.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.00994187593460083,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--dim"
+      ],
+      "log": "invalid_10.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009885713458061218,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--unknown",
+        "1"
+      ],
+      "log": "invalid_11.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.009887762367725372,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--benchmark",
+        "--repeats",
+        "0"
+      ],
+      "log": "invalid_12.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.00974532961845398,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--benchmark",
+        "--groups",
+        "10001"
+      ],
+      "log": "invalid_13.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.01019604504108429,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validate_and_benchmark",
+        "--validate",
+        "--json",
+        "/data/infinitensor-2026/runs/iluvatar-api-diag-e508f98/validation.json",
+        "--quick"
+      ],
+      "log": "validation.log",
+      "returncode": 1,
+      "expected_returncode": 0,
+      "wall_seconds": 0.06071954220533371,
+      "sha256": "d25851296755e0b696d763c3b673fef04121cf00d75bfed7e4d7a86924f33824"
+    }
+  ],
+  "binary_sha256": "cdf324f88953f996139f93e21b2ec3ecc9baa2bd819084bc07565084f5364b8a",
+  "cli_rejection_cases": 14,
+  "error": "stage failed: validation.log",
+  "finished_utc": "2026-09-05T13:20:58Z",
+  "artifacts": {
+    "invalid_04.log": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+    "invalid_05.log": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+    "validate_and_benchmark": "cdf324f88953f996139f93e21b2ec3ecc9baa2bd819084bc07565084f5364b8a",
+    "invalid_12.log": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+    "invalid_00.log": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e",
+    "invalid_06.log": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+    "invalid_10.log": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+    "invalid_13.log": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e",
+    "validation.log": "d25851296755e0b696d763c3b673fef04121cf00d75bfed7e4d7a86924f33824",
+    "invalid_08.log": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+    "invalid_02.log": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+    "build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "invalid_09.log": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d",
+    "invalid_07.log": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+    "invalid_03.log": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+    "invalid_01.log": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+    "invalid_11.log": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+  }
+}

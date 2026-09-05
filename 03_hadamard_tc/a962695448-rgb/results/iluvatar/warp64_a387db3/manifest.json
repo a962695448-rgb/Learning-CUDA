@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "platform": "Iluvatar MR-V100 32GB / IX-ML 4.4.0",
+  "date": "2026-09-05",
+  "scope": "Explicit COREX Warp64 build; Baseline, Optimized and Warp64 all checked. Production default remains Method::Optimized. Actual tested device reports warpSize=64.",
+  "tested_source_commit": "a387db3332c6f9b01f128dd681848260c9691281",
+  "source_sha256": {
+    "platforms/iluvatar/hadamard_api.h": "aaf22b677b43f67e3d8489529f03dcaea21a962a947a50927d05f55ed5e2f570",
+    "platforms/iluvatar/hadamard_api.cu": "7b33cd38339efaeb36b5829338fda044109a9b1cd38f1b925cc79cbe063c7330",
+    "platforms/iluvatar/validate_and_benchmark.cu": "3712dc8513b5a298d572d32a6faacac468a47d21d73a7cc37a724613a7f7405d",
+    "platforms/iluvatar/run_platform.py": "f48906d8536822631a2c41e0bbd4e574b3ec09da8917fa7265b6049da0276bbe",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "binary_sha256": "9496d38d25617c2eb69b0d46973e26ac2a10d59c80fba75e73767b13a5c69dac",
+  "binary_in_public_archive": false,
+  "validation": {
+    "status": "PASS",
+    "full_matrix": true,
+    "warp64_enabled": true,
+    "methods": [
+      "baseline",
+      "optimized",
+      "warp64"
+    ],
+    "oracle": "all-element FP64 dense, rounded to output dtype",
+    "fp16_tolerance_strict": 0.01,
+    "bf16_tolerance_strict": 0.05,
+    "warmup_not_counted": true,
+    "dtypes": {
+      "fp16": {
+        "cases": 752,
+        "elements": 4105264,
+        "exact_baseline_optimized_elements": 4105264,
+        "warp64_cases": 752,
+        "exact_baseline_warp64_elements": 4105264,
+        "warp64_grid_stride_cases": 2,
+        "warp64_grid_stride_elements": 786435,
+        "unsupported_warp64_checks": 0,
+        "max_abs_error_rounded_fp64": 0.00390625,
+        "max_abs_error_unrounded_fp64": 0.015620231628418,
+        "api_contract_checks": 90
+      },
+      "bf16": {
+        "cases": 752,
+        "elements": 4105264,
+        "exact_baseline_optimized_elements": 4105264,
+        "warp64_cases": 752,
+        "exact_baseline_warp64_elements": 4105264,
+        "warp64_grid_stride_cases": 2,
+        "warp64_grid_stride_elements": 786435,
+        "unsupported_warp64_checks": 0,
+        "max_abs_error_rounded_fp64": 3.814697265625e-06,
+        "max_abs_error_unrounded_fp64": 0.124984741210938,
+        "api_contract_checks": 90
+      }
+    }
+  },
+  "cli_rejection_cases": 14,
+  "benchmark": {
+    "independent_process_runs": 3,
+    "raw_samples_per_run": 1350,
+    "raw_samples_total": 4050,
+    "groups_per_method": 5,
+    "launch_repeats_per_group": 100,
+    "metric": "event interval per launch sequence; allocation, copies, warmup and validation excluded; reused read-only warm-cache input; 9 methods compared within each run"
+  },
+  "privacy_review": {
+    "known_private_identifiers_service_urls_and_credentials_pattern_matches": 0,
+    "files_scanned": 32,
+    "redactions": false,
+    "notes": "All copied evidence bytes preserved. Generic project/SDK paths, compiler versions, hardware bus ID and clock snapshots retained. No private binary or rental receipt copied. Pattern review is not a universal secret-detection guarantee."
+  },
+  "integrity_notes": "The transfer manifest verifies 29 transferred raw files. This public manifest additionally covers the transfer manifest, analysis files and local Git attributes, excluding itself. Source hashes checked against Git objects at tested_source_commit. Quick reruns or earlier shared-version cases are not added to this correctness count.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "e54ab96905b15b3708ca8a4b1c7f60ccc3d00edd8654bfdf9fc7d01dd889f53e",
+      "origin": "Git byte-preservation attributes"
+    },
+    {
+      "path": "analysis/analysis.json",
+      "bytes": 1783996,
+      "sha256": "6279a85e5a65801aaec4a4d92de3ff8b43cb50256269ecff08b69ac59e1605bf",
+      "origin": "derived analysis"
+    },
+    {
+      "path": "analysis/method_summary.csv",
+      "bytes": 189217,
+      "sha256": "6cc9e0e20ca4d0666576e0653ce0e40a86d76342c07f10253fc5cd1276e9254b",
+      "origin": "derived analysis"
+    },
+    {
+      "path": "benchmark.csv",
+      "bytes": 131311,
+      "sha256": "3e0573c193ad3e97d5386df042010ac903f6e118f6bd946e62cf79739d4aeb31",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark.log",
+      "bytes": 1461,
+      "sha256": "a4058574b2a84ff54c70f44e70a89a7c955b86b069190da1b1f124aacb921e73",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run2.csv",
+      "bytes": 131339,
+      "sha256": "437d7f1181a4f0b224f5ecf205265b7dfd062823fa9030b29bcc342cf6f8b53c",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run2.log",
+      "bytes": 1461,
+      "sha256": "a4058574b2a84ff54c70f44e70a89a7c955b86b069190da1b1f124aacb921e73",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run3.csv",
+      "bytes": 131336,
+      "sha256": "5884b09a8522ce351ae3bbed16a265f61975b4085077cc2083cbfbe21275a7e4",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run3.log",
+      "bytes": 1461,
+      "sha256": "a4058574b2a84ff54c70f44e70a89a7c955b86b069190da1b1f124aacb921e73",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run2_after.log",
+      "bytes": 1284,
+      "sha256": "4102a5abde17cc1da90035ce729d0352935a662f7f625eff4240a4e6cb074ab9",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run2_before.log",
+      "bytes": 1284,
+      "sha256": "ced58b4c0012e9881d6740be3668f870d85534bacc0737ae3bf6b56f3ad6d60d",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run3_after.log",
+      "bytes": 1284,
+      "sha256": "6a9baf3a20fc71bb153f4c4c9e4ff3123e1964260f94d7e9d16c8b2cb336fda9",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run3_before.log",
+      "bytes": 1284,
+      "sha256": "4102a5abde17cc1da90035ce729d0352935a662f7f625eff4240a4e6cb074ab9",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "repeat_runs.json",
+      "bytes": 1125,
+      "sha256": "bfae540ae57b436786b1f8096e9ddad18bf1783940b41163db33d0307659d735",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "run_summary.json",
+      "bytes": 195476,
+      "sha256": "f84192835a8bfd4c7816ef2e2afe8a511d64beafe41dc1ef723d5ad88cf9fae3",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 3820,
+      "sha256": "4f71a6c47d5ede00742750ae357f4aa8f9f412a95569fafc4ba3a942ace2ab49",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 973,
+      "sha256": "9aba8305bf64b97b2ba2fa7c55f9d051d1ca9ff102f0cec2b7bf33ffb08b3648",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "validation.log",
+      "bytes": 2413,
+      "sha256": "42a7e6aea5670215a46690c32baf35fe831a81110143ea36c207704d1f1f5265",
+      "origin": "byte-identical local transfer archive"
+    }
+  ]
+}

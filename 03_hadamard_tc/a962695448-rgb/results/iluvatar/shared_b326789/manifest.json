@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "platform": "Iluvatar MR-V100 32GB / IX-ML 4.4.0",
+  "date": "2026-09-05",
+  "scope": "Shared-memory Baseline and Optimized only. Subsequent Warp64 candidates are not covered.",
+  "tested_source_commit": "b3267893a53e45d2e7f35dc2d6e2583c638f4112",
+  "source_sha256": {
+    "platforms/iluvatar/hadamard_api.h": "008f7a81b413234f918cb1fc3a40565b80f8c6361b2756c5a7be87bc1dcf4228",
+    "platforms/iluvatar/hadamard_api.cu": "9a583ba41f6a15d7d1e00607f52eec763edbc2d18b9d2d1b51587ee8f2989a30",
+    "platforms/iluvatar/validate_and_benchmark.cu": "a70ba5e6891e7ab489e44fb3583561bed78be296229b337babe9123162712066",
+    "platforms/iluvatar/run_platform.py": "9444395f31051286f48ae80667af7c544552ab035075d8858772853b1614602b",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "binary_sha256": "86e38be3a739548104616831a489799901d1bdba9dc9b26d825b60c030fdb93b",
+  "binary_in_public_archive": false,
+  "validation": {
+    "status": "PASS",
+    "full_matrix": true,
+    "oracle": "all-element FP64 dense, rounded to output dtype",
+    "fp16_tolerance_strict": 0.01,
+    "bf16_tolerance_strict": 0.05,
+    "warmup_not_counted": true,
+    "dtypes": {
+      "fp16": {
+        "cases": 750,
+        "elements": 3318829,
+        "exact_baseline_optimized_elements": 3318829,
+        "max_abs_error_rounded_fp64": 0.00390625,
+        "max_abs_error_unrounded_fp64": 0.015620231628418,
+        "api_contract_checks": 61
+      },
+      "bf16": {
+        "cases": 750,
+        "elements": 3318829,
+        "exact_baseline_optimized_elements": 3318829,
+        "max_abs_error_rounded_fp64": 3.814697265625e-06,
+        "max_abs_error_unrounded_fp64": 0.124984741210938,
+        "api_contract_checks": 61
+      }
+    }
+  },
+  "cli_rejection_cases": 14,
+  "benchmark": {
+    "independent_process_runs": 3,
+    "raw_samples_per_run": 900,
+    "raw_samples_total": 2700,
+    "groups_per_method": 5,
+    "launch_repeats_per_group": 100,
+    "metric": "event interval per launch sequence; allocation, copies, warmup and validation excluded; reused read-only warm-cache input"
+  },
+  "privacy_review": {
+    "known_private_identifiers_service_urls_and_credentials_pattern_matches": 0,
+    "files_scanned": 66,
+    "redactions": false,
+    "notes": "All copied evidence bytes preserved. Generic /data/infinitensor-2026 project paths, SDK paths, compiler versions, hardware bus ID and clock snapshots retained. No private binary or rental receipt copied. Pattern review is not a universal secret-detection guarantee."
+  },
+  "integrity_notes": "The transfer manifest verifies 29 transferred raw files. This public manifest additionally covers the transfer manifest, analysis files and local Git attributes, excluding itself. Source hashes were checked against Git objects at tested_source_commit, independent of current working tree.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "e54ab96905b15b3708ca8a4b1c7f60ccc3d00edd8654bfdf9fc7d01dd889f53e",
+      "origin": "Git byte-preservation attributes"
+    },
+    {
+      "path": "analysis/analysis.json",
+      "bytes": 1102693,
+      "sha256": "e504592c41c491af8fb8c4f762979f73634736893b96100df88090f5bdae9959",
+      "origin": "derived analysis"
+    },
+    {
+      "path": "analysis/method_summary.csv",
+      "bytes": 120645,
+      "sha256": "52a62db18289b941c6e0ab904d4658ddbee68b3455d21acb373ef7d4e3b2418b",
+      "origin": "derived analysis"
+    },
+    {
+      "path": "benchmark.csv",
+      "bytes": 88375,
+      "sha256": "d30f834f22296e32e8a9083891abd30f0726813da01e8b20e7896071a48b31c5",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark.log",
+      "bytes": 1461,
+      "sha256": "a4058574b2a84ff54c70f44e70a89a7c955b86b069190da1b1f124aacb921e73",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run2.csv",
+      "bytes": 88389,
+      "sha256": "384e2df2d3a5038db9fd0f067001a9609be0389b94b55563ab69e53939516494",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run2.log",
+      "bytes": 1461,
+      "sha256": "a4058574b2a84ff54c70f44e70a89a7c955b86b069190da1b1f124aacb921e73",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run3.csv",
+      "bytes": 88364,
+      "sha256": "67064ee11b017c9d4707df47ce6995e9858dda57c284e395aef888197f985d09",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "benchmark_run3.log",
+      "bytes": 1461,
+      "sha256": "a4058574b2a84ff54c70f44e70a89a7c955b86b069190da1b1f124aacb921e73",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run2_after.log",
+      "bytes": 1284,
+      "sha256": "a326d7db33222d3a60406f78812a31aba661d8522602c7c2101771538b6ef5aa",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run2_before.log",
+      "bytes": 1284,
+      "sha256": "f148aceadda7a5e81452036eed966ac24746ac3efb769d348a3f72cd9ec0a8c0",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run3_after.log",
+      "bytes": 1284,
+      "sha256": "012502430fc6675c655a515c4adb43db9de139772116f16abfad510933091821",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "ixsmi_run3_before.log",
+      "bytes": 1284,
+      "sha256": "ed3a697b6b8b941bef9ff7214ebc9377f4bb121502d7b320fc5d4469935096d4",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/run_summary.json",
+      "bytes": 10070,
+      "sha256": "f6107436accdd246f033aeea8ce41e57d5cd7979142018120b0d629b2dcff1b0",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-diag-e508f98/validation.log",
+      "bytes": 353,
+      "sha256": "d25851296755e0b696d763c3b673fef04121cf00d75bfed7e4d7a86924f33824",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/run_summary.json",
+      "bytes": 10039,
+      "sha256": "f28bcb0da0674e32dc1511f9fca9abd9fdea021d836ad7876ee1bd6a801c8aa3",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "prior_failures/iluvatar-api-quick-e508f98/validation.log",
+      "bytes": 235,
+      "sha256": "e1ac9945aba900f0426cb1afa55f76d536f6c637c24301410328dd35a9e562af",
+      "origin": "byte-identical earlier failed-run evidence"
+    },
+    {
+      "path": "repeat_runs.json",
+      "bytes": 1113,
+      "sha256": "a94cb31acc91611740b26177575196b236125ce571c2552b17e8b2ef7855e066",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "run_summary.json",
+      "bytes": 117338,
+      "sha256": "93033e7754f3122bde698dbad9b73c705874204accf7430dab72947efbf7315a",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 3817,
+      "sha256": "8de098df76b0970646526e3d5a815bd6aa23c969f3f4eed4655a913bb32d93c5",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 595,
+      "sha256": "58a9d4660cbc13fcdfb2d7577662678ffeedaac0197b1fe6c36f80ea423a1ea0",
+      "origin": "byte-identical local transfer archive"
+    },
+    {
+      "path": "validation.log",
+      "bytes": 1891,
+      "sha256": "dd844283c786b23a394b4bc7b2242f09a9679a0b691ea718d4080e9b9ce48a77",
+      "origin": "byte-identical local transfer archive"
+    }
+  ],
+  "prior_failures": {
+    "scope": "Earlier quick/diagnostic harness runs failed; not counted as successful cases or as b326789 results. The diagnostic used an uncommitted instrumented harness; consult its source_sha256 and git_status instead of assuming HEAD alone describes tested files.",
+    "runs": [
+      "prior_failures/iluvatar-api-quick-e508f98",
+      "prior_failures/iluvatar-api-diag-e508f98"
+    ],
+    "copied_files": 34,
+    "integrity": "Each non-summary file checked against its preserved run_summary.json artifacts map; summary files copied byte-for-byte from local evidence."
+  }
+}

@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 *.nsys-rep
 *.sqlite
+/results/iluvatar/**/validate_and_benchmark

@@ -1,0 +1,40 @@
+[
+  {
+    "run": 2,
+    "started_utc": "2026-09-05T13:32:48Z",
+    "binary_sha256": "9496d38d25617c2eb69b0d46973e26ac2a10d59c80fba75e73767b13a5c69dac",
+    "ixsmi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/iluvatar-warp64-full-a387db3/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/iluvatar-warp64-full-a387db3/benchmark_run2.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "ixsmi_after_exit": 0,
+    "finished_utc": "2026-09-05T13:32:55Z"
+  },
+  {
+    "run": 3,
+    "started_utc": "2026-09-05T13:32:55Z",
+    "binary_sha256": "9496d38d25617c2eb69b0d46973e26ac2a10d59c80fba75e73767b13a5c69dac",
+    "ixsmi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/iluvatar-warp64-full-a387db3/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/iluvatar-warp64-full-a387db3/benchmark_run3.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "ixsmi_after_exit": 0,
+    "finished_utc": "2026-09-05T13:33:03Z"
+  }
+]

@@ -1,0 +1,40 @@
+DEVICE name=Iluvatar MR-V100 warp=64 runtime=10020 driver=10020
+VALIDATION_PROGRESS dtype=fp16 n=1 cases=44
+VALIDATION_PROGRESS dtype=fp16 n=2 cases=132
+VALIDATION_PROGRESS dtype=fp16 n=4 cases=220
+VALIDATION_PROGRESS dtype=fp16 n=8 cases=308
+VALIDATION_PROGRESS dtype=fp16 n=16 cases=396
+VALIDATION_PROGRESS dtype=fp16 n=32 cases=484
+VALIDATION_PROGRESS dtype=fp16 n=64 cases=572
+VALIDATION_PROGRESS dtype=fp16 n=128 cases=660
+VALIDATION_PROGRESS dtype=fp16 n=256 cases=748
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+CONTRACT_PROGRESS method=warp64 phase=invalid-parameters
+CONTRACT_PROGRESS method=warp64 phase=ties-upload
+CONTRACT_PROGRESS method=warp64 phase=ties-quantize
+VALIDATION_PASS dtype=fp16 cases=752 elements=4105264 max_rounded_error=0.00390625 max_unrounded_error=0.0156202316284 contract_checks=90 warp64_cases=752 exact_warp64_elements=4105264 warp64_grid_stride_cases=2 unsupported_warp64_checks=0
+VALIDATION_PROGRESS dtype=bf16 n=1 cases=44
+VALIDATION_PROGRESS dtype=bf16 n=2 cases=132
+VALIDATION_PROGRESS dtype=bf16 n=4 cases=220
+VALIDATION_PROGRESS dtype=bf16 n=8 cases=308
+VALIDATION_PROGRESS dtype=bf16 n=16 cases=396
+VALIDATION_PROGRESS dtype=bf16 n=32 cases=484
+VALIDATION_PROGRESS dtype=bf16 n=64 cases=572
+VALIDATION_PROGRESS dtype=bf16 n=128 cases=660
+VALIDATION_PROGRESS dtype=bf16 n=256 cases=748
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+CONTRACT_PROGRESS method=warp64 phase=invalid-parameters
+CONTRACT_PROGRESS method=warp64 phase=ties-upload
+CONTRACT_PROGRESS method=warp64 phase=ties-quantize
+VALIDATION_PASS dtype=bf16 cases=752 elements=4105264 max_rounded_error=3.81469726562e-06 max_unrounded_error=0.124984741211 contract_checks=90 warp64_cases=752 exact_warp64_elements=4105264 warp64_grid_stride_cases=2 unsupported_warp64_checks=0
+PASS requested validation/benchmark operations completed
