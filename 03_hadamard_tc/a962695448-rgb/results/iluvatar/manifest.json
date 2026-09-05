@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-05",
+  "platform": "Iluvatar MR-V100 / IX-ML 4.4.0",
+  "scope": "Initial shared-memory validation prototype; no performance conclusion or native BF16 acceleration claim",
+  "source_path": "../../platforms/iluvatar/shared_baseline.cu",
+  "source_sha256": "d8b00f6e60feaf0dd450ca66255e05bd7e0e01a060d911a9fc7c61779023f180",
+  "compile_exit_code": 0,
+  "run_exit_code": 0,
+  "transform_parameter_cases": 324,
+  "additional_ties_even_cases": 2,
+  "files": [
+    {
+      "path": "environment.json",
+      "bytes": 826,
+      "sha256": "0d0ed2bfb015e70013e7ffdadcadfe63401668162db23d83cf18d3c1c4fc8d39"
+    },
+    {
+      "path": "smoke_native_run.log",
+      "bytes": 223,
+      "sha256": "36ba0dc1e97d54cb71cc260d49cfca145d2b1591b8aa5ea227877113cbea4c1a"
+    },
+    {
+      "path": "hadamard_shared_final_build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "hadamard_shared_final_validation.log",
+      "bytes": 326,
+      "sha256": "a00fd6502ff3daa39f7b7e3ee0b9310f33af320d2fbe5a649505b7e330e7d849"
+    }
+  ]
+}

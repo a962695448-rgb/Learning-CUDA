@@ -1,2 +1,3 @@
 # Keep the experimental source hash reproducible across platforms.
 src/tune_launch.cu text eol=lf
+platforms/iluvatar/shared_baseline.cu text eol=lf

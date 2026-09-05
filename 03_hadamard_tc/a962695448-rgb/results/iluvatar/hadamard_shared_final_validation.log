@@ -1,0 +1,4 @@
+VALIDATION_ONLY device=Iluvatar MR-V100 warp=64 runtime=10020 driver=10020
+PASS dtype=fp16 cases=162 elements=843150 max_abs_error=0.00385761260986 ties_even=PASS
+PASS dtype=bf16 cases=162 elements=843150 max_abs_error=0.0301055908203 ties_even=PASS
+PASS shared-memory FWHT, CPU oracle, split/fused INT4; no performance claim

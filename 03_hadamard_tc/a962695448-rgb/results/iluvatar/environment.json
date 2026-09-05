@@ -1,0 +1,17 @@
+{
+  "recorded_date": "2026-09-05",
+  "device": "Iluvatar MR-V100",
+  "device_memory_bytes": 34359738368,
+  "warp_size": 64,
+  "max_threads_per_block": 4096,
+  "shared_memory_per_block_bytes": 131072,
+  "ix_ml": "4.4.0",
+  "driver": "4.4.0",
+  "cuda_compatibility_api": "10.2",
+  "compiler": "clang version 18.1.8 (4.4.0 862f87fe94c5eaa2928bda965ed6abb85a25eb7c)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/local/corex/bin",
+  "python": "3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]",
+  "source_sha256": "d8b00f6e60feaf0dd450ca66255e05bd7e0e01a060d911a9fc7c61779023f180",
+  "reference_header_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+  "native_bf16_acceleration": "not established",
+  "scope": "shared-memory validation prototype; no performance result"
+}
