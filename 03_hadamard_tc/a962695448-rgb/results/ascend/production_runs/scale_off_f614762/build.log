@@ -1,0 +1,178 @@
+[  2%] [34m[1mCreating directories for 'hadamard_ascend_kernels_precompile'[0m
+[  4%] [34m[1mNo download step for 'hadamard_ascend_kernels_precompile'[0m
+[  6%] [34m[1mNo update step for 'hadamard_ascend_kernels_precompile'[0m
+[  8%] [34m[1mNo patch step for 'hadamard_ascend_kernels_precompile'[0m
+[ 10%] [34m[1mPerforming configure step for 'hadamard_ascend_kernels_precompile'[0m
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    DYNAMIC_MODE
+    INCLUDE_DIR
+
+[0m
+-- Build files have been written to: /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_precompile-prefix/src/hadamard_ascend_kernels_precompile-build
+[ 13%] [34m[1mPerforming build step for 'hadamard_ascend_kernels_precompile'[0m
+[100%] [32mBuilding CXX object CMakeFiles/precompile_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[0m
+[100%] Built target precompile_obj
+[100%] Built target check_src_template
+[ 15%] [34m[1mNo install step for 'hadamard_ascend_kernels_precompile'[0m
+[ 17%] [34m[1mCompleted 'hadamard_ascend_kernels_precompile'[0m
+[ 17%] Built target hadamard_ascend_kernels_precompile
+[ 19%] [34m[1mCreating directories for 'hadamard_ascend_kernels_preprocess'[0m
+[ 21%] [34m[1mNo download step for 'hadamard_ascend_kernels_preprocess'[0m
+[ 23%] [34m[1mNo update step for 'hadamard_ascend_kernels_preprocess'[0m
+[ 26%] [34m[1mNo patch step for 'hadamard_ascend_kernels_preprocess'[0m
+[ 28%] [34m[1mPerforming configure step for 'hadamard_ascend_kernels_preprocess'[0m
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_preprocess-prefix/src/hadamard_ascend_kernels_preprocess-build
+[ 30%] [34m[1mPerforming build step for 'hadamard_ascend_kernels_preprocess'[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/aiv_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/preprocess_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[0m
+[ 66%] Built target preprocess_obj
+[100%] [32mBuilding CXX object CMakeFiles/aic_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[0m
+[100%] Built target aic_obj
+/usr/local/Ascend/cann-9.0.0/aarch64-linux/ccec_compiler/bin/ld.lld -m aicorelinux -Ttext=0 /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_preprocess-prefix/src/hadamard_ascend_kernels_preprocess-build/CMakeFiles/aic_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o -o /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_preprocess-prefix/src/hadamard_ascend_kernels_preprocess-build/CMakeFiles/aic_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[100%] Built target merge_aic_obj_text
+[100%] Built target aiv_obj
+/usr/local/Ascend/cann-9.0.0/aarch64-linux/ccec_compiler/bin/ld.lld -m aicorelinux -Ttext=0 /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_preprocess-prefix/src/hadamard_ascend_kernels_preprocess-build/CMakeFiles/aiv_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o -o /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_preprocess-prefix/src/hadamard_ascend_kernels_preprocess-build/CMakeFiles/aiv_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[100%] Built target merge_aiv_obj_text
+[WARNING]: Multiple kernel functions are detected. It is recommended to define only one kernel function per file.
+[100%] Built target _host_cpp
+[ 32%] [34m[1mNo install step for 'hadamard_ascend_kernels_preprocess'[0m
+[ 34%] [34m[1mCompleted 'hadamard_ascend_kernels_preprocess'[0m
+[ 34%] Built target hadamard_ascend_kernels_preprocess
+[ 36%] [34m[1mCreating directories for 'hadamard_ascend_kernels_aiv_device'[0m
+[ 39%] [34m[1mCreating directories for 'hadamard_ascend_kernels_aic_device'[0m
+[ 43%] [34m[1mNo download step for 'hadamard_ascend_kernels_aiv_device'[0m
+[ 43%] [34m[1mNo download step for 'hadamard_ascend_kernels_aic_device'[0m
+[ 45%] [34m[1mNo update step for 'hadamard_ascend_kernels_aiv_device'[0m
+[ 47%] [34m[1mNo update step for 'hadamard_ascend_kernels_aic_device'[0m
+[ 50%] [34m[1mNo patch step for 'hadamard_ascend_kernels_aic_device'[0m
+[ 52%] [34m[1mNo patch step for 'hadamard_ascend_kernels_aiv_device'[0m
+[ 54%] [34m[1mPerforming configure step for 'hadamard_ascend_kernels_aic_device'[0m
+[ 56%] [34m[1mPerforming configure step for 'hadamard_ascend_kernels_aiv_device'[0m
+-- The C compiler identification is GNU 12.3.1
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting CXX compile features - done
+-- Configuring done (0.6s)
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_MODE
+
+[0m
+-- Build files have been written to: /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_aic_device-prefix/src/hadamard_ascend_kernels_aic_device-build
+-- Generating done (0.0s)
+-- Build files have been written to: /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_aiv_device-prefix/src/hadamard_ascend_kernels_aiv_device-build
+[ 58%] [34m[1mPerforming build step for 'hadamard_ascend_kernels_aic_device'[0m
+[ 60%] [34m[1mPerforming build step for 'hadamard_ascend_kernels_aiv_device'[0m
+[ 63%] [34m[1mNo install step for 'hadamard_ascend_kernels_aic_device'[0m
+[100%] [32mBuilding CXX object CMakeFiles/device_aiv_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/auto_gen/hadamard_ascend_kernels/auto_gen_hadamard_kernel.cpp.o[0m
+[ 65%] [34m[1mCompleted 'hadamard_ascend_kernels_aic_device'[0m
+[ 65%] Built target hadamard_ascend_kernels_aic_device
+[ 67%] [34m[1mCreating directories for 'hadamard_ascend_kernels_host'[0m
+[ 69%] [34m[1mNo download step for 'hadamard_ascend_kernels_host'[0m
+[ 71%] [34m[1mNo update step for 'hadamard_ascend_kernels_host'[0m
+[ 73%] [34m[1mNo patch step for 'hadamard_ascend_kernels_host'[0m
+[ 76%] [34m[1mPerforming configure step for 'hadamard_ascend_kernels_host'[0m
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ASCEND_PYTHON_EXECUTABLE
+
+[0m
+-- Build files have been written to: /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_host-prefix/src/hadamard_ascend_kernels_host-build
+[ 78%] [34m[1mPerforming build step for 'hadamard_ascend_kernels_host'[0m
+[100%] [32mBuilding CXX object CMakeFiles/host_bisheng_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[0m
+[100%] Built target host_bisheng_obj
+[ 80%] [34m[1mPerforming install step for 'hadamard_ascend_kernels_host'[0m
+[100%] [32mBuilding CXX object CMakeFiles/host_bisheng_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o[0m
+[100%] Built target host_bisheng_obj
+[36mInstall the project...[0m
+-- Install configuration: "Release"
+-- Installing: /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_host_dir/./objects-Release/host_bisheng_obj/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o
+[ 82%] [34m[1mCompleted 'hadamard_ascend_kernels_host'[0m
+[ 82%] Built target hadamard_ascend_kernels_host
+[100%] Built target device_aiv_obj
+/usr/local/Ascend/cann-9.0.0/aarch64-linux/ccec_compiler/bin/ld.lld  -m aicorelinux -r  -Ttext=0 /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_aiv_device-prefix/src/hadamard_ascend_kernels_aiv_device-build/CMakeFiles/device_aiv_obj.dir/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/auto_gen/hadamard_ascend_kernels/auto_gen_hadamard_kernel.cpp.o -static -o /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_aiv_device_dir/device_aiv.o
+[100%] Built target merge_aiv_device_obj
+[ 84%] [34m[1mNo install step for 'hadamard_ascend_kernels_aiv_device'[0m
+[ 86%] [34m[1mCompleted 'hadamard_ascend_kernels_aiv_device'[0m
+[ 86%] Built target hadamard_ascend_kernels_aiv_device
+/usr/local/Ascend/cann-9.0.0/aarch64-linux/ccec_compiler/bin/ld.lld -x -m aicorelinux   -Ttext=0 /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_aiv_device_dir/device_aiv.o -static -o /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_merge_obj_dir/device_aiv.o
+[ 86%] Built target hadamard_ascend_kernels_merge_obj
+[ 89%] [32mBuilding CXX object CMakeFiles/hadamard_ascend_kernels_host_stub_obj.dir/auto_gen/hadamard_ascend_kernels/host_stub.cpp.o[0m
+[ 89%] Built target hadamard_ascend_kernels_host_stub_obj
+[ 91%] [32m[1mLinking CXX static library lib/libhadamard_ascend_kernels.a[0m
+/usr/local/Ascend/cann-9.0.0/bin/ascendc_pack_kernel /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/CMakeFiles/hadamard_ascend_kernels_host_stub_obj.dir/auto_gen/hadamard_ascend_kernels/host_stub.cpp.o /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_merge_obj_dir/device_aiv.o 1 /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/CMakeFiles/hadamard_ascend_kernels_host_stub_obj.dir/auto_gen/hadamard_ascend_kernels/host_stub.cpp.o
+recompile: /usr/bin/ar qc lib/libhadamard_ascend_kernels.a CMakeFiles/hadamard_ascend_kernels_host_stub_obj.dir/auto_gen/hadamard_ascend_kernels/host_stub.cpp.o /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/hadamard_ascend_kernels_host_dir/objects-Release/host_bisheng_obj/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp.o  ascendc_runtime.cpp.o aicpu_rt.cpp.o ascendc_elf_tool.c.o
+recompile: /usr/bin/ranlib lib/libhadamard_ascend_kernels.a
+[ 91%] Built target hadamard_ascend_kernels
+[ 93%] [32mBuilding CXX object CMakeFiles/hadamard_ascend.dir/hadamard_api.cpp.o[0m
+[ 95%] [32m[1mLinking CXX static library libhadamard_ascend.a[0m
+[ 95%] Built target hadamard_ascend
+[ 97%] [32mBuilding CXX object CMakeFiles/validate_and_benchmark.dir/validate_and_benchmark.cpp.o[0m
+[100%] [32m[1mLinking CXX executable validate_and_benchmark[0m
+[100%] Built target validate_and_benchmark

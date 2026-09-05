@@ -1,0 +1,44 @@
+{
+  "binary_sha256": "9afd07c30720e01b8eb0124fb5ea3802e5bedc3a4270ee56a359137a173268e2",
+  "stages": [
+    {
+      "name": "stage2_pad_one",
+      "args": [
+        "--stage",
+        "pad",
+        "--dtype",
+        "fp16",
+        "--n",
+        "1"
+      ],
+      "exit": 0,
+      "log": "stage2_pad_one.log",
+      "sha256": "fd5cd121ce23fa599714942be97433b0c84c863cf389338329bbc53e63455de1"
+    },
+    {
+      "name": "stage2_pad_full",
+      "args": [
+        "--stage",
+        "pad",
+        "--dtype",
+        "both"
+      ],
+      "exit": 0,
+      "log": "stage2_pad_full.log",
+      "sha256": "b7cb288d39a88da6ed20d0178388972d4e90f46969addb2f8757effecb779133"
+    },
+    {
+      "name": "stage2_rne_full",
+      "args": [
+        "--stage",
+        "rne",
+        "--dtype",
+        "both"
+      ],
+      "exit": 0,
+      "log": "stage2_rne_full.log",
+      "sha256": "0c60cac1680ca21f579a740c206f996efc190be56e6f0a4aa9dea65d11a523cb"
+    }
+  ],
+  "status": "PASS"
+}

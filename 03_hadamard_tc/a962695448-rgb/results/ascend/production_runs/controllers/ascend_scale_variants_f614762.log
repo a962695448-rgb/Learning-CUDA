@@ -1,0 +1,183 @@
+From https://github.com/a962695448-rgb/Learning-CUDA
+ * branch            feat/hadamard-cuda -> FETCH_HEAD
+   1b305d3..f614762  feat/hadamard-cuda -> origin/feat/hadamard-cuda
+Updating 1b305d3..f614762
+Fast-forward
+ 03_hadamard_tc/a962695448-rgb/README.md            |     3 +-
+ .../a962695448-rgb/platforms/ascend/CMakeLists.txt |    10 +
+ .../platforms/ascend/hadamard_kernel.cpp           |    26 +-
+ .../platforms/ascend/run_platform.py               |    70 +-
+ .../platforms/ascend/validate_and_benchmark.cpp    |    51 +-
+ .../a962695448-rgb/reports/a100-validation.md      |    67 +
+ .../results/nvidia_a100_20260906/.gitattributes    |     2 +
+ .../results/nvidia_a100_20260906/README.md         |    50 +
+ .../nvidia_a100_20260906/analyze_delivery.py       |   455 +
+ .../nvidia_a100_20260906/archive_manifest.json     |   545 +
+ .../derived/all_configurations.csv                 |   207 +
+ .../derived/cli_all_measurements.csv               |   111 +
+ .../derived/dao_all_configurations.csv             |    25 +
+ .../derived/promotion_all_configurations.csv       |    73 +
+ .../nvidia_a100_20260906/derived/summary.json      |   297 +
+ .../results/nvidia_a100_20260906/privacy_scan.json |     9 +
+ .../public_derivation_provenance.json              |    47 +
+ .../retrieved/build_checker/build.ninja            |    33 +
+ .../retrieved/build_default/build.ninja            |    33 +
+ .../nvidia_a100_20260906/retrieved/controller.log  |    27 +
+ .../retrieved/fast-hadamard-transform/LICENSE      |    29 +
+ .../retrieved/fast-hadamard-transform/README.md    |    50 +
+ .../temp.linux-x86_64-cpython-312/build.ninja      |    33 +
+ .../retrieved/fast-hadamard-transform/setup.py     |   276 +
+ .../nvidia_a100_20260906/retrieved/launch.json     |     6 +
+ .../retrieved/promotion_a100.py                    |   258 +
+ .../retrieved/reference_source.json                |    13 +
+ .../retrieved/results/api_threads.json             | 39518 ++++++++++++++++++
+ .../retrieved/results/build_arch80_cpu_test.log    |     6 +
+ .../retrieved/results/build_install_reference.log  |    12 +
+ .../cli_default_original_matrix_and_benchmarks.log |    32 +
+ .../results/cli_explicit256_original_matrix.log    |    20 +
+ .../retrieved/results/collection_metadata.json     |    49 +
+ .../retrieved/results/create_private_venv.log      |     0
+ .../retrieved/results/dao_default.json             | 40714 +++++++++++++++++++
+ ...o_original1800_default128_and_12_benchmarks.log |    19 +
+ .../retrieved/results/ninja_pypi.log               |     5 +
+ .../retrieved/results/private_environment.log      |     1 +
+ .../retrieved/results/promotion_72_run1.log        |    55 +
+ .../retrieved/results/promotion_72_run2.log        |    55 +
+ .../retrieved/results/promotion_72_run3.log        |    55 +
+ .../retrieved/results/reference_source_sync.json   |   213 +
+ .../retrieved/results/restore_reference.log        |     2 +
+ .../retrieved/results/run1.json                    | 13036 ++++++
+ .../retrieved/results/run2.json                    | 13036 ++++++
+ .../retrieved/results/run3.json                    | 13036 ++++++
+ .../retrieved/results/state.json                   |   583 +
+ .../retrieved/results/thread_api_original1800.log  |    26 +
+ .../nvidia_a100_20260906/retrieved/source/Makefile |    32 +
+ .../retrieved/source/README.md                     |   304 +
+ .../retrieved/source/build/config.txt              |     1 +
+ .../retrieved/source/include/kernels.cuh           |   138 +
+ .../retrieved/source/include/reference.hpp         |    91 +
+ .../source/results/benchmark_a100_default128.csv   |   111 +
+ .../source/results/validation_a100_default128.log  |   352 +
+ .../source/scripts/build_torch_extension.py        |    62 +
+ .../retrieved/source/scripts/compare_reference.py  |   358 +
+ .../retrieved/source/scripts/run_validation.py     |    73 +
+ .../source/scripts/verify_block_threads.py         |   127 +
+ .../retrieved/source/src/main.cu                   |   567 +
+ .../retrieved/source/src/torch_binding.cu          |   107 +
+ .../retrieved/source/tests/cpu_reference_test.cpp  |    34 +
+ .../retrieved/source_manifest.json                 |    79 +
+ .../retrieved/sync_reference.py                    |   353 +
+ .../retrieved/transfer_manifest.json               |   194 +
+ .../nvidia_a100_20260906/retrieved/worker.py       |   186 +
+ .../nvidia_a100_20260906/source_manifest.json      |    79 +
+ 67 files changed, 126509 insertions(+), 18 deletions(-)
+ create mode 100644 03_hadamard_tc/a962695448-rgb/reports/a100-validation.md
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/.gitattributes
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/README.md
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/analyze_delivery.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/archive_manifest.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/derived/all_configurations.csv
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/derived/cli_all_measurements.csv
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/derived/dao_all_configurations.csv
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/derived/promotion_all_configurations.csv
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/derived/summary.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/privacy_scan.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/public_derivation_provenance.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/build_checker/build.ninja
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/build_default/build.ninja
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/controller.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/fast-hadamard-transform/LICENSE
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/fast-hadamard-transform/README.md
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/fast-hadamard-transform/build/temp.linux-x86_64-cpython-312/build.ninja
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/fast-hadamard-transform/setup.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/launch.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/promotion_a100.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/reference_source.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/api_threads.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/build_arch80_cpu_test.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/build_install_reference.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/cli_default_original_matrix_and_benchmarks.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/cli_explicit256_original_matrix.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/collection_metadata.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/create_private_venv.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/dao_default.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/dao_original1800_default128_and_12_benchmarks.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/ninja_pypi.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/private_environment.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/promotion_72_run1.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/promotion_72_run2.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/promotion_72_run3.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/reference_source_sync.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/restore_reference.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/run1.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/run2.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/run3.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/state.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/results/thread_api_original1800.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/Makefile
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/README.md
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/build/config.txt
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/include/kernels.cuh
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/include/reference.hpp
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/results/benchmark_a100_default128.csv
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/results/validation_a100_default128.log
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/scripts/build_torch_extension.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/scripts/compare_reference.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/scripts/run_validation.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/scripts/verify_block_threads.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/src/main.cu
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/src/torch_binding.cu
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source/tests/cpu_reference_test.cpp
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/source_manifest.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/sync_reference.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/transfer_manifest.json
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/retrieved/worker.py
+ create mode 100644 03_hadamard_tc/a962695448-rgb/results/nvidia_a100_20260906/source_manifest.json
+START_VARIANT off
+RUN cmake -S /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend -B /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e -DCMAKE_BUILD_TYPE=Release -DRUN_MODE=npu -DBUILD_VALIDATION=ON -DENABLE_VECTOR_SCALE=OFF -DSOC_VERSION=Ascend910B1 -DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann-9.0.0
+RUN cmake --build /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e --target validate_and_benchmark -j 2
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --dim 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --dim 3
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --dim 512
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --dtype fp32
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --batch -1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --seq 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --heads x
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --batch 18446744073709551615 --seq 2
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --heads 999999999999999999999999999999
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --dim
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --unknown 1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --benchmark --repeats 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --benchmark --groups 10001
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --block-dim 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --block-dim 33
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --benchmark --warmup -1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --validate --block-dim 1 --dtype both --json /data/infinitensor-2026/runs/ascend_scale_off_f614762/validation.json
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_off_f614762-50ab4ab19e/validate_and_benchmark --benchmark --block-dim 1 --dtype both --repeats 5 --groups 5 --warmup 3 --csv /data/infinitensor-2026/runs/ascend_scale_off_f614762/benchmark.csv --batch 1 --seq 17 --heads 1 --dim 128
+{"status": "PASS", "summary": "/data/infinitensor-2026/runs/ascend_scale_off_f614762/run_summary.json"}
+END_VARIANT off exit=0
+START_VARIANT on
+RUN cmake -S /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend -B /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290 -DCMAKE_BUILD_TYPE=Release -DRUN_MODE=npu -DBUILD_VALIDATION=ON -DENABLE_VECTOR_SCALE=ON -DSOC_VERSION=Ascend910B1 -DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann-9.0.0
+RUN cmake --build /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290 --target validate_and_benchmark -j 2
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --dim 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --dim 3
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --dim 512
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --dtype fp32
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --batch -1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --seq 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --heads x
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --batch 18446744073709551615 --seq 2
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --heads 999999999999999999999999999999
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --dim
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --unknown 1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --benchmark --repeats 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --benchmark --groups 10001
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --block-dim 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --block-dim 33
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --benchmark --warmup -1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --validate --block-dim 1 --dtype both --json /data/infinitensor-2026/runs/ascend_scale_on_f614762/validation.json
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark --benchmark --block-dim 1 --dtype both --repeats 5 --groups 5 --warmup 3 --csv /data/infinitensor-2026/runs/ascend_scale_on_f614762/benchmark.csv --batch 1 --seq 17 --heads 1 --dim 128
+{"status": "PASS", "summary": "/data/infinitensor-2026/runs/ascend_scale_on_f614762/run_summary.json"}
+END_VARIANT on exit=0

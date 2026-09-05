@@ -1,0 +1,4 @@
+DEVICE soc=Ascend910B1 execution=npu block_dim=32 vector_scale_enabled=false
+BENCHMARK_PROGRESS dtype=fp16 rows=257 n=16
+BENCHMARK_PROGRESS dtype=bf16 rows=257 n=16
+PASS requested validation/benchmark operations completed

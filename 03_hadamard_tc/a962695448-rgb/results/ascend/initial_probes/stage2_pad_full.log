@@ -1,0 +1,70 @@
+DEVICE soc=Ascend910B1 execution=npu
+PAD_LAUNCH dtype=fp16 n=1 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=1 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=2 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=2 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=3 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=3 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=7 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=7 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=8 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=8 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=15 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=15 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=16 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=16 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=17 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=17 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=31 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=31 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=32 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=32 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=63 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=63 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=64 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=64 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=127 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=127 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=128 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=128 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=255 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=255 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=256 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=256 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=fp16 n=257 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=257 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=1 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=1 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=2 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=2 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=3 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=3 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=7 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=7 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=8 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=8 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=15 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=15 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=16 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=16 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=17 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=17 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=31 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=31 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=32 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=32 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=63 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=63 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=64 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=64 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=127 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=127 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=128 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=128 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=255 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=255 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=256 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=256 bits_exact=true input_unchanged=true guards=true
+PAD_LAUNCH dtype=bf16 n=257 gm_offset_bytes=34
+PAD_PASS dtype=bf16 n=257 bits_exact=true input_unchanged=true guards=true
+ASCEND_STAGE2_PASS cases=34 stage=pad dtype=both execution=npu

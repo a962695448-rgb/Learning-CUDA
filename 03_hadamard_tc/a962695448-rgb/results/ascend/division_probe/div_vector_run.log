@@ -1,0 +1,25 @@
+DIV_PROBE_BEGIN mode=vector scalar_compiled=0 host_rne_checks=3 cases=256
+DEVICE soc=Ascend910B1 execution=npu
+DIV_LAUNCH path=vector_div execution=npu count=256 block_dim=1 guard_bytes=32
+DIV_SAMPLE path=vector_div index=0 group=maxabs_over_7 lhs=0 rhs=7 expected=0 actual=0 lhs_bits=00000000 rhs_bits=40e00000 expected_bits=00000000 actual_bits=00000000
+DIV_SAMPLE path=vector_div index=1 group=maxabs_over_7 lhs=5.96046448e-08 rhs=7 expected=8.51494963e-09 actual=8.51494963e-09 lhs_bits=33800000 rhs_bits=40e00000 expected_bits=32124925 actual_bits=32124925
+DIV_SAMPLE path=vector_div index=2 group=maxabs_over_7 lhs=6.10351562e-05 rhs=7 expected=8.71930843e-06 actual=8.71930843e-06 lhs_bits=38800000 rhs_bits=40e00000 expected_bits=37124925 actual_bits=37124925
+DIV_SAMPLE path=vector_div index=3 group=maxabs_over_7 lhs=0.00390625 rhs=7 expected=0.000558035739 actual=0.000558035739 lhs_bits=3b800000 rhs_bits=40e00000 expected_bits=3a124925 actual_bits=3a124925
+DIV_MISMATCH path=vector_div index=66 group=x_over_cpu_fp32_scale lhs=5.96046448e-08 rhs=8.51494963e-09 expected=6.99999952 actual=7 lhs_bits=33800000 rhs_bits=32124925 expected_bits=40dfffff actual_bits=40e00000
+DIV_MISMATCH path=vector_div index=67 group=x_over_cpu_fp32_scale lhs=-5.96046448e-08 rhs=8.51494963e-09 expected=-6.99999952 actual=-7 lhs_bits=b3800000 rhs_bits=32124925 expected_bits=c0dfffff actual_bits=c0e00000
+DIV_MISMATCH path=vector_div index=68 group=x_over_cpu_fp32_scale lhs=2.98023224e-08 rhs=8.51494963e-09 expected=3.49999976 actual=3.5 lhs_bits=33000000 rhs_bits=32124925 expected_bits=405fffff actual_bits=40600000
+DIV_MISMATCH path=vector_div index=69 group=x_over_cpu_fp32_scale lhs=-2.98023224e-08 rhs=8.51494963e-09 expected=-3.49999976 actual=-3.5 lhs_bits=b3000000 rhs_bits=32124925 expected_bits=c05fffff actual_bits=c0600000
+DIV_MISMATCH path=vector_div index=70 group=x_over_cpu_fp32_scale lhs=1.49011612e-08 rhs=8.51494963e-09 expected=1.74999988 actual=1.75 lhs_bits=32800000 rhs_bits=32124925 expected_bits=3fdfffff actual_bits=3fe00000
+DIV_MISMATCH path=vector_div index=71 group=x_over_cpu_fp32_scale lhs=-1.49011612e-08 rhs=8.51494963e-09 expected=-1.74999988 actual=-1.75 lhs_bits=b2800000 rhs_bits=32124925 expected_bits=bfdfffff actual_bits=bfe00000
+DIV_MISMATCH path=vector_div index=74 group=x_over_cpu_fp32_scale lhs=6.10351562e-05 rhs=8.71930843e-06 expected=6.99999952 actual=7 lhs_bits=38800000 rhs_bits=37124925 expected_bits=40dfffff actual_bits=40e00000
+DIV_MISMATCH path=vector_div index=75 group=x_over_cpu_fp32_scale lhs=-6.10351562e-05 rhs=8.71930843e-06 expected=-6.99999952 actual=-7 lhs_bits=b8800000 rhs_bits=37124925 expected_bits=c0dfffff actual_bits=c0e00000
+DIV_MISMATCH path=vector_div index=76 group=x_over_cpu_fp32_scale lhs=3.05175781e-05 rhs=8.71930843e-06 expected=3.49999976 actual=3.5 lhs_bits=38000000 rhs_bits=37124925 expected_bits=405fffff actual_bits=40600000
+DIV_MISMATCH path=vector_div index=77 group=x_over_cpu_fp32_scale lhs=-3.05175781e-05 rhs=8.71930843e-06 expected=-3.49999976 actual=-3.5 lhs_bits=b8000000 rhs_bits=37124925 expected_bits=c05fffff actual_bits=c0600000
+DIV_MISMATCH path=vector_div index=78 group=x_over_cpu_fp32_scale lhs=1.52587891e-05 rhs=8.71930843e-06 expected=1.74999988 actual=1.75 lhs_bits=37800000 rhs_bits=37124925 expected_bits=3fdfffff actual_bits=3fe00000
+DIV_MISMATCH path=vector_div index=79 group=x_over_cpu_fp32_scale lhs=-1.52587891e-05 rhs=8.71930843e-06 expected=-1.74999988 actual=-1.75 lhs_bits=b7800000 rhs_bits=37124925 expected_bits=bfdfffff actual_bits=bfe00000
+DIV_MISMATCH path=vector_div index=82 group=x_over_cpu_fp32_scale lhs=0.03125 rhs=0.00446428591 expected=6.99999952 actual=7 lhs_bits=3d000000 rhs_bits=3b924925 expected_bits=40dfffff actual_bits=40e00000
+DIV_MISMATCH path=vector_div index=83 group=x_over_cpu_fp32_scale lhs=-0.03125 rhs=0.00446428591 expected=-6.99999952 actual=-7 lhs_bits=bd000000 rhs_bits=3b924925 expected_bits=c0dfffff actual_bits=c0e00000
+DIV_MISMATCH path=vector_div index=84 group=x_over_cpu_fp32_scale lhs=0.015625 rhs=0.00446428591 expected=3.49999976 actual=3.5 lhs_bits=3c800000 rhs_bits=3b924925 expected_bits=405fffff actual_bits=40600000
+DIV_MISMATCH path=vector_div index=85 group=x_over_cpu_fp32_scale lhs=-0.015625 rhs=0.00446428591 expected=-3.49999976 actual=-3.5 lhs_bits=bc800000 rhs_bits=3b924925 expected_bits=c05fffff actual_bits=c0600000
+DIV_RESULT path=vector_div elements=256 mismatches=64 signed_zero_only=0 maxabs_over_7=0 negative_control=0 x_over_scale=60 general_control=4 input_unchanged=true guards=true status=PRECISION_MISMATCH
+ASCEND_DIV_PROBE_RESULT mode=vector status=PRECISION_MISMATCH vector_status=PRECISION_MISMATCH scalar_status=NOT_TESTED vector_mismatches=64 scalar_mismatches=0

@@ -1,0 +1,6 @@
+div_vector_configure exit=0
+div_vector_build exit=0
+div_vector_run exit=1
+div_scalar_configure exit=0
+div_scalar_build exit=0
+div_scalar_run exit=1

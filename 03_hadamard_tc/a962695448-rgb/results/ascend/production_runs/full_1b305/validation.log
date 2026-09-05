@@ -1,0 +1,102 @@
+DEVICE soc=Ascend910B1 execution=npu block_dim=1
+VALIDATION_PROGRESS dtype=fp16 n=1 cases=44
+VALIDATION_PROGRESS dtype=fp16 n=2 cases=132
+VALIDATION_PROGRESS dtype=fp16 n=4 cases=220
+VALIDATION_PROGRESS dtype=fp16 n=8 cases=308
+VALIDATION_PROGRESS dtype=fp16 n=16 cases=396
+VALIDATION_PROGRESS dtype=fp16 n=32 cases=484
+VALIDATION_PROGRESS dtype=fp16 n=64 cases=572
+VALIDATION_PROGRESS dtype=fp16 n=128 cases=660
+VALIDATION_PROGRESS dtype=fp16 n=256 cases=748
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=1
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=2
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=3
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=4
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=5
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=6
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=7
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=8
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=9
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=10
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=11
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=12
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=13
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=14
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=15
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=16
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=17
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=18
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=19
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=20
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=21
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=22
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=23
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=24
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=25
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=26
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=27
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=28
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=29
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=30
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=31
+GRID_PROGRESS dtype=fp16 rows=33 block_dim=32
+LARGE_M_START rows=262145 n=1 block_dim=32 operations=transform,inplace
+LARGE_M_PASS rows=262145 n=1 block_dim=32
+CONTRACT_PROGRESS method=scalar_butterfly phase=invalid-parameters
+CONTRACT_PROGRESS method=scalar_butterfly phase=ties-upload
+CONTRACT_PROGRESS method=scalar_butterfly phase=ties-quantize
+CONTRACT_PROGRESS method=vector_gather phase=invalid-parameters
+CONTRACT_PROGRESS method=vector_gather phase=ties-upload
+CONTRACT_PROGRESS method=vector_gather phase=ties-quantize
+VALIDATION_PASS dtype=fp16 cases=748 elements=3122218 max_rounded_error=0.00390625 max_unrounded_error=0.0156202316284 contract_checks=92
+VALIDATION_PROGRESS dtype=bf16 n=1 cases=44
+VALIDATION_PROGRESS dtype=bf16 n=2 cases=132
+VALIDATION_PROGRESS dtype=bf16 n=4 cases=220
+VALIDATION_PROGRESS dtype=bf16 n=8 cases=308
+VALIDATION_PROGRESS dtype=bf16 n=16 cases=396
+VALIDATION_PROGRESS dtype=bf16 n=32 cases=484
+VALIDATION_PROGRESS dtype=bf16 n=64 cases=572
+VALIDATION_PROGRESS dtype=bf16 n=128 cases=660
+VALIDATION_PROGRESS dtype=bf16 n=256 cases=748
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=1
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=2
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=3
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=4
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=5
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=6
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=7
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=8
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=9
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=10
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=11
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=12
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=13
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=14
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=15
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=16
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=17
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=18
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=19
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=20
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=21
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=22
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=23
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=24
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=25
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=26
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=27
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=28
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=29
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=30
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=31
+GRID_PROGRESS dtype=bf16 rows=33 block_dim=32
+LARGE_M_START rows=262145 n=1 block_dim=32 operations=transform,inplace
+LARGE_M_PASS rows=262145 n=1 block_dim=32
+CONTRACT_PROGRESS method=scalar_butterfly phase=invalid-parameters
+CONTRACT_PROGRESS method=scalar_butterfly phase=ties-upload
+CONTRACT_PROGRESS method=scalar_butterfly phase=ties-quantize
+CONTRACT_PROGRESS method=vector_gather phase=invalid-parameters
+CONTRACT_PROGRESS method=vector_gather phase=ties-upload
+CONTRACT_PROGRESS method=vector_gather phase=ties-quantize
+VALIDATION_PASS dtype=bf16 cases=748 elements=3122218 max_rounded_error=3.81469726562e-06 max_unrounded_error=0.124984741211 contract_checks=92
+PASS requested validation/benchmark operations completed

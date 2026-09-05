@@ -1,0 +1,5 @@
+fetch exit=0
+merge exit=0
+configure exit=0
+build exit=0
+ASCEND_INITIAL_BUILD_DONE b7c5d822befc92d3ca8063f7409071d9df1194b5

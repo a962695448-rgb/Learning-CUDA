@@ -1,0 +1,973 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-05T19:41:40Z",
+  "platform": "ascend",
+  "run_mode": "npu",
+  "soc_target": "Ascend910B1",
+  "host_architecture": "aarch64",
+  "cann_root": "/usr/local/Ascend/cann-9.0.0",
+  "sdk_environment_setup": {
+    "script": "/usr/local/Ascend/cann-9.0.0/set_env.sh",
+    "used": true,
+    "sha256": "fb26064b949ab2b549dd9c437bcc5db3661a78444be00a17265c1818f780e1de"
+  },
+  "build_directory": "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290",
+  "quick": false,
+  "skip_stress": false,
+  "requested_dtype": "both",
+  "block_dim": 1,
+  "vector_scale_enabled": true,
+  "vector_scale_scope": [
+    "vector_transform",
+    "vector_split",
+    "vector_fused"
+  ],
+  "benchmark_requested": true,
+  "pilot_benchmark": true,
+  "source_sha256": {
+    "platforms/ascend/CMakeLists.txt": "3ce9073967af0d0be8016fe23c0b1e3b0fa1c90e1536276d896fec9c276cb6ef",
+    "platforms/ascend/hadamard_api.h": "e6e6197708bdbfedc9826f693a5dfe905121e488069efad2468453b9f27745f6",
+    "platforms/ascend/hadamard_api.cpp": "da5777047a5228d2a05e4149223f162ea27eeaed6ea28fd134563ff06ecc46a6",
+    "platforms/ascend/hadamard_kernel.cpp": "a1e1d4c19d38058cf4875931abd8eda187d87b314539549d50f8a710dca771eb",
+    "platforms/ascend/validate_and_benchmark.cpp": "cbdbe64e0cecc4d8af6e3ea1e6acb318dabc03cb990090b2343c7f3085d58a4f",
+    "platforms/ascend/run_platform.py": "a1c08ec5fc9d0571a72e050fef74243b1f21a1d2fbee0654096183a4d3a484dd",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "python_version": "3.11.15 (main, May 13 2026, 07:58:57) [GCC 12.3.1 (openEuler 12.3.1-99.oe2403sp2)]",
+  "cmake_version": {
+    "command": [
+      "cmake",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "cmake version 3.27.9\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+  },
+  "git_head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "output": "f614762a69e75524db65b47fbf7d6d01836db438\n"
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "returncode": 0,
+    "output": ""
+  },
+  "stages": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend",
+        "-B",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DRUN_MODE=npu",
+        "-DBUILD_VALIDATION=ON",
+        "-DENABLE_VECTOR_SCALE=ON",
+        "-DSOC_VERSION=Ascend910B1",
+        "-DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann-9.0.0"
+      ],
+      "log": "configure.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 0.8038386357948184,
+      "sha256": "4334cd37cef9c71e52e1efd23ecdc621372a9de111cf7ae187114b2db58ccca6"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290",
+        "--target",
+        "validate_and_benchmark",
+        "-j",
+        "2"
+      ],
+      "log": "build.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 23.822060997132212,
+      "sha256": "f4b6cf3a98e25f91cf44a7bf91b8bebb25efa165608a7738909a8667115de6be"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark"
+      ],
+      "log": "invalid_00.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4341084340121597,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "0"
+      ],
+      "log": "invalid_01.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4329498161096126,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "3"
+      ],
+      "log": "invalid_02.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43179918895475566,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "512"
+      ],
+      "log": "invalid_03.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43165350588969886,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--dtype",
+        "fp32"
+      ],
+      "log": "invalid_04.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4312087488360703,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--batch",
+        "-1"
+      ],
+      "log": "invalid_05.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43215419398620725,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--seq",
+        "0"
+      ],
+      "log": "invalid_06.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4340008220169693,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--heads",
+        "x"
+      ],
+      "log": "invalid_07.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4335980562027544,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--batch",
+        "18446744073709551615",
+        "--seq",
+        "2"
+      ],
+      "log": "invalid_08.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43186971894465387,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--heads",
+        "999999999999999999999999999999"
+      ],
+      "log": "invalid_09.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43125018011778593,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--dim"
+      ],
+      "log": "invalid_10.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43128053983673453,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--unknown",
+        "1"
+      ],
+      "log": "invalid_11.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43106808699667454,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--benchmark",
+        "--repeats",
+        "0"
+      ],
+      "log": "invalid_12.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43226953502744436,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--benchmark",
+        "--groups",
+        "10001"
+      ],
+      "log": "invalid_13.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4327280530706048,
+      "sha256": "6853a2cfcbd7419ec8f10dab8ea0fcde088612c1c1b97209b139c953391ddd89"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--block-dim",
+        "0"
+      ],
+      "log": "invalid_14.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.43270535208284855,
+      "sha256": "23c694686c27c3d19ea0046b3c956f346c984e0aa474b812ba1a16b989d7fe02"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--block-dim",
+        "33"
+      ],
+      "log": "invalid_15.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4310669768601656,
+      "sha256": "59104082c9d9b9572cc1674550191583955a15cfdd7cd3126aa993a9c0105d02"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--benchmark",
+        "--warmup",
+        "-1"
+      ],
+      "log": "invalid_16.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.4313297909684479,
+      "sha256": "cdff5dea2c1a7d1a5f461d1dd8ca87b83460ebf5404fe832598b919d69162db1"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--validate",
+        "--block-dim",
+        "1",
+        "--dtype",
+        "both",
+        "--json",
+        "/data/infinitensor-2026/runs/ascend_scale_on_f614762/validation.json"
+      ],
+      "log": "validation.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 12.563674577977508,
+      "sha256": "d889c3fb835252474bcab0ebbcbc5b645017b26e7de063b96b25a8f7484cceb9"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+        "--benchmark",
+        "--block-dim",
+        "1",
+        "--dtype",
+        "both",
+        "--repeats",
+        "5",
+        "--groups",
+        "5",
+        "--warmup",
+        "3",
+        "--csv",
+        "/data/infinitensor-2026/runs/ascend_scale_on_f614762/benchmark.csv",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "128"
+      ],
+      "log": "benchmark.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 2.2802366570103914,
+      "sha256": "2c3bcae532a22b8fd8454d87f3bac9f082e321d460eca470b28c27480059e271"
+    }
+  ],
+  "device_inventory": {
+    "command": [
+      "/usr/local/bin/npu-smi",
+      "info"
+    ],
+    "returncode": 0,
+    "output": "+------------------------------------------------------------------------------------------------+\n| npu-smi 25.5.1                   Version: 25.5.1                                               |\n+---------------------------+---------------+----------------------------------------------------+\n| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|\n| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |\n+===========================+===============+====================================================+\n| 0     910B1               | OK            | 94.3        36                0    / 0             |\n| 0                         | 0000:C1:00.0  | 0           0    / 0          3443 / 65536         |\n+===========================+===============+====================================================+\n+---------------------------+---------------+----------------------------------------------------+\n| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |\n+===========================+===============+====================================================+\n| No running processes found in NPU 0                                                            |\n+===========================+===============+====================================================+\n"
+  },
+  "vector_scale_cmake_cache": "ENABLE_VECTOR_SCALE:BOOL=ON",
+  "binary": {
+    "path": "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_scale_on_f614762-98a70fd290/validate_and_benchmark",
+    "sha256": "b738db0bb242945b9e16b9c919c9a6378c26c854edeac0caace3034b447b99fa"
+  },
+  "cli_rejection_cases": 17,
+  "validation": {
+    "status": "PASS",
+    "full_matrix": true,
+    "full_suite_complete": true,
+    "execution": "npu",
+    "soc": "Ascend910B1",
+    "main_block_dim": 1,
+    "methods": [
+      "scalar_butterfly",
+      "vector_gather"
+    ],
+    "vector_scale_enabled": true,
+    "oracle": "FP32 CPU FWHT exact output bits plus all-element dtype-rounded FP64 dense",
+    "fp16_tolerance_strict": 0.01,
+    "bf16_tolerance_strict": 0.05,
+    "large_m_definition": "262145 rows, N1, both transforms and vector in-place, block_dim32; no large-M INT4 claim; does not exercise indices above 2^32",
+    "large_m_skipped": false,
+    "warmup_not_counted": true,
+    "dtypes": {
+      "fp16": {
+        "cases": 748,
+        "elements": 3122218,
+        "exact_scalar_vector_elements": 3122218,
+        "fp32_fwht_output_bits_exact": true,
+        "max_abs_error_rounded_fp64": 0.00390625,
+        "max_abs_error_unrounded_fp64": 0.015620231628418,
+        "api_contract_checks": 94,
+        "grid_cases": 64,
+        "grid_elements": 271392,
+        "grid_max_abs_error_rounded_fp64": 0,
+        "grid_max_abs_error_unrounded_fp64": 0.0124778747558594,
+        "large_m_cases": 1,
+        "large_m_elements": 262145
+      },
+      "bf16": {
+        "cases": 748,
+        "elements": 3122218,
+        "exact_scalar_vector_elements": 3122218,
+        "fp32_fwht_output_bits_exact": true,
+        "max_abs_error_rounded_fp64": 3.814697265625e-06,
+        "max_abs_error_unrounded_fp64": 0.124984741210938,
+        "api_contract_checks": 94,
+        "grid_cases": 64,
+        "grid_elements": 271392,
+        "grid_max_abs_error_rounded_fp64": 0,
+        "grid_max_abs_error_unrounded_fp64": 0.0863037109375,
+        "large_m_cases": 1,
+        "large_m_elements": 262145
+      }
+    }
+  },
+  "benchmark": {
+    "timer": "ACL_EVENT_TIME_LINE events; aclrtEventElapsedTime milliseconds converted to microseconds",
+    "unit_relationship": "kernel_ms = kernel_us / 1000; same samples, not additional timing or precision",
+    "vector_scale_enabled": true,
+    "vector_scale_scope": [
+      "vector_transform",
+      "vector_split",
+      "vector_fused"
+    ],
+    "not_timed": [
+      "allocation",
+      "copies",
+      "validation",
+      "event creation/destruction",
+      "warmup"
+    ],
+    "cache_condition": "same seeded read-only inputs reused; warm-cache samples",
+    "quant_only": "one shared NPU scalar-division quantization implementation; not two different algorithms",
+    "logical_GBs": "logical tensor I/O estimate, not measured physical memory bandwidth",
+    "series": [
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "scalar_transform",
+        "raw_samples_us": [
+          261.044001579,
+          257.371997833,
+          257.100009918,
+          257.444000244,
+          257.096004486
+        ],
+        "median_us": 257.371997833,
+        "minimum_us": 257.096004486,
+        "maximum_us": 261.044001579,
+        "raw_samples_ms": [
+          0.261044001579,
+          0.257371997833,
+          0.257100009918,
+          0.257444000244,
+          0.257096004486
+        ],
+        "median_ms": 0.257371997833,
+        "minimum_ms": 0.257096004486,
+        "maximum_ms": 0.261044001579
+      },
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "vector_transform",
+        "raw_samples_us": [
+          36.5200012922,
+          32.9160004854,
+          32.5679987669,
+          32.4479997158,
+          32.1119993925
+        ],
+        "median_us": 32.5679987669,
+        "minimum_us": 32.1119993925,
+        "maximum_us": 36.5200012922,
+        "raw_samples_ms": [
+          0.0365200012922,
+          0.0329160004854,
+          0.0325679987669,
+          0.0324479997158,
+          0.0321119993925
+        ],
+        "median_ms": 0.0325679987669,
+        "minimum_ms": 0.0321119993925,
+        "maximum_ms": 0.0365200012922
+      },
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "scalar_split",
+        "raw_samples_us": [
+          377.747988701,
+          371.684002876,
+          371.431994438,
+          371.03600502,
+          371.304011345
+        ],
+        "median_us": 371.431994438,
+        "minimum_us": 371.03600502,
+        "maximum_us": 377.747988701,
+        "raw_samples_ms": [
+          0.377747988701,
+          0.371684002876,
+          0.371431994438,
+          0.37103600502,
+          0.371304011345
+        ],
+        "median_ms": 0.371431994438,
+        "minimum_ms": 0.37103600502,
+        "maximum_ms": 0.377747988701
+      },
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "vector_split",
+        "raw_samples_us": [
+          149.140000343,
+          145.84800005,
+          145.799994469,
+          146.264004707,
+          146.319997311
+        ],
+        "median_us": 146.264004707,
+        "minimum_us": 145.799994469,
+        "maximum_us": 149.140000343,
+        "raw_samples_ms": [
+          0.149140000343,
+          0.14584800005,
+          0.145799994469,
+          0.146264004707,
+          0.146319997311
+        ],
+        "median_ms": 0.146264004707,
+        "minimum_ms": 0.145799994469,
+        "maximum_ms": 0.149140000343
+      },
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "scalar_fused",
+        "raw_samples_us": [
+          351.979994774,
+          351.819992065,
+          351.880002022,
+          351.647996902,
+          350.887989998
+        ],
+        "median_us": 351.819992065,
+        "minimum_us": 350.887989998,
+        "maximum_us": 351.979994774,
+        "raw_samples_ms": [
+          0.351979994774,
+          0.351819992065,
+          0.351880002022,
+          0.351647996902,
+          0.350887989998
+        ],
+        "median_ms": 0.351819992065,
+        "minimum_ms": 0.350887989998,
+        "maximum_ms": 0.351979994774
+      },
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "vector_fused",
+        "raw_samples_us": [
+          141.320002079,
+          139.092004299,
+          138.639998436,
+          138.888001442,
+          138.007998466
+        ],
+        "median_us": 138.888001442,
+        "minimum_us": 138.007998466,
+        "maximum_us": 141.320002079,
+        "raw_samples_ms": [
+          0.141320002079,
+          0.139092004299,
+          0.138639998436,
+          0.138888001442,
+          0.138007998466
+        ],
+        "median_ms": 0.138888001442,
+        "minimum_ms": 0.138007998466,
+        "maximum_ms": 0.141320002079
+      },
+      {
+        "dtype": "fp16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "quant_only",
+        "raw_samples_us": [
+          114.919996262,
+          114.719998837,
+          114.776003361,
+          114.567995071,
+          114.092004299
+        ],
+        "median_us": 114.719998837,
+        "minimum_us": 114.092004299,
+        "maximum_us": 114.919996262,
+        "raw_samples_ms": [
+          0.114919996262,
+          0.114719998837,
+          0.114776003361,
+          0.114567995071,
+          0.114092004299
+        ],
+        "median_ms": 0.114719998837,
+        "minimum_ms": 0.114092004299,
+        "maximum_ms": 0.114919996262
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "scalar_transform",
+        "raw_samples_us": [
+          258.299994469,
+          257.288002968,
+          257.119989395,
+          259.319996834,
+          257.179999352
+        ],
+        "median_us": 257.288002968,
+        "minimum_us": 257.119989395,
+        "maximum_us": 259.319996834,
+        "raw_samples_ms": [
+          0.258299994469,
+          0.257288002968,
+          0.257119989395,
+          0.259319996834,
+          0.257179999352
+        ],
+        "median_ms": 0.257288002968,
+        "minimum_ms": 0.257119989395,
+        "maximum_ms": 0.259319996834
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "vector_transform",
+        "raw_samples_us": [
+          33.1959992647,
+          33.2760006189,
+          32.9600006342,
+          32.6999992132,
+          32.1999996901
+        ],
+        "median_us": 32.9600006342,
+        "minimum_us": 32.1999996901,
+        "maximum_us": 33.2760006189,
+        "raw_samples_ms": [
+          0.0331959992647,
+          0.0332760006189,
+          0.0329600006342,
+          0.0326999992132,
+          0.0321999996901
+        ],
+        "median_ms": 0.0329600006342,
+        "minimum_ms": 0.0321999996901,
+        "maximum_ms": 0.0332760006189
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "scalar_split",
+        "raw_samples_us": [
+          371.871995926,
+          371.275997162,
+          371.372008324,
+          371.104001999,
+          370.968008041
+        ],
+        "median_us": 371.275997162,
+        "minimum_us": 370.968008041,
+        "maximum_us": 371.871995926,
+        "raw_samples_ms": [
+          0.371871995926,
+          0.371275997162,
+          0.371372008324,
+          0.371104001999,
+          0.370968008041
+        ],
+        "median_ms": 0.371275997162,
+        "minimum_ms": 0.370968008041,
+        "maximum_ms": 0.371871995926
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "vector_split",
+        "raw_samples_us": [
+          146.808004379,
+          145.884001255,
+          145.82400322,
+          146.135997772,
+          146.568000317
+        ],
+        "median_us": 146.135997772,
+        "minimum_us": 145.82400322,
+        "maximum_us": 146.808004379,
+        "raw_samples_ms": [
+          0.146808004379,
+          0.145884001255,
+          0.14582400322,
+          0.146135997772,
+          0.146568000317
+        ],
+        "median_ms": 0.146135997772,
+        "minimum_ms": 0.14582400322,
+        "maximum_ms": 0.146808004379
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "scalar_fused",
+        "raw_samples_us": [
+          352.175998688,
+          352.220010757,
+          351.799988747,
+          351.715993881,
+          351.408004761
+        ],
+        "median_us": 351.799988747,
+        "minimum_us": 351.408004761,
+        "maximum_us": 352.220010757,
+        "raw_samples_ms": [
+          0.352175998688,
+          0.352220010757,
+          0.351799988747,
+          0.351715993881,
+          0.351408004761
+        ],
+        "median_ms": 0.351799988747,
+        "minimum_ms": 0.351408004761,
+        "maximum_ms": 0.352220010757
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "vector_fused",
+        "raw_samples_us": [
+          138.468003273,
+          138.556003571,
+          138.388001919,
+          138.287997246,
+          137.600004673
+        ],
+        "median_us": 138.388001919,
+        "minimum_us": 137.600004673,
+        "maximum_us": 138.556003571,
+        "raw_samples_ms": [
+          0.138468003273,
+          0.138556003571,
+          0.138388001919,
+          0.138287997246,
+          0.137600004673
+        ],
+        "median_ms": 0.138388001919,
+        "minimum_ms": 0.137600004673,
+        "maximum_ms": 0.138556003571
+      },
+      {
+        "dtype": "bf16",
+        "batch": "1",
+        "seq": "17",
+        "heads": "1",
+        "dim": "128",
+        "block_dim": "1",
+        "method": "quant_only",
+        "raw_samples_us": [
+          114.523994923,
+          114.779996872,
+          114.756000042,
+          114.444005489,
+          114.023995399
+        ],
+        "median_us": 114.523994923,
+        "minimum_us": 114.023995399,
+        "maximum_us": 114.779996872,
+        "raw_samples_ms": [
+          0.114523994923,
+          0.114779996872,
+          0.114756000042,
+          0.114444005489,
+          0.114023995399
+        ],
+        "median_ms": 0.114523994923,
+        "minimum_ms": 0.114023995399,
+        "maximum_ms": 0.114779996872
+      }
+    ],
+    "comparisons_including_slowdowns": [
+      {
+        "shape_dtype_blocks": [
+          "fp16",
+          "1",
+          "17",
+          "1",
+          "128",
+          "1"
+        ],
+        "operation": "transform",
+        "scalar_median_us": 257.371997833,
+        "vector_median_us": 32.5679987669,
+        "scalar_over_vector_same_blocks": 7.902604015527544
+      },
+      {
+        "shape_dtype_blocks": [
+          "fp16",
+          "1",
+          "17",
+          "1",
+          "128",
+          "1"
+        ],
+        "operation": "split",
+        "scalar_median_us": 371.431994438,
+        "vector_median_us": 146.264004707,
+        "scalar_over_vector_same_blocks": 2.539462769271651
+      },
+      {
+        "shape_dtype_blocks": [
+          "fp16",
+          "1",
+          "17",
+          "1",
+          "128",
+          "1"
+        ],
+        "operation": "fused",
+        "scalar_median_us": 351.819992065,
+        "vector_median_us": 138.888001442,
+        "scalar_over_vector_same_blocks": 2.5331201285369565
+      },
+      {
+        "shape_dtype_blocks": [
+          "bf16",
+          "1",
+          "17",
+          "1",
+          "128",
+          "1"
+        ],
+        "operation": "transform",
+        "scalar_median_us": 257.288002968,
+        "vector_median_us": 32.9600006342,
+        "scalar_over_vector_same_blocks": 7.806067901013098
+      },
+      {
+        "shape_dtype_blocks": [
+          "bf16",
+          "1",
+          "17",
+          "1",
+          "128",
+          "1"
+        ],
+        "operation": "split",
+        "scalar_median_us": 371.275997162,
+        "vector_median_us": 146.135997772,
+        "scalar_over_vector_same_blocks": 2.5406197160350685
+      },
+      {
+        "shape_dtype_blocks": [
+          "bf16",
+          "1",
+          "17",
+          "1",
+          "128",
+          "1"
+        ],
+        "operation": "fused",
+        "scalar_median_us": 351.799988747,
+        "vector_median_us": 138.388001919,
+        "scalar_over_vector_same_blocks": 2.5421278136013
+      }
+    ]
+  },
+  "finished_utc": "2026-09-05T19:42:27Z",
+  "artifacts": {
+    "invalid_13.log": "6853a2cfcbd7419ec8f10dab8ea0fcde088612c1c1b97209b139c953391ddd89",
+    "build.log": "f4b6cf3a98e25f91cf44a7bf91b8bebb25efa165608a7738909a8667115de6be",
+    "invalid_08.log": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+    "invalid_10.log": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+    "invalid_00.log": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e",
+    "invalid_01.log": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+    "validation.log": "d889c3fb835252474bcab0ebbcbc5b645017b26e7de063b96b25a8f7484cceb9",
+    "benchmark.log": "2c3bcae532a22b8fd8454d87f3bac9f082e321d460eca470b28c27480059e271",
+    "configure.log": "4334cd37cef9c71e52e1efd23ecdc621372a9de111cf7ae187114b2db58ccca6",
+    "invalid_04.log": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+    "invalid_16.log": "cdff5dea2c1a7d1a5f461d1dd8ca87b83460ebf5404fe832598b919d69162db1",
+    "invalid_15.log": "59104082c9d9b9572cc1674550191583955a15cfdd7cd3126aa993a9c0105d02",
+    "invalid_02.log": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+    "validation.json": "c0eeaa54ddee201d1949e6889f520b03b2ff155bc309b2b154382be0068f9b92",
+    "invalid_05.log": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+    "invalid_14.log": "23c694686c27c3d19ea0046b3c956f346c984e0aa474b812ba1a16b989d7fe02",
+    "invalid_12.log": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+    "benchmark.csv": "d30d08fa6dad67809f20d509169427f3be019b822018304d213f781debab9357",
+    "invalid_11.log": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54",
+    "invalid_06.log": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+    "invalid_03.log": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+    "invalid_07.log": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+    "invalid_09.log": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+  }
+}

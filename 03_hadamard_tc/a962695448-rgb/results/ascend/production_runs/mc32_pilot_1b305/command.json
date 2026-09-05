@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_full_1b305-bddbcdbfd3/validate_and_benchmark",
+    "--benchmark",
+    "--batch",
+    "1",
+    "--seq",
+    "4096",
+    "--heads",
+    "1",
+    "--dim",
+    "256",
+    "--block-dim",
+    "32",
+    "--dtype",
+    "both",
+    "--repeats",
+    "3",
+    "--groups",
+    "3",
+    "--warmup",
+    "2",
+    "--csv",
+    "/data/infinitensor-2026/runs/ascend_mc32_pilot_1b305/benchmark.csv"
+  ],
+  "source_commit": "1b305d3e3a07b28b6879596babf47aadbf84ba0c",
+  "binary_sha256": "89c6972836a4d4b3576c66e08e8836118819c95b5ba91b9dc7e204265d4d17aa"
+}

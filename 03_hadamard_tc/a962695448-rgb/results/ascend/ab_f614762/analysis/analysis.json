@@ -1,0 +1,156 @@
+{
+  "analysis_status": "complete",
+  "benchmark_controller_status": "PASS",
+  "source_id_label": "f614762a69e75524db65b47fbf7d6d01836db438",
+  "input_directory": "..",
+  "analyzer_sha256": "11a4c17b4378b18dce74b3bb92062d18afae80005cb86e32a694bdd4da3c4551",
+  "integrity": {
+    "ab_summary_sha256": "ae292fd9569e1217fd777ee9006dbb0ac8f3da4e21a110919644f17234455fcb",
+    "merged_sha256": {
+      "old_run1.csv": "caca309d0db95982f891c20c14685932ec019b8721b1f4375ee255d48cb72a3f",
+      "old_run2.csv": "5fb7a25a9134b3099f0bde3bc8bb5a6996fd3c7a1c359d7bbf87cbc51d6863d7",
+      "old_run3.csv": "f1eee081185af8fb774ecb29aba8b48cff438ce462f2b10dfa37379bcec92adc",
+      "new_run1.csv": "ab419bff9cfbb22d7452485814d6944eae10d1f0284fb46df760aaa79c7ab308",
+      "new_run2.csv": "912aaf317839b60a62c1fe91d7cda4a3a7ed3c2adce8bf098cf7181bfed8ab0a",
+      "new_run3.csv": "eb1ea79c825bb69fac75be811cd3bc48e567b2d32721d33d961e798f5ef8a037"
+    },
+    "native_csv_sha_verified": 120,
+    "process_log_sha_verified": 120,
+    "merged_vs_native_all_fields_exact": true
+  },
+  "binaries": {
+    "old": {
+      "sha256": "fe0b0cd7d3998e61ce8f6ac6a1d8dd17f9964bc41d1ea68d68011ff7010b70d3",
+      "final_sha256": "fe0b0cd7d3998e61ce8f6ac6a1d8dd17f9964bc41d1ea68d68011ff7010b70d3"
+    },
+    "new": {
+      "sha256": "b738db0bb242945b9e16b9c919c9a6378c26c854edeac0caace3034b447b99fa",
+      "final_sha256": "b738db0bb242945b9e16b9c919c9a6378c26c854edeac0caace3034b447b99fa"
+    }
+  },
+  "source_verification_boundary": "controller labels and recorded binary identity verified for consistency; source/build correspondence remains externally verified",
+  "scope": "interleaved independent-process OFF/ON; hot-cache ACL timeline events may include launch gaps; no CPU/NVIDIA comparison",
+  "analysis_runs_no_npu": true,
+  "full_math_validation": "separate evidence; not repeated or inferred as new correctness coverage here",
+  "counts": {
+    "native_observations_counted_once": 8400,
+    "independent_processes": 120,
+    "shape_dtype_cells": 40,
+    "median_rows": 1680,
+    "off_on_paired_round_rows": 840,
+    "three_round_configuration_rows": 280,
+    "same_variant_scalar_vector_rows": 720,
+    "same_variant_vector_fusion_rows": 240
+  },
+  "rules": {
+    "positive_reduction_pct": "(OFF_ms-ON_ms)/OFF_ms*100",
+    "ratio": "OFF_ms/ON_ms",
+    "stable_improvement_ge5": "all three round medians reduce latency by at least 5%",
+    "stable_regression_ge5": "all three round medians increase latency by at least 5%",
+    "stability_is_not_statistical_significance": true,
+    "confidence_intervals": "not computed"
+  },
+  "vector_classification_counts": {
+    "stable_improvement_ge5": 97,
+    "stable_regression_ge5": 0,
+    "all_faster_below_stability_rule": 11,
+    "all_slower_below_stability_rule": 0,
+    "unchanged_all_rounds": 0,
+    "mixed_or_unstable": 12
+  },
+  "control_classification_counts": {
+    "stable_improvement_ge5": 0,
+    "stable_regression_ge5": 0,
+    "all_faster_below_stability_rule": 105,
+    "all_slower_below_stability_rule": 7,
+    "unchanged_all_rounds": 0,
+    "mixed_or_unstable": 48
+  },
+  "vector_round_counts": [
+    {
+      "round": 1,
+      "configurations": 120,
+      "improvement_ge5pct": 97,
+      "regression_ge5pct": 0,
+      "faster": 115,
+      "slower": 5,
+      "equal": 0,
+      "median_configuration_reduction_pct": 19.035697376538522
+    },
+    {
+      "round": 2,
+      "configurations": 120,
+      "improvement_ge5pct": 104,
+      "regression_ge5pct": 0,
+      "faster": 115,
+      "slower": 5,
+      "equal": 0,
+      "median_configuration_reduction_pct": 19.00949761785307
+    },
+    {
+      "round": 3,
+      "configurations": 120,
+      "improvement_ge5pct": 103,
+      "regression_ge5pct": 0,
+      "faster": 114,
+      "slower": 6,
+      "equal": 0,
+      "median_configuration_reduction_pct": 19.346849312884537
+    }
+  ],
+  "control_round_counts": [
+    {
+      "round": 1,
+      "configurations": 160,
+      "improvement_ge5pct": 10,
+      "regression_ge5pct": 6,
+      "faster": 123,
+      "slower": 36,
+      "equal": 1,
+      "median_configuration_reduction_pct": 0.6297076893559703
+    },
+    {
+      "round": 2,
+      "configurations": 160,
+      "improvement_ge5pct": 0,
+      "regression_ge5pct": 0,
+      "faster": 133,
+      "slower": 27,
+      "equal": 0,
+      "median_configuration_reduction_pct": 0.8532433805345911
+    },
+    {
+      "round": 3,
+      "configurations": 160,
+      "improvement_ge5pct": 6,
+      "regression_ge5pct": 3,
+      "faster": 138,
+      "slower": 22,
+      "equal": 0,
+      "median_configuration_reduction_pct": 0.9388753928499239
+    }
+  ],
+  "control_interpretation": "same-build scalar paths and quant_only can change with compilation layout, execution gaps or system state; they are not assumed invariant",
+  "output_tables": {
+    "timings_median_ms.csv": {
+      "rows": 1680,
+      "sha256": "3324f51ff95d608c7b022887520ae1958fb78773e16a5950d0993b41afa0c22e"
+    },
+    "off_on_paired_rounds_ms.csv": {
+      "rows": 840,
+      "sha256": "f762b635fabc54212cc83b0af720220b72c60ac40263d5019c1dc7ea4bdb660b"
+    },
+    "off_on_three_round_stability.csv": {
+      "rows": 280,
+      "sha256": "4250a58181be098fea086223bcb353cfdd2bbc7f0de0766c5149f25af56af3b8"
+    },
+    "within_variant_scalar_vector_ms.csv": {
+      "rows": 720,
+      "sha256": "5ca73c00320477c12808e87e9b285b35b5ec235016ea762d659f56fc0659b6fb"
+    },
+    "within_variant_vector_fusion_ms.csv": {
+      "rows": 240,
+      "sha256": "c57aeaee6612dcc2cc471fb2c66c97c21b32bc557b263202fd1c13d92ce6065d"
+    }
+  }
+}

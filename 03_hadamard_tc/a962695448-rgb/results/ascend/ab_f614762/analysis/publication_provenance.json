@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "scope": "Publication path normalization of one derived metadata field only; original raw evidence untouched.",
+  "file": "analysis.json",
+  "original_bytes": 5806,
+  "original_sha256": "98bdd59edd90f4d8ae3825ebb10a39df00cea09db5f2c77a4a2afbeb5caa565b",
+  "public_bytes": 5570,
+  "public_sha256": "561ef95cca66146cebc7bd1fee98c2f2ca666c318afe30bd86ecc2d0372cb04f",
+  "modified_field": "input_directory",
+  "public_value": "..",
+  "relative_path_base": "Directory containing analysis.json; .. resolves to ab_f614762 raw input directory.",
+  "original_field_value_omitted": "Private local absolute Windows path is intentionally not reproduced here.",
+  "all_other_json_fields_equal": true,
+  "reproduction_note": "Analyzer records its resolved local input path, so rerun metadata and analysis.json hash vary with input location. This field normalization does not alter input hashes, computed values, table bytes or observation counts.",
+  "analyzer_sha256": "11a4c17b4378b18dce74b3bb92062d18afae80005cb86e32a694bdd4da3c4551"
+}

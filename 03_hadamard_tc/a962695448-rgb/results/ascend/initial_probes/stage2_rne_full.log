@@ -1,0 +1,70 @@
+DEVICE soc=Ascend910B1 execution=npu
+RNE_LAUNCH dtype=fp16 n=1 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=1 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=2 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=2 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=3 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=3 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=7 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=7 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=8 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=8 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=15 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=15 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=16 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=16 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=17 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=17 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=31 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=31 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=32 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=32 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=63 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=63 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=64 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=64 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=127 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=127 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=128 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=128 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=255 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=255 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=256 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=256 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=fp16 n=257 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=fp16 n=257 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=1 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=1 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=2 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=2 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=3 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=3 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=7 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=7 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=8 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=8 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=15 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=15 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=16 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=16 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=17 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=17 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=31 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=31 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=32 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=32 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=63 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=63 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=64 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=64 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=127 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=127 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=128 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=128 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=255 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=255 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=256 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=256 bits_exact=true readback_exact=true input_unchanged=true guards=true
+RNE_LAUNCH dtype=bf16 n=257 input_offset=68 typed_output_offset=34
+RNE_PASS dtype=bf16 n=257 bits_exact=true readback_exact=true input_unchanged=true guards=true
+ASCEND_STAGE2_PASS cases=34 stage=rne dtype=both execution=npu

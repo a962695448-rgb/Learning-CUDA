@@ -1,0 +1,31 @@
+From https://github.com/a962695448-rgb/Learning-CUDA
+ * branch            feat/hadamard-cuda -> FETCH_HEAD
+   b7c5d82..1b305d3  feat/hadamard-cuda -> origin/feat/hadamard-cuda
+Updating b7c5d82..1b305d3
+Fast-forward
+ .../platforms/ascend/run_platform.py               | 221 +++++++++++++++++++++
+ .../platforms/ascend/validate_and_benchmark.cpp    |  35 ++--
+ 2 files changed, 242 insertions(+), 14 deletions(-)
+ create mode 100644 03_hadamard_tc/a962695448-rgb/platforms/ascend/run_platform.py
+RUN cmake -S /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/ascend -B /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab -DCMAKE_BUILD_TYPE=Release -DRUN_MODE=npu -DBUILD_VALIDATION=ON -DSOC_VERSION=Ascend910B1 -DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann-9.0.0
+RUN cmake --build /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab --target validate_and_benchmark -j 2
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --dim 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --dim 3
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --dim 512
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --dtype fp32
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --batch -1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --seq 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --heads x
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --batch 18446744073709551615 --seq 2
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --heads 999999999999999999999999999999
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --dim
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --unknown 1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --benchmark --repeats 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --benchmark --groups 10001
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --block-dim 0
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --block-dim 33
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --benchmark --warmup -1
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --validate --block-dim 1 --dtype both --json /data/infinitensor-2026/runs/ascend_quick_1b305/validation.json --quick
+RUN /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/ascend/ascend_quick_1b305-e3d82a64ab/validate_and_benchmark --benchmark --block-dim 1 --dtype both --repeats 5 --groups 5 --warmup 3 --csv /data/infinitensor-2026/runs/ascend_quick_1b305/benchmark.csv --batch 1 --seq 17 --heads 1 --dim 128
+{"status": "PASS", "summary": "/data/infinitensor-2026/runs/ascend_quick_1b305/run_summary.json"}

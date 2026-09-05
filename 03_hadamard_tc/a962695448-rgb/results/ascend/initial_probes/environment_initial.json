@@ -1,0 +1,33 @@
+{
+  "python": "3.11.15 (main, May 13 2026, 07:58:57) [GCC 12.3.1 (openEuler 12.3.1-99.oe2403sp2)]",
+  "executable": "/usr/local/python3.11.15/bin/python3.11",
+  "machine": "aarch64",
+  "tools": {
+    "git": "/usr/bin/git",
+    "g++": "/usr/bin/g++",
+    "cmake": "/usr/bin/cmake",
+    "ninja": null,
+    "npu-smi": "/usr/local/bin/npu-smi",
+    "bisheng": "/usr/local/Ascend/cann-9.0.0/bin/bisheng",
+    "ccec": "/usr/local/Ascend/cann-9.0.0/bin/ccec"
+  },
+  "npu_smi": {
+    "args": [
+      "npu-smi",
+      "info"
+    ],
+    "exit": 0,
+    "stdout": "+------------------------------------------------------------------------------------------------+\n| npu-smi 25.5.1                   Version: 25.5.1                                               |\n+---------------------------+---------------+----------------------------------------------------+\n| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|\n| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |\n+===========================+===============+====================================================+\n| 0     910B1               | OK            | 94.6        36                0    / 0             |\n| 0                         | 0000:C1:00.0  | 0           0    / 0          3443 / 65536         |\n+===========================+===============+====================================================+\n+---------------------------+---------------+----------------------------------------------------+\n| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |\n+===========================+===============+====================================================+\n| No running processes found in NPU 0                                                            |\n+===========================+===============+====================================================+\n",
+    "stderr": ""
+  },
+  "ascend_root": [
+    "/usr/local/Ascend/ascend-toolkit -> /usr/local/Ascend/ascend-toolkit",
+    "/usr/local/Ascend/cann -> /usr/local/Ascend/cann-9.0.0",
+    "/usr/local/Ascend/cann-9.0.0 -> /usr/local/Ascend/cann-9.0.0",
+    "/usr/local/Ascend/nnal -> /usr/local/Ascend/nnal",
+    "/usr/local/Ascend/driver -> /usr/local/Ascend/driver"
+  ],
+  "toolkit_candidates": [
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/ascend_toolkit_install.info"
+  ]
+}

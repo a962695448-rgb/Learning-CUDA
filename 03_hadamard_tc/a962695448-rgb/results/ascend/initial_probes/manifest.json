@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "platform": "Ascend910B1 / CANN 9.0.0 / aarch64",
+  "date_local": "2026-09-06",
+  "scope": "initial_probes",
+  "transfer_verified_files": 25,
+  "binary_in_public_archive": false,
+  "source_scope": "Self-authored probe source snapshots included and byte-verified against transfer manifest. No private CANN/SDK headers or generated binary artifacts copied.",
+  "privacy_review": {
+    "files_scanned": 26,
+    "private_endpoint_or_credential_pattern_hits": 0,
+    "redactions": false,
+    "notes": "Generic project/SDK paths, compiler/runtime diagnostics and hardware snapshot retained. No rental receipt, coupon ID, SSH credential or Jupyter endpoint."
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 83,
+      "sha256": "3b1d0190b9d0d062bf9822d111e31a45b654f0fc9c97195ffeb6a3da2aff57b5"
+    },
+    {
+      "path": "environment_initial.json",
+      "bytes": 2432,
+      "sha256": "d1a2c166ebb9dc6ed5a12901531b7ae2711a28c402d1e500f4ecd7e216e7f595"
+    },
+    {
+      "path": "run_stage2_checks.py",
+      "bytes": 947,
+      "sha256": "1f115880c10af4beaf32e0142cc9638c07f0fed5a09753b53cc6351740c62ab7"
+    },
+    {
+      "path": "sdk_layout.json",
+      "bytes": 1628,
+      "sha256": "3d95ae8cb3a07a1c08813f8097846a87bdf9b3a60c481e410de3d6e1b8f0ebe6"
+    },
+    {
+      "path": "smoke_add_build.log",
+      "bytes": 11709,
+      "sha256": "524aaa8cc98a5437f9d5e10a4fbd1c2c47cbc6d0175a8fc0f4254b608c543896"
+    },
+    {
+      "path": "smoke_add_configure.log",
+      "bytes": 638,
+      "sha256": "cb28749aa3381e6d58460c885e03549fcf7d2ff62554978efaa63f440b12de07"
+    },
+    {
+      "path": "smoke_add_evidence.json",
+      "bytes": 669,
+      "sha256": "1a58a432e16b78461225adea4da94b62500a3756bf3ef0e356411e31488c85ec"
+    },
+    {
+      "path": "smoke_add_run.log",
+      "bytes": 257,
+      "sha256": "d4662ed1788b0ec91a5a791406931400ae6a4128c0ff4ecef611ae110aede572"
+    },
+    {
+      "path": "smoke_add_source_manifest.json",
+      "bytes": 340,
+      "sha256": "b647db1e184cbb84eaa4498ed26447511bef97e076a8b93989b40d110f16f43d"
+    },
+    {
+      "path": "smoke_stage2_build.log",
+      "bytes": 12017,
+      "sha256": "d0e832ee85fe3cfa10ae34f6397eed9da7c2810453e2e45ec44f54ed0afa3f3f"
+    },
+    {
+      "path": "smoke_stage2_configure.log",
+      "bytes": 639,
+      "sha256": "6c169a3e95ae68dda88f6ad5dcc187e26338a096959dff42aa82f7ed52d16cbe"
+    },
+    {
+      "path": "smoke_stage2_source_manifest.json",
+      "bytes": 340,
+      "sha256": "d19f699af141d2648915b66a30706e06b54511c9fc3b02b309c6b0a265dbdcd2"
+    },
+    {
+      "path": "soc_probe.json",
+      "bytes": 70,
+      "sha256": "7df4373cd517abb6342fbdab7d13af0c85f7ed460d0398bf75873652cfb6090a"
+    },
+    {
+      "path": "source_add/CMakeLists.txt",
+      "bytes": 1044,
+      "sha256": "d6fd8ac90fc2bc7e9b6925f52c9d9dce46bf4647ab8065beb1cf158d74c8bdde"
+    },
+    {
+      "path": "source_add/kernel.cpp",
+      "bytes": 1866,
+      "sha256": "f8e42a90c5ba929737eae40f452af820505ce5cceee8754009d1c8151c6c5894"
+    },
+    {
+      "path": "source_add/main.cpp",
+      "bytes": 4720,
+      "sha256": "516937d992ece914efef9bf3cffb572046b7185c038b1d68440d2de48743d639"
+    },
+    {
+      "path": "source_add/README.md",
+      "bytes": 1029,
+      "sha256": "e197399cdcd6f9fbbbe565dfbaaa5b9e9b0b2b404be070b7858fa0facbee849e"
+    },
+    {
+      "path": "source_pad_rne/CMakeLists.txt",
+      "bytes": 901,
+      "sha256": "21698c7e77f0bfedb0dbbb6991e9b9baecd715aff45c1c75cf770785588c8f80"
+    },
+    {
+      "path": "source_pad_rne/kernel.cpp",
+      "bytes": 3662,
+      "sha256": "ad53888f65fbe116212b7d65b6616d1d9c0e1fb6bad1f4574b99fe22e07c616f"
+    },
+    {
+      "path": "source_pad_rne/main.cpp",
+      "bytes": 8774,
+      "sha256": "6a8a38c54f46453d76b7511f59968314d1dc1f5a958bbf1c3b980fc2d6c3efcc"
+    },
+    {
+      "path": "source_pad_rne/README.md",
+      "bytes": 1498,
+      "sha256": "ce14bb3e75d5d85f47dfd1711e402519439ee9a93afd04ea4f2fa40a6924c1d6"
+    },
+    {
+      "path": "stage2_checks.log",
+      "bytes": 68,
+      "sha256": "08f4e4db2fc11f1b596f8702162d92367edbeccb24357c2edb68e1fee00e2b0c"
+    },
+    {
+      "path": "stage2_checks_report.json",
+      "bytes": 979,
+      "sha256": "e613ae8454ac1993dc9285c68278a8a385c5f5a061e4e332a276498821e94af2"
+    },
+    {
+      "path": "stage2_pad_full.log",
+      "bytes": 4180,
+      "sha256": "b7cb288d39a88da6ed20d0178388972d4e90f46969addb2f8757effecb779133"
+    },
+    {
+      "path": "stage2_pad_one.log",
+      "bytes": 217,
+      "sha256": "fd5cd121ce23fa599714942be97433b0c84c863cf389338329bbc53e63455de1"
+    },
+    {
+      "path": "stage2_rne_full.log",
+      "bytes": 5540,
+      "sha256": "0c60cac1680ca21f579a740c206f996efc190be56e6f0a4aa9dea65d11a523cb"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 4083,
+      "sha256": "382b946e38dc756db8c964d8083d5edc330301c790d1c3effb8d461fb2b32eaf"
+    }
+  ],
+  "evidence_scope": {
+    "add_elements": 256,
+    "add_job_exit": 0,
+    "pad_parameter_cases": 34,
+    "rne_parameter_cases": 34,
+    "notes": "Independent native NPU prerequisites only. Repeated one-case probes are not added to full probe count; not a complete Hadamard result or performance claim."
+  }
+}

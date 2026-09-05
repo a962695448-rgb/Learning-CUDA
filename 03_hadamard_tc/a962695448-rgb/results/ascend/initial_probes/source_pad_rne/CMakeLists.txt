@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.16)
+project(ascend_pad_rne_smoke LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(ASCEND_CANN_PACKAGE_PATH "/usr/local/Ascend/cann-9.0.0" CACHE PATH "Actual CANN installation")
+set(SOC_VERSION "Ascend910B1" CACHE STRING "Observed aclrtGetSocName value")
+set(RUN_MODE "npu" CACHE STRING "NPU only")
+if(NOT RUN_MODE STREQUAL "npu")
+    message(FATAL_ERROR "CPU/simulator execution is not supported by this probe")
+endif()
+set(ASCENDC_CMAKE_FILE "${ASCEND_CANN_PACKAGE_PATH}/aarch64-linux/tikcpp/ascendc_kernel_cmake/ascendc.cmake"
+    CACHE FILEPATH "Installed SDK entry")
+include("${ASCENDC_CMAKE_FILE}")
+ascendc_library(ascend_stage2_kernel STATIC kernel.cpp)
+add_executable(ascend_stage2 main.cpp)
+target_link_libraries(ascend_stage2 PRIVATE ascend_stage2_kernel host_intf_pub)
+add_dependencies(ascend_stage2 ascend_stage2_kernel)
+

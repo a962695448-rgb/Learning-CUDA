@@ -1,0 +1,92 @@
+{
+  "status": "PROBE_FINISHED",
+  "stages": [
+    {
+      "name": "div_vector_configure",
+      "args": [
+        "cmake",
+        "-S",
+        "/data/infinitensor-2026/tools/ascend_div_probe",
+        "-B",
+        "/data/infinitensor-2026/build/ascend_div_vector",
+        "-DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann-9.0.0",
+        "-DSOC_VERSION=Ascend910B1",
+        "-DRUN_MODE=npu",
+        "-DENABLE_SCALAR_DIV=OFF",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit": 0,
+      "log": "div_vector_configure.log",
+      "sha256": "439a8c9a5f47a81c7891568d10bdba2cb150799b782b3fbe751c19fcd9482b06"
+    },
+    {
+      "name": "div_vector_build",
+      "args": [
+        "cmake",
+        "--build",
+        "/data/infinitensor-2026/build/ascend_div_vector",
+        "-j2"
+      ],
+      "exit": 0,
+      "log": "div_vector_build.log",
+      "sha256": "41a58fa259d381997803fa040e014a91620fb9b10ee5d3e7eb93c84bea34379d"
+    },
+    {
+      "name": "div_vector_run",
+      "args": [
+        "/data/infinitensor-2026/build/ascend_div_vector/ascend_div_probe",
+        "--mode",
+        "vector"
+      ],
+      "exit": 1,
+      "log": "div_vector_run.log",
+      "sha256": "12e3b4d01283db19ff7f067681f03e65dcca70721153c2572728dac382a29f01"
+    },
+    {
+      "name": "div_scalar_configure",
+      "args": [
+        "cmake",
+        "-S",
+        "/data/infinitensor-2026/tools/ascend_div_probe",
+        "-B",
+        "/data/infinitensor-2026/build/ascend_div_scalar",
+        "-DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann-9.0.0",
+        "-DSOC_VERSION=Ascend910B1",
+        "-DRUN_MODE=npu",
+        "-DENABLE_SCALAR_DIV=ON",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit": 0,
+      "log": "div_scalar_configure.log",
+      "sha256": "567851a20885b1021683d7b920a91a0b4dbd27799b6cd607d2d9014395e72f81"
+    },
+    {
+      "name": "div_scalar_build",
+      "args": [
+        "cmake",
+        "--build",
+        "/data/infinitensor-2026/build/ascend_div_scalar",
+        "-j2"
+      ],
+      "exit": 0,
+      "log": "div_scalar_build.log",
+      "sha256": "c33a909a08e4bba6995f174286d15f08555822750a22e920b243522b801e7e3f"
+    },
+    {
+      "name": "div_scalar_run",
+      "args": [
+        "/data/infinitensor-2026/build/ascend_div_scalar/ascend_div_probe",
+        "--mode",
+        "both"
+      ],
+      "exit": 1,
+      "log": "div_scalar_run.log",
+      "sha256": "a53583cc21b6ad2a5ef4c5a16241656da715f896919253be1aa820ad2c764a15"
+    }
+  ],
+  "binaries": {
+    "vector": "9787484359f179fbf87c3e8385ad98217ea38e09dc1b8fb229dcaedaf5f53a9a",
+    "scalar": "57e4c47ba7beb10aec46391f75a750c5fef89a9ea5624c5c325d788e11c47177"
+  },
+  "note": "Controller completion is not a numerical PASS; inspect each build/run exit and mismatch log."
+}

@@ -1,0 +1,4 @@
+DEVICE soc=Ascend910B1 target=npu
+ADD_LAUNCH mode=npu count=256 block_dim=1 payload_alignment=32 guard_bytes=32
+ADD_PASS elements=256 bitwise=true input_unchanged=true guards=true execution=npu
+ASCEND_ADD_SMOKE_PASS short_datacopypad_and_rne=not_yet_tested

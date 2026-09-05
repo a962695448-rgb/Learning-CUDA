@@ -1,0 +1,52 @@
+{
+  "sdk": "/usr/local/Ascend/cann-9.0.0",
+  "root_entries": [
+    "aarch64-linux",
+    "arm64-linux",
+    "asc",
+    "bin",
+    "cann_uninstall.sh",
+    "combo_script",
+    "compat",
+    "compiler",
+    "conf",
+    "devlib",
+    "fwkacllib",
+    "include",
+    "lib64",
+    "opp",
+    "ops_uninstall.sh",
+    "pkg_inc",
+    "python",
+    "runtime",
+    "set_env.sh",
+    "share",
+    "test-ops",
+    "toolkit",
+    "tools",
+    "var"
+  ],
+  "compiler_version": {
+    "args": [
+      "bisheng",
+      "--version"
+    ],
+    "exit": 0,
+    "stdout": "2026-04-25T15:46:25+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)\nTarget: aarch64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/local/Ascend/cann-9.0.0/bin\n",
+    "stderr": ""
+  },
+  "install_info": "package_name=Ascend-cann-toolkit\nversion=9.0.0\ninnerversion=V100R001C10SPC001B250\ncompatible_version=[V100R001C21],[V100R001C22],[V100R001C23],[V100R001C25],[V100R001C10]\narch=aarch64\nos=linux\npath=/usr/local/Ascend/cann-9.0.0\n",
+  "ascendc_cmake": [
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/tikcpp/ascendc_kernel_cmake/ascendc.cmake"
+  ],
+  "kernel_header": [
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/asc/include/kernel_operator.h",
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/ascendc/include/basic_api/kernel_operator.h",
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/include/ascendc/basic_api/kernel_operator.h",
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/tikcpp/tikcfw/kernel_operator.h"
+  ],
+  "examples": [],
+  "acl_headers": [
+    "/usr/local/Ascend/cann-9.0.0/aarch64-linux/include/acl/acl_rt.h"
+  ]
+}

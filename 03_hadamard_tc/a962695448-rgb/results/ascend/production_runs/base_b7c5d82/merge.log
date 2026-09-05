@@ -1,0 +1,15 @@
+Updating 12c76d8..b7c5d82
+Fast-forward
+ 03_hadamard_tc/a962695448-rgb/.gitattributes       |   4 +
+ 03_hadamard_tc/a962695448-rgb/.gitignore           |   2 +
+ .../a962695448-rgb/platforms/ascend/CMakeLists.txt |  31 ++
+ .../platforms/ascend/hadamard_api.cpp              | 105 ++++
+ .../a962695448-rgb/platforms/ascend/hadamard_api.h |  41 ++
+ .../platforms/ascend/hadamard_kernel.cpp           | 240 ++++++++
+ .../platforms/ascend/validate_and_benchmark.cpp    | 605 +++++++++++++++++++++
+ 7 files changed, 1028 insertions(+)
+ create mode 100644 03_hadamard_tc/a962695448-rgb/platforms/ascend/CMakeLists.txt
+ create mode 100644 03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_api.cpp
+ create mode 100644 03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_api.h
+ create mode 100644 03_hadamard_tc/a962695448-rgb/platforms/ascend/hadamard_kernel.cpp
+ create mode 100644 03_hadamard_tc/a962695448-rgb/platforms/ascend/validate_and_benchmark.cpp

@@ -1,0 +1,4 @@
+DEVICE soc=Ascend910B1 execution=npu
+PAD_LAUNCH dtype=fp16 n=1 gm_offset_bytes=34
+PAD_PASS dtype=fp16 n=1 bits_exact=true input_unchanged=true guards=true
+ASCEND_STAGE2_PASS cases=1 stage=pad dtype=fp16 execution=npu

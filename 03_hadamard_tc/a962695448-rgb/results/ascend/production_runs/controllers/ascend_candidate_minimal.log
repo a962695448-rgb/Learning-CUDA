@@ -1,0 +1,18 @@
+DEVICE soc=Ascend910B1 execution=npu block_dim=1
+VALIDATION_PROGRESS dtype=fp16 n=1 cases=5
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+VALIDATION_PASS dtype=fp16 cases=5 elements=5 max_rounded_error=0 max_unrounded_error=0 contract_checks=92
+VALIDATION_PROGRESS dtype=bf16 n=1 cases=5
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+VALIDATION_PASS dtype=bf16 cases=5 elements=5 max_rounded_error=0 max_unrounded_error=0 contract_checks=92
+PASS requested validation/benchmark operations completed
