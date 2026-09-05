@@ -1,0 +1,5 @@
+# Preserve byte-level evidence and analysis-source hashes on checkout.
+* -text
+*.csv -whitespace
+*.log -whitespace
+*.json -whitespace

@@ -1,0 +1,2 @@
+Timing: fixed input/output buffers, 64 serial kernels per graph, 20 replays, 5 groups; per-call amortized graph interval, not isolated kernel latency.
+PASS: 96 shape/dtype/scale/mode cases; 384 launch configurations; 1920 raw samples.

@@ -1,0 +1,2 @@
+# Keep the experimental source hash reproducible across platforms.
+src/tune_launch.cu text eol=lf

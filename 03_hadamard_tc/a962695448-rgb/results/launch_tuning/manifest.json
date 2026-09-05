@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-05",
+  "source": {
+    "path": "../../src/tune_launch.cu",
+    "sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212"
+  },
+  "baseline_kernel": {
+    "implementation_commit": "6f8e15a2db63a1816c2da6632848a1945380cf21",
+    "graph_harness_commit": "0b29fcf9031193f49319b2d4132df4d1ef6a4a74",
+    "path_in_repository": "03_hadamard_tc/a962695448-rgb/include/kernels.cuh",
+    "identical_git_blob_in_both_commits": "4618f3fd2964dff2341b6cdbfd402da00e55ae26"
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "sm": 89,
+    "cuda_runtime": 12080
+  },
+  "method": "Internal fixed-buffer graph screening; 64 serial kernel calls, 20 replays, 5 rotated-order groups per process; medians are paired against 128 threads within each process.",
+  "clock_temperature_power_recorded": false,
+  "ncu_counters_recorded": false,
+  "production_dispatch_changed": false,
+  "files": [
+    {
+      "path": "launch_sweep_4090_v2_run1.csv",
+      "bytes": 194923,
+      "sha256": "1a155440667389ecce7f5001770ae8cae059eeee9e5f5cfe4c823de070fb0b81",
+      "kind": "raw_unchanged"
+    },
+    {
+      "path": "launch_sweep_4090_v2_run1.log",
+      "bytes": 235,
+      "sha256": "8d237d0c99953f73477880543175cd93b4647a37154f71f455a9f6d0a77ea4ee",
+      "kind": "raw_unchanged"
+    },
+    {
+      "path": "launch_sweep_4090_v2_run2.csv",
+      "bytes": 194876,
+      "sha256": "7ab9b58bb7ce3c65f5e7c63d00a4b8ff2b2ab9c08cbcaf69736e63cb41365b51",
+      "kind": "raw_unchanged"
+    },
+    {
+      "path": "launch_sweep_4090_v2_run2.log",
+      "bytes": 235,
+      "sha256": "8d237d0c99953f73477880543175cd93b4647a37154f71f455a9f6d0a77ea4ee",
+      "kind": "raw_unchanged"
+    },
+    {
+      "path": "launch_sweep_4090_v2_run3.csv",
+      "bytes": 194888,
+      "sha256": "a6d3c8444e87825dfdecddd6cdec3f196c4441af9707784a004fb7532b261f01",
+      "kind": "raw_unchanged"
+    },
+    {
+      "path": "launch_sweep_4090_v2_run3.log",
+      "bytes": 235,
+      "sha256": "8d237d0c99953f73477880543175cd93b4647a37154f71f455a9f6d0a77ea4ee",
+      "kind": "raw_unchanged"
+    },
+    {
+      "path": "analyze.py",
+      "bytes": 7480,
+      "sha256": "f07bc914d29110411db624aabcf533860f38e1b1b5781020a4ef07bf439e7d33",
+      "kind": "derived_or_analysis_source"
+    },
+    {
+      "path": "case_medians.csv",
+      "bytes": 76796,
+      "sha256": "0e40bdb96b86e13da9ab4fd6e60d0b56970748e282e475d6d8a0561987b0d205",
+      "kind": "derived_or_analysis_source"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 44350,
+      "sha256": "b4abc09ddfd8d37d199b0892aa91cd9186a78369d39fa37637c3eba077da5ff7",
+      "kind": "derived_or_analysis_source"
+    }
+  ]
+}
