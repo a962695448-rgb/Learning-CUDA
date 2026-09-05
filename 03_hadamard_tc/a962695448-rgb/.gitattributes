@@ -9,3 +9,7 @@ platforms/metax/hadamard_api.h text eol=lf
 platforms/metax/hadamard_api.cu text eol=lf
 platforms/metax/validate_and_benchmark.cu text eol=lf
 platforms/metax/run_platform.py text eol=lf
+platforms/biren/hadamard_api.h text eol=lf
+platforms/biren/hadamard_api.su text eol=lf
+platforms/biren/validate_and_benchmark.su text eol=lf
+platforms/biren/run_platform.py text eol=lf
