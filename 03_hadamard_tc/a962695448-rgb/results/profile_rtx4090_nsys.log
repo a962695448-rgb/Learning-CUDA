@@ -1,0 +1,27 @@
+COMMAND ['nsys', 'profile', '--trace=cuda,nvtx,osrt', '--sample=none', '--cpuctxsw=none', '--output', 'results/profile_4090_nsys', './build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--warmup', '1', '--repetitions', '3']
+EXIT 0
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,256] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           47.040 us  2.2291e+10 elements/s
+warp                kernel_only            5.323 us  1.9700e+11 elements/s
+tensor_core         kernel_only           36.363 us  2.8837e+10 elements/s
+split_int4          kernel_only            8.395 us  1.2491e+11 elements/s
+fused_int4          kernel_only            5.749 us  1.8238e+11 elements/s
+cpu_fp32_fwht       cpu_compute         2265.497 us  4.6285e+08 elements/s
+warp_h2d_d2h        host_e2e             327.875 us  3.1981e+09 elements/s
+Collecting data...
+Generating '/tmp/nsys-report-06f0.qdstrm'
+
+[1/1] [0%                          ] profile_4090_nsys.nsys-rep
+[1/1] [0%                          ] profile_4090_nsys.nsys-rep
+[1/1] [7%                          ] profile_4090_nsys.nsys-rep
+[1/1] [=15%                        ] profile_4090_nsys.nsys-rep
+[1/1] [==============63%           ] profile_4090_nsys.nsys-rep
+[1/1] [========================100%] profile_4090_nsys.nsys-rep
+[1/1] [========================100%] profile_4090_nsys.nsys-rep
+Generated:
+    /data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/profile_4090_nsys.nsys-rep

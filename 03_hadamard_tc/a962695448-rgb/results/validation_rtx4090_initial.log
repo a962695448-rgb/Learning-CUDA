@@ -1,0 +1,352 @@
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--self-test']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+SELF_TEST fp16 dim=1 PASS
+SELF_TEST fp16 dim=2 PASS
+SELF_TEST fp16 dim=4 PASS
+SELF_TEST fp16 dim=8 PASS
+SELF_TEST fp16 dim=16 PASS
+SELF_TEST fp16 dim=32 PASS
+SELF_TEST fp16 dim=64 PASS
+SELF_TEST fp16 dim=128 PASS
+SELF_TEST fp16 dim=256 PASS
+SELF_TEST bf16 dim=1 PASS
+SELF_TEST bf16 dim=2 PASS
+SELF_TEST bf16 dim=4 PASS
+SELF_TEST bf16 dim=8 PASS
+SELF_TEST bf16 dim=16 PASS
+SELF_TEST bf16 dim=32 PASS
+SELF_TEST bf16 dim=64 PASS
+SELF_TEST bf16 dim=128 PASS
+SELF_TEST bf16 dim=256 PASS
+SELF_TEST PASS cases=1876 max_abs_error=0.0078125 CPU/split/fused_INT4_bytes=exact scales=exact rounded_warp_vs_dense_elements=35 dense_quant_differing_bytes=0 dense_quant_differing_scales=0
+EXIT_CODE 0; ELAPSED_SECONDS 1.246
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim', '0']
+Argument error: --dim requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.004
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim', '3']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.004
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim', '512']
+Argument error: --dim must be a power of two in [1,256]
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.004
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '-1']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.005
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--seq', '0']
+Argument error: --seq requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--heads', 'abc']
+Argument error: --heads requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.005
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dtype', 'fp32']
+Argument error: --dtype must be fp16 or bf16
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.003
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--scale', 'nan']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.003
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--scale', '2']
+Argument error: --scale must be 1 or normalized
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '18446744073709551615', '--seq', '2']
+Argument error: shape or allocation size overflows size_t
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '18446744073709551616']
+Argument error: --batch requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--repetitions', '0']
+Argument error: --repetitions requires a valid positive integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--warmup', '-1']
+Argument error: --warmup requires a valid nonnegative integer
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.005
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--dim']
+Argument error: missing value for --dim
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--unsupported']
+Argument error: unknown option: --unsupported
+Use --help for usage.
+EXIT_CODE 2; ELAPSED_SECONDS 0.002
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '1', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,1,1,1] dtype=fp16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only            4.178 us  2.3935e+05 elements/s
+warp                kernel_only            2.106 us  4.7483e+05 elements/s
+split_int4          kernel_only            4.093 us  2.4434e+05 elements/s
+fused_int4          kernel_only            2.062 us  4.8505e+05 elements/s
+cpu_fp32_fwht       cpu_compute            0.023 us  4.3478e+07 elements/s
+warp_h2d_d2h        host_e2e               9.550 us  1.0472e+05 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.085
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '16', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,1,1,16] dtype=fp16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           11.902 us  1.3443e+06 elements/s
+warp                kernel_only            2.014 us  7.9449e+06 elements/s
+tensor_core         kernel_only            1.973 us  8.1099e+06 elements/s
+split_int4          kernel_only            4.004 us  3.9963e+06 elements/s
+fused_int4          kernel_only            2.021 us  7.9181e+06 elements/s
+cpu_fp32_fwht       cpu_compute            0.070 us  2.2956e+08 elements/s
+warp_h2d_d2h        host_e2e               9.829 us  1.6279e+06 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.090
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '17', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,1,17,256] dtype=fp16 scale=1 rows=17 dense_oracle_rows=17
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           20.705 us  2.1019e+08 elements/s
+warp                kernel_only            2.068 us  2.1040e+09 elements/s
+tensor_core         kernel_only            7.772 us  5.5995e+08 elements/s
+split_int4          kernel_only            3.993 us  1.0898e+09 elements/s
+fused_int4          kernel_only            2.270 us  1.9173e+09 elements/s
+cpu_fp32_fwht       cpu_compute            9.244 us  4.7080e+08 elements/s
+warp_h2d_d2h        host_e2e              11.065 us  3.9332e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.098
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '16', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,16] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           12.486 us  5.2488e+09 elements/s
+warp                kernel_only            2.106 us  3.1118e+10 elements/s
+tensor_core         kernel_only            2.229 us  2.9403e+10 elements/s
+split_int4          kernel_only            4.437 us  1.4769e+10 elements/s
+fused_int4          kernel_only            2.406 us  2.7234e+10 elements/s
+cpu_fp32_fwht       cpu_compute          145.244 us  4.5121e+08 elements/s
+warp_h2d_d2h        host_e2e              45.367 us  1.4446e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.102
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '64', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,64] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           17.258 us  1.5190e+10 elements/s
+warp                kernel_only            2.181 us  1.2021e+11 elements/s
+tensor_core         kernel_only            4.454 us  5.8851e+10 elements/s
+split_int4          kernel_only            4.502 us  5.8226e+10 elements/s
+fused_int4          kernel_only            2.563 us  1.0226e+11 elements/s
+cpu_fp32_fwht       cpu_compute          551.340 us  4.7547e+08 elements/s
+warp_h2d_d2h        host_e2e             160.265 us  1.6357e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.121
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,256] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           39.059 us  2.6846e+10 elements/s
+warp                kernel_only            3.157 us  3.3213e+11 elements/s
+tensor_core         kernel_only           34.434 us  3.0452e+10 elements/s
+split_int4          kernel_only            6.246 us  1.6787e+11 elements/s
+fused_int4          kernel_only            3.956 us  2.6506e+11 elements/s
+cpu_fp32_fwht       cpu_compute         2246.584 us  4.6674e+08 elements/s
+warp_h2d_d2h        host_e2e             401.763 us  2.6099e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.236
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '512', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,512,8,256] dtype=fp16 scale=1 rows=16384 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          102.188 us  4.1045e+10 elements/s
+warp                kernel_only            7.854 us  5.3405e+11 elements/s
+tensor_core         kernel_only          107.387 us  3.9058e+10 elements/s
+split_int4          kernel_only           14.783 us  2.8372e+11 elements/s
+fused_int4          kernel_only            9.932 us  4.2229e+11 elements/s
+cpu_fp32_fwht       cpu_compute         9210.423 us  4.5539e+08 elements/s
+warp_h2d_d2h        host_e2e            1383.690 us  3.0312e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.641
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '257', '--heads', '1', '--dim', '256', '--dtype', 'fp16', '--normalize', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,257,1,256] dtype=fp16 scale=0.0625 rows=257 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           22.122 us  2.9740e+09 elements/s
+warp                kernel_only            2.160 us  3.0455e+10 elements/s
+tensor_core         kernel_only            8.319 us  7.9091e+09 elements/s
+split_int4          kernel_only            4.219 us  1.5593e+10 elements/s
+fused_int4          kernel_only            2.307 us  2.8513e+10 elements/s
+cpu_fp32_fwht       cpu_compute          143.108 us  4.5974e+08 elements/s
+warp_h2d_d2h        host_e2e              43.796 us  1.5022e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.112
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '1', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,1,1,1] dtype=bf16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only            4.209 us  2.3761e+05 elements/s
+warp                kernel_only            2.103 us  4.7560e+05 elements/s
+split_int4          kernel_only            4.181 us  2.3916e+05 elements/s
+fused_int4          kernel_only            2.096 us  4.7715e+05 elements/s
+cpu_fp32_fwht       cpu_compute            0.023 us  4.3956e+07 elements/s
+warp_h2d_d2h        host_e2e               9.868 us  1.0134e+05 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.098
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '1', '--dim', '16', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,1,1,16] dtype=bf16 scale=1 rows=1 dense_oracle_rows=1
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           11.974 us  1.3362e+06 elements/s
+warp                kernel_only            2.020 us  7.9193e+06 elements/s
+tensor_core         kernel_only            2.020 us  7.9202e+06 elements/s
+split_int4          kernel_only            4.079 us  3.9228e+06 elements/s
+fused_int4          kernel_only            2.041 us  7.8386e+06 elements/s
+cpu_fp32_fwht       cpu_compute            0.065 us  2.4691e+08 elements/s
+warp_h2d_d2h        host_e2e               9.737 us  1.6433e+06 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.089
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '1', '--heads', '17', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,1,17,256] dtype=bf16 scale=1 rows=17 dense_oracle_rows=17
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           20.439 us  2.1293e+08 elements/s
+warp                kernel_only            2.048 us  2.1250e+09 elements/s
+tensor_core         kernel_only            7.950 us  5.4745e+08 elements/s
+split_int4          kernel_only            4.014 us  1.0842e+09 elements/s
+fused_int4          kernel_only            2.276 us  1.9119e+09 elements/s
+cpu_fp32_fwht       cpu_compute            9.451 us  4.6048e+08 elements/s
+warp_h2d_d2h        host_e2e              11.119 us  3.9140e+08 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.096
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '16', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,16] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           12.145 us  5.3963e+09 elements/s
+warp                kernel_only            2.123 us  3.0868e+10 elements/s
+tensor_core         kernel_only            2.243 us  2.9224e+10 elements/s
+split_int4          kernel_only            4.454 us  1.4713e+10 elements/s
+fused_int4          kernel_only            2.427 us  2.7004e+10 elements/s
+cpu_fp32_fwht       cpu_compute          147.393 us  4.4463e+08 elements/s
+warp_h2d_d2h        host_e2e              45.701 us  1.4340e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.103
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '64', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,64] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           17.766 us  1.4755e+10 elements/s
+warp                kernel_only            2.284 us  1.1480e+11 elements/s
+tensor_core         kernel_only            4.451 us  5.8896e+10 elements/s
+split_int4          kernel_only            4.516 us  5.8051e+10 elements/s
+fused_int4          kernel_only            2.557 us  1.0254e+11 elements/s
+cpu_fp32_fwht       cpu_compute          549.816 us  4.7678e+08 elements/s
+warp_h2d_d2h        host_e2e             111.771 us  2.3454e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.110
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,256] dtype=bf16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           39.076 us  2.6834e+10 elements/s
+warp                kernel_only            3.164 us  3.3139e+11 elements/s
+tensor_core         kernel_only           33.888 us  3.0943e+10 elements/s
+split_int4          kernel_only            6.274 us  1.6714e+11 elements/s
+fused_int4          kernel_only            3.959 us  2.6483e+11 elements/s
+cpu_fp32_fwht       cpu_compute         2222.205 us  4.7186e+08 elements/s
+warp_h2d_d2h        host_e2e             432.524 us  2.4243e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.231
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '4', '--seq', '512', '--heads', '8', '--dim', '256', '--dtype', 'bf16', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,512,8,256] dtype=bf16 scale=1 rows=16384 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          102.356 us  4.0978e+10 elements/s
+warp                kernel_only            7.892 us  5.3149e+11 elements/s
+tensor_core         kernel_only          107.455 us  3.9033e+10 elements/s
+split_int4          kernel_only           14.790 us  2.8360e+11 elements/s
+fused_int4          kernel_only            9.874 us  4.2476e+11 elements/s
+cpu_fp32_fwht       cpu_compute         9227.713 us  4.5453e+08 elements/s
+warp_h2d_d2h        host_e2e            1363.467 us  3.0762e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.637
+
+COMMAND ['/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard', '--benchmark', '--batch', '1', '--seq', '257', '--heads', '1', '--dim', '256', '--dtype', 'bf16', '--normalize', '--repetitions', '300', '--warmup', '30', '--csv', '/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/results/benchmark_rtx4090_initial.csv']
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,257,1,256] dtype=bf16 scale=0.0625 rows=257 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           20.221 us  3.2537e+09 elements/s
+warp                kernel_only            2.034 us  3.2349e+10 elements/s
+tensor_core         kernel_only            8.380 us  7.8513e+09 elements/s
+split_int4          kernel_only            4.021 us  1.6362e+10 elements/s
+fused_int4          kernel_only            2.280 us  2.8855e+10 elements/s
+cpu_fp32_fwht       cpu_compute          139.370 us  4.7207e+08 elements/s
+warp_h2d_d2h        host_e2e              44.109 us  1.4916e+09 elements/s
+EXIT_CODE 0; ELAPSED_SECONDS 0.114
+

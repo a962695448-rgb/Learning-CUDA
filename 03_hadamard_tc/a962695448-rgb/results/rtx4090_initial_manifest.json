@@ -1,0 +1,25 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "date": "2026-09-05",
+  "implementation_commit": "6f8e15a2db63a1816c2da6632848a1945380cf21",
+  "comparison_harness_commit": "766283ba7352250d5def06fbe62428c74e546917",
+  "reference_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+  "files": [
+    {
+      "path": "validation_rtx4090_initial.log",
+      "bytes": 25413,
+      "sha256": "0f0958588e531dc378ddf1067af9a8418c06f4fc832e52dc493d45e2ebc01d4a"
+    },
+    {
+      "path": "benchmark_rtx4090_initial.csv",
+      "bytes": 15348,
+      "sha256": "82a8847997ef6a33e910be289ed9118d422b223f7c1a11e8dad4c1e346910dbc"
+    },
+    {
+      "path": "third_party_rtx4090_eager.json",
+      "bytes": 951467,
+      "sha256": "be22e2fafd0516f57cab52fc7b064af3e93fd333cdaed3c031e858a2ff977667"
+    }
+  ],
+  "benchmark_scope_note": "third_party_rtx4090_eager.json contains allocating eager PyTorch API CUDA-event intervals, including possible host launch gaps; it contains no CUDA Graph measurement."
+}

@@ -1,0 +1,40 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "date": "2026-09-05",
+  "source_commit": "0b29fcf9031193f49319b2d4132df4d1ef6a4a74",
+  "reference_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+  "files": [
+    {
+      "path": "third_party_rtx4090_graph.json",
+      "bytes": 976949,
+      "sha256": "13e13e68ca36048c91998de1f207cc9fed1f430a11073746236426f898174d27"
+    },
+    {
+      "path": "profile_rtx4090_ncu.log",
+      "bytes": 1640,
+      "sha256": "898b7e53a431be45afe3a94fcb4dece2fa5c497d4b739d523bf8070799fd5e3d"
+    },
+    {
+      "path": "profile_rtx4090_nsys.log",
+      "bytes": 1854,
+      "sha256": "5f714f4192e6c4e53ef8de25d5c2c2a2536660e5c829ed671c504cf97e5dc431"
+    },
+    {
+      "path": "profile_rtx4090_nsys_stats.txt",
+      "bytes": 2583,
+      "sha256": "95f15f48ac13a22fea93be25b48ff5ca56a4fac599ab2d6a868bb38f7b7c12b1"
+    }
+  ],
+  "graph_scope_note": "Per-call amortized CUDA Graph replay interval, including captured GPU work and replay scheduling; not isolated kernel latency. Each graph retains 64 independent outputs; 20 replays per group, 5 groups.",
+  "profiling": {
+    "ncu": {
+      "exit_code": 1,
+      "status": "ERR_NVGPUCTRPERM; hardware counters unavailable"
+    },
+    "nsys": {
+      "exit_code": 0,
+      "status": "trace exported; timing under profiler is separate from unprofiled benchmarks",
+      "raw_trace_distribution": "Stored privately; binary reports can contain runtime environment metadata. Public artifacts are the reviewed text log and statistics."
+    }
+  }
+}

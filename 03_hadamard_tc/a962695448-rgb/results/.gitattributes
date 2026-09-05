@@ -1,0 +1,8 @@
+# Preserve the server evidence bytes and SHA-256 values on every platform.
+validation_rtx4090_initial.log -text
+benchmark_rtx4090_initial.csv -text
+third_party_rtx4090_eager.json -text
+third_party_rtx4090_graph.json -text
+profile_rtx4090_ncu.log -text
+profile_rtx4090_nsys.log -text
+profile_rtx4090_nsys_stats.txt -text

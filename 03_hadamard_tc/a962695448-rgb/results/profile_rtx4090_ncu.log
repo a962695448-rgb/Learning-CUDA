@@ -1,0 +1,18 @@
+COMMAND ['ncu', '--set', 'basic', '--kernel-name', 'regex:warp_kernel', '--launch-count', '1', '--export', 'results/profile_4090_ncu', './build/hadamard', '--benchmark', '--batch', '4', '--seq', '128', '--heads', '8', '--dim', '256', '--dtype', 'fp16', '--warmup', '1', '--repetitions', '3']
+EXIT 1
+==PROF== Connected to process 12810 (/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/build/hadamard)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[4,128,8,256] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          204.085 us  5.1379e+09 elements/s
+warp                kernel_only          252.245 us  4.1570e+09 elements/s
+tensor_core         kernel_only           39.253 us  2.6713e+10 elements/s
+split_int4          kernel_only          517.792 us  2.0251e+09 elements/s
+fused_int4          kernel_only          257.728 us  4.0685e+09 elements/s
+cpu_fp32_fwht       cpu_compute         2805.619 us  3.7374e+08 elements/s
+warp_h2d_d2h        host_e2e             632.303 us  1.6583e+09 elements/s
+==PROF== Disconnected from process 12810
