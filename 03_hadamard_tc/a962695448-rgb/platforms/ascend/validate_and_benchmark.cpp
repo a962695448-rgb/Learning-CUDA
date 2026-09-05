@@ -96,7 +96,7 @@ template<class T> class Guarded {
     std::vector<unsigned char> initial_;
     std::string name_;
 public:
-    explicit Guarded(std::size_t count, aclrtStream stream, const char* name = "unnamed")
+    explicit Guarded(std::size_t count, aclrtStream stream, std::string name = "unnamed")
         : stream_(stream), count_(count), name_(name) {
         if (count > (std::numeric_limits<std::size_t>::max() - 63) / sizeof(T) - 2 * guard)
             throw std::runtime_error("guarded allocation size overflow");
@@ -253,26 +253,33 @@ template<class T> void one_case(aclrtStream stream, std::size_t rows, int n, flo
                                int pattern, unsigned seed, const char* dtype, Summary& summary) {
     const auto input = make_input<T>(rows, n, pattern, seed);
     const std::size_t size = input.size(), bytes = rows * ((n + 1) / 2);
-    Guarded<T> x(size, stream), baseline(size, stream), optimized(size, stream), inplace(size, stream);
-    Guarded<std::uint8_t> base_split(bytes, stream), opt_split(bytes, stream), base_fused(bytes, stream), opt_fused(bytes, stream);
-    Guarded<float> bs(rows, stream), os(rows, stream), bfs(rows, stream), ofs(rows, stream);
+    const std::string context = std::string(dtype) + " rows=" + std::to_string(rows) + " n=" + std::to_string(n)
+        + " pattern=" + std::to_string(pattern) + " seed=" + std::to_string(seed) + " scale=" + std::to_string(scale)
+        + " block_dim=" + std::to_string(configured_blocks);
+    Guarded<T> x(size, stream, context + " input"), baseline(size, stream, context + " scalar"),
+               optimized(size, stream, context + " vector"), inplace(size, stream, context + " vector-inplace"),
+               scalar_inplace(size, stream, context + " scalar-inplace");
+    Guarded<std::uint8_t> base_split(bytes, stream, context + " scalar-split"), opt_split(bytes, stream, context + " vector-split"),
+                          base_fused(bytes, stream, context + " scalar-fused"), opt_fused(bytes, stream, context + " vector-fused");
+    Guarded<float> bs(rows, stream, context + " scalar-split-scales"), os(rows, stream, context + " vector-split-scales"),
+                   bfs(rows, stream, context + " scalar-fused-scales"), ofs(rows, stream, context + " vector-fused-scales");
     x.upload(input, stream);
     inplace.upload(input, stream);
+    scalar_inplace.upload(input, stream);
     CHECK(launch_transform(x.data(), baseline.data(), rows, n, scale, stream, api::Method::ScalarButterfly));
     CHECK(launch_transform(x.data(), optimized.data(), rows, n, scale, stream, api::Method::VectorGather));
     CHECK(launch_transform(inplace.data(), inplace.data(), rows, n, scale, stream, api::Method::VectorGather));
+    CHECK(launch_transform(scalar_inplace.data(), scalar_inplace.data(), rows, n, scale, stream, api::Method::ScalarButterfly));
     CHECK(launch_quantize(baseline.data(), base_split.data(), bs.data(), rows, n, stream, api::Method::ScalarButterfly));
     CHECK(launch_quantize(optimized.data(), opt_split.data(), os.data(), rows, n, stream, api::Method::VectorGather));
     CHECK(launch_fused(x.data(), base_fused.data(), bfs.data(), rows, n, scale, stream, api::Method::ScalarButterfly));
     CHECK(launch_fused(x.data(), opt_fused.data(), ofs.data(), rows, n, scale, stream, api::Method::VectorGather));
     CHECK(aclrtSynchronizeStream(stream));
     x.download(stream, true);
-    const auto a = baseline.download(stream), b = optimized.download(stream), ip = inplace.download(stream);
-    const std::string context = std::string(dtype) + " rows=" + std::to_string(rows) + " n=" + std::to_string(n)
-        + " pattern=" + std::to_string(pattern) + " seed=" + std::to_string(seed) + " scale=" + std::to_string(scale)
-        + " block_dim=" + std::to_string(configured_blocks);
-    if (std::memcmp(a.data(), b.data(), size * sizeof(T)) || std::memcmp(b.data(), ip.data(), size * sizeof(T)))
-        throw std::runtime_error("baseline/optimized/in-place transform not bitwise identical: " + context);
+    const auto a = baseline.download(stream), b = optimized.download(stream), ip = inplace.download(stream), sip = scalar_inplace.download(stream);
+    if (std::memcmp(a.data(), b.data(), size * sizeof(T)) || std::memcmp(b.data(), ip.data(), size * sizeof(T))
+        || std::memcmp(a.data(), sip.data(), size * sizeof(T)))
+        throw std::runtime_error("scalar/vector/in-place transform not bitwise identical: " + context);
     std::vector<float> fx(size), actual(size);
     for (std::size_t i = 0; i < size; ++i) { fx[i] = read(input[i]); actual[i] = read(b[i]); }
     auto fwht = fx;
@@ -281,7 +288,7 @@ template<class T> void one_case(aclrtStream stream, std::size_t rows, int n, flo
         if (rounded<T>(fwht[i]).bits != b[i].bits)
             throw std::runtime_error("rounded FP32 CPU FWHT mismatch: " + context + " index=" + std::to_string(i));
     }
-    // 全部元素使用 O(N^2) FP64 稠密矩阵公式，不调用任何 FWHT 作为正确性 oracle。
+    // 第二项独立参考使用 O(N^2) FP64 稠密矩阵公式，不共享蝶形代码。
     const auto dense = hadamard::dense_reference(fx, n, static_cast<double>(scale));
     const double tolerance = std::string(dtype) == "fp16" ? 1e-2 : 5e-2;
     for (std::size_t i = 0; i < size; ++i) {
@@ -298,7 +305,7 @@ template<class T> void one_case(aclrtStream stream, std::size_t rows, int n, flo
         base_fused.download(stream) != expected_q.packed || opt_fused.download(stream) != expected_q.packed ||
         bs.download(stream) != expected_q.scales || os.download(stream) != expected_q.scales ||
         bfs.download(stream) != expected_q.scales || ofs.download(stream) != expected_q.scales)
-        throw std::runtime_error("CPU/baseline/optimized split/fused INT4 bytes or scales mismatch: " + context);
+        throw std::runtime_error("CPU/scalar/vector split/fused INT4 bytes or scales mismatch: " + context);
     ++summary.cases;
     summary.elements += size;
     summary.exact_transform_elements += size;
@@ -318,7 +325,7 @@ template<class T> void contract_tests(aclrtStream stream, Summary& summary) {
     };
     auto success = [&](aclError status) { CHECK(status); ++summary.contract_checks; };
     for (const auto method : {api::Method::ScalarButterfly, api::Method::VectorGather}) {
-        const char* method_name = method == api::Method::ScalarButterfly ? "baseline" : "optimized";
+        const char* method_name = method == api::Method::ScalarButterfly ? "scalar_butterfly" : "vector_gather";
         std::cout << "CONTRACT_PROGRESS method=" << method_name << " phase=invalid-parameters" << std::endl;
         for (int n : {0, 3, 512}) {
             reject(launch_transform(input.data(), output.data(), 1, n, 1, stream, method));
@@ -537,7 +544,7 @@ template<class T> void benchmark(aclrtStream stream, const char* dtype, const Op
 
 void write_summary(std::ostream& f, const char* dtype, const Summary& s) {
     f << '"' << dtype << "\":{\"cases\":" << s.cases << ",\"elements\":" << s.elements
-      << ",\"exact_baseline_optimized_elements\":" << s.exact_transform_elements
+      << ",\"exact_scalar_vector_elements\":" << s.exact_transform_elements
       << ",\"fp32_fwht_output_bits_exact\":true"
       << ",\"max_abs_error_rounded_fp64\":" << std::setprecision(15) << s.max_rounded_error
       << ",\"max_abs_error_unrounded_fp64\":" << s.max_unrounded_error
