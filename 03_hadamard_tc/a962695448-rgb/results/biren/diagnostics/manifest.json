@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "platform": "Biren106M",
+  "scope": "Independent diagnostic sources, original SDK-path compile failure, attributes for original and experimental kernels, and benchmark launch scripts. Attribute counts are not a proof of performance causality or register spilling.",
+  "integrity_notes": "11 files verified against source transfer_manifest.json; that transfer manifest copied as evidence. Includes both original and experimental build diagnostics; does not replace their correctness or timing records.",
+  "privacy_review": {
+    "files_scanned": 15,
+    "known_private_markers_and_service_urls": 0,
+    "redactions": false,
+    "notes": "Generic project/SDK paths, vendor compiler build path and hardware metadata retained. No SDK header implementation, binary or rental receipt copied. Pattern review is not a universal secret-detection guarantee."
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "e54ab96905b15b3708ca8a4b1c7f60ccc3d00edd8654bfdf9fc7d01dd889f53e"
+    },
+    {
+      "path": "attributes_balanced_c01ac87.csv",
+      "bytes": 2839,
+      "sha256": "0a613527532a4f1113120c59dafe64d1fdea45fea5fd84749652a389067c98c1"
+    },
+    {
+      "path": "attributes_balanced_c01ac87.log",
+      "bytes": 478,
+      "sha256": "bd2d9741e99e3f057c60b9af1e867dfbdd91fac0dab383b4bae23c923bcf53bb"
+    },
+    {
+      "path": "attributes_build_2cbaf41.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attributes_build_balanced_c01ac87.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "attributes_run_2cbaf41.log",
+      "bytes": 3317,
+      "sha256": "1cfa5974aaeccf7bbcae1ab861189d11da0158eca15b29d10eae675c981157f3"
+    },
+    {
+      "path": "biren_kernel_attributes.su",
+      "bytes": 5129,
+      "sha256": "e57ee736623f3c38867f14269cd00c87e12cb5df517afc5e170c88dcffd8528e"
+    },
+    {
+      "path": "convert_summary_ms.py",
+      "bytes": 2359,
+      "sha256": "d6558cfb0acc1f38f4a2a8ccf7050f152c7c1e131b00308dad68b7c6fd2d18eb"
+    },
+    {
+      "path": "repeat_biren_balanced_bench.py",
+      "bytes": 1609,
+      "sha256": "1459688c24f7dd8866db0ac7e99c6488ca45a502c6d1565bdcd4c1bffc9fabc2"
+    },
+    {
+      "path": "repeat_biren_balanced_clean.py",
+      "bytes": 1615,
+      "sha256": "d2469bcdc6bc67c093ffe37049fb016dcd36caa7733d64b2faa433020c4474d0"
+    },
+    {
+      "path": "repeat_biren_bench.py",
+      "bytes": 1604,
+      "sha256": "bd7675622b58cf90b40591071841757f1d68514cabff896512b022f3ff9e0d06"
+    },
+    {
+      "path": "runs/biren-api-quick-8040b60/build.log",
+      "bytes": 402,
+      "sha256": "f0ceac847de8b4904bf1f5077a589439e6d2248216c7c5618424950fd6be21de"
+    },
+    {
+      "path": "runs/biren-api-quick-8040b60/run_summary.json",
+      "bytes": 3009,
+      "sha256": "4eac409dc9f86ba26f4cdf3f367bdc45e89bdb65358445c56989c95d7750f467"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 1627,
+      "sha256": "fe906d4e178e4ffafb6470a87926e3068cd58008cbf479018c9713aeb21ab226"
+    }
+  ],
+  "unit_conversion": {
+    "scope": "Derived summary tables only; original method_summary.csv files and raw observations unchanged.",
+    "conversion": "Every *_us time column is divided by 1000 exactly in decimal and renamed *_ms. Other fields, column order and row order preserved.",
+    "added_precision_or_observations": false,
+    "script": "results/biren/diagnostics/convert_summary_ms.py",
+    "script_sha256": "d6558cfb0acc1f38f4a2a8ccf7050f152c7c1e131b00308dad68b7c6fd2d18eb",
+    "verification": "All nonempty time cells checked by exact rational arithmetic; other cell strings and header order matched."
+  }
+}

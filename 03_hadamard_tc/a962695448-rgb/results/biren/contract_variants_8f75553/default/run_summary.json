@@ -1,0 +1,339 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-05T16:00:35Z",
+  "platform": "biren",
+  "adapted_from": {
+    "platform": "metax",
+    "commit": "1681a85ec7b832e56e672f0589a472cc8f91af95"
+  },
+  "quick": true,
+  "warp32_enabled": false,
+  "balanced_pack_enabled": false,
+  "balanced_pack_scope": [],
+  "small_batch_warp_enabled": false,
+  "small_batch_warp_scope": {},
+  "sdk_environment": {
+    "SUPA_PATH": "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa",
+    "BIREN_HOME": "/usr/local/birensupa/sdk/1.10.0.1.rc1"
+  },
+  "source_sha256": {
+    "platforms/biren/hadamard_api.h": "1fb2e487891aa8aca3b5f03bef2647654af7f2fe8f41b76a2d57a6ae741b38e6",
+    "platforms/biren/hadamard_api.su": "310b54d1818c9b518f70c481a02ba6bd86e472c126ef261beff4524aef021396",
+    "platforms/biren/validate_and_benchmark.su": "fb8ce24e1250dcc7a0ebcfe845201be7892a5596ba6f7a96b9170e19a7517adb",
+    "platforms/biren/run_platform.py": "dfcdf9d7a4030ad8337c41f0f3fd53e0c5a88af9031af38ead36dd9cc6b41585",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "git_head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "output": "8f75553a074d79b850294377d5aea6381e93da19\n"
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "returncode": 0,
+    "output": ""
+  },
+  "compiler": {
+    "command": [
+      "/usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin/brcc",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "brcc version 1.10.0 (/home/jenkins/agent/workspace/BR_PACKAGE/buildSystem/dailyBuild/full-stack/llvm-project/clang 07d2a06438232ad34ae5cda5ac2ca1ae8d94a94d)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin\n"
+  },
+  "python_version": "3.10.12 (main, Jan 26 2026, 14:55:28) [GCC 11.4.0]",
+  "stages": [
+    {
+      "command": [
+        "/usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin/brcc",
+        "-x",
+        "supa",
+        "-std=c++17",
+        "-O2",
+        "-I/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/include",
+        "-I/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/include",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/biren/hadamard_api.su",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/biren/validate_and_benchmark.su",
+        "-L/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/lib",
+        "-lsupa-runtime",
+        "-Wl,-rpath,/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/lib",
+        "-o",
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark"
+      ],
+      "log": "build.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 3.307353185955435,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark"
+      ],
+      "log": "invalid_00.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.006509756902232766,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "0"
+      ],
+      "log": "invalid_01.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.006054320139810443,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "3"
+      ],
+      "log": "invalid_02.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.003508608089759946,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--dim",
+        "512"
+      ],
+      "log": "invalid_03.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.0032741641625761986,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--dtype",
+        "fp32"
+      ],
+      "log": "invalid_04.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.003177870064973831,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--batch",
+        "-1"
+      ],
+      "log": "invalid_05.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.0032391599379479885,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--seq",
+        "0"
+      ],
+      "log": "invalid_06.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.0031589081045240164,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--heads",
+        "x"
+      ],
+      "log": "invalid_07.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.006174515001475811,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--batch",
+        "18446744073709551615",
+        "--seq",
+        "2"
+      ],
+      "log": "invalid_08.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.003281573997810483,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--heads",
+        "999999999999999999999999999999"
+      ],
+      "log": "invalid_09.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.006303217029199004,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--dim"
+      ],
+      "log": "invalid_10.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.0035367829259485006,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--unknown",
+        "1"
+      ],
+      "log": "invalid_11.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.0054249640088528395,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--benchmark",
+        "--repeats",
+        "0"
+      ],
+      "log": "invalid_12.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.0035628830082714558,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--benchmark",
+        "--groups",
+        "10001"
+      ],
+      "log": "invalid_13.log",
+      "returncode": 2,
+      "expected_returncode": 2,
+      "wall_seconds": 0.00587863102555275,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e"
+    },
+    {
+      "command": [
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validate_and_benchmark",
+        "--validate",
+        "--json",
+        "/data/infinitensor-2026/runs/biren-default-check-8f75553/validation.json",
+        "--quick"
+      ],
+      "log": "validation.log",
+      "returncode": 0,
+      "expected_returncode": 0,
+      "wall_seconds": 0.04841112997382879,
+      "sha256": "f5d44687f2ff66e1ac66802086193a3863e42160f19f89f3e25bb5765d2749af"
+    }
+  ],
+  "binary_sha256": "eb022b93b6da249096e1e59069e7a300d29c782cea8edaa186a334ce7a4b43a9",
+  "cli_rejection_cases": 14,
+  "validation": {
+    "status": "PASS",
+    "full_matrix": false,
+    "host_bf16_rne_checks": 12,
+    "warp32_enabled": false,
+    "methods": [
+      "baseline",
+      "optimized"
+    ],
+    "balanced_pack_enabled": false,
+    "small_batch_warp_enabled": false,
+    "oracle": "all-element FP64 dense, rounded to output dtype",
+    "fp16_tolerance_strict": 0.01,
+    "bf16_tolerance_strict": 0.05,
+    "warmup_not_counted": true,
+    "dtypes": {
+      "fp16": {
+        "cases": 25,
+        "elements": 9615,
+        "exact_baseline_optimized_elements": 9615,
+        "warp32_cases": 0,
+        "exact_baseline_warp32_elements": 0,
+        "warp32_grid_stride_cases": 0,
+        "warp32_grid_stride_elements": 0,
+        "unsupported_warp32_checks": 6,
+        "max_abs_error_rounded_fp64": 0,
+        "max_abs_error_unrounded_fp64": 0.00782299041748047,
+        "api_contract_checks": 61
+      },
+      "bf16": {
+        "cases": 25,
+        "elements": 9615,
+        "exact_baseline_optimized_elements": 9615,
+        "warp32_cases": 0,
+        "exact_baseline_warp32_elements": 0,
+        "warp32_grid_stride_cases": 0,
+        "warp32_grid_stride_elements": 0,
+        "unsupported_warp32_checks": 6,
+        "max_abs_error_rounded_fp64": 0,
+        "max_abs_error_unrounded_fp64": 0.062225341796875,
+        "api_contract_checks": 61
+      }
+    }
+  },
+  "finished_utc": "2026-09-05T16:00:38Z",
+  "artifacts": {
+    "invalid_06.log": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997",
+    "invalid_08.log": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56",
+    "invalid_12.log": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241",
+    "invalid_09.log": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d",
+    "invalid_07.log": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b",
+    "invalid_13.log": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e",
+    "invalid_03.log": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1",
+    "invalid_04.log": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90",
+    "invalid_11.log": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54",
+    "invalid_01.log": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7",
+    "build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation.log": "f5d44687f2ff66e1ac66802086193a3863e42160f19f89f3e25bb5765d2749af",
+    "validate_and_benchmark": "eb022b93b6da249096e1e59069e7a300d29c782cea8edaa186a334ce7a4b43a9",
+    "validation.json": "4444edc63003087361a3e1688cd25fc053c1898a736bfd9364047fc04c6ab402",
+    "invalid_02.log": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709",
+    "invalid_05.log": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b",
+    "invalid_10.log": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0",
+    "invalid_00.log": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+  }
+}

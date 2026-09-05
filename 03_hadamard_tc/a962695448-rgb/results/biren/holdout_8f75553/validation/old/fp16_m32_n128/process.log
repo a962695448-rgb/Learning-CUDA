@@ -1,0 +1,14 @@
+HOST_BF16_RNE_PASS checks=12
+DEVICE name=Biren106M warp=32 runtime=1100 driver=1100
+VALIDATION_PROGRESS dtype=fp16 n=128 cases=22
+CONTRACT_PROGRESS method=baseline phase=invalid-parameters
+CONTRACT_PROGRESS method=baseline phase=ties-upload
+CONTRACT_PROGRESS method=baseline phase=ties-quantize
+CONTRACT_PROGRESS method=optimized phase=invalid-parameters
+CONTRACT_PROGRESS method=optimized phase=ties-upload
+CONTRACT_PROGRESS method=optimized phase=ties-quantize
+CONTRACT_PROGRESS method=warp32 phase=invalid-parameters
+CONTRACT_PROGRESS method=warp32 phase=ties-upload
+CONTRACT_PROGRESS method=warp32 phase=ties-quantize
+VALIDATION_PASS dtype=fp16 cases=22 elements=90112 max_rounded_error=0 max_unrounded_error=0.0078125 contract_checks=90 warp32_cases=22 exact_warp32_elements=90112 warp32_grid_stride_cases=0 unsupported_warp32_checks=0
+PASS requested validation/benchmark operations completed

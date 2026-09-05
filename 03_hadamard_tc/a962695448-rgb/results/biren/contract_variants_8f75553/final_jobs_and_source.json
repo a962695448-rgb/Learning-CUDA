@@ -1,0 +1,33 @@
+{
+  "captured_utc": "2026-09-05T16:04:28.320160+00:00",
+  "jobs": {
+    "clone_hadamard": 0,
+    "smoke_build": 0,
+    "smoke_run": 1,
+    "smoke_rne_build": 0,
+    "smoke_rne_run": 0,
+    "fetch_biren_api": 0,
+    "api_quick_8040b60": 1,
+    "fetch_sdk_path_fix": 0,
+    "api_quick_2cbaf41": 0,
+    "api_full_2cbaf41": 0,
+    "api_benchmark_repeats_2cbaf41": 0,
+    "attributes_build_2cbaf41": 0,
+    "attributes_run_2cbaf41": 0,
+    "fetch_balanced_pack": 0,
+    "balanced_quick_c01ac87": 0,
+    "balanced_full_c01ac87": 0,
+    "balanced_benchmark_repeats_c01ac87": 0,
+    "attributes_build_balanced_c01ac87": 0,
+    "balanced_clean_repeats_c01ac87": 0,
+    "fetch_small_batch": 128,
+    "small_quick_8f75553": 0,
+    "small_full_8f75553": 0,
+    "small_benchmark_repeats_8f75553": 0,
+    "small_holdout_8f75553": 0,
+    "combined_validation_8f75553": 0,
+    "default_check_8f75553": 0
+  },
+  "head": "8f75553a074d79b850294377d5aea6381e93da19",
+  "git_status": ""
+}

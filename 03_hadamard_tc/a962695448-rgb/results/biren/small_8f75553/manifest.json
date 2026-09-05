@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "platform": "Biren106M / native SUPA 1.10.0.1.rc1",
+  "scope": "small_8f75553",
+  "tested_source_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+  "source_sha256": {
+    "platforms/biren/hadamard_api.h": "1fb2e487891aa8aca3b5f03bef2647654af7f2fe8f41b76a2d57a6ae741b38e6",
+    "platforms/biren/hadamard_api.su": "310b54d1818c9b518f70c481a02ba6bd86e472c126ef261beff4524aef021396",
+    "platforms/biren/validate_and_benchmark.su": "fb8ce24e1250dcc7a0ebcfe845201be7892a5596ba6f7a96b9170e19a7517adb",
+    "platforms/biren/run_platform.py": "dfcdf9d7a4030ad8337c41f0f3fd53e0c5a88af9031af38ead36dd9cc6b41585",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "binary_sha256": "3e134dd19144f10bb6c8b88a2028196a2728bd91c2cdbecf864e49214c301672",
+  "binary_in_public_archive": false,
+  "validation": {
+    "status": "PASS",
+    "full_matrix": true,
+    "host_bf16_rne_checks": 12,
+    "warp32_enabled": true,
+    "methods": [
+      "baseline",
+      "optimized",
+      "warp32"
+    ],
+    "balanced_pack_enabled": false,
+    "small_batch_warp_enabled": true,
+    "small_batch_warp_max_rows": 64,
+    "oracle": "all-element FP64 dense, rounded to output dtype",
+    "fp16_tolerance_strict": 0.01,
+    "bf16_tolerance_strict": 0.05,
+    "warmup_not_counted": true,
+    "dtypes": {
+      "fp16": {
+        "cases": 752,
+        "elements": 4105264,
+        "exact_baseline_optimized_elements": 4105264,
+        "warp32_cases": 752,
+        "exact_baseline_warp32_elements": 4105264,
+        "warp32_grid_stride_cases": 2,
+        "warp32_grid_stride_elements": 786435,
+        "unsupported_warp32_checks": 0,
+        "max_abs_error_rounded_fp64": 0.00390625,
+        "max_abs_error_unrounded_fp64": 0.015620231628418,
+        "api_contract_checks": 90
+      },
+      "bf16": {
+        "cases": 752,
+        "elements": 4105264,
+        "exact_baseline_optimized_elements": 4105264,
+        "warp32_cases": 752,
+        "exact_baseline_warp32_elements": 4105264,
+        "warp32_grid_stride_cases": 2,
+        "warp32_grid_stride_elements": 786435,
+        "unsupported_warp32_checks": 0,
+        "max_abs_error_rounded_fp64": 3.814697265625e-06,
+        "max_abs_error_unrounded_fp64": 0.124984741210938,
+        "api_contract_checks": 90
+      }
+    }
+  },
+  "cli_rejection_cases": 14,
+  "transfer_verified_files": 29,
+  "integrity_notes": "All listed transferred files verified against original transfer manifest. Five full-run source hashes verified against fixed Git objects. All exploratory raw files retained; derived analyses preserve their stated selection scope.",
+  "timing_scope": {
+    "all_raw_benchmark_rows": 4050,
+    "runs": 3,
+    "primary_files": [
+      "benchmark.csv",
+      "benchmark_run2.csv",
+      "benchmark_run3.csv"
+    ],
+    "small_batch_scope": {
+      "methods": [
+        "warp32_transform",
+        "warp32_split",
+        "warp32_fused"
+      ],
+      "max_rows": 64,
+      "rows_per_block": 1,
+      "threads_per_block": 32
+    },
+    "balanced_pack_enabled": false
+  },
+  "privacy_review": {
+    "files_scanned": 35,
+    "known_private_markers_and_service_urls": 0,
+    "redactions": false,
+    "notes": "Project/SDK paths, vendor compiler build path, binary provenance hashes and run conditions retained. No binaries, SDK header implementations or rental receipts copied. Pattern review is not a universal secret-detection guarantee."
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "e54ab96905b15b3708ca8a4b1c7f60ccc3d00edd8654bfdf9fc7d01dd889f53e"
+    },
+    {
+      "path": "analysis/analysis.json",
+      "bytes": 1782958,
+      "sha256": "24667f865ce1d4ceb081891505f7640f80cc7ca32b28694a79b30a7375547942"
+    },
+    {
+      "path": "analysis/method_summary.csv",
+      "bytes": 187081,
+      "sha256": "1273f4afe3d909bde56738a9ccd9c6d784a87b331205e95902512a7fe84acb6c"
+    },
+    {
+      "path": "analysis/method_summary_ms.csv",
+      "bytes": 196546,
+      "sha256": "061dd0cd910230701a2200441d5006e2687081f80a821901080ca41d1599189d"
+    },
+    {
+      "path": "benchmark.csv",
+      "bytes": 131647,
+      "sha256": "ba99a8014009c23dee08b17ba93e5ffe38c40a5ec275cdc0904299ade35c1623"
+    },
+    {
+      "path": "benchmark.log",
+      "bytes": 1481,
+      "sha256": "362444c67d6ab57c0e924130bf307f8358089a04179286527cf3d5bc2472b232"
+    },
+    {
+      "path": "benchmark_run2.csv",
+      "bytes": 131642,
+      "sha256": "287fd2f1c201ce7ff13127b28d555a69e2ab1ce9bbeed3867c77d73794670a77"
+    },
+    {
+      "path": "benchmark_run2.log",
+      "bytes": 1481,
+      "sha256": "362444c67d6ab57c0e924130bf307f8358089a04179286527cf3d5bc2472b232"
+    },
+    {
+      "path": "benchmark_run3.csv",
+      "bytes": 131644,
+      "sha256": "50c999702229e81f2d6ffa5dbd8dc1c81dbd9c11b0373b74a0326b1ffcfe5714"
+    },
+    {
+      "path": "benchmark_run3.log",
+      "bytes": 1481,
+      "sha256": "362444c67d6ab57c0e924130bf307f8358089a04179286527cf3d5bc2472b232"
+    },
+    {
+      "path": "brsmi_run2_after.log",
+      "bytes": 1402,
+      "sha256": "d65d97dd613392d1911c393e392b7438b41bb3ce6fa7f1d09a08ffa6e1082371"
+    },
+    {
+      "path": "brsmi_run2_before.log",
+      "bytes": 1402,
+      "sha256": "e5f9e77b95d4ed14c122e3d479f617bc7d43071dfe8b00e7e3dd864a7dcc4d76"
+    },
+    {
+      "path": "brsmi_run3_after.log",
+      "bytes": 1402,
+      "sha256": "fe080c3a3ae7219d3f0ce40872a2d99130d31d5a255606454644e9d14c4a0edb"
+    },
+    {
+      "path": "brsmi_run3_before.log",
+      "bytes": 1402,
+      "sha256": "d65d97dd613392d1911c393e392b7438b41bb3ce6fa7f1d09a08ffa6e1082371"
+    },
+    {
+      "path": "build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "path": "invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "path": "invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "path": "invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "path": "invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "path": "invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "path": "invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "path": "invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "path": "invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "path": "invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "path": "invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "path": "invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "path": "invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "path": "invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e"
+    },
+    {
+      "path": "repeat_runs.json",
+      "bytes": 1423,
+      "sha256": "2cb443e0b1b840697f70942e5bdffa68a27104fb7c22222084fae25dd8cfa14d"
+    },
+    {
+      "path": "run_summary.json",
+      "bytes": 196495,
+      "sha256": "40adb3efafba25ec0776d9d44aa77edfd25c38b060951e45031b561a3bf62260"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 3821,
+      "sha256": "ff2460086558f6122e3238fe829b7c6e944e38f8033e6197fb9cb59affe12c20"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1092,
+      "sha256": "5cdc515457289ad5574c87a507594126dec2589b89a3c6c0f419346e4a613441"
+    },
+    {
+      "path": "validation.log",
+      "bytes": 2433,
+      "sha256": "451baa0fd558a3dd035df30bbb6ab265c3ede26ad81ba1dbaf9a533e7468faa1"
+    }
+  ],
+  "unit_conversion": {
+    "scope": "Derived summary tables only; original method_summary.csv files and raw observations unchanged.",
+    "conversion": "Every *_us time column is divided by 1000 exactly in decimal and renamed *_ms. Other fields, column order and row order preserved.",
+    "added_precision_or_observations": false,
+    "script": "results/biren/diagnostics/convert_summary_ms.py",
+    "script_sha256": "d6558cfb0acc1f38f4a2a8ccf7050f152c7c1e131b00308dad68b7c6fd2d18eb",
+    "verification": "All nonempty time cells checked by exact rational arithmetic; other cell strings and header order matched."
+  }
+}

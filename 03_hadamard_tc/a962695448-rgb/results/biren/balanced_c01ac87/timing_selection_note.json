@@ -1,0 +1,13 @@
+{
+  "decision_utc": "2026-09-05T15:09:14.832821+00:00",
+  "reason": "An attribute-program CPU compilation was co-dispatched with balanced benchmark runs 2 and 3. Preserve those exploratory runs, but exclude them from final timing claims before inspecting their results. Use initial benchmark plus fresh runs 4 and 5 after both compilation and attribute query have completed.",
+  "excluded": [
+    "benchmark_run2.csv",
+    "benchmark_run3.csv"
+  ],
+  "planned_selected": [
+    "benchmark.csv",
+    "benchmark_run4.csv",
+    "benchmark_run5.csv"
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "platform": "Biren106M / native SUPA 1.10.0.1.rc1",
+  "date_local": "2026-09-06",
+  "scope": "Final compile-combination correctness checks only; no performance samples. Combined flags full matrix; no-feature default build quick matrix only.",
+  "tested_source_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+  "transfer_verified_files": 39,
+  "variants": {
+    "combined": {
+      "source_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+      "source_sha256": {
+        "platforms/biren/hadamard_api.h": "1fb2e487891aa8aca3b5f03bef2647654af7f2fe8f41b76a2d57a6ae741b38e6",
+        "platforms/biren/hadamard_api.su": "310b54d1818c9b518f70c481a02ba6bd86e472c126ef261beff4524aef021396",
+        "platforms/biren/validate_and_benchmark.su": "fb8ce24e1250dcc7a0ebcfe845201be7892a5596ba6f7a96b9170e19a7517adb",
+        "platforms/biren/run_platform.py": "dfcdf9d7a4030ad8337c41f0f3fd53e0c5a88af9031af38ead36dd9cc6b41585",
+        "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+      },
+      "binary_sha256": "776b7784f2420808c63932cbe871bfcc002e92e23c373622ef579dd46418aa27",
+      "quick": false,
+      "cli_rejection_cases": 14,
+      "validation": {
+        "status": "PASS",
+        "full_matrix": true,
+        "host_bf16_rne_checks": 12,
+        "warp32_enabled": true,
+        "methods": [
+          "baseline",
+          "optimized",
+          "warp32"
+        ],
+        "balanced_pack_enabled": true,
+        "small_batch_warp_enabled": true,
+        "small_batch_warp_max_rows": 64,
+        "oracle": "all-element FP64 dense, rounded to output dtype",
+        "fp16_tolerance_strict": 0.01,
+        "bf16_tolerance_strict": 0.05,
+        "warmup_not_counted": true,
+        "dtypes": {
+          "fp16": {
+            "cases": 752,
+            "elements": 4105264,
+            "exact_baseline_optimized_elements": 4105264,
+            "warp32_cases": 752,
+            "exact_baseline_warp32_elements": 4105264,
+            "warp32_grid_stride_cases": 2,
+            "warp32_grid_stride_elements": 786435,
+            "unsupported_warp32_checks": 0,
+            "max_abs_error_rounded_fp64": 0.00390625,
+            "max_abs_error_unrounded_fp64": 0.015620231628418,
+            "api_contract_checks": 90
+          },
+          "bf16": {
+            "cases": 752,
+            "elements": 4105264,
+            "exact_baseline_optimized_elements": 4105264,
+            "warp32_cases": 752,
+            "exact_baseline_warp32_elements": 4105264,
+            "warp32_grid_stride_cases": 2,
+            "warp32_grid_stride_elements": 786435,
+            "unsupported_warp32_checks": 0,
+            "max_abs_error_rounded_fp64": 3.814697265625e-06,
+            "max_abs_error_unrounded_fp64": 0.124984741210938,
+            "api_contract_checks": 90
+          }
+        }
+      },
+      "performance_measured": false
+    },
+    "default": {
+      "source_commit": "8f75553a074d79b850294377d5aea6381e93da19",
+      "source_sha256": {
+        "platforms/biren/hadamard_api.h": "1fb2e487891aa8aca3b5f03bef2647654af7f2fe8f41b76a2d57a6ae741b38e6",
+        "platforms/biren/hadamard_api.su": "310b54d1818c9b518f70c481a02ba6bd86e472c126ef261beff4524aef021396",
+        "platforms/biren/validate_and_benchmark.su": "fb8ce24e1250dcc7a0ebcfe845201be7892a5596ba6f7a96b9170e19a7517adb",
+        "platforms/biren/run_platform.py": "dfcdf9d7a4030ad8337c41f0f3fd53e0c5a88af9031af38ead36dd9cc6b41585",
+        "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+      },
+      "binary_sha256": "eb022b93b6da249096e1e59069e7a300d29c782cea8edaa186a334ce7a4b43a9",
+      "quick": true,
+      "cli_rejection_cases": 14,
+      "validation": {
+        "status": "PASS",
+        "full_matrix": false,
+        "host_bf16_rne_checks": 12,
+        "warp32_enabled": false,
+        "methods": [
+          "baseline",
+          "optimized"
+        ],
+        "balanced_pack_enabled": false,
+        "small_batch_warp_enabled": false,
+        "oracle": "all-element FP64 dense, rounded to output dtype",
+        "fp16_tolerance_strict": 0.01,
+        "bf16_tolerance_strict": 0.05,
+        "warmup_not_counted": true,
+        "dtypes": {
+          "fp16": {
+            "cases": 25,
+            "elements": 9615,
+            "exact_baseline_optimized_elements": 9615,
+            "warp32_cases": 0,
+            "exact_baseline_warp32_elements": 0,
+            "warp32_grid_stride_cases": 0,
+            "warp32_grid_stride_elements": 0,
+            "unsupported_warp32_checks": 6,
+            "max_abs_error_rounded_fp64": 0,
+            "max_abs_error_unrounded_fp64": 0.00782299041748047,
+            "api_contract_checks": 61
+          },
+          "bf16": {
+            "cases": 25,
+            "elements": 9615,
+            "exact_baseline_optimized_elements": 9615,
+            "warp32_cases": 0,
+            "exact_baseline_warp32_elements": 0,
+            "warp32_grid_stride_cases": 0,
+            "warp32_grid_stride_elements": 0,
+            "unsupported_warp32_checks": 6,
+            "max_abs_error_rounded_fp64": 0,
+            "max_abs_error_unrounded_fp64": 0.062225341796875,
+            "api_contract_checks": 61
+          }
+        }
+      },
+      "performance_measured": false
+    }
+  },
+  "job_snapshot_scope": "final_jobs_and_source.json records completed exit codes at capture time, including earlier historical failures. It does not claim every job succeeded and is not a release receipt.",
+  "integrity_notes": "39 transferred files individually verified. Each variants five source hashes matched fixed Git objects. Repeated correctness, API, host or CLI checks do not add independent input coverage or timing observations. Self-authored scripts preserved; no SDK implementations or binary copied.",
+  "privacy_review": {
+    "files_scanned": 40,
+    "known_private_pattern_hits": 0,
+    "redactions": false,
+    "notes": "Generic project/SDK paths and vendor compiler build path retained; no instance endpoint, rental information or private SDK header files."
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "e54ab96905b15b3708ca8a4b1c7f60ccc3d00edd8654bfdf9fc7d01dd889f53e"
+    },
+    {
+      "path": "combined/build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "combined/invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "path": "combined/invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "path": "combined/invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "path": "combined/invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "path": "combined/invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "path": "combined/invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "path": "combined/invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "path": "combined/invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "path": "combined/invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "path": "combined/invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "path": "combined/invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "path": "combined/invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "path": "combined/invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "path": "combined/invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e"
+    },
+    {
+      "path": "combined/run_summary.json",
+      "bytes": 12689,
+      "sha256": "56fe2c2af80e7c1d40a2763c48dd0728d61032358b91fd56497f0580edf3c3dc"
+    },
+    {
+      "path": "combined/validation.json",
+      "bytes": 1091,
+      "sha256": "3d4a8a0261dac8ee5d3f0753fd5767211ebb1641c3acc39f4c4fc17055243c05"
+    },
+    {
+      "path": "combined/validation.log",
+      "bytes": 2433,
+      "sha256": "451baa0fd558a3dd035df30bbb6ab265c3ede26ad81ba1dbaf9a533e7468faa1"
+    },
+    {
+      "path": "default/build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "default/invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "path": "default/invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "path": "default/invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "path": "default/invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "path": "default/invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "path": "default/invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "path": "default/invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "path": "default/invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "path": "default/invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "path": "default/invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "path": "default/invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "path": "default/invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "path": "default/invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "path": "default/invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e"
+    },
+    {
+      "path": "default/run_summary.json",
+      "bytes": 12168,
+      "sha256": "7342f914c7e435b714d85aac2dceff6ee0be6520daecb8faa884e5f6c28e85c5"
+    },
+    {
+      "path": "default/validation.json",
+      "bytes": 991,
+      "sha256": "4444edc63003087361a3e1688cd25fc053c1898a736bfd9364047fc04c6ab402"
+    },
+    {
+      "path": "default/validation.log",
+      "bytes": 1514,
+      "sha256": "f5d44687f2ff66e1ac66802086193a3863e42160f19f89f3e25bb5765d2749af"
+    },
+    {
+      "path": "final_jobs_and_source.json",
+      "bytes": 967,
+      "sha256": "4cab20b39db6cbc59db0c9648ff9b437b429bbda96412a20ed323b5e90f0cdc9"
+    },
+    {
+      "path": "scripts/biren_small_batch_holdout.py",
+      "bytes": 13747,
+      "sha256": "614db3a3b32fc98708b02122a89d1dd42d4341e9308c68cc7d98f1c5b31fe9cc"
+    },
+    {
+      "path": "scripts/repeat_biren_small_bench.py",
+      "bytes": 1606,
+      "sha256": "edeadc12ca3cb28ee94b5abfd35e9db2e594d02193a86d0e1a9f6af2fec1c3db"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 5410,
+      "sha256": "d722846868d215bf4c5234e1833b9be1b59041a8e82e8b0362aeee9b11512997"
+    }
+  ]
+}

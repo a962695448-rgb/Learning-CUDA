@@ -1,0 +1,48 @@
+[
+  {
+    "run": 2,
+    "started_utc": "2026-09-05T14:52:02Z",
+    "binary_sha256": "aa7e015ef5ce8a991c3431ef1c299a1529da4d093028163029a5dd4aaf641901",
+    "sdk_environment": {
+      "SUPA_PATH": "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa",
+      "BIREN_HOME": "/usr/local/birensupa/sdk/1.10.0.1.rc1"
+    },
+    "brsmi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/biren-api-full-2cbaf41/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/biren-api-full-2cbaf41/benchmark_run2.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "brsmi_after_exit": 0,
+    "finished_utc": "2026-09-05T14:52:48Z"
+  },
+  {
+    "run": 3,
+    "started_utc": "2026-09-05T14:52:48Z",
+    "binary_sha256": "aa7e015ef5ce8a991c3431ef1c299a1529da4d093028163029a5dd4aaf641901",
+    "sdk_environment": {
+      "SUPA_PATH": "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa",
+      "BIREN_HOME": "/usr/local/birensupa/sdk/1.10.0.1.rc1"
+    },
+    "brsmi_before_exit": 0,
+    "args": [
+      "/data/infinitensor-2026/runs/biren-api-full-2cbaf41/validate_and_benchmark",
+      "--benchmark",
+      "--csv",
+      "/data/infinitensor-2026/runs/biren-api-full-2cbaf41/benchmark_run3.csv",
+      "--groups",
+      "5",
+      "--repeats",
+      "100"
+    ],
+    "exit": 0,
+    "brsmi_after_exit": 0,
+    "finished_utc": "2026-09-05T14:53:33Z"
+  }
+]

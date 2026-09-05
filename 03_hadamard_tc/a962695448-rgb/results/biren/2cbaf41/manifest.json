@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "platform": "Biren106M / native SUPA SDK 1.10.0.1.rc1",
+  "date": "2026-09-05",
+  "scope": "Original Warp32 implementation with project BF16 RNE helper. No later balanced-pack performance conclusion covered.",
+  "tested_source_commit": "2cbaf41d9f71a657ca2cca027a3083d9d497322d",
+  "source_sha256": {
+    "platforms/biren/hadamard_api.h": "1fb2e487891aa8aca3b5f03bef2647654af7f2fe8f41b76a2d57a6ae741b38e6",
+    "platforms/biren/hadamard_api.su": "c7d94146519e8582dafce26e3a38229678be8f979d8e88591d39baaef47be167",
+    "platforms/biren/validate_and_benchmark.su": "6a69f7ab06a5706e550e855f341de7faa7bab4864a2fddc2a87b2d33c2f9ee9d",
+    "platforms/biren/run_platform.py": "936742358c3bededf3a2c6f7f2ab595f6301e30570493e87bb2c2b801a524c66",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "binary_sha256": "aa7e015ef5ce8a991c3431ef1c299a1529da4d093028163029a5dd4aaf641901",
+  "binary_in_public_archive": false,
+  "validation": {
+    "status": "PASS",
+    "full_matrix": true,
+    "host_bf16_rne_checks": 12,
+    "warp32_enabled": true,
+    "methods": [
+      "baseline",
+      "optimized",
+      "warp32"
+    ],
+    "oracle": "all-element FP64 dense, rounded to output dtype",
+    "fp16_tolerance_strict": 0.01,
+    "bf16_tolerance_strict": 0.05,
+    "warmup_not_counted": true,
+    "dtypes": {
+      "fp16": {
+        "cases": 752,
+        "elements": 4105264,
+        "exact_baseline_optimized_elements": 4105264,
+        "warp32_cases": 752,
+        "exact_baseline_warp32_elements": 4105264,
+        "warp32_grid_stride_cases": 2,
+        "warp32_grid_stride_elements": 786435,
+        "unsupported_warp32_checks": 0,
+        "max_abs_error_rounded_fp64": 0.00390625,
+        "max_abs_error_unrounded_fp64": 0.015620231628418,
+        "api_contract_checks": 90
+      },
+      "bf16": {
+        "cases": 752,
+        "elements": 4105264,
+        "exact_baseline_optimized_elements": 4105264,
+        "warp32_cases": 752,
+        "exact_baseline_warp32_elements": 4105264,
+        "warp32_grid_stride_cases": 2,
+        "warp32_grid_stride_elements": 786435,
+        "unsupported_warp32_checks": 0,
+        "max_abs_error_rounded_fp64": 3.814697265625e-06,
+        "max_abs_error_unrounded_fp64": 0.124984741210938,
+        "api_contract_checks": 90
+      }
+    }
+  },
+  "cli_rejection_cases": 14,
+  "resource_scope": {
+    "visible_memory_bytes": 34091302912,
+    "reported_multiprocessors": 64,
+    "warp_size": 32,
+    "SVI": "Disabled",
+    "exclusive_claim": false
+  },
+  "benchmark": {
+    "independent_runs": 3,
+    "raw_samples_per_run": 1350,
+    "raw_samples_total": 4050,
+    "groups": 5,
+    "repeats": 100,
+    "metric": "Native SUPA event interval per launch sequence; copies/allocation/validation excluded; reused read-only input"
+  },
+  "initial_probe_notes": "Native BF16 cast returned 0x3f81 for input FP32 0x3f818000 rather than project RNE expectation 0x3f82. Original failure and explicit project RNE correction retained. Not a vendor-bug or native BF16 arithmetic acceleration claim.",
+  "integrity_notes": "29 full-run and 7 initial files verified against transfer manifests. All five full-run source hashes matched pinned Git objects. Analysis regenerated with backend-neutral event labels while preserving numerical inputs and statistics. This manifest covers both transfer manifests, analysis and byte-preservation attributes; excludes itself.",
+  "privacy_review": {
+    "files_scanned": 43,
+    "known_private_markers_and_service_urls": 0,
+    "redactions": false,
+    "notes": "Generic project/SDK paths, vendor compiler build path and hardware metadata retained. No SDK header implementation, binary or rental receipt copied. Pattern review is not a universal secret-detection guarantee."
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "e54ab96905b15b3708ca8a4b1c7f60ccc3d00edd8654bfdf9fc7d01dd889f53e"
+    },
+    {
+      "path": "analysis/analysis.json",
+      "bytes": 1782600,
+      "sha256": "cb8424db65e45312b57bbd8bd5d7ecb185a584ebe54559609f01c2686ce9d2c6"
+    },
+    {
+      "path": "analysis/method_summary.csv",
+      "bytes": 186748,
+      "sha256": "769586d54b368ef5bc2564381e00efd04d50db167b9ef5f3a8305838a41a124b"
+    },
+    {
+      "path": "analysis/method_summary_ms.csv",
+      "bytes": 196213,
+      "sha256": "ad2ed239806791fb54f59b444f9cdb47c6fe553b69aa601bb5d68fc82443fd18"
+    },
+    {
+      "path": "benchmark.csv",
+      "bytes": 131630,
+      "sha256": "fb4f12d4b6116c1cf1b9179eaaecb3f51851779e5da8b7c68f7b601318161d76"
+    },
+    {
+      "path": "benchmark.log",
+      "bytes": 1481,
+      "sha256": "362444c67d6ab57c0e924130bf307f8358089a04179286527cf3d5bc2472b232"
+    },
+    {
+      "path": "benchmark_run2.csv",
+      "bytes": 131630,
+      "sha256": "a92dd6b623af2494ae0665c2673562e5bbc630546e2efb383fa018983db40646"
+    },
+    {
+      "path": "benchmark_run2.log",
+      "bytes": 1481,
+      "sha256": "362444c67d6ab57c0e924130bf307f8358089a04179286527cf3d5bc2472b232"
+    },
+    {
+      "path": "benchmark_run3.csv",
+      "bytes": 131645,
+      "sha256": "41a8e44fd60c074520c1bd87e527fc338aaee09d1789778fc12347c0f6f0bc49"
+    },
+    {
+      "path": "benchmark_run3.log",
+      "bytes": 1481,
+      "sha256": "362444c67d6ab57c0e924130bf307f8358089a04179286527cf3d5bc2472b232"
+    },
+    {
+      "path": "brsmi_run2_after.log",
+      "bytes": 1402,
+      "sha256": "6156519fac8989e7d420d984fc760539df4d35963bad19b0b87c1c610b929549"
+    },
+    {
+      "path": "brsmi_run2_before.log",
+      "bytes": 1402,
+      "sha256": "c8b4528ea1fcd80ff652c558cf587bb483191890f4e2b02e54b911670ce18ad4"
+    },
+    {
+      "path": "brsmi_run3_after.log",
+      "bytes": 1402,
+      "sha256": "cab178019f754e9464f80432ebdefa86ecffa417a2bc150f210b436a098028a2"
+    },
+    {
+      "path": "brsmi_run3_before.log",
+      "bytes": 1402,
+      "sha256": "6156519fac8989e7d420d984fc760539df4d35963bad19b0b87c1c610b929549"
+    },
+    {
+      "path": "build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "initial/biren_smoke.su",
+      "bytes": 12968,
+      "sha256": "dcf8e4a8e54cf93a2d6b94d1d4d04b7bec2b68caaa5ad390ab7d0ef3da37795c"
+    },
+    {
+      "path": "initial/biren_smoke_rne.su",
+      "bytes": 14098,
+      "sha256": "b1a0bdc4939cd96b167ac7b22667f2eec22a4c502deba9403aa16e0e223ffb03"
+    },
+    {
+      "path": "initial/environment_initial.json",
+      "bytes": 4746,
+      "sha256": "95c580fc765822f922c6b0395752694530831b580e8d2cdb1755e45eddd61a5c"
+    },
+    {
+      "path": "initial/smoke_build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "initial/smoke_rne_build.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "initial/smoke_rne_run.log",
+      "bytes": 885,
+      "sha256": "d7c299322b4893609e44c6717cc3d9febcac86aae9001457501d6d1b94e7053f"
+    },
+    {
+      "path": "initial/smoke_run.log",
+      "bytes": 735,
+      "sha256": "cb59fd87baa62a56919ccd9ac9db68fd1ce7721108039fdecbd55171e0e915a2"
+    },
+    {
+      "path": "initial/transfer_manifest.json",
+      "bytes": 938,
+      "sha256": "5f05b80d176723dd358d64e4b671239587137b2d782095bd6357bf3c78650445"
+    },
+    {
+      "path": "invalid_00.log",
+      "bytes": 55,
+      "sha256": "57a02a5ddbdd1c62c445fa1feac13e27585b3837bd9d9ed0d3cd869a33e3c26e"
+    },
+    {
+      "path": "invalid_01.log",
+      "bytes": 54,
+      "sha256": "db18b9f8d2040efced14ec6027b078290f358387206be6945f703d8bd4b5d7b7"
+    },
+    {
+      "path": "invalid_02.log",
+      "bytes": 55,
+      "sha256": "fe9b4ea505976f30aab4a65234e33296fa2f61a7068429b2611ff99644178709"
+    },
+    {
+      "path": "invalid_03.log",
+      "bytes": 41,
+      "sha256": "699f1f70340c77149d3bae4063f00207638e87be51bb3bb02bb2a99a650e68a1"
+    },
+    {
+      "path": "invalid_04.log",
+      "bytes": 50,
+      "sha256": "5d1c70e05b6561f86a8c8c5bec7d168cbfc043fdfb9e1e7af32b5a87c1b1ff90"
+    },
+    {
+      "path": "invalid_05.log",
+      "bytes": 52,
+      "sha256": "3bac927d06f4ce7258f9c037afb2b3a5dfdc51f7504c16e4b1dae94bcc91cf1b"
+    },
+    {
+      "path": "invalid_06.log",
+      "bytes": 54,
+      "sha256": "49316fe0d2d4c9660cf5218d6ee6bc3708e737c38cfc3b53775f0636dc194997"
+    },
+    {
+      "path": "invalid_07.log",
+      "bytes": 52,
+      "sha256": "6d69299a2872ffc0a140db9fc171769b85e3f61111a5e73399436d32cb0fc27b"
+    },
+    {
+      "path": "invalid_08.log",
+      "bytes": 48,
+      "sha256": "439fd2b48f724414272ea4a69fae98cf1809e904afe56e2e8edd677e50993d56"
+    },
+    {
+      "path": "invalid_09.log",
+      "bytes": 24,
+      "sha256": "4b8c91252c32d2f7cbcebc21561c29defe89809c97c23be7ab6a3577d4b74a3d"
+    },
+    {
+      "path": "invalid_10.log",
+      "bytes": 41,
+      "sha256": "76dd633500e539227532274081e41835e98a9cb82d73ba955f92c00ee1606cd0"
+    },
+    {
+      "path": "invalid_11.log",
+      "bytes": 44,
+      "sha256": "be700711fd27b9719a4f6d490ef528894b371271344313d04298e25d9879ba54"
+    },
+    {
+      "path": "invalid_12.log",
+      "bytes": 58,
+      "sha256": "eaddd4706d0da47a6fccbd2f81b6ace09f4f708d23cfc9b844f35d94f39d6241"
+    },
+    {
+      "path": "invalid_13.log",
+      "bytes": 45,
+      "sha256": "2116fe98f2998004c6367f99717fa82db3c3f77374b5c86cbeab03ca8922256e"
+    },
+    {
+      "path": "repeat_runs.json",
+      "bytes": 1415,
+      "sha256": "d7d66b4defbaa64bcf639cb170f845b4fc6df0d728c289e03fd937b9a91679a0"
+    },
+    {
+      "path": "run_summary.json",
+      "bytes": 195958,
+      "sha256": "90a282acf2de368c0fe1fcc71a949bfda48d2185fe2fb1b5525943e36e744f47"
+    },
+    {
+      "path": "transfer_manifest.json",
+      "bytes": 3820,
+      "sha256": "cff2b67712139f852fca522f1d3d681e58dcad03deed2944486dfe4dec77b90d"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 999,
+      "sha256": "5952c0b0a188bc39d695735c3c10a5f2937a469e4efddbae0cfb1e1ccf44f4b0"
+    },
+    {
+      "path": "validation.log",
+      "bytes": 2433,
+      "sha256": "451baa0fd558a3dd035df30bbb6ab265c3ede26ad81ba1dbaf9a533e7468faa1"
+    }
+  ],
+  "unit_conversion": {
+    "scope": "Derived summary tables only; original method_summary.csv files and raw observations unchanged.",
+    "conversion": "Every *_us time column is divided by 1000 exactly in decimal and renamed *_ms. Other fields, column order and row order preserved.",
+    "added_precision_or_observations": false,
+    "script": "results/biren/diagnostics/convert_summary_ms.py",
+    "script_sha256": "d6558cfb0acc1f38f4a2a8ccf7050f152c7c1e131b00308dad68b7c6fd2d18eb",
+    "verification": "All nonempty time cells checked by exact rational arithmetic; other cell strings and header order matched."
+  }
+}

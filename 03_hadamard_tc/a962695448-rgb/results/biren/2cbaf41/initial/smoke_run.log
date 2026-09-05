@@ -1,0 +1,5 @@
+DEVICE name=Biren106M count=1 warp=32 multiprocessors=64 max_threads_per_block=1024 shared_bytes_per_block=32768 visible_memory_bytes=34091302912 runtime=1100 driver=1100
+SHUFFLE_PASS operation=__shfl_xor_sync_int width=32 complete_warps=2 distances=5 observations=320 mask=ffffffff guards=pass
+STORAGE_ARITHMETIC_PASS dtype=fp16 elements=257 guard_elements=17 input_unchanged=yes storage_alignment=2 rne_reference=host_integer native_cast_rne=verified native_bf16_acceleration=not_determined
+CONVERSION_FAILURE dtype=bf16 index=9 input_bits=3f818000 storage_expected=3f82 storage_actual=3f81 arithmetic_expected=40420000 arithmetic_actual=40410000
+BIREN_SMOKE_FAIL device conversion/arithmetic differs from independent host reference

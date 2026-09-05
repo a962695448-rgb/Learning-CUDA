@@ -1,0 +1,4 @@
+HOST_BF16_RNE_PASS checks=12
+DEVICE name=Biren106M warp=32 runtime=1100 driver=1100
+BENCHMARK_PROGRESS dtype=fp16 rows=65 n=256
+PASS requested validation/benchmark operations completed

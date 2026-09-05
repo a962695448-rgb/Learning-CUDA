@@ -1,0 +1,6 @@
+BF16_PATH explicit_software_rne_then_native_storage prior_native_cast_probe=failed_odd_midpoint evidence=biren_smoke.su
+DEVICE name=Biren106M count=1 warp=32 multiprocessors=64 max_threads_per_block=1024 shared_bytes_per_block=32768 visible_memory_bytes=34091302912 runtime=1100 driver=1100
+SHUFFLE_PASS operation=__shfl_xor_sync_int width=32 complete_warps=2 distances=5 observations=320 mask=ffffffff guards=pass
+STORAGE_ARITHMETIC_PASS dtype=fp16 elements=257 guard_elements=17 input_unchanged=yes storage_alignment=2 rne_reference=host_integer conversion=native_fp16_cast native_bf16_acceleration=not_determined
+STORAGE_ARITHMETIC_PASS dtype=bf16 elements=257 guard_elements=17 input_unchanged=yes storage_alignment=2 rne_reference=host_integer conversion=explicit_software_rne_then_native_storage native_bf16_acceleration=not_determined
+BIREN_RNE_SMOKE_PASS all_checks_passed=yes

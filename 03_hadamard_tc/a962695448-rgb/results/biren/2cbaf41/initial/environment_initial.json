@@ -1,0 +1,151 @@
+{
+  "python": "3.10.12 (main, Jan 26 2026, 14:55:28) [GCC 11.4.0]",
+  "executable": "/usr/bin/python3",
+  "tools": {
+    "brcc": null,
+    "supa-smi": null,
+    "br-smi": null,
+    "nvidia-smi": null,
+    "git": "/usr/bin/git",
+    "rg": null,
+    "nvcc": null
+  },
+  "sdk_dirs": {
+    "/usr/local/birensupa": [
+      "Copyright",
+      "br_container_tools",
+      "entrypoint.d",
+      "succl_test",
+      "sdk"
+    ],
+    "/usr/local/birensupa/sdk/latest": [
+      "bevc",
+      "brSimulator",
+      "brbpp",
+      "brcc",
+      "brffmpeg",
+      "brjpegdec",
+      "brperfworks",
+      "deepep",
+      "libsufile",
+      "python",
+      "scripts",
+      "suPerfViz",
+      "suairan",
+      "sublas",
+      "succl",
+      "sucst",
+      "sudbg",
+      "sudnn-eager",
+      "sufft",
+      "sulib",
+      "supa",
+      "supa-sanitizer",
+      "suprof-cli",
+      "suprofiler",
+      "supti",
+      "surand",
+      "surtc",
+      "sutlass",
+      "tensor-engine"
+    ],
+    "/usr/local": [
+      "bin",
+      "etc",
+      "games",
+      "include",
+      "lib",
+      "man",
+      "sbin",
+      "share",
+      "src",
+      "birensupa"
+    ],
+    "/opt": [
+      "mellanox"
+    ]
+  },
+  "packages": {
+    "torch": "2.8.0+cpu",
+    "torch-supa": null,
+    "suda": null,
+    "torch-dipu": null
+  },
+  "sdk": "/usr/local/birensupa/sdk/1.10.0.1.rc1",
+  "layout": {
+    "/usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin": [
+      "FileCheck",
+      "biren-dbg",
+      "biren-link",
+      "brcc",
+      "brcc-1",
+      "clang-offload-bundler",
+      "clang-tidy",
+      "ld.lld",
+      "ld64.lld",
+      "lld",
+      "lld-link",
+      "lldb",
+      "lldb-server",
+      "llvm-ar",
+      "llvm-as",
+      "llvm-config",
+      "llvm-cov",
+      "llvm-cxxfilt",
+      "llvm-dis",
+      "llvm-gcov",
+      "llvm-link",
+      "llvm-mc",
+      "llvm-objcopy",
+      "llvm-objdump",
+      "llvm-readelf",
+      "llvm-readobj",
+      "llvm-symbolizer",
+      "not",
+      "opt",
+      "run-clang-tidy",
+      "wasm-ld"
+    ],
+    "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/include": [
+      "cooperative_groups",
+      "device",
+      "driver",
+      "runtime",
+      "suComplex.h",
+      "supa.h",
+      "supa_cooperative_groups.h",
+      "supa_device.h",
+      "supa_driver.h",
+      "supa_runtime.h",
+      "supa_tensor.h",
+      "tensor",
+      "version.h"
+    ],
+    "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/bin": null,
+    "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/lib": [
+      "libsupa-runtime.so",
+      "libsupa-runtime.so.1",
+      "libsupa-runtime.so.1.10.0",
+      "libsupadevice.br100.bc",
+      "supy.cpython-310-x86_64-linux-gnu.so"
+    ],
+    "/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/lib64": null,
+    "/usr/local/birensupa/br_container_tools": [
+      "biren_entrypoint.sh",
+      "brsw_set_env.sh",
+      "install_ofed_version.sh",
+      "install_openmpi_4.1.5.sh",
+      "install_torch_vision.sh"
+    ]
+  },
+  "compiler": {
+    "exit": 0,
+    "out": "brcc version 1.10.0 (/home/jenkins/agent/workspace/BR_PACKAGE/buildSystem/dailyBuild/full-stack/llvm-project/clang 07d2a06438232ad34ae5cda5ac2ca1ae8d94a94d)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin\n",
+    "err": ""
+  },
+  "brsmi": {
+    "exit": 0,
+    "stdout": "Sat Sep  5 22:32:33 2026\n+------------------------------------------------------------------------------+\n| BR-SMI 1.10.2          Driver Version: 1.10.1          SUPA Version: 1.10    |\n+----------------------------+-----------------------+-------------------------+\n|   GPU                 Name |                Bus-Id |    Volatile Uncorr. ECC |\n|  Temp  Perf  Pwr:Usage/Cap |          Memory-Usage |    GPU-Util  Compute M. |\n|              Persistence-M |                       |                  SVI M. |\n+============================+=======================+=========================+\n|     0            Biren106M |      00000000:19:00.0 |                       0 |\n|    32    P0     62W / 400W |       0MiB / 32512MiB |          0%     Default |\n|                        Off |                       |                Disabled |\n+----------------------------+-----------------------+-------------------------+\n+------------------------------------------------------------------------------+\n| Processes:                                                                   |\n| GPU   SVI Dev        PID   Process Name                     GPU Memory Usage |\n+==============================================================================+\n|  No running process found.                                                   |\n+------------------------------------------------------------------------------+\n",
+    "stderr": ""
+  }
+}

@@ -1,0 +1,2 @@
+brcc-1: error: cannot find libsupadevice for br100. Provide path to different SUPA installation via option --supa-path or env SUPA_PATH, or pass -nosupalib to build without linking with libsupadevice.
+brcc-1: error: cannot find libsupadevice for br100. Provide path to different SUPA installation via option --supa-path or env SUPA_PATH, or pass -nosupalib to build without linking with libsupadevice.

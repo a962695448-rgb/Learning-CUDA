@@ -1,0 +1,30 @@
+{
+  "environment_initial.json": {
+    "bytes": 4746,
+    "sha256": "95c580fc765822f922c6b0395752694530831b580e8d2cdb1755e45eddd61a5c"
+  },
+  "biren_smoke.su": {
+    "bytes": 12968,
+    "sha256": "dcf8e4a8e54cf93a2d6b94d1d4d04b7bec2b68caaa5ad390ab7d0ef3da37795c"
+  },
+  "biren_smoke_rne.su": {
+    "bytes": 14098,
+    "sha256": "b1a0bdc4939cd96b167ac7b22667f2eec22a4c502deba9403aa16e0e223ffb03"
+  },
+  "smoke_build.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "smoke_run.log": {
+    "bytes": 735,
+    "sha256": "cb59fd87baa62a56919ccd9ac9db68fd1ce7721108039fdecbd55171e0e915a2"
+  },
+  "smoke_rne_build.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "smoke_rne_run.log": {
+    "bytes": 885,
+    "sha256": "d7c299322b4893609e44c6717cc3d9febcac86aae9001457501d6d1b94e7053f"
+  }
+}

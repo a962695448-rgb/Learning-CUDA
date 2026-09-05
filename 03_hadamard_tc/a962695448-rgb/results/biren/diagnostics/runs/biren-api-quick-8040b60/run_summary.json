@@ -1,0 +1,80 @@
+{
+  "status": "FAIL",
+  "started_utc": "2026-09-05T14:45:54Z",
+  "platform": "biren",
+  "adapted_from": {
+    "platform": "metax",
+    "commit": "1681a85ec7b832e56e672f0589a472cc8f91af95"
+  },
+  "quick": true,
+  "warp32_enabled": true,
+  "sdk_environment": {
+    "SUPA_PATH": "/usr/local/birensupa/sdk/1.10.0.1.rc1",
+    "BIREN_HOME": "/usr/local/birensupa/sdk/1.10.0.1.rc1"
+  },
+  "source_sha256": {
+    "platforms/biren/hadamard_api.h": "1fb2e487891aa8aca3b5f03bef2647654af7f2fe8f41b76a2d57a6ae741b38e6",
+    "platforms/biren/hadamard_api.su": "c7d94146519e8582dafce26e3a38229678be8f979d8e88591d39baaef47be167",
+    "platforms/biren/validate_and_benchmark.su": "6a69f7ab06a5706e550e855f341de7faa7bab4864a2fddc2a87b2d33c2f9ee9d",
+    "platforms/biren/run_platform.py": "ae93ef9196f9d25bf3f47857ebbe9200bb8980b6e1b13f17384bfdf44ed19d26",
+    "include/reference.hpp": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4"
+  },
+  "git_head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "output": "8040b60d0c1d7b7812486d3175a7e9560b1f2e71\n"
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "returncode": 0,
+    "output": ""
+  },
+  "compiler": {
+    "command": [
+      "/usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin/brcc",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "brcc version 1.10.0 (/home/jenkins/agent/workspace/BR_PACKAGE/buildSystem/dailyBuild/full-stack/llvm-project/clang 07d2a06438232ad34ae5cda5ac2ca1ae8d94a94d)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin\n"
+  },
+  "python_version": "3.10.12 (main, Jan 26 2026, 14:55:28) [GCC 11.4.0]",
+  "stages": [
+    {
+      "command": [
+        "/usr/local/birensupa/sdk/1.10.0.1.rc1/brcc/bin/brcc",
+        "-x",
+        "supa",
+        "-std=c++17",
+        "-O2",
+        "-I/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/include",
+        "-I/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/include",
+        "-DHADAMARD_BIREN_WARP32",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/biren/hadamard_api.su",
+        "/data/infinitensor-2026/Learning-CUDA/03_hadamard_tc/a962695448-rgb/platforms/biren/validate_and_benchmark.su",
+        "-L/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/lib",
+        "-lsupa-runtime",
+        "-Wl,-rpath,/usr/local/birensupa/sdk/1.10.0.1.rc1/supa/lib",
+        "-o",
+        "/data/infinitensor-2026/runs/biren-api-quick-8040b60/validate_and_benchmark"
+      ],
+      "log": "build.log",
+      "returncode": 1,
+      "expected_returncode": 0,
+      "wall_seconds": 0.010596139123663306,
+      "sha256": "f0ceac847de8b4904bf1f5077a589439e6d2248216c7c5618424950fd6be21de"
+    }
+  ],
+  "error": "stage failed: build.log",
+  "finished_utc": "2026-09-05T14:45:54Z",
+  "artifacts": {
+    "build.log": "f0ceac847de8b4904bf1f5077a589439e6d2248216c7c5618424950fd6be21de"
+  }
+}

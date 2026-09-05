@@ -1,0 +1,42 @@
+ATTRIBUTE_SCOPE independent_executable api_include=hadamard_api.su source_commit_label=2cbaf41d9f71a657ca2cca027a3083d9d497322d
+ATTRIBUTE_BUILD require_same_compiler_and_flags_as_benchmark=yes must_record_source_hash_and_flags_externally=yes
+ATTRIBUTE_LIMIT kernel_metadata_only no_kernel_execution no_timing no_occupancy_or_spill_causality_claim
+ATTRIBUTE_DEVICE name=Biren106M warp=32 multiprocessors=64
+dtype,n,method,operation,specialization,launch_threads,rows_per_block,num_regs_per_thread,local_bytes_per_thread,static_shared_bytes_per_block,max_threads_per_block,const_bytes,max_dynamic_shared_bytes,binary_version,ptx_version
+fp16,64,baseline,transform,runtime_n,64,1,24,0,1024,1024,0,31744,100,0
+fp16,64,optimized,transform,runtime_n,64,1,24,0,1024,1024,0,31744,100,0
+fp16,64,warp32,transform,compiletime_n,128,4,24,0,0,1024,0,32768,100,0
+fp16,64,baseline,fused_int4,runtime_n,64,1,40,0,1040,768,0,31728,100,0
+fp16,64,optimized,fused_int4,runtime_n,64,1,48,0,1552,640,0,31216,100,0
+fp16,64,warp32,fused_int4,compiletime_n,128,4,48,0,0,1024,0,32768,100,0
+fp16,128,baseline,transform,runtime_n,128,1,24,0,1024,1024,0,31744,100,0
+fp16,128,optimized,transform,runtime_n,64,1,24,0,1024,1024,0,31744,100,0
+fp16,128,warp32,transform,compiletime_n,128,4,36,0,0,1024,0,32768,100,0
+fp16,128,baseline,fused_int4,runtime_n,128,1,40,0,1040,768,0,31728,100,0
+fp16,128,optimized,fused_int4,runtime_n,64,1,48,0,1552,640,0,31216,100,0
+fp16,128,warp32,fused_int4,compiletime_n,128,4,56,0,0,1024,0,32768,100,0
+fp16,256,baseline,transform,runtime_n,256,1,24,0,1024,1024,0,31744,100,0
+fp16,256,optimized,transform,runtime_n,128,1,24,0,1024,1024,0,31744,100,0
+fp16,256,warp32,transform,compiletime_n,128,4,48,0,0,1024,0,32768,100,0
+fp16,256,baseline,fused_int4,runtime_n,256,1,40,0,1040,768,0,31728,100,0
+fp16,256,optimized,fused_int4,runtime_n,128,1,48,0,1552,640,0,31216,100,0
+fp16,256,warp32,fused_int4,compiletime_n,128,4,72,0,0,1024,0,32768,100,0
+bf16,64,baseline,transform,runtime_n,64,1,24,0,1024,1024,0,31744,100,0
+bf16,64,optimized,transform,runtime_n,64,1,24,0,1024,1024,0,31744,100,0
+bf16,64,warp32,transform,compiletime_n,128,4,24,0,0,1024,0,32768,100,0
+bf16,64,baseline,fused_int4,runtime_n,64,1,40,0,1040,768,0,31728,100,0
+bf16,64,optimized,fused_int4,runtime_n,64,1,48,0,1552,640,0,31216,100,0
+bf16,64,warp32,fused_int4,compiletime_n,128,4,48,0,0,1024,0,32768,100,0
+bf16,128,baseline,transform,runtime_n,128,1,24,0,1024,1024,0,31744,100,0
+bf16,128,optimized,transform,runtime_n,64,1,24,0,1024,1024,0,31744,100,0
+bf16,128,warp32,transform,compiletime_n,128,4,32,0,0,1024,0,32768,100,0
+bf16,128,baseline,fused_int4,runtime_n,128,1,40,0,1040,768,0,31728,100,0
+bf16,128,optimized,fused_int4,runtime_n,64,1,48,0,1552,640,0,31216,100,0
+bf16,128,warp32,fused_int4,compiletime_n,128,4,56,0,0,1024,0,32768,100,0
+bf16,256,baseline,transform,runtime_n,256,1,24,0,1024,1024,0,31744,100,0
+bf16,256,optimized,transform,runtime_n,128,1,24,0,1024,1024,0,31744,100,0
+bf16,256,warp32,transform,compiletime_n,128,4,44,0,0,1024,0,32768,100,0
+bf16,256,baseline,fused_int4,runtime_n,256,1,40,0,1040,768,0,31728,100,0
+bf16,256,optimized,fused_int4,runtime_n,128,1,48,0,1552,640,0,31216,100,0
+bf16,256,warp32,fused_int4,compiletime_n,128,4,72,0,0,1024,0,32768,100,0
+ATTRIBUTE_SUMMARY successful_rows=36 expected_rows=36 unique_kernels=20

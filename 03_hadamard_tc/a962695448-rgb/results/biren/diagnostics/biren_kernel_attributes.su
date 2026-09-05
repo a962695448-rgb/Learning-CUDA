@@ -1,0 +1,96 @@
+// 独立属性诊断程序：以与基准相同的 BRCC/flags 编译，并通过 -I 指向待分析源码。
+// 不复制或修改生产内核，也不引入厂商私有头实现。
+// 同源同 flags 的独立可执行文件不等于原 benchmark binary；属性不能单独证明性能因果。
+#if !defined(HADAMARD_BIREN_WARP32) || !defined(__SUPACC__)
+#error "Use BRCC -x supa with -DHADAMARD_BIREN_WARP32, matching the benchmark build"
+#endif
+
+#include "hadamard_api.su"
+
+#include <cstdio>
+
+namespace probe {
+
+bool report(const char* dtype, int n, const char* method, const char* operation,
+            const char* specialization, int threads, int rows_per_block,
+            const void* kernel) {
+    suFuncAttributes attr{};
+    const suError_t status = suFuncGetAttributes(&attr, kernel);
+    if (status != suSuccess) {
+        std::fprintf(stderr,
+            "ATTRIBUTE_UNAVAILABLE dtype=%s n=%d method=%s operation=%s error=%d message=%s\n",
+            dtype, n, method, operation, static_cast<int>(status), suGetErrorString(status));
+        return false;
+    }
+    // 以下字段及计量单位直接来自现场 SDK 声明，不假定其他厂商的寄存器分配粒度。
+    std::printf("%s,%d,%s,%s,%s,%d,%d,%d,%zu,%zu,%d,%zu,%d,%d,%d\n",
+        dtype, n, method, operation, specialization, threads, rows_per_block,
+        attr.numRegs, static_cast<std::size_t>(attr.localSizeBytes),
+        static_cast<std::size_t>(attr.sharedSizeBytes), attr.maxThreadsPerBlock,
+        static_cast<std::size_t>(attr.constSizeBytes), attr.maxDynamicSharedSizeBytes,
+        attr.binaryVersion, attr.ptxVersion);
+    return true;
+}
+
+template<class T, int N> int report_shape(const char* dtype) {
+    using namespace hadamard::biren;
+    int passed = 0;
+    const int baseline_threads = N < 64 ? 64 : N;
+    const int shared_threads = N / 2 < 64 ? 64 : N / 2;
+    passed += report(dtype, N, "baseline", "transform", "runtime_n", baseline_threads, 1,
+                     reinterpret_cast<const void*>(baseline_kernel<T, true, false>));
+    passed += report(dtype, N, "optimized", "transform", "runtime_n", shared_threads, 1,
+                     reinterpret_cast<const void*>(optimized_kernel<T, true, false>));
+    passed += report(dtype, N, "warp32", "transform", "compiletime_n", 128, 4,
+                     reinterpret_cast<const void*>(warp32_kernel<T, true, false, N>));
+    passed += report(dtype, N, "baseline", "fused_int4", "runtime_n", baseline_threads, 1,
+                     reinterpret_cast<const void*>(baseline_kernel<T, true, true>));
+    passed += report(dtype, N, "optimized", "fused_int4", "runtime_n", shared_threads, 1,
+                     reinterpret_cast<const void*>(optimized_kernel<T, true, true>));
+    passed += report(dtype, N, "warp32", "fused_int4", "compiletime_n", 128, 4,
+                     reinterpret_cast<const void*>(warp32_kernel<T, true, true, N>));
+    return passed;
+}
+
+}  // namespace probe
+
+int main(int argc, char** argv) {
+    std::setvbuf(stdout, nullptr, _IOLBF, 0);
+    if (argc != 2) {
+        std::fprintf(stderr, "Usage: biren_kernel_attributes <verified-api-source-commit>\n");
+        return 2;
+    }
+    // commit 是外部构建记录标签；运行程序不会自行验证 Git，必须同时保存编译命令和源文件 hash。
+    std::fprintf(stderr,
+        "ATTRIBUTE_SCOPE independent_executable api_include=hadamard_api.su source_commit_label=%s\n"
+        "ATTRIBUTE_BUILD require_same_compiler_and_flags_as_benchmark=yes must_record_source_hash_and_flags_externally=yes\n"
+        "ATTRIBUTE_LIMIT kernel_metadata_only no_kernel_execution no_timing no_occupancy_or_spill_causality_claim\n",
+        argv[1]);
+    suError_t status = suSetDevice(0);
+    if (status != suSuccess) {
+        std::fprintf(stderr, "DEVICE_FAILURE %s\n", suGetErrorString(status));
+        return 1;
+    }
+    suDeviceProp prop{};
+    status = suGetDeviceProperties(&prop, 0);
+    if (status != suSuccess) {
+        std::fprintf(stderr, "DEVICE_FAILURE %s\n", suGetErrorString(status));
+        return 1;
+    }
+    std::fprintf(stderr, "ATTRIBUTE_DEVICE name=%s warp=%d multiprocessors=%d\n",
+                 prop.name, prop.warpSize, prop.multiProcessorCount);
+    if (prop.warpSize != 32) {
+        std::fprintf(stderr, "ATTRIBUTE_UNVERIFIED expected_warp=32 actual=%d\n", prop.warpSize);
+        return 2;
+    }
+    std::puts("dtype,n,method,operation,specialization,launch_threads,rows_per_block,num_regs_per_thread,local_bytes_per_thread,static_shared_bytes_per_block,max_threads_per_block,const_bytes,max_dynamic_shared_bytes,binary_version,ptx_version");
+    int passed = 0;
+    passed += probe::report_shape<float16, 64>("fp16");
+    passed += probe::report_shape<float16, 128>("fp16");
+    passed += probe::report_shape<float16, 256>("fp16");
+    passed += probe::report_shape<bfloat16, 64>("bf16");
+    passed += probe::report_shape<bfloat16, 128>("bf16");
+    passed += probe::report_shape<bfloat16, 256>("bf16");
+    std::fprintf(stderr, "ATTRIBUTE_SUMMARY successful_rows=%d expected_rows=36 unique_kernels=20\n", passed);
+    return passed == 36 ? 0 : 1;
+}
