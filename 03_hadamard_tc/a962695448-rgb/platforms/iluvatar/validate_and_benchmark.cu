@@ -32,10 +32,15 @@ template<class T> class Guarded {
     T* raw_ = nullptr;
     std::size_t count_;
     std::vector<unsigned char> initial_;
+    std::string name_;
 public:
-    explicit Guarded(std::size_t count) : count_(count), initial_((count + 2 * guard) * sizeof(T), 0xa5) {
+    explicit Guarded(std::size_t count, cudaStream_t stream, const char* name = "unnamed")
+        : count_(count), initial_((count + 2 * guard) * sizeof(T), 0xa5), name_(name) {
         CHECK(cudaMalloc(reinterpret_cast<void**>(&raw_), initial_.size()));
-        CHECK(cudaMemcpy(raw_, initial_.data(), initial_.size(), cudaMemcpyHostToDevice));
+        // 初始化、上传、kernel、回读使用同一个非阻塞 stream。默认 stream 上的
+        // pageable H2D 即使通过 cudaMemcpy 调用，也不保证返回时最终 DMA 已结束。
+        // 按字节 memset 避免异步初始化读取随后被 upload 更新的主机 shadow。
+        CHECK(cudaMemsetAsync(raw_, 0xa5, initial_.size(), stream));
     }
     ~Guarded() { if (raw_) cudaFree(raw_); }
     Guarded(const Guarded&) = delete;
@@ -46,15 +51,21 @@ public:
         std::memcpy(initial_.data() + guard * sizeof(T), values.data(), count_ * sizeof(T));
         CHECK(cudaMemcpyAsync(raw_, initial_.data(), initial_.size(), cudaMemcpyHostToDevice, stream));
     }
-    std::vector<T> download(cudaStream_t stream, bool unchanged = false) {
+    std::vector<T> download(cudaStream_t stream, bool unchanged = false, const char* phase = "readback") {
         std::vector<unsigned char> bytes(initial_.size());
         CHECK(cudaMemcpyAsync(bytes.data(), raw_, bytes.size(), cudaMemcpyDeviceToHost, stream));
         CHECK(cudaStreamSynchronize(stream));
         const std::size_t prefix = guard * sizeof(T), end = prefix + count_ * sizeof(T);
-        if (!std::equal(bytes.begin(), bytes.begin() + prefix, initial_.begin()) ||
-            !std::equal(bytes.begin() + end, bytes.end(), initial_.begin() + end))
-            throw std::runtime_error("device buffer guard overwritten");
-        if (unchanged && bytes != initial_) throw std::runtime_error("read-only input modified");
+        for (std::size_t i = 0; i < bytes.size(); ++i) {
+            if (bytes[i] == initial_[i] || (!unchanged && i >= prefix && i < end)) continue;
+            const bool is_guard = i < prefix || i >= end;
+            throw std::runtime_error(std::string(is_guard ? "device buffer guard overwritten" : "read-only input modified")
+                + " buffer=" + name_ + " phase=" + phase + " region=" + (i < prefix ? "prefix" : (i >= end ? "suffix" : "payload"))
+                + " byte_from_payload=" + std::to_string(static_cast<long long>(i) - static_cast<long long>(prefix))
+                + " expected=" + std::to_string(static_cast<unsigned>(initial_[i]))
+                + " actual=" + std::to_string(static_cast<unsigned>(bytes[i]))
+                + " elements=" + std::to_string(count_) + " element_bytes=" + std::to_string(sizeof(T)));
+        }
         std::vector<T> result(count_);
         std::memcpy(result.data(), bytes.data() + prefix, count_ * sizeof(T));
         return result;
@@ -157,9 +168,9 @@ template<class T> void one_case(cudaStream_t stream, std::size_t rows, int n, fl
                                int pattern, unsigned seed, const char* dtype, Summary& summary) {
     const auto input = make_input<T>(rows, n, pattern, seed);
     const std::size_t size = input.size(), bytes = rows * ((n + 1) / 2);
-    Guarded<T> x(size), baseline(size), optimized(size), inplace(size);
-    Guarded<std::uint8_t> base_split(bytes), opt_split(bytes), base_fused(bytes), opt_fused(bytes);
-    Guarded<float> bs(rows), os(rows), bfs(rows), ofs(rows);
+    Guarded<T> x(size, stream), baseline(size, stream), optimized(size, stream), inplace(size, stream);
+    Guarded<std::uint8_t> base_split(bytes, stream), opt_split(bytes, stream), base_fused(bytes, stream), opt_fused(bytes, stream);
+    Guarded<float> bs(rows, stream), os(rows, stream), bfs(rows, stream), ofs(rows, stream);
     x.upload(input, stream);
     inplace.upload(input, stream);
     CHECK(api::transform(x.data(), baseline.data(), rows, n, scale, stream, api::Method::Baseline));
@@ -202,15 +213,21 @@ template<class T> void one_case(cudaStream_t stream, std::size_t rows, int n, fl
 }
 
 template<class T> void contract_tests(cudaStream_t stream, Summary& summary) {
-    Guarded<T> input(64), output(64);
-    Guarded<std::uint8_t> packed(32);
-    Guarded<float> scales(8);
+    Guarded<T> input(64, stream, "contract.input"), output(64, stream, "contract.output");
+    Guarded<std::uint8_t> packed(32, stream, "contract.packed");
+    Guarded<float> scales(8, stream, "contract.scales");
+    input.download(stream, true, "initialized");
+    output.download(stream, true, "initialized");
+    packed.download(stream, true, "initialized");
+    scales.download(stream, true, "initialized");
     auto reject = [&](cudaError_t status) {
         if (status != cudaErrorInvalidValue) throw std::runtime_error("invalid API input did not return cudaErrorInvalidValue");
         ++summary.contract_checks;
     };
     auto success = [&](cudaError_t status) { CHECK(status); ++summary.contract_checks; };
     for (const auto method : {api::Method::Baseline, api::Method::Optimized}) {
+        const char* method_name = method == api::Method::Baseline ? "baseline" : "optimized";
+        std::cout << "CONTRACT_PROGRESS method=" << method_name << " phase=invalid-parameters" << std::endl;
         for (int n : {0, 3, 512}) {
             reject(api::transform(input.data(), output.data(), 1, n, 1, stream, method));
             reject(api::quantize_int4(input.data(), packed.data(), scales.data(), 1, n, stream, method));
@@ -233,18 +250,25 @@ template<class T> void contract_tests(cudaStream_t stream, Summary& summary) {
         success(api::transform(static_cast<const T*>(nullptr), static_cast<T*>(nullptr), 0, 8, 1, stream, method));
         success(api::quantize_int4(static_cast<const T*>(nullptr), nullptr, nullptr, 0, 8, stream, method));
         success(api::transform_int4(static_cast<const T*>(nullptr), nullptr, nullptr, 0, 8, 1, stream, method));
+        input.download(stream, true, "after-invalid-and-zero-rows");
+        output.download(stream, true, "after-invalid-and-zero-rows");
+        packed.download(stream, false, "after-invalid-and-zero-rows");
+        scales.download(stream, false, "after-invalid-and-zero-rows");
         // 正负半整数：预期手写，避免舍入测试仅复用 CPU 参考实现。
         const std::vector<float> ties{7, -7, .5f, 1.5f, 2.5f, -.5f, -1.5f, -2.5f};
         std::vector<T> t(64, rounded<T>(0));
         for (std::size_t i = 0; i < ties.size(); ++i) t[i] = rounded<T>(ties[i]);
+        std::cout << "CONTRACT_PROGRESS method=" << method_name << " phase=ties-upload" << std::endl;
         input.upload(t, stream);
+        input.download(stream, true, "after-ties-upload");
+        std::cout << "CONTRACT_PROGRESS method=" << method_name << " phase=ties-quantize" << std::endl;
         CHECK(api::quantize_int4(input.data(), packed.data(), scales.data(), 1, 8, stream, method));
-        const auto q = packed.download(stream);
-        const auto s = scales.download(stream);
+        const auto q = packed.download(stream, false, "after-ties-quantize");
+        const auto s = scales.download(stream, false, "after-ties-quantize");
         const std::array<std::uint8_t, 4> expected{{0x97, 0x20, 0x02, 0xee}};
         if (!std::equal(expected.begin(), expected.end(), q.begin()) || s[0] != 1.0f)
             throw std::runtime_error("positive/negative ties-to-even test failed");
-        input.download(stream, true);
+        input.download(stream, true, "after-ties-quantize");
         ++summary.contract_checks;
     }
     const auto invalid = static_cast<api::Method>(-1);
@@ -299,9 +323,9 @@ template<class T> void benchmark(cudaStream_t stream, const char* dtype, const O
     for (const auto shape : shapes) {
         const auto rows = checked_shape(shape.b, shape.s, shape.h, shape.n), count = rows * shape.n;
         const auto input = make_input<T>(rows, shape.n, 0, 2909);
-        Guarded<T> x(count), y(count);
-        Guarded<std::uint8_t> q(rows * ((shape.n + 1) / 2));
-        Guarded<float> s(rows);
+        Guarded<T> x(count, stream), y(count, stream);
+        Guarded<std::uint8_t> q(rows * ((shape.n + 1) / 2), stream);
+        Guarded<float> s(rows, stream);
         x.upload(input, stream);
         const float scale = 1.0f;
         auto launch = [&](int which) {
