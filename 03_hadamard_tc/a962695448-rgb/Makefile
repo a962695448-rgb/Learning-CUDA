@@ -13,7 +13,7 @@ build/config.txt: FORCE
 	@cmp -s build/config.tmp $@ || cp build/config.tmp $@
 	@rm -f build/config.tmp
 
-build/hadamard: src/main.cu include/kernels.cuh include/reference.hpp build/config.txt
+build/hadamard: src/main.cu include/kernels.cuh include/contiguous256.cuh include/reference.hpp build/config.txt
 	mkdir -p build
 	$(NVCC) $(NVCCFLAGS) -Iinclude src/main.cu -o $@
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""复用原1,800组Dao矩阵，核查旧默认API与显式128/256线程；不自动派发。"""
+"""复用原1,800组Dao矩阵，核查线程兼容性及N256显式融合布局。"""
 import argparse
 import hashlib
 import json
@@ -51,6 +51,10 @@ class CheckedInterface:
         explicit256 = self.extension.hadamard_int4(values, scale, block_threads=256)
         bitwise_equal(self.torch, default, explicit128, "fused default vs128")
         bitwise_equal(self.torch, explicit256, explicit128, "fused 256 vs128")
+        if values.shape[-1] == 256:
+            contiguous = self.extension.hadamard_int4(values, scale, block_threads=128,
+                                                       fused_layout="contiguous256")
+            bitwise_equal(self.torch, contiguous, explicit128, "fused contiguous256 vs original128")
         return explicit256
 
     def quantize_int4(self, values):
@@ -73,6 +77,24 @@ def check_thread_rejections(torch, extension):
                 results.append({"method": name, "value": invalid, "pass": True, "error": str(error).splitlines()[0]})
             else:
                 raise RuntimeError(f"invalid block_threads accepted: {name} {invalid!r}")
+    return results
+
+
+def check_fused_layout_rejections(torch, extension):
+    values = torch.ones((3, 256), device="cuda", dtype=torch.float16)
+    cases = [("unknown", values, {"fused_layout": "unknown"}),
+             ("empty", values, {"fused_layout": ""}),
+             ("wrong_type", values, {"fused_layout": 1}),
+             ("wrong_threads", values, {"fused_layout": "contiguous256", "block_threads": 256}),
+             ("wrong_dimension", values[:, :128].contiguous(), {"fused_layout": "contiguous256"})]
+    results = []
+    for name, data, options in cases:
+        try:
+            extension.hadamard_int4(data, **options)
+        except (RuntimeError, TypeError, ValueError) as error:
+            results.append({"case": name, "pass": True, "error": str(error).splitlines()[0]})
+        else:
+            raise RuntimeError("invalid fused layout accepted: " + name)
     return results
 
 
@@ -105,10 +127,16 @@ def main():
         if code:
             raise RuntimeError("original Dao correctness matrix failed")
         report["thread_value_rejections"] = check_thread_rejections(torch, extension)
+        report["fused_layout_rejections"] = check_fused_layout_rejections(torch, extension)
+        report["optional_fused_layout"] = {
+            "layout": "contiguous256", "block_threads": 128,
+            "original_matrix_cases_checked": sum(case["shape"][-1] == 256 for case in report["cases"]),
+            "bitwise_equal_to_original_fused": True,
+            "scope": "N256 subset of the same 1800 inputs, not additional distinct inputs; other dimensions and ordinary transforms use the original kernel."}
         report["default_and_explicit128_and_256_bitwise_equal"] = True
         root = Path(__file__).resolve().parents[1]
         report["source_sha256"] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
-            for name in ("include/kernels.cuh", "include/reference.hpp", "src/torch_binding.cu", "scripts/compare_reference.py", "scripts/verify_block_threads.py")}
+            for name in ("include/kernels.cuh", "include/contiguous256.cuh", "include/reference.hpp", "src/torch_binding.cu", "scripts/compare_reference.py", "scripts/verify_block_threads.py")}
         report["status"] = "PASS"
         code = 0
     except Exception as error:
