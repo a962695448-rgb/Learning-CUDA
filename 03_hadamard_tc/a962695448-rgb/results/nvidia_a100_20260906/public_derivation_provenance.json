@@ -1,6 +1,6 @@
 {
-  "raw_files_changed": 0,
-  "raw_files_preserved": 48,
+  "raw_files_changed": 1,
+  "raw_files_preserved": 47,
   "private_originals_retained": true,
   "analyzer": {
     "private_original_sha256": "05ee76b68ba463fc000c61d1d6e0427c71bff12e9c69c158ecb2571188239e77",
@@ -43,5 +43,13 @@
       "byte_equal": true
     }
   ],
-  "note": "These are derived artifacts. Their new hashes are not represented as original server file hashes. Original server files retain transfer_manifest hashes."
+  "note": "Derived artifact hashes do not represent original server hashes. Historical source/transfer records retain the 48 originals; the one annotated public script has the separately recorded public hash. Numerical data and original experiment metadata are unchanged.",
+  "narrative_annotation": {
+    "path": "retrieved/promotion_a100.py",
+    "private_original_sha256": "f19f94444fb7e86583676985c2294d1a72b7a35936029581e51775944170f576",
+    "public_sha256": "b3c79dcf280af95087a6d584bf36009c547a7c1514ad245709d2c033bd82cf3b",
+    "change": "Only module-level description updated to thread-configuration performance validation. Executable AST unchanged.",
+    "historical_source_and_transfer_hashes_preserved": true,
+    "project_provenance": "reports/public-wording-provenance.json"
+  }
 }

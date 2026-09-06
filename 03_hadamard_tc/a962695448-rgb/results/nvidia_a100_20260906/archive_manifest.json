@@ -3,7 +3,7 @@
   "source_commit": "12c76d8331ef7cf3fd4c8c14a049162559be4302",
   "reference_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
   "raw_server_files": 48,
-  "raw_modified_files": 0,
+  "raw_modified_files": 1,
   "compiled_files_included": false,
   "line_endings": "Local .gitattributes ** -text preserves original bytes. Raw and LF hashes are distinct fingerprints.",
   "files": [
@@ -73,17 +73,17 @@
     },
     {
       "path": "public_derivation_provenance.json",
-      "bytes": 2103,
-      "sha256": "639e247471bd5126aaaa04316b7501fece849e214f22a16a0592f3a8fcd5c5bd",
-      "lf_sha256": "325d5ad7e3b9496841ad53ce8e060bb6bf024b0b0876778fdcaf8bc91d5c5477",
-      "crlf_count": 47,
+      "bytes": 2740,
+      "sha256": "be9350e343331d4ceeb8fc87a4fb3ff1a144330f68b088ee5ccb172eaef3c3dc",
+      "lf_sha256": "2788ee23f5b265cc93b93b88bcd79ceed813e7fd11d58192d8c0ccaff6491dc5",
+      "crlf_count": 55,
       "kind": "analysis_or_provenance_or_documentation"
     },
     {
       "path": "README.md",
-      "bytes": 5024,
-      "sha256": "28ba5765ce362c606577162ecbe0c7bf415d8225894d97976bc45a673abe1ec7",
-      "lf_sha256": "28ba5765ce362c606577162ecbe0c7bf415d8225894d97976bc45a673abe1ec7",
+      "bytes": 5749,
+      "sha256": "48aa1d4a75eb99ea97af59ebc5cf6e64e09e16ff7cfcf9e0f45b1174092c2cd9",
+      "lf_sha256": "48aa1d4a75eb99ea97af59ebc5cf6e64e09e16ff7cfcf9e0f45b1174092c2cd9",
       "crlf_count": 0,
       "kind": "analysis_or_provenance_or_documentation"
     },
@@ -161,12 +161,15 @@
     },
     {
       "path": "retrieved/promotion_a100.py",
-      "bytes": 14366,
-      "sha256": "f19f94444fb7e86583676985c2294d1a72b7a35936029581e51775944170f576",
-      "lf_sha256": "12aee6b66d4f395d77b8e9501c29ae10352e008cbf56e24c555039c714da067f",
+      "bytes": 14372,
+      "sha256": "b3c79dcf280af95087a6d584bf36009c547a7c1514ad245709d2c033bd82cf3b",
+      "lf_sha256": "99004d9e8951c8ab0da2988e1e8085b4387eaa6373f53dd917de3ea451e6ab11",
       "crlf_count": 258,
-      "kind": "server_raw_unchanged",
-      "private_original_sha256": "f19f94444fb7e86583676985c2294d1a72b7a35936029581e51775944170f576"
+      "kind": "source_snapshot_with_narrative_annotation",
+      "private_original_sha256": "f19f94444fb7e86583676985c2294d1a72b7a35936029581e51775944170f576",
+      "historical_execution_bytes": 14366,
+      "historical_execution_sha256": "f19f94444fb7e86583676985c2294d1a72b7a35936029581e51775944170f576",
+      "edit_scope": "Module docstring only; all executable AST nodes unchanged. Original hash retained by execution/source/transfer records."
     },
     {
       "path": "retrieved/reference_source.json",
@@ -538,8 +541,11 @@
   ],
   "companion_report": {
     "project_relative_path": "reports/a100-validation.md",
-    "bytes": 5067,
-    "sha256": "0f58f4944f60b37404aa2b956310a185de21b6ffde582bb08ebedf1ae9d28b74"
+    "bytes": 5408,
+    "sha256": "2f8feafb107aa02e2b1093bb0e1b58222c23e283b7c7c3def8dbfe2379475042"
   },
-  "archive_file_count_including_manifest": 61
+  "archive_file_count_including_manifest": 61,
+  "narrative_edit_provenance_project_relative_path": "reports/public-wording-provenance.json",
+  "raw_unmodified_files": 47,
+  "raw_modification_scope": "Only the public promotion_a100.py module description differs; original execution hashes remain unchanged. Numerical result files and compiler identifiers are preserved."
 }

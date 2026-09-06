@@ -45,6 +45,11 @@ python analyze_delivery.py
 
 脚本输出[derived/summary.json](derived/summary.json)、[原12组所有比较](derived/dao_all_configurations.csv)、[三轮72配置全表](derived/promotion_all_configurations.csv)、[CLI各口径全表](derived/cli_all_measurements.csv)和[总配置表](derived/all_configurations.csv)。缺失、失败或不一致会返回UNVERIFIED，不筛去负例。
 
-复算会更新派生摘要时间戳，但不修改48个raw；如需保持公开档案不变，先复制整个目录再复算。历史`worker.py`包含当时租期的停止边界，只用于审计，不应直接当作新租期启动器。
+复算会更新派生摘要时间戳，但不修改输入档案；如需保持公开档案不变，先复制整个目录再复算。历史`worker.py`包含当时租期的停止边界，只用于审计，不应直接当作新租期启动器。
 
 1,876、1,800和336分别记账，重复设置/进程不增加独立算法用例。默认仍为128；256性能结论仅覆盖预定N=16/64和指定M及M±1，不保证其他输入或所有硬件更快。
+
+
+## 公开文字与历史执行版本
+
+`retrieved/promotion_a100.py` 的模块说明文字在归档后整理为线程配置性能说明；只有文档字符串改变，执行语句的 AST 完全相同。原始 `source_manifest`、`transfer_manifest` 和结果 JSON 中的脚本 hash 继续指向实际运行版本，未改成后期整理版本。48 份服务器原件中，47 份公开字节不变，1 份脚本是明确标注的文字整理副本；当前公开文件 hash 以 `archive_manifest.json` 为准。原件已保留在仓库外，原/公开双 hash 与编辑范围见[文字来源说明](../../reports/public-wording-provenance.json)。测试数据、数学逻辑、编译标识和实验名称均未修改。

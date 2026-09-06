@@ -18,6 +18,11 @@
 
 [transfer_manifest.json](results/transfer_manifest.json)记录10个原始文件的服务器SHA与大小，归档时全部比对通过。扩展二进制不发布，只保留SHA、构建日志与参数。未知448MiB驻留上下文的归属未能完整映射，因此不声称独占GPU。
 
-归档使用局部`.gitattributes`关闭换行转换，保留实际测试文件的原字节。`archive_manifest.json`分别记录raw与CRLF→LF规范化SHA；后者只用于源码内容比较，不替代原始SHA，也不代表重新构建的二进制一定逐字节相同。
+归档使用局部`.gitattributes`关闭换行转换，除下方明确记载的脚本说明文字整理外，保留实际测试文件的原字节。`archive_manifest.json`分别记录raw与CRLF→LF规范化SHA；后者只用于源码内容比较，不替代原始SHA，也不代表重新构建的二进制一定逐字节相同。
 
 复算：[analyze_results.py](analyze_results.py)读取现有JSON，生成[完整72配置比较](results/comparison.csv)和[摘要](results/summary.json)。运行`python analyze_results.py`会重新生成派生文件，不覆盖三轮原始JSON。重新跑GPU实验时，先复制整个归档到新的工作目录，并使用[实验说明](EXPERIMENT.md)中的新输出路径，以保护历史记录。
+
+
+## 公开文字与历史执行版本
+
+`run_experiment.py` 只更新模块说明文字，全部执行语句的 AST 不变。历史结果中的 `experiment_script_sha256` 仍是实际运行时的原脚本 hash；当前公开副本的 hash 由 `archive_manifest.json` 记录。原件在仓库外保留，原/公开双 hash 与范围见[文字来源说明](../../reports/public-wording-provenance.json)。三轮原始结果、测量数字、源代码计算和实验标识未改变。

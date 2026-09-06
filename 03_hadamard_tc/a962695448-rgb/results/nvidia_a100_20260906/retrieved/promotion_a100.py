@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""固定的 128/256 线程晋级复核；独立扩展、64 独立输出的 CUDA Graph。"""
+"""固定的 128/256 线程配置性能复核；独立扩展、64 独立输出的 CUDA Graph。"""
 import argparse
 import gc
 import hashlib

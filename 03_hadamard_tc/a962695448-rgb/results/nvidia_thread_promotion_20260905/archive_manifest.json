@@ -55,10 +55,10 @@
     },
     {
       "path": "README.md",
-      "bytes": 2643,
-      "sha256": "10853f665828bbfd1469d41b95452184ec46488aee29b493c3640452d766e72c",
-      "lf_bytes": 2643,
-      "lf_sha256": "10853f665828bbfd1469d41b95452184ec46488aee29b493c3640452d766e72c",
+      "bytes": 3179,
+      "sha256": "7907b7c45645cf23aa8e5074aa6a6a303137a1a09183fda5fe04c2c4f8d1e424",
+      "lf_bytes": 3179,
+      "lf_sha256": "7907b7c45645cf23aa8e5074aa6a6a303137a1a09183fda5fe04c2c4f8d1e424",
       "crlf_count": 0,
       "lone_cr_count": 0,
       "kind": "derived_or_documentation"
@@ -215,13 +215,16 @@
     },
     {
       "path": "run_experiment.py",
-      "bytes": 14582,
-      "sha256": "0a7a13e869c29fb3479847e26fbc495da714ef7192c3b00a7f185f938642f553",
-      "lf_bytes": 14582,
-      "lf_sha256": "0a7a13e869c29fb3479847e26fbc495da714ef7192c3b00a7f185f938642f553",
+      "bytes": 14588,
+      "sha256": "5cda45e0d624da9a7472845bc47d7d5154347c9f0ffcc88e0cc2fe5035c019ec",
+      "lf_bytes": 14588,
+      "lf_sha256": "5cda45e0d624da9a7472845bc47d7d5154347c9f0ffcc88e0cc2fe5035c019ec",
       "crlf_count": 0,
       "lone_cr_count": 0,
-      "kind": "source_snapshot"
+      "kind": "source_snapshot_with_narrative_annotation",
+      "historical_execution_bytes": 14582,
+      "historical_execution_sha256": "0a7a13e869c29fb3479847e26fbc495da714ef7192c3b00a7f185f938642f553",
+      "edit_scope": "Module docstring only; all executable AST nodes unchanged. Original hash retained by execution/source/transfer records."
     },
     {
       "path": "source_manifest.json",
@@ -283,5 +286,6 @@
       "lone_cr_count": 0,
       "kind": "source_snapshot"
     }
-  ]
+  ],
+  "narrative_edit_provenance_project_relative_path": "reports/public-wording-provenance.json"
 }

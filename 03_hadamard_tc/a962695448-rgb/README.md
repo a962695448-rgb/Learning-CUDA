@@ -4,6 +4,8 @@
 
 本目录的命令行程序只需要 C++17 和 CUDA Toolkit。另提供 PyTorch 前向接口，用于接收真实张量，并与第三方 CUDA 库在同一张 GPU 上比较。
 
+实施与后续优化的固定输入、计时和验收标准见 [实施与优化方案](reports/implementation-optimization-plan.md)。
+
 ## 当前状态
 
 - 2026-09-05 已在租赁的 **NVIDIA GeForce RTX 4090 24 GB（sm89）** 上编译命令行程序和 PyTorch 扩展；原有 RTX 4060 Laptop / WSL2 记录也保留。
@@ -139,7 +141,7 @@ assert torch.equal(row_scales, split_scales)
 
 ## 显式选择 NVIDIA 线程数
 
-省略参数仍使用128线程；256仅是可选配置，不会根据形状自动切换。 本次接口源码可定位至[`24849f6`](https://github.com/a962695448-rgb/Learning-CUDA/commit/24849f61ef06350f4e8bcd224ef93d97622c9744)；实机原字节与提交后的LF内容核查分别保存在下方归档。正确性已覆盖原全部dim=1～256的二次幂，性能证据仅覆盖N=16/64：变换M=4096/16384及各自M±1，融合INT4为M=4096及M±1。更一般的M范围和A100需要分别验证。
+省略参数仍使用128线程；256仅是可选配置，不会根据形状自动切换。 本次接口源码可定位至[`24849f6`](https://github.com/a962695448-rgb/Learning-CUDA/commit/24849f61ef06350f4e8bcd224ef93d97622c9744)；实机原字节与提交后的LF内容核查分别保存在下方归档。正确性已覆盖原全部dim=1～256的二次幂，性能证据仅覆盖N=16/64：变换M=4096/16384及各自M±1，融合INT4为M=4096及M±1。更一般的 M 范围和其他 GPU 仍需分别验证；已测 A100 的范围与结果见 [A100 报告](reports/a100-validation.md)。
 
 ```python
 # 保留原调用；x仍须满足前述CUDA/形状/连续存储约束。
