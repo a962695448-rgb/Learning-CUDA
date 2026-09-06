@@ -1,0 +1,2 @@
+Argument error: --benchmark with --fused-layout contiguous256 requires --dim 256
+Use --help for usage.

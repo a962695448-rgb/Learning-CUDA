@@ -1,0 +1,13 @@
+{
+  "scope": "Single-witness explanation only; original52 protocol failure remains unchanged",
+  "row": 8191,
+  "column": 230,
+  "sum_abs_input": 101.74270510673523,
+  "unit_roundoff_float32": 5.960464477539063e-08,
+  "gamma8": 4.768373855769089e-07,
+  "fp32_forward_bound": 4.851472550461804e-05,
+  "observed_prestore_error": 1.1920928955078125e-06,
+  "combined_bound_without_float64_dot_term": 0.007861014725504618,
+  "observed_stored_vs_unrounded_error": 0.007813692092895508,
+  "storage_rounding_radius": 0.0078125
+}

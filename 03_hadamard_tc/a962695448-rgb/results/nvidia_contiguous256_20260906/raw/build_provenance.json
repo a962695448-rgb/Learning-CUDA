@@ -1,0 +1,9 @@
+{
+  "binary_file": "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/build/hadamard_contiguous256_20260906.so",
+  "binary_sha256": "dde96236adead23962c54d64d49c482944d31f73caeb5cc10c3548254e00137d",
+  "cuobjdump_exit": 0,
+  "cuobjdump_stdout": "ELF file    1: torch_binding_contiguous256.sm_89.cubin\n",
+  "cuobjdump_stderr": "",
+  "build_ninja_sha256": "df21c8f66577dbc97e9dd7a9357d68e276d52a29f77c8bf9ec632f1aa74bfeaa",
+  "source_manifest_sha256": "8acd2aaf09a2de5a951128a8362ddccafea71b453190f4bf16140caf57bb3320"
+}

@@ -1,0 +1,156 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li256EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li256EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 12288 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 26.619 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li128EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li128EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 8192 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 15.860 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li64EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li64EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 6144 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 11.487 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li32EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li32EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 36 registers, used 1 barriers, 5120 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 9.477 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li16EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI13__nv_bfloat16Li16EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 24 registers, used 1 barriers, 4608 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 12.886 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI6__halfLi256EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI6__halfLi256EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 41 registers, used 1 barriers, 12288 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 22.859 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI6__halfLi128EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI6__halfLi128EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 42 registers, used 1 barriers, 8192 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 15.248 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI6__halfLi64EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI6__halfLi64EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 6144 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 10.916 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI6__halfLi32EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI6__halfLi32EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 33 registers, used 1 barriers, 5120 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 9.317 ms
+ptxas info    : Compiling entry function '_ZN10wmma_reuse16four_warp_kernelI6__halfLi16EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN10wmma_reuse16four_warp_kernelI6__halfLi16EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 25 registers, used 1 barriers, 4608 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 8.697 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI13__nv_bfloat16Li256ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI13__nv_bfloat16Li256ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 23 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 11.228 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li256EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li256EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, used 1 barriers, 9216 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 21.301 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI13__nv_bfloat16Li128ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI13__nv_bfloat16Li128ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 21 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 6.101 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li128EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li128EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 5120 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 12.497 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI13__nv_bfloat16Li64ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI13__nv_bfloat16Li64ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 3.600 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li64EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li64EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 3072 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 7.915 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI13__nv_bfloat16Li32ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI13__nv_bfloat16Li32ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 11 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 2.527 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li32EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li32EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 32 registers, used 1 barriers, 2048 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 5.965 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI13__nv_bfloat16Li16ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI13__nv_bfloat16Li16ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 13 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 2.725 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li16EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI13__nv_bfloat16Li16EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, used 1 barriers, 1536 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 4.763 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI6__halfLi256ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI6__halfLi256ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 23 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 11.452 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI6__halfLi256EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI6__halfLi256EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 9216 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 18.697 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI6__halfLi128ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI6__halfLi128ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 21 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 6.986 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI6__halfLi128EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI6__halfLi128EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, used 1 barriers, 5120 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 10.972 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI6__halfLi64ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI6__halfLi64ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 3.620 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI6__halfLi64EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI6__halfLi64EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, used 1 barriers, 3072 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 7.328 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI6__halfLi32ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI6__halfLi32ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 11 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 2.537 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI6__halfLi32EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI6__halfLi32EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 31 registers, used 1 barriers, 2048 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 5.765 ms
+ptxas info    : Compiling entry function '_ZN8hadamard11warp_kernelI6__halfLi16ELb1ELb0EEEvPKT_PS2_PhPfmf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard11warp_kernelI6__halfLi16ELb1ELb0EEEvPKT_PS2_PhPfmf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 13 registers, used 0 barriers, 396 bytes cmem[0]
+ptxas info    : Compile time = 2.737 ms
+ptxas info    : Compiling entry function '_ZN8hadamard18tensor_core_kernelI6__halfLi16EEEvPKT_S4_PS2_mf' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard18tensor_core_kernelI6__halfLi16EEEvPKT_S4_PS2_mf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, used 1 barriers, 1536 bytes smem, 388 bytes cmem[0]
+ptxas info    : Compile time = 4.840 ms
+ptxas info    : Compiling entry function '_ZN8hadamard15butterfly_stageEPKfPfmi' for 'sm_89'
+ptxas info    : Function properties for _ZN8hadamard15butterfly_stageEPKfPfmi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, used 0 barriers, 380 bytes cmem[0]
+ptxas info    : Compile time = 1.437 ms

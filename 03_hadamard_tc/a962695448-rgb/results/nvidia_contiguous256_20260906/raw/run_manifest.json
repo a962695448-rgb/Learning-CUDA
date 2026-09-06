@@ -1,0 +1,72 @@
+{
+  "files": {
+    "protocol.json": {
+      "sha256": "44276cd0ab030a59ca000f1d393825e7ed1849842704fe47f8b9cfaa48932c06",
+      "size": 5286
+    },
+    "source_manifest.json": {
+      "sha256": "8acd2aaf09a2de5a951128a8362ddccafea71b453190f4bf16140caf57bb3320",
+      "size": 1473
+    },
+    "helper_provenance.json": {
+      "sha256": "6a6c8d57c3b7da78eb50ae608719d10f54ec5c62269b75bc7c0dfa716e0efc50",
+      "size": 508
+    },
+    "run_experiment.py": {
+      "sha256": "e188b738b56373897c693f1b3e7c61b0d60d94b0274bb5b6fafad53ffe691d98",
+      "size": 13964
+    },
+    "run_suite.py": {
+      "sha256": "53b66dc09e9daea12f719c04b5e9a1cd8624387b9fc47a21bb7450fb40a5f8fb",
+      "size": 3635
+    },
+    "measurement_helpers.py": {
+      "sha256": "11951ea749add5ecc5426c3b900451ec8e263d07718ff3031d58ffa0dd7c0304",
+      "size": 7620
+    },
+    "analyze_runs.py": {
+      "sha256": "2def7dae74bd1c31d56c5064fed6e3aad1ad0577d8a2c8dee6554ca170fc628c",
+      "size": 24690
+    },
+    "prepare_sources.py": {
+      "sha256": "738e9794f1d30d8952aceda67f04c625d179002193a4cce66787b0ec0fb239ae",
+      "size": 4197
+    },
+    "prepare_helpers.py": {
+      "sha256": "9398ba26c2a276a9ac15f6ae1a74bb79fa2ef9df213430d218924643e8b0fe56",
+      "size": 2139
+    },
+    "freeze_manifest.py": {
+      "sha256": "f3d58b63a2bd9989b009114a7dac115825d480dea1f921894cbfb141443e813d",
+      "size": 1103
+    },
+    "adapter.patch": {
+      "sha256": "667f857f2ddeec9972d763b798fc26a73fc3a4edb508ed9bcba17b0bc2a5a261",
+      "size": 8821
+    },
+    "sources/build_torch_extension.py": {
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "size": 2486
+    },
+    "sources/compare_reference.py": {
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "size": 21015
+    },
+    "sources/contiguous256.cuh": {
+      "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "size": 4656
+    },
+    "sources/kernels.cuh": {
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "size": 6024
+    },
+    "sources/torch_binding_contiguous256.cu": {
+      "sha256": "ca42d633d9c818f7a4876c88b54eb8a9fc119379fd4a11d2731005931ca22447",
+      "size": 6894
+    },
+    "sources/torch_binding_original.cu": {
+      "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "size": 5752
+    }
+  }
+}

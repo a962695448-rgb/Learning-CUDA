@@ -1,0 +1,32 @@
+{
+  "host": "6c79eb7695b5",
+  "gpu_snapshot": "name, uuid, driver_version, utilization.gpu [%], memory.used [MiB]\nNVIDIA GeForce RTX 4090, GPU-bc61c62f-2e69-f382-e981-b932b23df2aa, 570.124.06, 0 %, 2 MiB\n",
+  "previous_host": "0dee90f8378a",
+  "comparison_scope": "Restarted instance with a different GPU UUID; only current-session paired measurements, no historical timing denominators.",
+  "original_source_manifest_sha256": "ae562cf54a65f306650945e73a6985eb6989099b17cbeba3ea2f607debedb932",
+  "original_regression_sha256": "c525cc8371a6c9faa514243613b9e62e769f17ce29d20e8fbebb564b56704ace",
+  "binary_identity_after_restart": {
+    "cli": {
+      "path": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+      "sha256": "43da97abee4a7b24b5db8ebc43aa74e0fff8d4e017dbba40ad0e6cdd5c3f7f96"
+    },
+    "compatibility_extension": {
+      "path": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/compatibility/infinitensor_hadamard_block_threads_check.so",
+      "sha256": "8324749abedc6dbb210f511ec376cda66026b588ceb2275b4c0bedc5a83bae46"
+    },
+    "production_extension": {
+      "path": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/production/infinitensor_hadamard_cuda.so",
+      "sha256": "eb3f03f28b7f993bfc3351a8afc1022ccc5f93301c95ed3163fd437f6e1f3468"
+    }
+  },
+  "environment_probe": {
+    "python": "3.12.3",
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "cuda": "12.8",
+    "numpy": "1.26.4",
+    "sm": [
+      8,
+      9
+    ]
+  }
+}

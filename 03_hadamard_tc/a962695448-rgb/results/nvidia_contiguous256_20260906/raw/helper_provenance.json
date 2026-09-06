@@ -1,0 +1,19 @@
+{
+  "source_script_sha256": "eeeb315a6761c6ca3acd3c9fd0e09741cfdd314ff0a3f505a956ae485d4448fc",
+  "source_functions": [
+    "sha",
+    "utc",
+    "snapshot",
+    "tensors",
+    "exact",
+    "cpu_checks",
+    "timed_result",
+    "measure_graph"
+  ],
+  "changes": [
+    "generic tuple component pointer checks for fused outputs",
+    "protocol key mapping",
+    "deterministic cyclic method order"
+  ],
+  "output_sha256": "11951ea749add5ecc5426c3b900451ec8e263d07718ff3031d58ffa0dd7c0304"
+}

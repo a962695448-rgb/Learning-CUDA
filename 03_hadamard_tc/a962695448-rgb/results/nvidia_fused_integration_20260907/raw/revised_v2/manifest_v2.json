@@ -1,0 +1,48 @@
+{
+  "validation_revision": 2,
+  "validation_files": {
+    "protocol_v2.json": {
+      "sha256": "725e860f23704eb69e03037d2c006974c1ee29cf59569b5c1145b45bc752d299",
+      "size": 12257
+    },
+    "prepare_protocol.py": {
+      "sha256": "e17abd5c0073361e4da833a134697255511a3eb23e4f2779bbd77cd66bed98bc",
+      "size": 6681
+    },
+    "numeric_certificate.py": {
+      "sha256": "5a7b70c55fe01ee0433614524bc9f62596d8478c06cbcd2a9c2a4cddbaa642e8",
+      "size": 21523
+    },
+    "certificate_notes.md": {
+      "sha256": "6cf32f45fef64606a3272bcfc4e82d67c7e546b0de91484ce0fc07227eee326b",
+      "size": 7355
+    },
+    "checks_v2.py": {
+      "sha256": "a557674a74d3c35ad35af4ac4975052ef443756623bc2862528ceab70eaf589c",
+      "size": 7367
+    },
+    "run_v2.py": {
+      "sha256": "bd45b86add484d93f5327f21ade6a6b4b6e8b0bac44af7dff5c85b32be27f8da",
+      "size": 8341
+    },
+    "run_suite_v2.py": {
+      "sha256": "8516efb24791c9e14e5b65b79a54e63680c63386a77ebd07e9b28a759010be81",
+      "size": 3339
+    },
+    "analyze_v2.py": {
+      "sha256": "ca5af6eb1d607d428a69c36d0bb356cc7c751ee73c1371cbb45824fc4a744ef1",
+      "size": 30342
+    },
+    "freeze_v2.py": {
+      "sha256": "470d83ccae31a6d481e89634cd6e17d0be8c571fa6aa7193a74171388e9f264e",
+      "size": 2563
+    },
+    "README.md": {
+      "sha256": "03c014e1cfa67be0f72c4899e92a6ebb93772a4c8b5283883934e92419773d25",
+      "size": 3386
+    }
+  },
+  "original_manifest_sha256": "9ebb353585ca881f1a59864e1e097654be3f6886de7f3ddea1ef043ab6922ee9",
+  "original_source_manifest_sha256": "ae562cf54a65f306650945e73a6985eb6989099b17cbeba3ea2f607debedb932",
+  "original_v1_result_remains": "FAIL_BEFORE_TIMING"
+}

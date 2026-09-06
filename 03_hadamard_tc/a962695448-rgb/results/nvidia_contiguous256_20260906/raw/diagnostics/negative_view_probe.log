@@ -1,0 +1,4859 @@
+{
+  "status": "REPRODUCED",
+  "started_utc": "2026-09-06T04:50:00.956869+00:00",
+  "diagnostic_source_sha256": "0dfd0095c940ce604100181ece622bd714882070ec4c56efb45507c2ec822c1c",
+  "timing_performed": false,
+  "frozen_sources_modified": false,
+  "expected_value_policy": "Compare the actual GPU lazy-view result with the actual resolve_neg GPU result, bytewise for every component. Base and materialized results also checked against independent CPU dense H256 and float32 division/RNE INT4 for synthetic [3,1] repeated.",
+  "import": {
+    "status": "PASS",
+    "output_bytes": 0,
+    "output_tail": "",
+    "output_truncated": false
+  },
+  "build": {
+    "status": "LOADED",
+    "output_bytes": 348,
+    "output_tail": "Detected CUDA files, patching ldflags\nEmitting ninja build file /data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/build/build.ninja...\nBuilding extension module hadamard_contiguous256_20260906...\nUsing envvar MAX_JOBS (1) as the number of workers...\nninja: no work to do.\nLoading extension module hadamard_contiguous256_20260906...\n",
+    "output_truncated": false,
+    "extension_file": "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/build/hadamard_contiguous256_20260906.so",
+    "extension_sha256": "dde96236adead23962c54d64d49c482944d31f73caeb5cc10c3548254e00137d",
+    "same_measured_binary": true
+  },
+  "probe": {
+    "status": "COMPLETED",
+    "output_bytes": 0,
+    "output_tail": "",
+    "output_truncated": false
+  },
+  "completed_timing_gate": {
+    "status": "PASS",
+    "suite_sha256": "75cb7a742165fdb2eb5cbf51bc0685f3a15c675ae616a02c8415e028d6d979b0",
+    "run_json_sha256": {
+      "run1.json": "fe30a9cf474be0843bb9908b4b0a3034bed6756525ca8eabbb423ca7b96c3327",
+      "run2.json": "260606722a6c32bb8f5bb3e9b0a7bda1a8df28a048452053209d3333d76f48f8",
+      "run3.json": "c7f10a317e125b4d083be570df2b1bf8ed383f415d689f4a3ded5bd8f7ac5075"
+    },
+    "source_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+    "protocol_id": "nvidia_contiguous256_20260906_v1",
+    "protocol_sha256": "44276cd0ab030a59ca000f1d393825e7ed1849842704fe47f8b9cfaa48932c06",
+    "run_manifest_sha256": "15e5dd7bfb4d14360953c5cb1475670bcf653b0f0bc0054eb5949315a913430b",
+    "frozen_source_sha256": {
+      "protocol.json": "44276cd0ab030a59ca000f1d393825e7ed1849842704fe47f8b9cfaa48932c06",
+      "source_manifest.json": "8acd2aaf09a2de5a951128a8362ddccafea71b453190f4bf16140caf57bb3320",
+      "helper_provenance.json": "6a6c8d57c3b7da78eb50ae608719d10f54ec5c62269b75bc7c0dfa716e0efc50",
+      "run_experiment.py": "e188b738b56373897c693f1b3e7c61b0d60d94b0274bb5b6fafad53ffe691d98",
+      "run_suite.py": "53b66dc09e9daea12f719c04b5e9a1cd8624387b9fc47a21bb7450fb40a5f8fb",
+      "measurement_helpers.py": "11951ea749add5ecc5426c3b900451ec8e263d07718ff3031d58ffa0dd7c0304",
+      "analyze_runs.py": "2def7dae74bd1c31d56c5064fed6e3aad1ad0577d8a2c8dee6554ca170fc628c",
+      "prepare_sources.py": "738e9794f1d30d8952aceda67f04c625d179002193a4cce66787b0ec0fb239ae",
+      "prepare_helpers.py": "9398ba26c2a276a9ac15f6ae1a74bb79fa2ef9df213430d218924643e8b0fe56",
+      "freeze_manifest.py": "f3d58b63a2bd9989b009114a7dac115825d480dea1f921894cbfb141443e813d",
+      "adapter.patch": "667f857f2ddeec9972d763b798fc26a73fc3a4edb508ed9bcba17b0bc2a5a261",
+      "sources/build_torch_extension.py": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "sources/compare_reference.py": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "sources/contiguous256.cuh": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "sources/kernels.cuh": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "sources/torch_binding_contiguous256.cu": "ca42d633d9c818f7a4876c88b54eb8a9fc119379fd4a11d2731005931ca22447",
+      "sources/torch_binding_original.cu": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec"
+    },
+    "measured_environment": {
+      "python": "3.12.3",
+      "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+      "torch_cuda": "12.8",
+      "numpy": "1.26.4",
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "sm": [
+        8,
+        9
+      ],
+      "cpp11_abi": true,
+      "extension_file": "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/build/hadamard_contiguous256_20260906.so",
+      "extension_sha256": "dde96236adead23962c54d64d49c482944d31f73caeb5cc10c3548254e00137d",
+      "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+      "torch_cuda_arch_list": "8.9",
+      "max_jobs": "1"
+    }
+  },
+  "environment": {
+    "python": "/data/infinitensor-2026/.venv/bin/python",
+    "python_version": "3.12.3",
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "experiment_root": "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906",
+    "cuda_home": "/usr/local/cuda-12.8",
+    "negative_view_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "sm": [
+      8,
+      9
+    ],
+    "max_jobs": "1",
+    "torch_cuda_arch_list": "8.9",
+    "cxx11_abi": true
+  },
+  "cases": [
+    {
+      "dtype": "fp16",
+      "layout": "original",
+      "api": "hadamard",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.float16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.float16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.float16",
+              "device": "cuda:0",
+              "first_eight": [
+                -512.0,
+                -256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": false,
+            "elements": 256,
+            "differing_bytes": 2,
+            "differing_elements": 2,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 1,
+              "actual_value": 512.0,
+              "expected_value": -512.0,
+              "actual_bytes": [
+                0,
+                96
+              ],
+              "expected_bytes": [
+                0,
+                224
+              ]
+            }
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "fp16",
+      "layout": "original",
+      "api": "hadamard_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                217,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 1,
+            "differing_elements": 1,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 55,
+              "expected_value": 217,
+              "actual_bytes": [
+                55
+              ],
+              "expected_bytes": [
+                217
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "fp16",
+      "layout": "original",
+      "api": "quantize_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 128,
+            "differing_elements": 128,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 39,
+              "expected_value": 233,
+              "actual_bytes": [
+                39
+              ],
+              "expected_bytes": [
+                233
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "fp16",
+      "layout": "contiguous256",
+      "api": "hadamard",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.float16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.float16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.float16",
+              "device": "cuda:0",
+              "first_eight": [
+                -512.0,
+                -256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": false,
+            "elements": 256,
+            "differing_bytes": 2,
+            "differing_elements": 2,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 1,
+              "actual_value": 512.0,
+              "expected_value": -512.0,
+              "actual_bytes": [
+                0,
+                96
+              ],
+              "expected_bytes": [
+                0,
+                224
+              ]
+            }
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.float16",
+            "expected_dtype": "torch.float16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "fp16",
+      "layout": "contiguous256",
+      "api": "hadamard_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                217,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 1,
+            "differing_elements": 1,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 55,
+              "expected_value": 217,
+              "actual_bytes": [
+                55
+              ],
+              "expected_bytes": [
+                217
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "fp16",
+      "layout": "contiguous256",
+      "api": "quantize_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.float16",
+                "expected_dtype": "torch.float16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 128,
+            "differing_elements": 128,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 39,
+              "expected_value": 233,
+              "actual_bytes": [
+                39
+              ],
+              "expected_bytes": [
+                233
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "bf16",
+      "layout": "original",
+      "api": "hadamard",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "first_eight": [
+                -512.0,
+                -256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": false,
+            "elements": 256,
+            "differing_bytes": 2,
+            "differing_elements": 2,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 1,
+              "actual_value": 512.0,
+              "expected_value": -512.0,
+              "actual_bytes": [
+                0,
+                68
+              ],
+              "expected_bytes": [
+                0,
+                196
+              ]
+            }
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "bf16",
+      "layout": "original",
+      "api": "hadamard_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                217,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 1,
+            "differing_elements": 1,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 55,
+              "expected_value": 217,
+              "actual_bytes": [
+                55
+              ],
+              "expected_bytes": [
+                217
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "bf16",
+      "layout": "original",
+      "api": "quantize_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 128,
+            "differing_elements": 128,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 39,
+              "expected_value": 233,
+              "actual_bytes": [
+                39
+              ],
+              "expected_bytes": [
+                233
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "bf16",
+      "layout": "contiguous256",
+      "api": "hadamard",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "first_eight": [
+                512.0,
+                256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                256
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "first_eight": [
+                -512.0,
+                -256.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": false,
+            "elements": 256,
+            "differing_bytes": 2,
+            "differing_elements": 2,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 1,
+              "actual_value": 512.0,
+              "expected_value": -512.0,
+              "actual_bytes": [
+                0,
+                68
+              ],
+              "expected_bytes": [
+                0,
+                196
+              ]
+            }
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 1,
+        "expected_components": 1,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              256
+            ],
+            "expected_shape": [
+              1,
+              256
+            ],
+            "actual_dtype": "torch.bfloat16",
+            "expected_dtype": "torch.bfloat16",
+            "equal": true,
+            "elements": 256,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "bf16",
+      "layout": "contiguous256",
+      "api": "hadamard_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                55,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                217,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                73.14286041259766
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 1,
+            "differing_elements": 1,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 55,
+              "expected_value": 217,
+              "actual_bytes": [
+                55
+              ],
+              "expected_bytes": [
+                217
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    },
+    {
+      "dtype": "bf16",
+      "layout": "contiguous256",
+      "api": "quantize_int4",
+      "block_threads": 128,
+      "calls": {
+        "base": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "lazy_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39,
+                39
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        },
+        "materialized_negative": {
+          "status": "RETURNED_GPU_OUTPUT",
+          "output": [
+            {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.uint8",
+              "device": "cuda:0",
+              "first_eight": [
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233,
+                233
+              ]
+            },
+            {
+              "shape": [
+                1
+              ],
+              "dtype": "torch.float32",
+              "device": "cuda:0",
+              "first_eight": [
+                0.4285714328289032
+              ]
+            }
+          ],
+          "input_and_guard_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  272
+                ],
+                "expected_shape": [
+                  272
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 272,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          },
+          "materialized_input_unchanged": {
+            "equal": true,
+            "actual_components": 1,
+            "expected_components": 1,
+            "components": [
+              {
+                "component": 0,
+                "actual_shape": [
+                  1,
+                  256
+                ],
+                "expected_shape": [
+                  1,
+                  256
+                ],
+                "actual_dtype": "torch.bfloat16",
+                "expected_dtype": "torch.bfloat16",
+                "equal": true,
+                "elements": 256,
+                "differing_bytes": 0,
+                "differing_elements": 0
+              }
+            ]
+          }
+        }
+      },
+      "base_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "materialized_control": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_materialized_expected": {
+        "equal": false,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": false,
+            "elements": 128,
+            "differing_bytes": 128,
+            "differing_elements": 128,
+            "first_difference": {
+              "flat_element": 0,
+              "first_byte": 0,
+              "actual_value": 39,
+              "expected_value": 233,
+              "actual_bytes": [
+                39
+              ],
+              "expected_bytes": [
+                233
+              ]
+            }
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_vs_physical_base": {
+        "equal": true,
+        "actual_components": 2,
+        "expected_components": 2,
+        "components": [
+          {
+            "component": 0,
+            "actual_shape": [
+              1,
+              128
+            ],
+            "expected_shape": [
+              1,
+              128
+            ],
+            "actual_dtype": "torch.uint8",
+            "expected_dtype": "torch.uint8",
+            "equal": true,
+            "elements": 128,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          },
+          {
+            "component": 1,
+            "actual_shape": [
+              1
+            ],
+            "expected_shape": [
+              1
+            ],
+            "actual_dtype": "torch.float32",
+            "expected_dtype": "torch.float32",
+            "equal": true,
+            "elements": 1,
+            "differing_bytes": 0,
+            "differing_elements": 0
+          }
+        ]
+      },
+      "lazy_matches_materialized_expected": false,
+      "lazy_wrongly_matches_base": true,
+      "status": "REPRODUCED"
+    }
+  ],
+  "inputs": [
+    {
+      "dtype": "fp16",
+      "shape": [
+        1,
+        256
+      ],
+      "variants": {
+        "base": {
+          "is_neg": false,
+          "is_contiguous": true,
+          "shares_base_data_ptr": true,
+          "shares_base_storage": true,
+          "first_eight": [
+            3.0,
+            1.0,
+            3.0,
+            1.0,
+            3.0,
+            1.0,
+            3.0,
+            1.0
+          ]
+        },
+        "lazy_negative": {
+          "is_neg": true,
+          "is_contiguous": true,
+          "shares_base_data_ptr": true,
+          "shares_base_storage": true,
+          "first_eight": [
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0
+          ]
+        },
+        "materialized_negative": {
+          "is_neg": false,
+          "is_contiguous": true,
+          "shares_base_data_ptr": false,
+          "shares_base_storage": false,
+          "first_eight": [
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0
+          ]
+        }
+      }
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        1,
+        256
+      ],
+      "variants": {
+        "base": {
+          "is_neg": false,
+          "is_contiguous": true,
+          "shares_base_data_ptr": true,
+          "shares_base_storage": true,
+          "first_eight": [
+            3.0,
+            1.0,
+            3.0,
+            1.0,
+            3.0,
+            1.0,
+            3.0,
+            1.0
+          ]
+        },
+        "lazy_negative": {
+          "is_neg": true,
+          "is_contiguous": true,
+          "shares_base_data_ptr": true,
+          "shares_base_storage": true,
+          "first_eight": [
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0
+          ]
+        },
+        "materialized_negative": {
+          "is_neg": false,
+          "is_contiguous": true,
+          "shares_base_data_ptr": false,
+          "shares_base_storage": false,
+          "first_eight": [
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0,
+            -3.0,
+            -1.0
+          ]
+        }
+      }
+    }
+  ],
+  "case_status_counts": {
+    "REPRODUCED": 12
+  },
+  "frozen_source_sha256_rechecked_after_probe": true,
+  "finished_utc": "2026-09-06T04:50:02.863879+00:00",
+  "exit_code": 0
+}

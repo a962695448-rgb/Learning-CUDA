@@ -1,0 +1,8 @@
+timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms,fused_layout
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,naive_global,kernel_only,1,23.4880000353,185286103.264,0,17,,0.0234880000353,
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,warp,kernel_only,1,4.09599998966,1062500002.68,0,17,128,0.00409599998966,
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,tensor_core,kernel_only,1,10.2399997413,425000010.736,0,17,,0.0102399997413,
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,split_int4,kernel_only,1,7.13599985465,609865483.274,0,17,128,0.00713599985465,
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,fused_int4,kernel_only,1,4.09599998966,1062500002.68,0,17,128,0.00409599998966,contiguous256
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,cpu_fp32_fwht,cpu_compute,1,9.558,455325381.879,0,17,,0.009558,
+2026-09-06T07:34:12Z,"NVIDIA GeForce RTX 4090",89,12080,12080,1,17,1,256,fp16,1,warp_h2d_d2h,host_e2e,1,12.438,349895481.589,0,17,128,0.012438,

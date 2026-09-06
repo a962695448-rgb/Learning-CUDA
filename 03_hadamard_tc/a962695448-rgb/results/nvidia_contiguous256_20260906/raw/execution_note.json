@@ -1,0 +1,24 @@
+{
+  "primary_runs": [
+    "runs/run1.json",
+    "runs/run2.json",
+    "runs/run3.json"
+  ],
+  "suite_pid": 92840,
+  "suite_exit_code": 0,
+  "diagnostic_pid": 93567,
+  "diagnostic_exit_code": 0,
+  "diagnostic_command": [
+    "/data/infinitensor-2026/.venv/bin/python",
+    "-u",
+    "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/diagnostics/negative_view_probe.py",
+    "--runs-directory",
+    "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/runs",
+    "--json",
+    "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/diagnostics/negative_view_probe.json"
+  ],
+  "diagnostic_scope": "Executed after all three timing workers completed; twelve lazy-negative-view boundary failures reproduced in both layouts and all three APIs. These are not errors in the finite materialized input matrix, and do not change its expectations or measurements. Frozen17 files remain unchanged.",
+  "performance_scope": "Same-run64-independent-output CUDA Graph comparison, transform and fused separate. No eager timing. No automatic dispatch or claim for arbitrary M/other GPU.",
+  "hardware_boundary": "Existing448MiB resident context not fully mapped to container PID. Independent final check after probe showed GPU0%,456MiB. This is not proof of exclusive hardware tenancy.",
+  "reference_alignment": "For2B-offset correctness only, Dao receives a bit-identical aligned clone; both tested layouts receive the actual misaligned input. Performance all methods share one aligned tensor."
+}

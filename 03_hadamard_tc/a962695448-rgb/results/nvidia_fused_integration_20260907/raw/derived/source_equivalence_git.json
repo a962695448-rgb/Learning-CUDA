@@ -1,0 +1,112 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/Makefile",
+      "tested_raw_sha256": "1a5c6597ace1047db5e44055b4e2f728dcf67af892ff1b5e81136ecf77b35f60",
+      "tested_lf_sha256": "1a5c6597ace1047db5e44055b4e2f728dcf67af892ff1b5e81136ecf77b35f60",
+      "staged_raw_sha256": "1a5c6597ace1047db5e44055b4e2f728dcf67af892ff1b5e81136ecf77b35f60",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/include/contiguous256.cuh",
+      "tested_raw_sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "tested_lf_sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "staged_raw_sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/include/kernels.cuh",
+      "tested_raw_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "tested_lf_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "staged_raw_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/include/reference.hpp",
+      "tested_raw_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "tested_lf_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "staged_raw_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/src/main.cu",
+      "tested_raw_sha256": "68f4bc9054a088ad6eceb272afa8f395b54b8b6807b806a03d9e5e743bb2e1f2",
+      "tested_lf_sha256": "a578bb8cd39e5aa7b237475fbed9f4818ed45ba2d12878995e1a4d152c9d756e",
+      "staged_raw_sha256": "a578bb8cd39e5aa7b237475fbed9f4818ed45ba2d12878995e1a4d152c9d756e",
+      "raw_equal": false,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/src/torch_binding.cu",
+      "tested_raw_sha256": "c47b511beaac1bbee10cb9bddd4fd31b90a5a6042c43841cb9361f6b73dcd626",
+      "tested_lf_sha256": "a241da0416f38a4ea9804e7f90fa7d22d524194728abd6b0c7d332217bbc6113",
+      "staged_raw_sha256": "a241da0416f38a4ea9804e7f90fa7d22d524194728abd6b0c7d332217bbc6113",
+      "raw_equal": false,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/src/tune_launch.cu",
+      "tested_raw_sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+      "tested_lf_sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+      "staged_raw_sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/scripts/build_torch_extension.py",
+      "tested_raw_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "tested_lf_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "staged_raw_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/scripts/compare_reference.py",
+      "tested_raw_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "tested_lf_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "staged_raw_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/scripts/run_validation.py",
+      "tested_raw_sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "tested_lf_sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "staged_raw_sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py",
+      "tested_raw_sha256": "ee54c88308e7fd19d016cd3faac12920f2da205a2d85c89fdf6f63a6212d1335",
+      "tested_lf_sha256": "689d9c6116f13571a37dc4853a99323b1aa08203e83b7128ba78e4430783b141",
+      "staged_raw_sha256": "689d9c6116f13571a37dc4853a99323b1aa08203e83b7128ba78e4430783b141",
+      "raw_equal": false,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/scripts/verify_tensor_metadata.py",
+      "tested_raw_sha256": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12",
+      "tested_lf_sha256": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12",
+      "staged_raw_sha256": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12",
+      "raw_equal": true,
+      "lf_content_equal": true
+    },
+    {
+      "path": "03_hadamard_tc/a962695448-rgb/tests/cpu_reference_test.cpp",
+      "tested_raw_sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "tested_lf_sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "staged_raw_sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "raw_equal": true,
+      "lf_content_equal": true
+    }
+  ],
+  "note": "Raw executed snapshots retained. Git canonical text may differ only in CRLF/LF; no semantic edits.",
+  "source_commit": "155a05a8b957bdf558ef93a2db1e3aea9fadf36f",
+  "verification_target": "Committed Git blobs at source_commit; same objects as verified index"
+}

@@ -8,6 +8,14 @@
 
 ## 当前状态
 
+当前接口源码为 `155a05a8b957bdf558ef93a2db1e3aea9fadf36f`，新增 N256 融合 INT4 的显式 `fused_layout="contiguous256"` 选项；默认仍为 `original`。三个模式各执行同一套 1,876 项 CLI 矩阵、原 1,800 项参考对照（其中 200 项 N256 同时核查新融合）、28 项张量元数据检查与 16 项定向接口检查均通过。子集和重复执行不累计为更多独立输入。
+
+[初轮布局实验](results/nvidia_contiguous256_20260906/RESULTS.md)的 24 个融合配置三轮均减少耗时，范围 4.43%～16.23%；普通变换多数退化，保留原实现。[生产整合与52配置验证](reports/fused-layout-validation.md)三轮全部更快，耗时减少4.7837%～14.3440%，其中41项每轮至少减少5%。[四 warp WMMA 实验](results/nvidia_wmma_reuse_20260906/RESULTS.md)完整保留120个配置和所有负例，继续作为对照。旧辅助FP64舍入检查的失败、修订原因和独立数值证书分别归档，不追认旧失败为通过。
+
+新融合布局只在 `N=256`、`block_threads=128` 使用，不能套用旧 A100 报告证明它已跨卡验证。当前完成范围以实际 4090 记录为准，PR 与正式提交待项目所有者验收。
+
+## 已完成的基线与平台验证
+
 - 2026-09-05 已在租赁的 **NVIDIA GeForce RTX 4090 24 GB（sm89）** 上编译命令行程序和 PyTorch 扩展；原有 RTX 4060 Laptop / WSL2 记录也保留。
 - 4090 的 **1,876 组自测通过**，覆盖 FP16/BF16、连续随机、正态和异常值输入，最大绝对误差为 `0.0078125`。35 个 warp 输出元素与已舍入的稠密矩阵参考存在容差内差异，原始日志完整保留。
 - CPU 对实际变换输出的量化、GPU 分步量化、GPU 融合量化的 packed bytes 与 scales 全量一致；15 项非法命令行参数检查通过。
@@ -138,6 +146,24 @@ assert torch.equal(row_scales, split_scales)
 ```
 
 输入必须是连续、非空的 CUDA FP16/BF16 张量，形状为 `[rows, dim]` 或 `[batch, seq, heads, dim]`，最后一维取前述 1～256 的二次幂。接口是前向计算，不支持 `requires_grad=True`。`packed` 的 dtype 为 `uint8`，最后一维为 `ceil(dim/2)`；`row_scales` 为 FP32，形状是输入去掉最后一维。接口使用调用者当前 CUDA stream。
+
+带有 PyTorch 惰性负号标记的视图会明确拒绝，请先调用 `x.resolve_neg()` 将逻辑值物化，再传入接口。普通负数张量保持支持。
+
+## N256 显式融合布局
+
+```python
+# x 的最后一维必须为256；旧三参数调用保持兼容。
+packed_original, scales_original = op.hadamard_int4(x, 1.0, 128)
+packed, scales = op.hadamard_int4(x, 1.0, 128, fused_layout="contiguous256")
+```
+
+```bash
+./build/hadamard --benchmark --batch 1 --seq 17 --heads 1 --dim 256 \
+  --dtype fp16 --block-threads 128 --fused-layout contiguous256 --csv results/new-layout.csv
+./build/hadamard --self-test --fused-layout contiguous256
+```
+
+该选项只改变融合路径；独立变换和独立量化继续使用原 kernel。自测仍执行全矩阵，仅 N256 的融合项切换布局。CSV 增加第 21 列 `fused_layout`，仅融合行填写实际选项；旧表头拒绝混写，复现时使用新文件名。
 
 ## 显式选择 NVIDIA 线程数
 

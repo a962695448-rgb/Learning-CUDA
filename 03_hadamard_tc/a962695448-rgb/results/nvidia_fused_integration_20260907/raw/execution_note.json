@@ -1,0 +1,12 @@
+{
+  "regression": "PASS",
+  "original_holdout": "FAIL_BEFORE_TIMING",
+  "original_holdout_configurations_fully_checked": 49,
+  "original_holdout_input_checks_completed": 688,
+  "original_holdout_timing_samples": 0,
+  "reason": "Independent FP64-rounded auxiliary check failed at FP16M16383N256scale1normal95811. Original GPU equals pinned Dao and CPU stageFP32, while ideal FP64 rounding lies across a FP16 midpoint. Original protocol and failure are preserved.",
+  "diagnostic": "Separate fixed witness only, no performance timing; full input stored in private numerical archive.",
+  "source_identity": "Tests used217c30f+reviewed working bytes; derived/source_equivalence_git.json independently maps13LF contents to155a05a. No claim that tested raw bytes are all identical to Git canonical blobs.",
+  "binary_files_published": false,
+  "gpu_work_finished": true
+}

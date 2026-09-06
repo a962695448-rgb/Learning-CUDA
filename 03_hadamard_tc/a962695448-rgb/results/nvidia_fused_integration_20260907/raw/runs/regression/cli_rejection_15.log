@@ -1,0 +1,2 @@
+Argument error: --fused-layout contiguous256 requires --block-threads 128
+Use --help for usage.

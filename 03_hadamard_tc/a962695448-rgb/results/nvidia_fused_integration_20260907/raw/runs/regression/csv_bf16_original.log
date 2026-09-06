@@ -1,0 +1,13 @@
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,17,1,256] dtype=bf16 scale=1 rows=17 dense_oracle_rows=17 warp_block_threads=128 fused_layout=original
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           23.200 us (0.023200 ms)  1.8759e+08 elements/s
+warp                kernel_only            4.096 us (0.004096 ms)  1.0625e+09 elements/s
+tensor_core         kernel_only           10.240 us (0.010240 ms)  4.2500e+08 elements/s
+split_int4          kernel_only            7.008 us (0.007008 ms)  6.2100e+08 elements/s
+fused_int4          kernel_only            4.096 us (0.004096 ms)  1.0625e+09 elements/s
+cpu_fp32_fwht       cpu_compute            9.466 us (0.009466 ms)  4.5975e+08 elements/s
+warp_h2d_d2h        host_e2e              11.995 us (0.011995 ms)  3.6282e+08 elements/s

@@ -1,0 +1,753 @@
+{
+  "status": "PASS",
+  "analysis_only_no_gpu_execution": true,
+  "baseline_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "source_manifest_sha256": "2b306ad035c9052352536344adc1c982389509f843b6231cd2c5a0f91eea0832",
+  "hardware": {
+    "device": "NVIDIA GeForce RTX 4090",
+    "compute_capability": "8.9",
+    "sm_count": 128,
+    "warp_size": 32,
+    "total_global_memory": 25512443904,
+    "runtime_version": 12080,
+    "driver_version": 12080
+  },
+  "unique_configurations": 120,
+  "event_rows": 21600,
+  "configuration_processes": 120,
+  "rounds_per_configuration_process": 3,
+  "three_independent_process_repetitions": false,
+  "screen_gate_recomputed_qualifying": [
+    "n64_m4096_fp16_unit",
+    "n64_m4096_fp16_normalized",
+    "n256_m4096_fp16_unit",
+    "n256_m4096_fp16_normalized",
+    "n256_m4096_bf16_unit",
+    "n256_m4096_bf16_normalized"
+  ],
+  "correctness": {
+    "unique_shape_dtype_scale_configurations": 120,
+    "input_groups_per_configuration": 2,
+    "dyadic_unique_elements": 41304896,
+    "general_old_new_elements": 41304896,
+    "general_dense_rows": 2920,
+    "repeated_checks_not_counted_as_new_configurations": true,
+    "dyadic_exact": true,
+    "general_old_new_all_bits_equal": true,
+    "input_and_H_unchanged": true,
+    "output_guards_intact": true,
+    "dyadic_guard_offsets_bytes": [
+      32,
+      34
+    ],
+    "general_guard_offset_bytes": 32,
+    "general_by_dtype": {
+      "fp16": {
+        "strict_rounded_tolerance": 0.01,
+        "rounded_max_abs_by_method": {
+          "old_wmma": 0.00390625,
+          "four_warp_wmma": 0.00390625,
+          "warp128": 0.001953125
+        },
+        "unrounded_max_abs_by_method": {
+          "old_wmma": 0.003866136074066162,
+          "four_warp_wmma": 0.003866136074066162,
+          "warp128": 0.003866136074066162
+        },
+        "rounded_bit_mismatches_by_method": {
+          "old_wmma": 103,
+          "four_warp_wmma": 103,
+          "warp128": 49
+        }
+      },
+      "bf16": {
+        "strict_rounded_tolerance": 0.05,
+        "rounded_max_abs_by_method": {
+          "old_wmma": 0.001953125,
+          "four_warp_wmma": 0.001953125,
+          "warp128": 0.00390625
+        },
+        "unrounded_max_abs_by_method": {
+          "old_wmma": 0.030913114547729492,
+          "four_warp_wmma": 0.030913114547729492,
+          "warp128": 0.030913114547729492
+        },
+        "rounded_bit_mismatches_by_method": {
+          "old_wmma": 3,
+          "four_warp_wmma": 3,
+          "warp128": 3
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "screen": {
+      "old_wmma": {
+        "configurations": 24,
+        "all_three_rounds_faster": 8,
+        "all_three_rounds_slower": 15,
+        "mixed_or_tied": 1,
+        "all_three_rounds_at_least_5_percent_faster": 6,
+        "any_round_slower": 16,
+        "min_same_round_speedup": 0.8967260289817155,
+        "max_same_round_speedup": 1.2321894991743825,
+        "min_case": {
+          "speedup": 0.8967260289817155,
+          "case_id": "n256_m17_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.2321894991743825,
+          "case_id": "n256_m4096_fp16_normalized",
+          "round": 3
+        }
+      },
+      "warp128": {
+        "configurations": 24,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 23,
+        "mixed_or_tied": 1,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 24,
+        "min_same_round_speedup": 0.10336103473737135,
+        "max_same_round_speedup": 1.0018050152726807,
+        "min_case": {
+          "speedup": 0.10336103473737135,
+          "case_id": "n256_m4096_bf16_unit",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 1.0018050152726807,
+          "case_id": "n16_m17_fp16_normalized",
+          "round": 1
+        }
+      }
+    },
+    "holdout": {
+      "old_wmma": {
+        "configurations": 96,
+        "all_three_rounds_faster": 28,
+        "all_three_rounds_slower": 62,
+        "mixed_or_tied": 6,
+        "all_three_rounds_at_least_5_percent_faster": 20,
+        "any_round_slower": 68,
+        "min_same_round_speedup": 0.8292134300897235,
+        "max_same_round_speedup": 1.3789473752788577,
+        "min_case": {
+          "speedup": 0.8292134300897235,
+          "case_id": "n256_m1_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.3789473752788577,
+          "case_id": "n256_m16384_fp16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 96,
+        "all_three_rounds_faster": 9,
+        "all_three_rounds_slower": 76,
+        "mixed_or_tied": 11,
+        "all_three_rounds_at_least_5_percent_faster": 8,
+        "any_round_slower": 87,
+        "min_same_round_speedup": 0.08381972181335245,
+        "max_same_round_speedup": 1.4327731762949294,
+        "min_case": {
+          "speedup": 0.08381972181335245,
+          "case_id": "n256_m16384_bf16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.4327731762949294,
+          "case_id": "n16_m16384_fp16_unit",
+          "round": 2
+        }
+      }
+    },
+    "all": {
+      "old_wmma": {
+        "configurations": 120,
+        "all_three_rounds_faster": 36,
+        "all_three_rounds_slower": 77,
+        "mixed_or_tied": 7,
+        "all_three_rounds_at_least_5_percent_faster": 26,
+        "any_round_slower": 84,
+        "min_same_round_speedup": 0.8292134300897235,
+        "max_same_round_speedup": 1.3789473752788577,
+        "min_case": {
+          "speedup": 0.8292134300897235,
+          "case_id": "n256_m1_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.3789473752788577,
+          "case_id": "n256_m16384_fp16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 120,
+        "all_three_rounds_faster": 9,
+        "all_three_rounds_slower": 99,
+        "mixed_or_tied": 12,
+        "all_three_rounds_at_least_5_percent_faster": 8,
+        "any_round_slower": 111,
+        "min_same_round_speedup": 0.08381972181335245,
+        "max_same_round_speedup": 1.4327731762949294,
+        "min_case": {
+          "speedup": 0.08381972181335245,
+          "case_id": "n256_m16384_bf16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.4327731762949294,
+          "case_id": "n16_m16384_fp16_unit",
+          "round": 2
+        }
+      }
+    }
+  },
+  "by_n": {
+    "16": {
+      "old_wmma": {
+        "configurations": 24,
+        "all_three_rounds_faster": 4,
+        "all_three_rounds_slower": 14,
+        "mixed_or_tied": 6,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.9682539572547881,
+        "max_same_round_speedup": 1.0126582014225756,
+        "min_case": {
+          "speedup": 0.9682539572547881,
+          "case_id": "n16_m1_bf16_unit",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 1.0126582014225756,
+          "case_id": "n16_m16384_fp16_normalized",
+          "round": 2
+        }
+      },
+      "warp128": {
+        "configurations": 24,
+        "all_three_rounds_faster": 5,
+        "all_three_rounds_slower": 9,
+        "mixed_or_tied": 10,
+        "all_three_rounds_at_least_5_percent_faster": 5,
+        "any_round_slower": 19,
+        "min_same_round_speedup": 0.9008507700319981,
+        "max_same_round_speedup": 1.4327731762949294,
+        "min_case": {
+          "speedup": 0.9008507700319981,
+          "case_id": "n16_m17_bf16_unit",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.4327731762949294,
+          "case_id": "n16_m16384_fp16_unit",
+          "round": 2
+        }
+      }
+    },
+    "32": {
+      "old_wmma": {
+        "configurations": 24,
+        "all_three_rounds_faster": 8,
+        "all_three_rounds_slower": 15,
+        "mixed_or_tied": 1,
+        "all_three_rounds_at_least_5_percent_faster": 4,
+        "any_round_slower": 16,
+        "min_same_round_speedup": 0.958350349663193,
+        "max_same_round_speedup": 1.2071005249710858,
+        "min_case": {
+          "speedup": 0.958350349663193,
+          "case_id": "n32_m1_bf16_normalized",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 1.2071005249710858,
+          "case_id": "n32_m16384_fp16_unit",
+          "round": 3
+        }
+      },
+      "warp128": {
+        "configurations": 24,
+        "all_three_rounds_faster": 4,
+        "all_three_rounds_slower": 18,
+        "mixed_or_tied": 2,
+        "all_three_rounds_at_least_5_percent_faster": 3,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.7376425741907005,
+        "max_same_round_speedup": 1.0621301316595246,
+        "min_case": {
+          "speedup": 0.7376425741907005,
+          "case_id": "n32_m4096_fp16_normalized",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 1.0621301316595246,
+          "case_id": "n32_m16384_fp16_normalized",
+          "round": 3
+        }
+      }
+    },
+    "64": {
+      "old_wmma": {
+        "configurations": 24,
+        "all_three_rounds_faster": 8,
+        "all_three_rounds_slower": 16,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 6,
+        "any_round_slower": 16,
+        "min_same_round_speedup": 0.8734805143391273,
+        "max_same_round_speedup": 1.367527977046931,
+        "min_case": {
+          "speedup": 0.8734805143391273,
+          "case_id": "n64_m1_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.367527977046931,
+          "case_id": "n64_m16384_bf16_unit",
+          "round": 3
+        }
+      },
+      "warp128": {
+        "configurations": 24,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 24,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 24,
+        "min_same_round_speedup": 0.49257427276081683,
+        "max_same_round_speedup": 0.8486056365889195,
+        "min_case": {
+          "speedup": 0.49257427276081683,
+          "case_id": "n64_m4096_bf16_unit",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 0.8486056365889195,
+          "case_id": "n64_m1_fp16_unit",
+          "round": 1
+        }
+      }
+    },
+    "128": {
+      "old_wmma": {
+        "configurations": 24,
+        "all_three_rounds_faster": 8,
+        "all_three_rounds_slower": 16,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 8,
+        "any_round_slower": 16,
+        "min_same_round_speedup": 0.8316831397864624,
+        "max_same_round_speedup": 1.3386819128580194,
+        "min_case": {
+          "speedup": 0.8316831397864624,
+          "case_id": "n128_m1_fp16_unit",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.3386819128580194,
+          "case_id": "n128_m4096_bf16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 24,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 24,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 24,
+        "min_same_round_speedup": 0.20118519381322794,
+        "max_same_round_speedup": 0.6543624200401555,
+        "min_case": {
+          "speedup": 0.20118519381322794,
+          "case_id": "n128_m16384_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 0.6543624200401555,
+          "case_id": "n128_m1_fp16_normalized",
+          "round": 1
+        }
+      }
+    },
+    "256": {
+      "old_wmma": {
+        "configurations": 24,
+        "all_three_rounds_faster": 8,
+        "all_three_rounds_slower": 16,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 8,
+        "any_round_slower": 16,
+        "min_same_round_speedup": 0.8292134300897235,
+        "max_same_round_speedup": 1.3789473752788577,
+        "min_case": {
+          "speedup": 0.8292134300897235,
+          "case_id": "n256_m1_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.3789473752788577,
+          "case_id": "n256_m16384_fp16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 24,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 24,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 24,
+        "min_same_round_speedup": 0.08381972181335245,
+        "max_same_round_speedup": 0.4392909713910468,
+        "min_case": {
+          "speedup": 0.08381972181335245,
+          "case_id": "n256_m16384_bf16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 0.4392909713910468,
+          "case_id": "n256_m1_fp16_unit",
+          "round": 1
+        }
+      }
+    }
+  },
+  "by_rows": {
+    "1": {
+      "old_wmma": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 18,
+        "mixed_or_tied": 2,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.8292134300897235,
+        "max_same_round_speedup": 1.002538053442758,
+        "min_case": {
+          "speedup": 0.8292134300897235,
+          "case_id": "n256_m1_fp16_normalized",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.002538053442758,
+          "case_id": "n16_m1_bf16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 20,
+        "all_three_rounds_faster": 1,
+        "all_three_rounds_slower": 14,
+        "mixed_or_tied": 5,
+        "all_three_rounds_at_least_5_percent_faster": 1,
+        "any_round_slower": 19,
+        "min_same_round_speedup": 0.39747385479150027,
+        "max_same_round_speedup": 1.072610322584059,
+        "min_case": {
+          "speedup": 0.39747385479150027,
+          "case_id": "n256_m1_bf16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.072610322584059,
+          "case_id": "n16_m1_bf16_normalized",
+          "round": 3
+        }
+      }
+    },
+    "17": {
+      "old_wmma": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 19,
+        "mixed_or_tied": 1,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.8901098851895469,
+        "max_same_round_speedup": 1.0017003080747022,
+        "min_case": {
+          "speedup": 0.8901098851895469,
+          "case_id": "n128_m17_fp16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.0017003080747022,
+          "case_id": "n16_m17_fp16_normalized",
+          "round": 3
+        }
+      },
+      "warp128": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 19,
+        "mixed_or_tied": 1,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.2299872889852097,
+        "max_same_round_speedup": 1.0018050152726807,
+        "min_case": {
+          "speedup": 0.2299872889852097,
+          "case_id": "n256_m17_bf16_unit",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.0018050152726807,
+          "case_id": "n16_m17_fp16_normalized",
+          "round": 1
+        }
+      }
+    },
+    "64": {
+      "old_wmma": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 18,
+        "mixed_or_tied": 2,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.8889482267991535,
+        "max_same_round_speedup": 1.000161072141789,
+        "min_case": {
+          "speedup": 0.8889482267991535,
+          "case_id": "n128_m64_fp16_unit",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.000161072141789,
+          "case_id": "n16_m64_bf16_unit",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 17,
+        "mixed_or_tied": 3,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.23521850842043407,
+        "max_same_round_speedup": 1.0083603586332677,
+        "min_case": {
+          "speedup": 0.23521850842043407,
+          "case_id": "n256_m64_bf16_unit",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 1.0083603586332677,
+          "case_id": "n16_m64_bf16_normalized",
+          "round": 1
+        }
+      }
+    },
+    "257": {
+      "old_wmma": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 18,
+        "mixed_or_tied": 2,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.9171542435521238,
+        "max_same_round_speedup": 1.0047177465357209,
+        "min_case": {
+          "speedup": 0.9171542435521238,
+          "case_id": "n128_m257_fp16_unit",
+          "round": 1
+        },
+        "max_case": {
+          "speedup": 1.0047177465357209,
+          "case_id": "n16_m257_bf16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 17,
+        "mixed_or_tied": 3,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.2384615439149189,
+        "max_same_round_speedup": 1.015129332933957,
+        "min_case": {
+          "speedup": 0.2384615439149189,
+          "case_id": "n256_m257_bf16_unit",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.015129332933957,
+          "case_id": "n16_m257_bf16_normalized",
+          "round": 1
+        }
+      }
+    },
+    "4096": {
+      "old_wmma": {
+        "configurations": 20,
+        "all_three_rounds_faster": 16,
+        "all_three_rounds_slower": 4,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 10,
+        "any_round_slower": 4,
+        "min_same_round_speedup": 0.9853658134914424,
+        "max_same_round_speedup": 1.3386819128580194,
+        "min_case": {
+          "speedup": 0.9853658134914424,
+          "case_id": "n16_m4096_bf16_unit",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.3386819128580194,
+          "case_id": "n128_m4096_bf16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 20,
+        "all_three_rounds_faster": 0,
+        "all_three_rounds_slower": 20,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 0,
+        "any_round_slower": 20,
+        "min_same_round_speedup": 0.10336103473737135,
+        "max_same_round_speedup": 0.9727328490161016,
+        "min_case": {
+          "speedup": 0.10336103473737135,
+          "case_id": "n256_m4096_bf16_unit",
+          "round": 3
+        },
+        "max_case": {
+          "speedup": 0.9727328490161016,
+          "case_id": "n16_m4096_bf16_normalized",
+          "round": 1
+        }
+      }
+    },
+    "16384": {
+      "old_wmma": {
+        "configurations": 20,
+        "all_three_rounds_faster": 20,
+        "all_three_rounds_slower": 0,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 16,
+        "any_round_slower": 0,
+        "min_same_round_speedup": 1.0060807861741163,
+        "max_same_round_speedup": 1.3789473752788577,
+        "min_case": {
+          "speedup": 1.0060807861741163,
+          "case_id": "n16_m16384_bf16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.3789473752788577,
+          "case_id": "n256_m16384_fp16_normalized",
+          "round": 1
+        }
+      },
+      "warp128": {
+        "configurations": 20,
+        "all_three_rounds_faster": 8,
+        "all_three_rounds_slower": 12,
+        "mixed_or_tied": 0,
+        "all_three_rounds_at_least_5_percent_faster": 7,
+        "any_round_slower": 12,
+        "min_same_round_speedup": 0.08381972181335245,
+        "max_same_round_speedup": 1.4327731762949294,
+        "min_case": {
+          "speedup": 0.08381972181335245,
+          "case_id": "n256_m16384_bf16_normalized",
+          "round": 2
+        },
+        "max_case": {
+          "speedup": 1.4327731762949294,
+          "case_id": "n16_m16384_fp16_unit",
+          "round": 2
+        }
+      }
+    }
+  },
+  "compilation": [
+    {
+      "stage": "screen",
+      "binary_sha256": "bc1edd324572369edc5cf36f85b9168528c42b537647fc1c0a426ea58297f196",
+      "binary_locally_rehashed": false,
+      "binary_in_public_archive": false,
+      "compile_command": [
+        "/usr/local/cuda-12.8/bin/nvcc",
+        "-O3",
+        "-std=c++17",
+        "-lineinfo",
+        "-arch=sm_89",
+        "-Xptxas=-v",
+        "/data/infinitensor-2026/experiments/nvidia-wmma-reuse-20260906/benchmark.cu",
+        "-o",
+        "/data/infinitensor-2026/experiments/nvidia-wmma-reuse-20260906/runs/screen/benchmark"
+      ],
+      "run_summary_sha256": "aec7bd2ef5973b41516fc4c1540e8f5181c4f605726821d13c31911ca0da9526"
+    },
+    {
+      "stage": "holdout",
+      "binary_sha256": "31f49b8be27b30cee5be1d6fe599df42a6ef65b50f556c69ac1edb38daf5ebe3",
+      "binary_locally_rehashed": false,
+      "binary_in_public_archive": false,
+      "compile_command": [
+        "/usr/local/cuda-12.8/bin/nvcc",
+        "-O3",
+        "-std=c++17",
+        "-lineinfo",
+        "-arch=sm_89",
+        "-Xptxas=-v",
+        "/data/infinitensor-2026/experiments/nvidia-wmma-reuse-20260906/benchmark.cu",
+        "-o",
+        "/data/infinitensor-2026/experiments/nvidia-wmma-reuse-20260906/runs/holdout/benchmark"
+      ],
+      "run_summary_sha256": "ae8e4b8a1747bbcf7eb6523d399ceb55d96ec4f853f6742b101f3e7a1f0b2dc0"
+    }
+  ],
+  "sources_sha256": {
+    "baseline/kernels.cuh": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+    "baseline/provenance.json": "15e55acdbccafe738a30dbbe5e08c681659199033c7e34eb1f9dd6e49ef39011",
+    "reuse_kernel.cuh": "a960886bed06638415b7941e7897b270b5fb5882ddc542df5b841d68b326906b",
+    "benchmark.cu": "ff4e3c1feebb50b351f9215a25c396bb8dd0f660e3229c7f1670758b094a5818",
+    "run_experiment.py": "0dbc7443d9d690f3dc49a686ff404782d9c76b7865272010059468381bb9cbe5",
+    "PROTOCOL.md": "d54d058f45aa43b73ff60afa1b9d673b006d1a7205a7df0726b7df5591c4f23c"
+  },
+  "transfer_verification": {
+    "manifest_sha256": "24148778e5b275ca99ade64581dd14dda1c9ad3321812423211d738303bb7609",
+    "verified_objects": 376,
+    "files_including_manifest": 377,
+    "all_object_sizes_and_hashes_passed": true,
+    "zip_sha256": "f8092ca0752476e78c2900c270c4487268cb0db884fe43c0ccfa5d289caaea02",
+    "zip_bytes": 596806,
+    "zip_locally_rehashed": true
+  },
+  "narrow_ranges": {
+    "all_three_faster_than_both": [
+      "n16_m16384_fp16_unit",
+      "n16_m16384_fp16_normalized",
+      "n16_m16384_bf16_unit",
+      "n16_m16384_bf16_normalized",
+      "n32_m16384_fp16_unit",
+      "n32_m16384_fp16_normalized",
+      "n32_m16384_bf16_unit",
+      "n32_m16384_bf16_normalized"
+    ],
+    "all_three_at_least_5_percent_faster_than_both": [
+      "n32_m16384_fp16_unit",
+      "n32_m16384_fp16_normalized",
+      "n32_m16384_bf16_unit"
+    ],
+    "n64_and_larger_all_three_slower_than_warp128": 72
+  },
+  "stream_evidence": "frozen C++ uses explicit non-blocking stream for init/copy/launch/event/readback; no separate cross-stream concurrency test",
+  "exclusions": "allocation, H construction, copies, validation, warmup; non-Graph batched CUDA events",
+  "no_production_integration_recommended_by_this_audit": true
+}

@@ -1,0 +1,1 @@
+PASS fp16 M=64 N=128 scale=unit old/new bits + dense oracle + guards; 180 event rows

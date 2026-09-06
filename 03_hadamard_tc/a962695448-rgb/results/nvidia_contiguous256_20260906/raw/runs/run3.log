@@ -1,0 +1,55 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/build/build.ninja...
+Building extension module hadamard_contiguous256_20260906...
+Using envvar MAX_JOBS (1) as the number of workers...
+ninja: no work to do.
+Loading extension module hadamard_contiguous256_20260906...
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "bf16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": false, "scale": 1.0}
+CHECKED {"dtype": "fp16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 257, "shape": [257, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "bf16", "dim": 256, "rows": 4096, "shape": [4096, 256], "normalized": false, "scale": 1.0}
+TIMED {"dtype": "fp16", "dim": 256, "rows": 16384, "shape": [16384, 256], "normalized": true, "scale": 0.0625}
+{"status": "PASS", "summary": {"unique_configurations": 24, "correctness_input_cases": 336, "stream_checks": 48, "quantization_tie_checks": 4, "graph_comparisons": 48}, "output": "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/runs/run3.json"}

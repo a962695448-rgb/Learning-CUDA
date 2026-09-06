@@ -1,0 +1,25 @@
+PASS n16_m17_fp16_unit
+PASS n16_m17_fp16_normalized
+PASS n16_m17_bf16_unit
+PASS n16_m17_bf16_normalized
+PASS n16_m4096_fp16_unit
+PASS n16_m4096_fp16_normalized
+PASS n16_m4096_bf16_unit
+PASS n16_m4096_bf16_normalized
+PASS n64_m17_fp16_unit
+PASS n64_m17_fp16_normalized
+PASS n64_m17_bf16_unit
+PASS n64_m17_bf16_normalized
+PASS n64_m4096_fp16_unit
+PASS n64_m4096_fp16_normalized
+PASS n64_m4096_bf16_unit
+PASS n64_m4096_bf16_normalized
+PASS n256_m17_fp16_unit
+PASS n256_m17_fp16_normalized
+PASS n256_m17_bf16_unit
+PASS n256_m17_bf16_normalized
+PASS n256_m4096_fp16_unit
+PASS n256_m4096_fp16_normalized
+PASS n256_m4096_bf16_unit
+PASS n256_m4096_bf16_normalized
+PASS 24 unique configurations; 4320 event rows

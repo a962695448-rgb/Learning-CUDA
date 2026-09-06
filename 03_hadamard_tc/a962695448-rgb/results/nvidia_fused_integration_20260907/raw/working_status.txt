@@ -1,0 +1,6 @@
+ M 03_hadamard_tc/a962695448-rgb/Makefile
+ M 03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py
+ M 03_hadamard_tc/a962695448-rgb/src/main.cu
+ M 03_hadamard_tc/a962695448-rgb/src/torch_binding.cu
+?? 03_hadamard_tc/a962695448-rgb/include/contiguous256.cuh
+?? 03_hadamard_tc/a962695448-rgb/scripts/verify_tensor_metadata.py

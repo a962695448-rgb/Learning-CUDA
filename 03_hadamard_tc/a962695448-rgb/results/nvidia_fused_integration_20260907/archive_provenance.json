@@ -1,0 +1,12 @@
+{
+  "raw_files": 117,
+  "raw_bytes_unchanged": true,
+  "redactions": [],
+  "v1_transfer_zip_sha256": "d065ef683538eba0ddc24aa97f54e2d8cd731a28c337e394657383734bb59d95",
+  "v2_transfer_zip_sha256": "639a7b3b3d56429665a7c65145f1378a2207a02475d9c614a4864c697f7e0423",
+  "original_v1_result": "FAIL_BEFORE_TIMING",
+  "v2_result": "VERIFIED",
+  "compiled_binaries_included": false,
+  "full_private_input_included": false,
+  "source_equivalence": "raw/derived/source_equivalence_git.json"
+}

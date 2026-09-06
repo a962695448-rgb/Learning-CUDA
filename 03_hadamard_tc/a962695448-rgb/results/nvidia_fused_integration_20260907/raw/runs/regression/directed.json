@@ -1,0 +1,522 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-06T07:36:08Z",
+  "python_execution": {
+    "assertions_enabled": true,
+    "optimize_flag": 0,
+    "PYTHONOPTIMIZE": "0"
+  },
+  "environment": {
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "sm": [
+      8,
+      9
+    ],
+    "extension_file": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/production/infinitensor_hadamard_cuda.so",
+    "extension_sha256": "eb3f03f28b7f993bfc3351a8afc1022ccc5f93301c95ed3163fd437f6e1f3468"
+  },
+  "cases": [
+    {
+      "dtype": "fp16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "fp16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.01,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        17,
+        256
+      ],
+      "dim": 256,
+      "rows": 17,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 4352,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        8,
+        16
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 17,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 1.0,
+      "normalized": false,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 0,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    },
+    {
+      "dtype": "bf16",
+      "shape": [
+        1,
+        3,
+        7,
+        256
+      ],
+      "dim": 256,
+      "rows": 21,
+      "scale": 0.0625,
+      "normalized": true,
+      "pass": true,
+      "pattern": "normal",
+      "seed": 2026,
+      "pointer_mod16": 2,
+      "elements": 5376,
+      "original_candidate_fused_split_exact": true,
+      "legacy_three_arg_default_equals_explicit_original": true,
+      "input_guards_unchanged": true,
+      "non_default_stream": true,
+      "dense_rows": [
+        0,
+        10,
+        20
+      ],
+      "dense_max_abs_error": 0.0,
+      "strict_limit": 0.05,
+      "quantization_rows_checked": 21,
+      "cpu_quantization_exact": true
+    }
+  ],
+  "active_context": {
+    "dtype": "bf16",
+    "shape": [
+      1,
+      3,
+      7,
+      256
+    ],
+    "dim": 256,
+    "rows": 21,
+    "scale": 0.0625,
+    "normalized": true,
+    "pattern": "normal",
+    "seed": 2026,
+    "pointer_mod16": 2
+  },
+  "finished_utc": "2026-09-06T07:36:10Z",
+  "exit_code": 0
+}

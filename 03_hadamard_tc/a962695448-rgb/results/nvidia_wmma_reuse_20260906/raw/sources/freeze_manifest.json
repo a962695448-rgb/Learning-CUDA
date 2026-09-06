@@ -1,0 +1,12 @@
+{
+  "baseline_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "status": "source_frozen_before_any_GPU_run",
+  "sources_sha256": {
+    "baseline/kernels.cuh": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+    "baseline/provenance.json": "15e55acdbccafe738a30dbbe5e08c681659199033c7e34eb1f9dd6e49ef39011",
+    "reuse_kernel.cuh": "a960886bed06638415b7941e7897b270b5fb5882ddc542df5b841d68b326906b",
+    "benchmark.cu": "ff4e3c1feebb50b351f9215a25c396bb8dd0f660e3229c7f1670758b094a5818",
+    "run_experiment.py": "0dbc7443d9d690f3dc49a686ff404782d9c76b7865272010059468381bb9cbe5",
+    "PROTOCOL.md": "d54d058f45aa43b73ff60afa1b9d673b006d1a7205a7df0726b7df5591c4f23c"
+  }
+}

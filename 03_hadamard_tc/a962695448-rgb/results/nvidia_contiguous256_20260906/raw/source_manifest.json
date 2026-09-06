@@ -1,0 +1,39 @@
+{
+  "source_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "files": {
+    "sources/kernels.cuh": {
+      "git_path": "03_hadamard_tc/a962695448-rgb/include/kernels.cuh",
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "size": 6024,
+      "modified": false
+    },
+    "sources/torch_binding_original.cu": {
+      "git_path": "03_hadamard_tc/a962695448-rgb/src/torch_binding.cu",
+      "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "size": 5752,
+      "modified": false
+    },
+    "sources/compare_reference.py": {
+      "git_path": "03_hadamard_tc/a962695448-rgb/scripts/compare_reference.py",
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "size": 21015,
+      "modified": false
+    },
+    "sources/build_torch_extension.py": {
+      "git_path": "03_hadamard_tc/a962695448-rgb/scripts/build_torch_extension.py",
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "size": 2486,
+      "modified": false
+    },
+    "sources/contiguous256.cuh": {
+      "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "size": 4656,
+      "modified": true
+    },
+    "sources/torch_binding_contiguous256.cu": {
+      "sha256": "ca42d633d9c818f7a4876c88b54eb8a9fc119379fd4a11d2731005931ca22447",
+      "size": 6894,
+      "modified": true
+    }
+  }
+}

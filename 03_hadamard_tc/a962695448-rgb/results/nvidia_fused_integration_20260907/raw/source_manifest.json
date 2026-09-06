@@ -1,0 +1,113 @@
+{
+  "base_commit": "217c30ff5e78842cd5809de6bf78ee8a7f04fc54",
+  "source_state": "reviewed working tree, not committed at snapshot",
+  "raw_working_bytes_preserved": true,
+  "diff_note": "Tracked diff is Git canonical text; untracked source files appended as LF review diff. Raw snapshot SHA is authoritative; LF hashes distinguish line-ending changes.",
+  "files": {
+    "project/Makefile": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/Makefile",
+      "sha256": "1a5c6597ace1047db5e44055b4e2f728dcf67af892ff1b5e81136ecf77b35f60",
+      "lf_sha256": "1a5c6597ace1047db5e44055b4e2f728dcf67af892ff1b5e81136ecf77b35f60",
+      "size": 1010,
+      "base_blob_sha256": "0b49603da398c685867234dd12f18c0403d19dce576690466684bf4086a1d825",
+      "changed_from_base_bytes": true
+    },
+    "project/include/contiguous256.cuh": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/include/contiguous256.cuh",
+      "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "lf_sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+      "size": 4656,
+      "base_blob_sha256": null,
+      "changed_from_base_bytes": true
+    },
+    "project/include/kernels.cuh": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/include/kernels.cuh",
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "lf_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "size": 6024,
+      "base_blob_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "changed_from_base_bytes": false
+    },
+    "project/include/reference.hpp": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/include/reference.hpp",
+      "sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "lf_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "size": 3572,
+      "base_blob_sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+      "changed_from_base_bytes": false
+    },
+    "project/src/main.cu": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/src/main.cu",
+      "sha256": "68f4bc9054a088ad6eceb272afa8f395b54b8b6807b806a03d9e5e743bb2e1f2",
+      "lf_sha256": "a578bb8cd39e5aa7b237475fbed9f4818ed45ba2d12878995e1a4d152c9d756e",
+      "size": 32237,
+      "base_blob_sha256": "26deccf5154314b88e4e4cd8fbc2526f09070e1f3d78f04d088721e14b1016f7",
+      "changed_from_base_bytes": true
+    },
+    "project/src/torch_binding.cu": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/src/torch_binding.cu",
+      "sha256": "c47b511beaac1bbee10cb9bddd4fd31b90a5a6042c43841cb9361f6b73dcd626",
+      "lf_sha256": "a241da0416f38a4ea9804e7f90fa7d22d524194728abd6b0c7d332217bbc6113",
+      "size": 7323,
+      "base_blob_sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "changed_from_base_bytes": true
+    },
+    "project/src/tune_launch.cu": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/src/tune_launch.cu",
+      "sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+      "lf_sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+      "size": 11576,
+      "base_blob_sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+      "changed_from_base_bytes": false
+    },
+    "project/scripts/build_torch_extension.py": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/scripts/build_torch_extension.py",
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "lf_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "size": 2486,
+      "base_blob_sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "changed_from_base_bytes": false
+    },
+    "project/scripts/compare_reference.py": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/scripts/compare_reference.py",
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "lf_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "size": 21015,
+      "base_blob_sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "changed_from_base_bytes": false
+    },
+    "project/scripts/run_validation.py": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/scripts/run_validation.py",
+      "sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "lf_sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "size": 3433,
+      "base_blob_sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+      "changed_from_base_bytes": false
+    },
+    "project/scripts/verify_block_threads.py": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py",
+      "sha256": "ee54c88308e7fd19d016cd3faac12920f2da205a2d85c89fdf6f63a6212d1335",
+      "lf_sha256": "689d9c6116f13571a37dc4853a99323b1aa08203e83b7128ba78e4430783b141",
+      "size": 8742,
+      "base_blob_sha256": "3f5df6bc935b8ed310d159c1df7868e699c66eaa74b7ea48edb40bc99523ba64",
+      "changed_from_base_bytes": true
+    },
+    "project/scripts/verify_tensor_metadata.py": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/scripts/verify_tensor_metadata.py",
+      "sha256": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12",
+      "lf_sha256": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12",
+      "size": 5727,
+      "base_blob_sha256": null,
+      "changed_from_base_bytes": true
+    },
+    "project/tests/cpu_reference_test.cpp": {
+      "production_path": "03_hadamard_tc/a962695448-rgb/tests/cpu_reference_test.cpp",
+      "sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "lf_sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "size": 1478,
+      "base_blob_sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+      "changed_from_base_bytes": false
+    }
+  },
+  "working_diff_sha256": "3c63b9e2fafb9d05c853b87cc09a8ac179c93c31ec586d87ee09c978bdac8d67"
+}

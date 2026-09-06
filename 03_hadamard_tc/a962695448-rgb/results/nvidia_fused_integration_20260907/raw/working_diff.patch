@@ -1,0 +1,589 @@
+diff --git a/03_hadamard_tc/a962695448-rgb/Makefile b/03_hadamard_tc/a962695448-rgb/Makefile
+index 721ec9d..16afac6 100644
+--- a/03_hadamard_tc/a962695448-rgb/Makefile
++++ b/03_hadamard_tc/a962695448-rgb/Makefile
+@@ -13,7 +13,7 @@ build/config.txt: FORCE
+ 	@cmp -s build/config.tmp $@ || cp build/config.tmp $@
+ 	@rm -f build/config.tmp
+ 
+-build/hadamard: src/main.cu include/kernels.cuh include/reference.hpp build/config.txt
++build/hadamard: src/main.cu include/kernels.cuh include/contiguous256.cuh include/reference.hpp build/config.txt
+ 	mkdir -p build
+ 	$(NVCC) $(NVCCFLAGS) -Iinclude src/main.cu -o $@
+ 
+diff --git a/03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py b/03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py
+index 7297b67..0da6570 100644
+--- a/03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py
++++ b/03_hadamard_tc/a962695448-rgb/scripts/verify_block_threads.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""复用原1,800组Dao矩阵，核查旧默认API与显式128/256线程；不自动派发。"""
++"""复用原1,800组Dao矩阵，核查线程兼容性及N256显式融合布局。"""
+ import argparse
+ import hashlib
+ import json
+@@ -51,6 +51,10 @@ class CheckedInterface:
+         explicit256 = self.extension.hadamard_int4(values, scale, block_threads=256)
+         bitwise_equal(self.torch, default, explicit128, "fused default vs128")
+         bitwise_equal(self.torch, explicit256, explicit128, "fused 256 vs128")
++        if values.shape[-1] == 256:
++            contiguous = self.extension.hadamard_int4(values, scale, block_threads=128,
++                                                       fused_layout="contiguous256")
++            bitwise_equal(self.torch, contiguous, explicit128, "fused contiguous256 vs original128")
+         return explicit256
+ 
+     def quantize_int4(self, values):
+@@ -76,6 +80,24 @@ def check_thread_rejections(torch, extension):
+     return results
+ 
+ 
++def check_fused_layout_rejections(torch, extension):
++    values = torch.ones((3, 256), device="cuda", dtype=torch.float16)
++    cases = [("unknown", values, {"fused_layout": "unknown"}),
++             ("empty", values, {"fused_layout": ""}),
++             ("wrong_type", values, {"fused_layout": 1}),
++             ("wrong_threads", values, {"fused_layout": "contiguous256", "block_threads": 256}),
++             ("wrong_dimension", values[:, :128].contiguous(), {"fused_layout": "contiguous256"})]
++    results = []
++    for name, data, options in cases:
++        try:
++            extension.hadamard_int4(data, **options)
++        except (RuntimeError, TypeError, ValueError) as error:
++            results.append({"case": name, "pass": True, "error": str(error).splitlines()[0]})
++        else:
++            raise RuntimeError("invalid fused layout accepted: " + name)
++    return results
++
++
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("--reference-repo", type=Path, required=True)
+@@ -105,10 +127,16 @@ def main():
+         if code:
+             raise RuntimeError("original Dao correctness matrix failed")
+         report["thread_value_rejections"] = check_thread_rejections(torch, extension)
++        report["fused_layout_rejections"] = check_fused_layout_rejections(torch, extension)
++        report["optional_fused_layout"] = {
++            "layout": "contiguous256", "block_threads": 128,
++            "original_matrix_cases_checked": sum(case["shape"][-1] == 256 for case in report["cases"]),
++            "bitwise_equal_to_original_fused": True,
++            "scope": "N256 subset of the same 1800 inputs, not additional distinct inputs; other dimensions and ordinary transforms use the original kernel."}
+         report["default_and_explicit128_and_256_bitwise_equal"] = True
+         root = Path(__file__).resolve().parents[1]
+         report["source_sha256"] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
+-            for name in ("include/kernels.cuh", "include/reference.hpp", "src/torch_binding.cu", "scripts/compare_reference.py", "scripts/verify_block_threads.py")}
++            for name in ("include/kernels.cuh", "include/contiguous256.cuh", "include/reference.hpp", "src/torch_binding.cu", "scripts/compare_reference.py", "scripts/verify_block_threads.py")}
+         report["status"] = "PASS"
+         code = 0
+     except Exception as error:
+diff --git a/03_hadamard_tc/a962695448-rgb/src/main.cu b/03_hadamard_tc/a962695448-rgb/src/main.cu
+index 8d55380..2de1e1d 100644
+--- a/03_hadamard_tc/a962695448-rgb/src/main.cu
++++ b/03_hadamard_tc/a962695448-rgb/src/main.cu
+@@ -1,4 +1,5 @@
+ #include "kernels.cuh"
++#include "contiguous256.cuh"
+ #include "reference.hpp"
+ 
+ #include <array>
+@@ -92,7 +93,7 @@ const char* method_name(Method method) {
+ struct Options {
+     bool self_test = false, benchmark = false, normalized = false;
+     std::size_t batch = 4, seq = 128, heads = 8, dim = 256;
+-    std::string dtype = "fp16", csv;
++    std::string dtype = "fp16", csv, fused_layout = "original";
+     int repetitions = 200, warmup = 20, block_threads = 128;
+     std::size_t rows() const { return product(product(batch, seq), heads); }
+     std::size_t elements() const { return product(rows(), dim); }
+@@ -110,6 +111,9 @@ void help() {
+               << "  --repetitions R --warmup W    Default 200,20; R positive, W nonnegative\n"
+               << "  --block-threads 128|256       Warp transform/quantize/split/fused; default 128\n"
+               << "                               Naive, Tensor Core and CPU paths are unchanged\n"
++              << "  --fused-layout original|contiguous256  Fused INT4 only; default original\n"
++              << "                               contiguous256 requires N256 and block_threads=128\n"
++              << "                               Self-test: only N256 fused uses it; other N remain original\n"
+               << "  --csv FILE                   Append measured rows, with header if empty\n"
+               << "No mode selects --self-test. Self-tests always cover both dtypes/scales.\n"
+               << "INT4: rowwise symmetric [-7,7], scale=max(abs(y))/7 (zero row:1),\n"
+@@ -141,6 +145,7 @@ Options parse(int argc, char** argv) {
+         else if (argument == "--dim") options.dim = unsigned_number(next(), argument);
+         else if (argument == "--dtype") options.dtype = next();
+         else if (argument == "--csv") options.csv = next();
++        else if (argument == "--fused-layout") options.fused_layout = next();
+         else if (argument == "--block-threads") {
+             const auto value = unsigned_number(next(), argument);
+             if (value != 128 && value != 256)
+@@ -163,6 +168,14 @@ Options parse(int argc, char** argv) {
+         throw std::invalid_argument("--dim must be a power of two in [1,256]");
+     if (options.dtype != "fp16" && options.dtype != "bf16")
+         throw std::invalid_argument("--dtype must be fp16 or bf16");
++    if (options.fused_layout != "original" && options.fused_layout != "contiguous256")
++        throw std::invalid_argument("--fused-layout must be original or contiguous256");
++    if (options.fused_layout == "contiguous256") {
++        if (options.block_threads != 128)
++            throw std::invalid_argument("--fused-layout contiguous256 requires --block-threads 128");
++        if (options.benchmark && options.dim != 256)
++            throw std::invalid_argument("--benchmark with --fused-layout contiguous256 requires --dim 256");
++    }
+     // Validate all products before allocating or touching a CUDA device.
+     product(options.elements(), sizeof(float));
+     if (!options.self_test && !options.benchmark) options.self_test = true;
+@@ -171,8 +184,10 @@ Options parse(int argc, char** argv) {
+ 
+ template <class T> class Runner {
+ public:
+-    Runner(std::size_t row_count, int dimension, float transform_scale, int warp_block_threads = 128)
+-        : rows(row_count), dim(dimension), scale(transform_scale), block_threads(warp_block_threads), count(product(rows, dim)),
++    Runner(std::size_t row_count, int dimension, float transform_scale, int warp_block_threads = 128,
++           bool use_contiguous256_fused = false)
++        : rows(row_count), dim(dimension), scale(transform_scale), block_threads(warp_block_threads),
++          contiguous256_fused(use_contiguous256_fused), count(product(rows, dim)),
+           input(count), output(count), scratch_a(count), scratch_b(count),
+           matrix(dim >= 16 ? dim * dim : 0),
+           packed(product(rows, (dim + 1) / 2)), quant_scales(rows) {
+@@ -222,6 +237,7 @@ public:
+     int dim;
+     float scale;
+     int block_threads;
++    bool contiguous256_fused;
+     std::size_t count;
+     DeviceBuffer<T> input, output;
+     DeviceBuffer<float> scratch_a, scratch_b;
+@@ -239,6 +255,14 @@ private:
+                 CUDA_CHECK(cudaGetLastError());
+             } else throw std::invalid_argument("tensor_core requires dim >= 16");
+         } else if (method == Method::FusedInt4) {
++            if constexpr (N == 256) {
++                if (contiguous256_fused) {
++                    hadamard::contiguous256_kernel<T, true, true><<<blocks, block_threads>>>(
++                        input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale);
++                    CUDA_CHECK(cudaGetLastError());
++                    return;
++                }
++            }
+             hadamard::warp_kernel<T, N, true, true><<<blocks, block_threads>>>(input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale);
+             CUDA_CHECK(cudaGetLastError());
+         } else {
+@@ -362,7 +386,8 @@ Validation validate(Runner<T>& runner, const std::vector<T>& input, bool all_row
+     return validation;
+ }
+ 
+-template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, Validation& totals, int block_threads) {
++template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, Validation& totals,
++                                      int block_threads, bool contiguous256_fused) {
+     auto record = [&](const Validation& validation) {
+         totals.max_error = std::max(totals.max_error, validation.max_error);
+         totals.dense_rows += validation.dense_rows;
+@@ -375,7 +400,7 @@ template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, V
+         for (const bool normalized : {false, true})
+             for (const std::size_t rows : {1u, 3u, 17u, 65u}) {
+                 const float scale = normalized ? 1.0f / std::sqrt(static_cast<float>(dim)) : 1.0f;
+-                Runner<T> runner(rows, dim, scale, block_threads);
++                Runner<T> runner(rows, dim, scale, block_threads, contiguous256_fused && dim == 256);
+                 auto test = [&](const char* pattern, std::uint32_t seed) {
+                     const auto input = make_input<T>(rows, dim, pattern, seed);
+                     try {
+@@ -392,11 +417,12 @@ template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, V
+                 for (const auto* pattern : {"uniform", "normal", "outlier"})
+                     for (const std::uint32_t seed : {2026u, 95811u, 314159u}) test(pattern, seed);
+             }
+-        std::cout << "SELF_TEST " << dtype << " dim=" << dim << " PASS" << std::endl;
++        std::cout << "SELF_TEST " << dtype << " dim=" << dim << " PASS fused_layout="
++                  << (contiguous256_fused && dim == 256 ? "contiguous256" : "original") << std::endl;
+     }
+     // Larger, non-multiple batch: full split/fused/CPU-quant comparison, 32 dense rows.
+     for (const bool normalized : {false, true}) {
+-        Runner<T> runner(1025, 256, normalized ? 1.0f / 16.0f : 1.0f, block_threads);
++        Runner<T> runner(1025, 256, normalized ? 1.0f / 16.0f : 1.0f, block_threads, contiguous256_fused);
+         record(validate(runner, make_input<T>(1025, 256, "random", 95811), false));
+     }
+ }
+@@ -436,7 +462,7 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
+     CUDA_CHECK(cudaRuntimeGetVersion(&runtime));
+     CUDA_CHECK(cudaDriverGetVersion(&driver));
+     std::ofstream csv;
+-    const std::string csv_header = "timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms";
++    const std::string csv_header = "timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms,fused_layout";
+     bool header = false;
+     if (!options.csv.empty()) {
+         const std::filesystem::path path(options.csv);
+@@ -458,7 +484,7 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
+     std::cout << "BENCHMARK shape=[" << options.batch << ',' << options.seq << ',' << options.heads << ','
+               << options.dim << "] dtype=" << options.dtype << " scale=" << options.scale()
+               << " rows=" << options.rows() << " dense_oracle_rows=" << dense_rows
+-              << " warp_block_threads=" << options.block_threads << '\n';
++              << " warp_block_threads=" << options.block_threads << " fused_layout=" << options.fused_layout << '\n';
+     std::cout << "Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;\n"
+               << "cpu_compute=FP32 FWHT host wall time, input reset excluded;\n"
+               << "host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.\n"
+@@ -478,14 +504,17 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
+                 << ',' << measured.method << ',' << measured.scope << ',' << measured.repetitions << ','
+                 << std::setprecision(12) << measured.microseconds << ',' << throughput << ',' << max_error << ',' << dense_rows << ',';
+             if (uses_warp) csv << options.block_threads;
+-            csv << ',' << measured.microseconds / 1000.0 << '\n';
++            csv << ',' << measured.microseconds / 1000.0 << ',';
++            if (measured.method == "fused_int4") csv << options.fused_layout;
++            csv << '\n';
+         }
+     }
+     if (csv) { csv.flush(); if (!csv) throw std::runtime_error("failed writing CSV"); }
+ }
+ 
+ template <class T> void benchmark(const Options& options, const cudaDeviceProp& gpu) {
+-    Runner<T> runner(options.rows(), static_cast<int>(options.dim), options.scale(), options.block_threads);
++    Runner<T> runner(options.rows(), static_cast<int>(options.dim), options.scale(), options.block_threads,
++                     options.fused_layout == "contiguous256");
+     const auto input = make_input<T>(runner.rows, runner.dim, "random", 20260905);
+     const auto validation = validate(runner, input, false);
+     std::vector<Measurement> measurements;
+@@ -542,14 +571,17 @@ int main(int argc, char** argv) {
+         if (options.self_test) {
+             std::size_t cases = 0;
+             Validation totals;
+-            self_test_dtype<__half>("fp16", cases, totals, options.block_threads);
+-            self_test_dtype<__nv_bfloat16>("bf16", cases, totals, options.block_threads);
++            const bool contiguous256_fused = options.fused_layout == "contiguous256";
++            self_test_dtype<__half>("fp16", cases, totals, options.block_threads, contiguous256_fused);
++            self_test_dtype<__nv_bfloat16>("bf16", cases, totals, options.block_threads, contiguous256_fused);
+             std::cout << "SELF_TEST PASS cases=" << cases << " max_abs_error=" << totals.max_error
+                       << " CPU/split/fused_INT4_bytes=exact scales=exact"
+                       << " rounded_warp_vs_dense_elements=" << totals.rounded_warp_mismatches
+                       << " dense_quant_differing_bytes=" << totals.dense_quant_byte_mismatches
+                       << " dense_quant_differing_scales=" << totals.dense_quant_scale_mismatches
+-                      << " warp_block_threads=" << options.block_threads << '\n';
++                      << " warp_block_threads=" << options.block_threads
++                      << " fused_layout=" << options.fused_layout
++                      << " fused_layout_scope=" << (contiguous256_fused ? "N256_only_other_N_original" : "all_N_original") << '\n';
+         }
+         if (options.benchmark) {
+             if (options.dtype == "fp16") benchmark<__half>(options, gpu);
+diff --git a/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu b/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu
+index 323d644..9919795 100644
+--- a/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu
++++ b/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu
+@@ -4,9 +4,11 @@
+ #include <c10/cuda/CUDAStream.h>
+ 
+ #include "kernels.cuh"
++#include "contiguous256.cuh"
+ 
+ #include <cmath>
+ #include <limits>
++#include <string>
+ #include <tuple>
+ 
+ namespace {
+@@ -18,6 +20,7 @@ void validate(const at::Tensor& input, double scale, int block_threads) {
+                 "input dtype must be float16 or bfloat16");
+     TORCH_CHECK(input.dim() == 2 || input.dim() == 4, "input must have 2 or 4 dimensions");
+     TORCH_CHECK(input.is_contiguous(), "input must be contiguous");
++    TORCH_CHECK(!input.is_neg(), "input must not have a lazy negative bit; call resolve_neg() first");
+     TORCH_CHECK(input.numel() > 0, "input must be nonempty");
+     const auto dim = input.size(-1);
+     TORCH_CHECK(dim >= 1 && dim <= 256 && !(dim & (dim - 1)),
+@@ -33,13 +36,22 @@ void validate(const at::Tensor& input, double scale, int block_threads) {
+ 
+ template <class T, int N, bool Transform, bool Quantize>
+ void launch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
+-            at::Tensor& scales, float scale, cudaStream_t stream, int block_threads) {
++            at::Tensor& scales, float scale, cudaStream_t stream, int block_threads,
++            bool contiguous256_fused) {
+     const auto rows = static_cast<std::size_t>(input.numel() / N);
+     const auto blocks = static_cast<unsigned int>((rows - 1) / (block_threads / 32) + 1);
+     const auto* source = reinterpret_cast<const T*>(input.data_ptr());
+     auto* destination = output.defined() ? reinterpret_cast<T*>(output.data_ptr()) : nullptr;
+     auto* bytes = packed.defined() ? packed.data_ptr<std::uint8_t>() : nullptr;
+     auto* row_scales = scales.defined() ? scales.data_ptr<float>() : nullptr;
++    if constexpr (N == 256 && Transform && Quantize) {
++        if (contiguous256_fused) {
++            hadamard::contiguous256_kernel<T, true, true><<<blocks, block_threads, 0, stream>>>(
++                source, destination, bytes, row_scales, rows, scale);
++            C10_CUDA_KERNEL_LAUNCH_CHECK();
++            return;
++        }
++    }
+     hadamard::warp_kernel<T, N, Transform, Quantize><<<blocks, block_threads, 0, stream>>>(
+         source, destination, bytes, row_scales, rows, scale);
+     C10_CUDA_KERNEL_LAUNCH_CHECK();
+@@ -47,9 +59,10 @@ void launch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
+ 
+ template <class T, bool Transform, bool Quantize>
+ void dispatch_dim(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
+-                  at::Tensor& scales, float scale, cudaStream_t stream, int block_threads) {
++                  at::Tensor& scales, float scale, cudaStream_t stream, int block_threads,
++                  bool contiguous256_fused) {
+     switch (input.size(-1)) {
+-#define DIM_CASE(N) case N: launch<T, N, Transform, Quantize>(input, output, packed, scales, scale, stream, block_threads); break
++#define DIM_CASE(N) case N: launch<T, N, Transform, Quantize>(input, output, packed, scales, scale, stream, block_threads, contiguous256_fused); break
+         DIM_CASE(1); DIM_CASE(2); DIM_CASE(4); DIM_CASE(8); DIM_CASE(16);
+         DIM_CASE(32); DIM_CASE(64); DIM_CASE(128); DIM_CASE(256);
+ #undef DIM_CASE
+@@ -59,12 +72,12 @@ void dispatch_dim(const at::Tensor& input, at::Tensor& output, at::Tensor& packe
+ 
+ template <bool Transform, bool Quantize>
+ void dispatch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
+-              at::Tensor& scales, double scale, int block_threads) {
++              at::Tensor& scales, double scale, int block_threads, bool contiguous256_fused = false) {
+     const auto stream = c10::cuda::getCurrentCUDAStream(input.get_device()).stream();
+     if (input.scalar_type() == at::kHalf)
+-        dispatch_dim<__half, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads);
++        dispatch_dim<__half, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused);
+     else
+-        dispatch_dim<__nv_bfloat16, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads);
++        dispatch_dim<__nv_bfloat16, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused);
+ }
+ 
+ at::Tensor transform(const at::Tensor& input, double scale, int block_threads) {
+@@ -77,8 +90,17 @@ at::Tensor transform(const at::Tensor& input, double scale, int block_threads) {
+ }
+ 
+ template <bool Transform>
+-std::tuple<at::Tensor, at::Tensor> quantized(const at::Tensor& input, double scale, int block_threads) {
++std::tuple<at::Tensor, at::Tensor> quantized(const at::Tensor& input, double scale, int block_threads,
++                                         const std::string& fused_layout = "original") {
+     validate(input, scale, block_threads);
++    TORCH_CHECK(fused_layout == "original" || fused_layout == "contiguous256",
++                "fused_layout must be 'original' or 'contiguous256'");
++    const bool contiguous256_fused = fused_layout == "contiguous256";
++    if (contiguous256_fused) {
++        TORCH_CHECK(Transform, "contiguous256 is only supported for fused Hadamard INT4");
++        TORCH_CHECK(input.size(-1) == 256, "fused_layout='contiguous256' requires last dimension 256");
++        TORCH_CHECK(block_threads == 128, "fused_layout='contiguous256' requires block_threads=128");
++    }
+     const c10::cuda::CUDAGuard device_guard(input.device());
+     auto packed_shape = input.sizes().vec();
+     packed_shape.back() = (packed_shape.back() + 1) / 2;
+@@ -87,7 +109,7 @@ std::tuple<at::Tensor, at::Tensor> quantized(const at::Tensor& input, double sca
+     auto packed = at::empty(packed_shape, input.options().dtype(at::kByte));
+     auto scales = at::empty(scale_shape, input.options().dtype(at::kFloat));
+     at::Tensor output;
+-    dispatch<Transform, true>(input, output, packed, scales, scale, block_threads);
++    dispatch<Transform, true>(input, output, packed, scales, scale, block_threads, contiguous256_fused);
+     return {packed, scales};
+ }
+ 
+@@ -101,7 +123,8 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
+     module.def("hadamard", &transform, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
+                "Forward-only last-axis Hadamard; finite CUDA FP16/BF16 input, 2D or 4D contiguous. block_threads=128 (default) or 256; explicit, no auto-tuning.");
+     module.def("hadamard_int4", &quantized<true>, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
+-               "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). block_threads=128 (default) or 256.");
++               pybind11::arg("fused_layout") = "original",
++               "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). fused_layout='original' (default) supports block_threads=128 or 256; explicit 'contiguous256' requires N256 and block_threads=128.");
+     module.def("quantize_int4", &quantize_only, pybind11::arg("input"), pybind11::arg("block_threads") = 128,
+                "Quantize an already-rounded FP16/BF16 tensor; even values occupy the low nibble. block_threads=128 (default) or 256.");
+ }
+--- /dev/null
++++ b/03_hadamard_tc/a962695448-rgb/include/contiguous256.cuh
+@@ -0,0 +1,108 @@
++#pragma once
++
++#include "kernels.cuh"
++
++namespace hadamard {
++
++template <class T> __device__ inline T storage_from_bits(unsigned short bits);
++template <> __device__ inline __half storage_from_bits<__half>(unsigned short bits) {
++    return __ushort_as_half(bits);
++}
++template <> __device__ inline __nv_bfloat16 storage_from_bits<__nv_bfloat16>(unsigned short bits) {
++    return __ushort_as_bfloat16(bits);
++}
++template <class T> __device__ inline unsigned short storage_bits(T value);
++template <> __device__ inline unsigned short storage_bits(__half value) {
++    return __half_as_ushort(value);
++}
++template <> __device__ inline unsigned short storage_bits(__nv_bfloat16 value) {
++    return __bfloat16_as_ushort(value);
++}
++
++template <class T, bool Transform, bool Quantize>
++__global__ void contiguous256_kernel(const T* input, T* output, std::uint8_t* packed,
++                                     float* scales, std::size_t rows, float transform_scale) {
++    const int lane = threadIdx.x % 32;
++    const std::size_t row = static_cast<std::size_t>(blockIdx.x) * (blockDim.x / 32) + threadIdx.x / 32;
++    // The whole warp takes this guard before any row pointer is dereferenced.
++    if (row >= rows) return;
++    const T* source = input + row * 256 + lane * 8;
++    float values[8];
++    if ((reinterpret_cast<std::uintptr_t>(source) & 15) == 0) {
++        const uint4 raw = *reinterpret_cast<const uint4*>(source);
++        const unsigned int words[4] = {raw.x, raw.y, raw.z, raw.w};
++#pragma unroll
++        for (int k = 0; k < 8; ++k)
++            values[k] = as_float(storage_from_bits<T>(static_cast<unsigned short>(words[k / 2] >> (16 * (k % 2)))));
++    } else {
++        // Contiguous tensors may begin at a legal two-byte storage offset.
++#pragma unroll
++        for (int k = 0; k < 8; ++k) values[k] = as_float(source[k]);
++    }
++    if constexpr (Transform) {
++        // Global index bits 0,1,2, followed by 3,4,5,6,7: same stage order.
++#pragma unroll
++        for (int stride = 1; stride < 8; stride *= 2) {
++#pragma unroll
++            for (int k = 0; k < 8; ++k) {
++                if (!(k & stride)) {
++                    const float a = values[k], b = values[k + stride];
++                    values[k] = a + b;
++                    values[k + stride] = a - b;
++                }
++            }
++        }
++#pragma unroll
++        for (int stride = 1; stride < 32; stride *= 2) {
++#pragma unroll
++            for (int k = 0; k < 8; ++k) {
++                const float mine = values[k];
++                const float peer = __shfl_xor_sync(0xffffffff, mine, stride);
++                values[k] = (lane & stride) ? peer - mine : mine + peer;
++            }
++        }
++#pragma unroll
++        for (int k = 0; k < 8; ++k)
++            values[k] = as_float(as_storage<T>(values[k] * transform_scale));
++    }
++    if constexpr (!Quantize) {
++        T* destination = output + row * 256 + lane * 8;
++        if ((reinterpret_cast<std::uintptr_t>(destination) & 15) == 0) {
++            unsigned int words[4];
++#pragma unroll
++            for (int k = 0; k < 4; ++k)
++                words[k] = static_cast<unsigned int>(storage_bits(as_storage<T>(values[k * 2]))) |
++                    (static_cast<unsigned int>(storage_bits(as_storage<T>(values[k * 2 + 1]))) << 16);
++            *reinterpret_cast<uint4*>(destination) = make_uint4(words[0], words[1], words[2], words[3]);
++        } else {
++#pragma unroll
++            for (int k = 0; k < 8; ++k) destination[k] = as_storage<T>(values[k]);
++        }
++    }
++    if constexpr (Quantize) {
++        float magnitude = 0;
++#pragma unroll
++        for (int k = 0; k < 8; ++k) magnitude = fmaxf(magnitude, fabsf(values[k]));
++#pragma unroll
++        for (int stride = 16; stride > 0; stride /= 2)
++            magnitude = fmaxf(magnitude, __shfl_xor_sync(0xffffffff, magnitude, stride));
++        const float scale = magnitude == 0 ? 1.0f : magnitude / 7.0f;
++        if (lane == 0) scales[row] = scale;
++        unsigned int bytes = 0;
++#pragma unroll
++        for (int pair = 0; pair < 4; ++pair) {
++            const int low = max(-7, min(7, __float2int_rn(values[pair * 2] / scale)));
++            const int high = max(-7, min(7, __float2int_rn(values[pair * 2 + 1] / scale)));
++            bytes |= static_cast<unsigned int>((low & 15) | ((high & 15) << 4)) << (pair * 8);
++        }
++        std::uint8_t* destination = packed + row * 128 + lane * 4;
++        if ((reinterpret_cast<std::uintptr_t>(destination) & 3) == 0) {
++            *reinterpret_cast<unsigned int*>(destination) = bytes;
++        } else {
++#pragma unroll
++            for (int k = 0; k < 4; ++k) destination[k] = static_cast<std::uint8_t>(bytes >> (k * 8));
++        }
++    }
++}
++
++}  // namespace hadamard
+--- /dev/null
++++ b/03_hadamard_tc/a962695448-rgb/scripts/verify_tensor_metadata.py
+@@ -0,0 +1,101 @@
++#!/usr/bin/env python3
++"""验证惰性负号视图明确拒绝，以及显式物化后的三种接口。"""
++import argparse
++import hashlib
++import json
++from pathlib import Path
++import time
++import traceback
++
++from build_torch_extension import load_extension
++
++
++def check_metadata(torch, op):
++    results = []
++    for dtype in (torch.float16, torch.bfloat16):
++        for shape in ((3, 256), (1, 1, 3, 256)):
++            base = torch.arange(768, device="cuda", dtype=torch.float32).remainder(29).sub(14).div(16).to(dtype).reshape(shape)
++            before = base.clone()
++            lazy = torch._neg_view(base)
++            if not lazy.is_neg() or not lazy.is_contiguous() or lazy.data_ptr() != base.data_ptr():
++                raise RuntimeError("fixture does not exercise a contiguous lazy negative alias")
++            materialized, expected_input = lazy.resolve_neg(), -base
++            if materialized.is_neg() or not torch.equal(materialized.view(torch.uint8), expected_input.view(torch.uint8)):
++                raise RuntimeError("resolve_neg fixture did not materialize the logical values")
++            for threads in (128, 256):
++                for method in ("hadamard", "hadamard_int4", "quantize_int4"):
++                    operation = getattr(op, method)
++                    try:
++                        operation(lazy, block_threads=threads)
++                    except RuntimeError as error:
++                        if "resolve_neg" not in str(error):
++                            raise
++                        reason = str(error).splitlines()[0]
++                    else:
++                        raise RuntimeError(f"accepted lazy negative alias: {method}/{dtype}/{shape}/{threads}")
++                    actual = operation(materialized, block_threads=threads)
++                    expected = operation(expected_input, block_threads=threads)
++                    actual = actual if isinstance(actual, tuple) else (actual,)
++                    expected = expected if isinstance(expected, tuple) else (expected,)
++                    if len(actual) != len(expected) or any(a.shape != b.shape or a.dtype != b.dtype or
++                            not torch.equal(a.view(torch.uint8), b.view(torch.uint8)) for a, b in zip(actual, expected)):
++                        raise RuntimeError("materialized logical input output mismatch: " + method)
++                    results.append({"dtype": str(dtype), "shape": list(shape), "block_threads": threads,
++                                    "method": method, "rejected_lazy_alias": True,
++                                    "materialized_output_bitwise_equal": True, "error": reason})
++            try:
++                op.hadamard_int4(lazy, fused_layout="contiguous256")
++            except RuntimeError as error:
++                if "resolve_neg" not in str(error):
++                    raise
++                reason = str(error).splitlines()[0]
++            else:
++                raise RuntimeError("contiguous256 fused accepted a lazy negative alias")
++            actual = op.hadamard_int4(materialized, fused_layout="contiguous256")
++            expected = op.hadamard_int4(expected_input)
++            if len(actual) != len(expected) or any(a.shape != b.shape or a.dtype != b.dtype or
++                    not torch.equal(a.view(torch.uint8), b.view(torch.uint8)) for a, b in zip(actual, expected)):
++                raise RuntimeError("materialized contiguous256 fused differs from original layout")
++            results.append({"dtype": str(dtype), "shape": list(shape), "block_threads": 128,
++                            "method": "hadamard_int4", "fused_layout": "contiguous256",
++                            "rejected_lazy_alias": True, "materialized_output_bitwise_equal": True,
++                            "error": reason})
++            if not torch.equal(base.view(torch.uint8), before.view(torch.uint8)):
++                raise RuntimeError("underlying input was modified")
++    return results
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--build-directory", type=Path, required=True)
++    parser.add_argument("--json", type=Path, required=True)
++    args = parser.parse_args()
++    if args.json.exists():
++        parser.error("result already exists; choose a new output path")
++    args.json.parent.mkdir(parents=True, exist_ok=True)
++    report = {"status": "RUNNING", "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
++    try:
++        import torch
++        op = load_extension(verbose=True, build_directory=str(args.build_directory))
++        report["environment"] = {"torch": torch.__version__, "torch_cuda": torch.version.cuda,
++                                 "gpu": torch.cuda.get_device_name(),
++                                 "extension_sha256": hashlib.sha256(Path(op.__file__).read_bytes()).hexdigest()}
++        report["cases"] = check_metadata(torch, op)
++        report["status"] = "PASS"
++    except Exception:
++        report.update(status="FAIL", traceback=traceback.format_exc())
++    root = Path(__file__).resolve().parents[1]
++    report["source_sha256"] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
++        for name in ("src/torch_binding.cu", "include/kernels.cuh", "include/contiguous256.cuh",
++                     "scripts/verify_tensor_metadata.py")}
++    report["finished_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
++    args.json.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
++    print(json.dumps({"status": report["status"], "metadata_cases": len(report.get("cases", []))}))
++    if report["status"] != "PASS":
++        print(report["traceback"])
++        return 1
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())

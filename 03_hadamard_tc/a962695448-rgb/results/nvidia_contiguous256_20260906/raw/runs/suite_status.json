@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "pid": 92840,
+  "started_utc": "2026-09-06T04:39:36Z",
+  "controller_sha256": "53b66dc09e9daea12f719c04b5e9a1cd8624387b9fc47a21bb7450fb40a5f8fb",
+  "workers": [
+    {
+      "run_index": 1,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T04:39:36Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T04:39:38Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "-u",
+        "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/run_experiment.py",
+        "--run-index",
+        "1",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/runs/run1.json",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform"
+      ],
+      "started_utc": "2026-09-06T04:39:38Z",
+      "pid": 92850,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T04:41:01Z",
+      "log_sha256": "ad22eb7b7aabff880f7ee25c0f85ae7582fd8b731a7fb949d2735ac82e71dc26"
+    },
+    {
+      "run_index": 2,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T04:41:01Z",
+          "exit_code": 0,
+          "utilization_percent": "18\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T04:41:03Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T04:41:05Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "-u",
+        "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/run_experiment.py",
+        "--run-index",
+        "2",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/runs/run2.json",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform"
+      ],
+      "started_utc": "2026-09-06T04:41:05Z",
+      "pid": 92981,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T04:41:40Z",
+      "log_sha256": "2a91e5e0b9cbd0c516de6765c9296a50b6cde45227fb95128fdaf24623ce565d"
+    },
+    {
+      "run_index": 3,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T04:41:40Z",
+          "exit_code": 0,
+          "utilization_percent": "8\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T04:41:42Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T04:41:44Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "-u",
+        "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/run_experiment.py",
+        "--run-index",
+        "3",
+        "--output",
+        "/data/infinitensor-2026/experiments/nvidia-contiguous256-20260906/runs/run3.json",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform"
+      ],
+      "started_utc": "2026-09-06T04:41:44Z",
+      "pid": 93048,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T04:42:20Z",
+      "log_sha256": "36be7d7ba4d68edcd7d214a49fdd984f2ce57f7f23ef44211be738546b0c9939"
+    }
+  ],
+  "finished_utc": "2026-09-06T04:42:20Z",
+  "exit_code": 0
+}

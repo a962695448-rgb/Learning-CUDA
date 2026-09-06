@@ -1,0 +1,20 @@
+GPU=NVIDIA GeForce RTX 4090 sm=89
+SELF_TEST fp16 dim=1 PASS fused_layout=original
+SELF_TEST fp16 dim=2 PASS fused_layout=original
+SELF_TEST fp16 dim=4 PASS fused_layout=original
+SELF_TEST fp16 dim=8 PASS fused_layout=original
+SELF_TEST fp16 dim=16 PASS fused_layout=original
+SELF_TEST fp16 dim=32 PASS fused_layout=original
+SELF_TEST fp16 dim=64 PASS fused_layout=original
+SELF_TEST fp16 dim=128 PASS fused_layout=original
+SELF_TEST fp16 dim=256 PASS fused_layout=contiguous256
+SELF_TEST bf16 dim=1 PASS fused_layout=original
+SELF_TEST bf16 dim=2 PASS fused_layout=original
+SELF_TEST bf16 dim=4 PASS fused_layout=original
+SELF_TEST bf16 dim=8 PASS fused_layout=original
+SELF_TEST bf16 dim=16 PASS fused_layout=original
+SELF_TEST bf16 dim=32 PASS fused_layout=original
+SELF_TEST bf16 dim=64 PASS fused_layout=original
+SELF_TEST bf16 dim=128 PASS fused_layout=original
+SELF_TEST bf16 dim=256 PASS fused_layout=contiguous256
+SELF_TEST PASS cases=1876 max_abs_error=0.0078125 CPU/split/fused_INT4_bytes=exact scales=exact rounded_warp_vs_dense_elements=35 dense_quant_differing_bytes=0 dense_quant_differing_scales=0 warp_block_threads=128 fused_layout=contiguous256 fused_layout_scope=N256_only_other_N_original

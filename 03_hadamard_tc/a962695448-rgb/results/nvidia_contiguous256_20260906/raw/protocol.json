@@ -1,0 +1,40 @@
+{
+  "protocol_id": "nvidia_contiguous256_20260906_v1",
+  "status_at_freeze": "LOCAL_PREPARATION_NO_GPU_RESULTS",
+  "source_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "reference_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+  "hypothesis": "At N256, assign eight adjacent elements to each lane, use aligned 16B I/O and pack register-neighbor INT4 values without eight q shuffles; investigate lower memory/packing instruction overhead while preserving all eight butterfly stages.",
+  "hardware": {"required_name_contains": "RTX 4090", "required_sm": [8, 9], "compile_arch": "8.9", "max_jobs": "1"},
+  "domain": {"rows": [1, 17, 64, 257, 4096, 16384], "dims": [256], "dtypes": ["fp16", "bf16"], "normalized": [false, true], "expected_configurations": 24},
+  "launch": {"block_threads": 128, "layouts": ["original", "contiguous256"], "default_layout": "original", "automatic_dispatch": false},
+  "correctness": {
+    "patterns_and_seeds": {"normal": [2026, 95811], "uniform": [2026, 95811], "outlier": [2026, 95811], "zeros": [2026]},
+    "input_pointer_mod16": [0, 2],
+    "dao_offset_reference": "Pinned Dao csrc/fast_hadamard_transform_common.h load_input uses unguarded16B vector loads for FP16/BF16. During2B-offset correctness checks only, Dao receives an aligned bit-identical clone, verified against original input. Both experiment layouts receive the actual offset tensor. Performance inputs are aligned and identical for all methods; cloning is never timed.",
+    "per_configuration": ["all elements original/new transform bitwise equal", "same input compared to real Dao CUDA with original strict tolerance", "original/new fused packed and scales bitwise equal", "each fused equals same-layout transform then standalone quantization", "CPU float32 maxabs/7 and divided RNE INT4 for every actual transformed row", "input and guard storage bitwise unchanged", "FP64 dense reference on rows0,rows//2,rows-1"],
+    "strict_abs_limit": {"fp16": 0.01, "bf16": 0.05},
+    "scale": "same float32 value for all methods:1 or1/16",
+    "non_default_stream": "All24 configurations, both pointer offsets, normal seed2026; create/fill input and call transform/fused/quantization under the non-default stream, then synchronize before CPU comparison.",
+    "standalone_quantization_ties": "M17,N256, both dtypes and both input pointer offsets; repeat exactly representable values [-7,-6.5,-5.5,-4.5,-3.5,-2.5,-1.5,-0.5,0,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7]. Compare both layouts to independent CPU packed/scales, and preserve input guards.",
+    "output_alignment_boundary": "Public allocating adapter returns aligned outputs; input offset fallback is exercised. Kernel independently guards output16B/packed4B alignment, but no claim of a user-supplied misaligned output API is made.",
+    "failure_policy": "Stop before timing on any failed check; preserve report, first differing value/bits and CPU witness. No tolerance or expected-value edits."
+  },
+  "timing": {
+    "processes": 3, "groups": 5, "api_warmup_calls": 25,
+    "captured_calls": 64, "replays_per_group": 20, "graph_warmup_replays": 5,
+    "modes": {"transform": ["original", "contiguous256", "dao"], "fused_int4": ["original", "contiguous256"]},
+    "input": "aligned contiguous, normal seed2026; exactly same input per mode/method/configuration",
+    "outputs": "64 separate retained output tuples per private Graph; every component pointer distinct within and across graphs; bitwise equal to eager before and after timing",
+    "method_order": "Cyclic offset(run_index-1+configuration_index+group) modulo method count; initial warmup and capture use group0 order. Mode order alternates by configuration_index+run_index.",
+    "configuration_order": "Random(92600+run_index) shuffle of fixed24 configurations",
+    "samples": "Keep all raw CUDA event intervals in ms, derive per-call ms/us, median5 groups per independent process. Graph includes captured GPU work and amortized replay scheduling, not standalone kernel latency. No eager performance or cross-GPU/earlier-study denominators."
+  },
+  "decision": {
+    "fixed_matrix": "Run all24 configurations in all3 processes after correctness. No follow-on search domain or thread search.",
+    "stable_improvement": "A candidate comparison needs >=5% time reduction against same-run original in each of3 processes to count as a stable performance improvement.",
+    "regressions": "Preserve every loss and report all configurations with >3% regression in any process, separately by transform/fused. Any range recommendation must include its neighboring and negative cases; no automatic production dispatch.",
+    "dao": "Only transform compares with Dao. M17N256 gap closes only if new median<=Dao in all3 processes. <=1% differences are near-ties, not durable wins.",
+    "scope": "Acceptance requires exact numerical contract first. A winning configuration does not establish a global replacement or proof of optimality."
+  },
+  "resource_policy": "Await coordinator GPU window; use existing environment and a dedicated module/build/cache. Sequential workers require two0% NVML samples2s apart before each, wait at most60s. Record all processes/snapshots; never stop unknown PIDs or claim exclusive tenancy from utilization alone. No dependency upgrades."
+}

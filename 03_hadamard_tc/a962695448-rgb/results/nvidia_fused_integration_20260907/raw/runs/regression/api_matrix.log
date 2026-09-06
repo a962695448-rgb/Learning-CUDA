@@ -1,0 +1,26 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/compatibility/build.ninja...
+Building extension module infinitensor_hadamard_block_threads_check...
+Using envvar MAX_JOBS (1) as the number of workers...
+[1/2] /usr/local/cuda-12.8/bin/nvcc --generate-dependencies-with-compile --dependency-output torch_binding.cuda.o.d -DTORCH_EXTENSION_NAME=infinitensor_hadamard_block_threads_check -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -I/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/TH -isystem /usr/local/lib/python3.12/dist-packages/torch/include/THC -isystem /usr/local/cuda-12.8/include -isystem /usr/include/python3.12 -D_GLIBCXX_USE_CXX11_ABI=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -std=c++17 -lineinfo -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr -c /data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/src/torch_binding.cu -o torch_binding.cuda.o 
+[2/2] c++ torch_binding.cuda.o -shared -L/usr/local/lib/python3.12/dist-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda-12.8/lib64 -lcudart -o infinitensor_hadamard_block_threads_check.so
+Loading extension module infinitensor_hadamard_block_threads_check...
+CHECKED dtype=fp16 dim=1 cases=100 failures=0
+CHECKED dtype=fp16 dim=2 cases=200 failures=0
+CHECKED dtype=fp16 dim=4 cases=300 failures=0
+CHECKED dtype=fp16 dim=8 cases=400 failures=0
+CHECKED dtype=fp16 dim=16 cases=500 failures=0
+CHECKED dtype=fp16 dim=32 cases=600 failures=0
+CHECKED dtype=fp16 dim=64 cases=700 failures=0
+CHECKED dtype=fp16 dim=128 cases=800 failures=0
+CHECKED dtype=fp16 dim=256 cases=900 failures=0
+CHECKED dtype=bf16 dim=1 cases=1000 failures=0
+CHECKED dtype=bf16 dim=2 cases=1100 failures=0
+CHECKED dtype=bf16 dim=4 cases=1200 failures=0
+CHECKED dtype=bf16 dim=8 cases=1300 failures=0
+CHECKED dtype=bf16 dim=16 cases=1400 failures=0
+CHECKED dtype=bf16 dim=32 cases=1500 failures=0
+CHECKED dtype=bf16 dim=64 cases=1600 failures=0
+CHECKED dtype=bf16 dim=128 cases=1700 failures=0
+CHECKED dtype=bf16 dim=256 cases=1800 failures=0
+{"status": "PASS", "summary": {"cases": 1800, "failures": 0, "max_abs_error_by_dtype": {"fp16": 0.0, "bf16": 0.0}}, "invalid_thread_cases": 27}

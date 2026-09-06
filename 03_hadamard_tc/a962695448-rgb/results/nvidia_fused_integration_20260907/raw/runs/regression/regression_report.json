@@ -1,0 +1,1029 @@
+{
+  "status": "PASS",
+  "pid": 104053,
+  "started_utc": "2026-09-06T07:33:42Z",
+  "steps": [
+    {
+      "name": "build_and_cpu",
+      "command": [
+        "make",
+        "-j1",
+        "CUDA_HOME=/usr/local/cuda-12.8",
+        "ARCH=89",
+        "all",
+        "cpu-test"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-06T07:33:42Z",
+      "pid": 104056,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:33:51Z",
+      "log": "build_and_cpu.log",
+      "log_sha256": "ddb4c0e364c4aabd573f7efd5015d78720215d17d7d3430b7174a5b2dbd9c9ad"
+    },
+    {
+      "name": "cli_default",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/scripts/run_validation.py",
+        "--label",
+        "fused_integration_default"
+      ],
+      "expected_exit": 0,
+      "python_assertion_launch": {
+        "PYTHONOPTIMIZE": "0",
+        "no_optimization_argument": true
+      },
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:33:51Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:33:53Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:33:53Z",
+      "pid": 104109,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:33:55Z",
+      "log": "cli_default.log",
+      "log_sha256": "a5eb9ffeed574e61cea80a11234037995be36d0339b3fac83e30533e10985598"
+    },
+    {
+      "name": "cli_original256",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "256"
+      ],
+      "expected_exit": 0,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:33:55Z",
+          "exit_code": 0,
+          "utilization_percent": "2\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T07:33:57Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:33:59Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:33:59Z",
+      "pid": 104142,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:34:00Z",
+      "log": "cli_original256.log",
+      "log_sha256": "6897670a4ef9591840ad4ce14ed7a5958b9045788342eaecf20b48a272d931d6"
+    },
+    {
+      "name": "cli_candidate",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "128",
+        "--fused-layout",
+        "contiguous256"
+      ],
+      "expected_exit": 0,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:00Z",
+          "exit_code": 0,
+          "utilization_percent": "2\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T07:34:02Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:04Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:04Z",
+      "pid": 104160,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_candidate.log",
+      "log_sha256": "aa183bae0aa1e6b5e928c8fd18887a04b4bbc42921f4173f36bb901d4338c668"
+    },
+    {
+      "name": "cli_rejection_00",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "-1"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104165,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_00.log",
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "name": "cli_rejection_01",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "0"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104166,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_01.log",
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "name": "cli_rejection_02",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "1"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104167,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_02.log",
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "name": "cli_rejection_03",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "32"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104168,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_03.log",
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "name": "cli_rejection_04",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "64"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104169,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_04.log",
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "name": "cli_rejection_05",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "127"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104170,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_05.log",
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "name": "cli_rejection_06",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "129"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104171,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_06.log",
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "name": "cli_rejection_07",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "512"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104172,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_07.log",
+      "log_sha256": "e38629a0af65abe0f693f56c13d29f40fe5c1b44384f134fdfd32afc540772a5"
+    },
+    {
+      "name": "cli_rejection_08",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "128.5"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104173,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_08.log",
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "name": "cli_rejection_09",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        "abc"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104174,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_09.log",
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "name": "cli_rejection_10",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads",
+        ""
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104175,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_10.log",
+      "log_sha256": "45a9a12284d42000c2789db9e6391dba365c881d868e2cb7f23d1c0df3777e5c"
+    },
+    {
+      "name": "cli_rejection_11",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--block-threads"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104176,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_11.log",
+      "log_sha256": "98cdab73c60deac586c3ee08716825b6a338a769950bede714d1f0779bd92895"
+    },
+    {
+      "name": "cli_rejection_12",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--fused-layout",
+        "unknown"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104177,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_12.log",
+      "log_sha256": "ee69b2199e79e6b6f61dcb79de583294ea78c59a46852d6cebb61252555ab948"
+    },
+    {
+      "name": "cli_rejection_13",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--fused-layout",
+        ""
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104178,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_13.log",
+      "log_sha256": "ee69b2199e79e6b6f61dcb79de583294ea78c59a46852d6cebb61252555ab948"
+    },
+    {
+      "name": "cli_rejection_14",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--fused-layout"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104179,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_14.log",
+      "log_sha256": "e8c63166b90891b252c588a960fd404acef09157cdab3a03882f2b3975160c17"
+    },
+    {
+      "name": "cli_rejection_15",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--self-test",
+        "--fused-layout",
+        "contiguous256",
+        "--block-threads",
+        "256"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104180,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_15.log",
+      "log_sha256": "3c7ddbaa40f3de94ee2626fceb928e4d731ca4d261b6742bd906fbcf9b19b2ae"
+    },
+    {
+      "name": "cli_rejection_16",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--fused-layout",
+        "contiguous256",
+        "--dim",
+        "128"
+      ],
+      "expected_exit": 2,
+      "started_utc": "2026-09-06T07:34:06Z",
+      "pid": 104181,
+      "exit_code": 2,
+      "finished_utc": "2026-09-06T07:34:06Z",
+      "log": "cli_rejection_16.log",
+      "log_sha256": "66c374ac77cd404d084d674dbf89d0e530da97a4bada31df492ab9a1db2038f8"
+    },
+    {
+      "name": "csv_fp16_original",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "256",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--dtype",
+        "fp16",
+        "--fused-layout",
+        "original",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/format_fp16_original.csv"
+      ],
+      "expected_exit": 0,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:06Z",
+          "exit_code": 0,
+          "utilization_percent": "9\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T07:34:08Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:10Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:10Z",
+      "pid": 104194,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:34:10Z",
+      "log": "csv_fp16_original.log",
+      "log_sha256": "02b423fbeaf433f043409cf3a510e1b8d1769ff152521c7bb8cf689a5ad9ad0c"
+    },
+    {
+      "name": "csv_fp16_contiguous256",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "256",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--dtype",
+        "fp16",
+        "--fused-layout",
+        "contiguous256",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/format_fp16_contiguous256.csv"
+      ],
+      "expected_exit": 0,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:10Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:12Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:12Z",
+      "pid": 104206,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:34:12Z",
+      "log": "csv_fp16_contiguous256.log",
+      "log_sha256": "1325b25be71e01c596597743fea89a238092875feababe7ee8d1f8be4bfbe5e8"
+    },
+    {
+      "name": "csv_bf16_original",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "256",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--dtype",
+        "bf16",
+        "--fused-layout",
+        "original",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/format_bf16_original.csv"
+      ],
+      "expected_exit": 0,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:12Z",
+          "exit_code": 0,
+          "utilization_percent": "3\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T07:34:14Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:16Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:16Z",
+      "pid": 104223,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:34:16Z",
+      "log": "csv_bf16_original.log",
+      "log_sha256": "3d9be7db522bf61e7fb50350a3e9a34f4356f65c965abe0c0f42f0e26f68f312"
+    },
+    {
+      "name": "csv_bf16_contiguous256",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "256",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--dtype",
+        "bf16",
+        "--fused-layout",
+        "contiguous256",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/format_bf16_contiguous256.csv"
+      ],
+      "expected_exit": 0,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:16Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:18Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:18Z",
+      "pid": 104235,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:34:19Z",
+      "log": "csv_bf16_contiguous256.log",
+      "log_sha256": "b2f86fa9e485f31259cb58032d11bfe993ab71ff16d66feb1e91e31d3f8c1f7f"
+    },
+    {
+      "name": "legacy_csv_18",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "256",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/legacy_18.csv"
+      ],
+      "expected_exit": 1,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:19Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:21Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:21Z",
+      "pid": 104247,
+      "exit_code": 1,
+      "finished_utc": "2026-09-06T07:34:21Z",
+      "log": "legacy_csv_18.log",
+      "log_sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6"
+    },
+    {
+      "name": "legacy_csv_20",
+      "command": [
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+        "--benchmark",
+        "--batch",
+        "1",
+        "--seq",
+        "17",
+        "--heads",
+        "1",
+        "--dim",
+        "256",
+        "--repetitions",
+        "1",
+        "--warmup",
+        "0",
+        "--csv",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/legacy_20.csv"
+      ],
+      "expected_exit": 1,
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:21Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:23Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:23Z",
+      "pid": 104259,
+      "exit_code": 1,
+      "finished_utc": "2026-09-06T07:34:23Z",
+      "log": "legacy_csv_20.log",
+      "log_sha256": "539ef2439c95c92c2bdae6e270cda2ab5ba7d81c6eab886c28e3a60226bf00f6"
+    },
+    {
+      "name": "api_matrix",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/scripts/verify_block_threads.py",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform",
+        "--build-directory",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/compatibility",
+        "--json",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/api_matrix.json"
+      ],
+      "expected_exit": 0,
+      "python_assertion_launch": {
+        "PYTHONOPTIMIZE": "0",
+        "no_optimization_argument": true
+      },
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:34:23Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:34:25Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:34:25Z",
+      "pid": 104271,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:35:14Z",
+      "log": "api_matrix.log",
+      "log_sha256": "52c000d7d0da6cc25f1623149a88a5ffc2d74131f3b9d8ae88809752d43c688a"
+    },
+    {
+      "name": "metadata",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/scripts/verify_tensor_metadata.py",
+        "--build-directory",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/production",
+        "--json",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/metadata.json"
+      ],
+      "expected_exit": 0,
+      "python_assertion_launch": {
+        "PYTHONOPTIMIZE": "0",
+        "no_optimization_argument": true
+      },
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:35:14Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:35:16Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:35:16Z",
+      "pid": 104355,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:36:04Z",
+      "log": "metadata.log",
+      "log_sha256": "d907a90e9aab8e606e090bdfd8bd22a3ff61c00d08ad3b49184bbed1ff497aed"
+    },
+    {
+      "name": "directed_api",
+      "command": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/run_directed.py",
+        "--metadata-report",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/metadata.json",
+        "--json",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/runs/regression/directed.json"
+      ],
+      "expected_exit": 0,
+      "python_assertion_launch": {
+        "PYTHONOPTIMIZE": "0",
+        "no_optimization_argument": true
+      },
+      "idle_samples": [
+        {
+          "utc": "2026-09-06T07:36:04Z",
+          "exit_code": 0,
+          "utilization_percent": "8\n",
+          "stderr": "",
+          "all_zero": false
+        },
+        {
+          "utc": "2026-09-06T07:36:06Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        },
+        {
+          "utc": "2026-09-06T07:36:08Z",
+          "exit_code": 0,
+          "utilization_percent": "0\n",
+          "stderr": "",
+          "all_zero": true
+        }
+      ],
+      "compute_processes": "pid, process_name, used_gpu_memory [MiB]\n98584, [Not Found], 448 MiB\n",
+      "started_utc": "2026-09-06T07:36:08Z",
+      "pid": 104438,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:36:10Z",
+      "log": "directed_api.log",
+      "log_sha256": "43526c9c434747e8fee70e12ad141314d499f688e3f3cabb8383fa7de9302e05"
+    },
+    {
+      "name": "elf_cli",
+      "command": [
+        "/usr/local/cuda-12.8/bin/cuobjdump",
+        "--list-elf",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-06T07:36:10Z",
+      "pid": 104448,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:36:10Z",
+      "log": "elf_cli.log",
+      "log_sha256": "c63a84398de3853d47dee9e4c567d5f4c782de514820dbd3d48fde4d23419f6c"
+    },
+    {
+      "name": "elf_compatibility_extension",
+      "command": [
+        "/usr/local/cuda-12.8/bin/cuobjdump",
+        "--list-elf",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/compatibility/infinitensor_hadamard_block_threads_check.so"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-06T07:36:10Z",
+      "pid": 104449,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:36:10Z",
+      "log": "elf_compatibility_extension.log",
+      "log_sha256": "5d18821a418412d68cffb64e7494bce01a7d70ed0a71a4ea590331154d5f9bf4"
+    },
+    {
+      "name": "elf_production_extension",
+      "command": [
+        "/usr/local/cuda-12.8/bin/cuobjdump",
+        "--list-elf",
+        "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/production/infinitensor_hadamard_cuda.so"
+      ],
+      "expected_exit": 0,
+      "started_utc": "2026-09-06T07:36:10Z",
+      "pid": 104450,
+      "exit_code": 0,
+      "finished_utc": "2026-09-06T07:36:10Z",
+      "log": "elf_production_extension.log",
+      "log_sha256": "5d18821a418412d68cffb64e7494bce01a7d70ed0a71a4ea590331154d5f9bf4"
+    }
+  ],
+  "checks": {
+    "cpu_reference": "PASS",
+    "cli_default_cases": 1876,
+    "cli_base_rejections": 15,
+    "cli_original256_cases": 1876,
+    "cli_candidate_cases": 1876,
+    "cli_extra_rejections": 17,
+    "csv_rows": 28,
+    "legacy_csv_rejections": 2,
+    "api_matrix_cases": 1800,
+    "candidate_api_subset_cases": 200,
+    "api_thread_rejections": 27,
+    "api_layout_rejections": 5,
+    "api_original_input_rejections": 10,
+    "metadata_cases": 28,
+    "targeted_api_cases": 16
+  },
+  "binaries": {
+    "cli": {
+      "path": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/project/build/hadamard",
+      "sha256": "43da97abee4a7b24b5db8ebc43aa74e0fff8d4e017dbba40ad0e6cdd5c3f7f96"
+    },
+    "compatibility_extension": {
+      "path": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/compatibility/infinitensor_hadamard_block_threads_check.so",
+      "sha256": "8324749abedc6dbb210f511ec376cda66026b588ceb2275b4c0bedc5a83bae46"
+    },
+    "production_extension": {
+      "path": "/data/infinitensor-2026/experiments/nvidia-fused-integration-20260906/build/production/infinitensor_hadamard_cuda.so",
+      "sha256": "eb3f03f28b7f993bfc3351a8afc1022ccc5f93301c95ed3163fd437f6e1f3468"
+    }
+  },
+  "python_execution": {
+    "assertions_enabled": true,
+    "optimize_flag": 0,
+    "PYTHONOPTIMIZE": "0",
+    "child_PYTHONOPTIMIZE": "0"
+  },
+  "run_manifest": {
+    "files": {
+      "project/Makefile": {
+        "sha256": "1a5c6597ace1047db5e44055b4e2f728dcf67af892ff1b5e81136ecf77b35f60",
+        "size": 1010
+      },
+      "project/include/contiguous256.cuh": {
+        "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+        "size": 4656
+      },
+      "project/include/kernels.cuh": {
+        "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+        "size": 6024
+      },
+      "project/include/reference.hpp": {
+        "sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+        "size": 3572
+      },
+      "project/src/main.cu": {
+        "sha256": "68f4bc9054a088ad6eceb272afa8f395b54b8b6807b806a03d9e5e743bb2e1f2",
+        "size": 32237
+      },
+      "project/src/torch_binding.cu": {
+        "sha256": "c47b511beaac1bbee10cb9bddd4fd31b90a5a6042c43841cb9361f6b73dcd626",
+        "size": 7323
+      },
+      "project/src/tune_launch.cu": {
+        "sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+        "size": 11576
+      },
+      "project/scripts/build_torch_extension.py": {
+        "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+        "size": 2486
+      },
+      "project/scripts/compare_reference.py": {
+        "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+        "size": 21015
+      },
+      "project/scripts/run_validation.py": {
+        "sha256": "986ab36b0ba347ef3bfdabbf133f9c7123bd587ffa21aced76091f033136c55a",
+        "size": 3433
+      },
+      "project/scripts/verify_block_threads.py": {
+        "sha256": "ee54c88308e7fd19d016cd3faac12920f2da205a2d85c89fdf6f63a6212d1335",
+        "size": 8742
+      },
+      "project/scripts/verify_tensor_metadata.py": {
+        "sha256": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12",
+        "size": 5727
+      },
+      "project/tests/cpu_reference_test.cpp": {
+        "sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+        "size": 1478
+      },
+      "source_manifest.json": {
+        "sha256": "ae562cf54a65f306650945e73a6985eb6989099b17cbeba3ea2f607debedb932",
+        "size": 6354
+      },
+      "working_diff.patch": {
+        "sha256": "3c63b9e2fafb9d05c853b87cc09a8ac179c93c31ec586d87ee09c978bdac8d67",
+        "size": 34877
+      },
+      "working_status.txt": {
+        "sha256": "6962befc5444ec1d437555966daf6f0450fd224f5355fdd6108098f746aebd11",
+        "size": 332
+      },
+      "protocol.json": {
+        "sha256": "9b54ac20f7ab2d3edd7b80c5f16bac13dfe945b6b654a69a3bb45a1830eb1da4",
+        "size": 6329
+      },
+      "snapshot_sources.py": {
+        "sha256": "3d09e8ccdf0a1e05e06901bb0dba714ba0b6a70b5c903a4441870504f19dfe55",
+        "size": 3243
+      },
+      "measurement_helpers.py": {
+        "sha256": "11951ea749add5ecc5426c3b900451ec8e263d07718ff3031d58ffa0dd7c0304",
+        "size": 7620
+      },
+      "helper_provenance.json": {
+        "sha256": "e098effb22fad23a3552be0ee10cc1a0cc064c9e79cc5befe1aa8dfd0d131268",
+        "size": 194
+      },
+      "integration_checks.py": {
+        "sha256": "10457a53ace5f2b7361b42a601ad396a9de26d46e0327aa4622012c171356507",
+        "size": 4087
+      },
+      "run_directed.py": {
+        "sha256": "7570979edaa1d60d52b76985f2c52f760645c398674d5033585e2fcf43dad9bd",
+        "size": 2585
+      },
+      "run_regressions.py": {
+        "sha256": "4d0d8d98e8bdc999cee5dd5f9fe147558efdc39820958090a148375630457ac7",
+        "size": 12519
+      },
+      "run_holdout.py": {
+        "sha256": "30478d14f5460cf184ccc65d83786ddeb45a2e73ef4125230f036dea5ee55dc1",
+        "size": 6836
+      },
+      "run_holdout_suite.py": {
+        "sha256": "7bc92f0a0f44a16a29f064b03df36cb7676d21f01a6290a98fb16ddf99320ddc",
+        "size": 3096
+      },
+      "analyze_holdout.py": {
+        "sha256": "2ed704fafca6e0c823e618784d5307540e20a6d47b4dc4d080007c46195ad998",
+        "size": 23038
+      },
+      "freeze_manifest.py": {
+        "sha256": "c7fa4241569bcd4e35c29fa19cd9fa32d15b7d7190679c70c061eed3cfa8fd74",
+        "size": 1429
+      }
+    }
+  },
+  "source_manifest_sha256": "ae562cf54a65f306650945e73a6985eb6989099b17cbeba3ea2f607debedb932",
+  "protocol_sha256": "9b54ac20f7ab2d3edd7b80c5f16bac13dfe945b6b654a69a3bb45a1830eb1da4",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "holdout_allowed": true,
+  "finished_utc": "2026-09-06T07:36:10Z",
+  "exit_code": 0
+}

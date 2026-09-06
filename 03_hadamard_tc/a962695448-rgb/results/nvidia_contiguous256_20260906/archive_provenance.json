@@ -1,0 +1,14 @@
+{
+  "source_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "protocol_sha256": "44276cd0ab030a59ca000f1d393825e7ed1849842704fe47f8b9cfaa48932c06",
+  "run_manifest_sha256": "15e5dd7bfb4d14360953c5cb1475670bcf653b0f0bc0054eb5949315a913430b",
+  "transfer_zip_sha256": "f7d5720b6a753313476b3cc6a3c6f27907e13cd2ef308bb0d45f1d36b9f76b3a",
+  "transfer_manifest_sha256": "024555224cc000d33c32a4075d5c13fd873c679f7d4a944c8c69c089e0b073ec",
+  "raw_files": 38,
+  "all_raw_bytes_unchanged": true,
+  "redactions": [],
+  "binaries_included": false,
+  "offline_comparison_and_samples_csv_byte_identical": true,
+  "post_timing_diagnostic": "raw/diagnostics/negative_view_probe.json",
+  "diagnostic_is_separate_from_benchmark": true
+}

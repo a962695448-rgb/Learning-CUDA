@@ -1,0 +1,229 @@
+{
+  "protocol_id": "nvidia_fused_integration_20260906_v2_reference_forward_certificate",
+  "status_at_freeze": "CPU_PREPARATION_NOT_RUN",
+  "source_state": "217c30ff5e78842cd5809de6bf78ee8a7f04fc54 plus reviewed working bytes in source_manifest.json and working_diff.patch",
+  "reference_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+  "python_assertions": "Controllers and workers explicitly refuse __debug__=False or sys.flags.optimize!=0 before validation/GPU import; record flags and PYTHONOPTIMIZE, launch children with PYTHONOPTIMIZE=0 and no-O/-OO.",
+  "hardware": {
+    "required_name_contains": "RTX 4090",
+    "required_sm": [
+      8,
+      9
+    ],
+    "compile_arch": "8.9",
+    "max_jobs": "1"
+  },
+  "production_contract": {
+    "default_block_threads": 128,
+    "supported_block_threads": [
+      128,
+      256
+    ],
+    "default_fused_layout": "original",
+    "optional_fused_layout": "contiguous256",
+    "candidate_scope": "hadamard_int4 only,N256,block128; ordinary transform and quantize_only unchanged; no automatic dispatch",
+    "lazy_negative_view": "All three APIs must reject is_neg with resolve_neg guidance; explicitly materialized inputs remain valid."
+  },
+  "regression": {
+    "cpu": "Run existing make cpu-test against snapshot reference.hpp",
+    "cli_default": "Unmodified scripts/run_validation.py: full1876 default original/128 cases and15 invalid argument cases, no optional benchmark matrix",
+    "cli_original256": "--self-test --block-threads256: full1876 original matrix",
+    "cli_candidate": "--self-test --block-threads128 --fused-layout contiguous256: full1876 matrix, candidate fused used only for212 N256 inputs, otherN use original",
+    "cli_extra_rejections": {
+      "thread_values": [
+        -1,
+        0,
+        1,
+        32,
+        64,
+        127,
+        129,
+        512,
+        "128.5",
+        "abc",
+        ""
+      ],
+      "missing_thread_value": true,
+      "layout_cases": [
+        "unknown",
+        "empty",
+        "missing_value",
+        "candidate_wrong_threads",
+        "candidate_wrong_benchmark_dimension"
+      ],
+      "expected_exit": 2,
+      "count": 17
+    },
+    "cli_csv": "Four format-only smoke benchmarks, FP16/BF16 x original/candidate atM17,N256,scale1,warmup0,repetitions1. Assert21 columns, mean_ms==mean_us/1000, fused_layout only onfused rows and correct thread labels. Preserve28 raw rows but do not use them as optimization performance evidence. Reject existing18/20-column CSVs with exit1 and unchanged bytes.",
+    "api_matrix": "Unmodified verify_block_threads.py: original1800 Dao cases, default/128/256 bitwise equality; candidate fused checked on the same200 N256 cases, not200 new cases;27 invalid thread values,5 invalid layout arguments,10 original input rejections; existing non-default-stream transform check",
+    "metadata": "Unmodified verify_tensor_metadata.py:28 combinations,24 original interfaces plus4 candidate fused; lazy rejection and materialized positive control",
+    "targeted_api": {
+      "dtypes": [
+        "fp16",
+        "bf16"
+      ],
+      "shapes": [
+        [
+          17,
+          256
+        ],
+        [
+          1,
+          3,
+          7,
+          256
+        ]
+      ],
+      "scales": [
+        1.0,
+        0.0625
+      ],
+      "pointer_mod16": [
+        0,
+        2
+      ],
+      "conditions": 16,
+      "checks": "Construct and call on non-default stream; old positional3-argument fused equals explicit original, candidate equals original/split bitwise, CPU FP32 quantization and sampled FP64 reference, input/guard unchanged. Existing1/2-argument checks remain in original script."
+    },
+    "binary_identity": "Compatibility script uses its own extension name/build directory; record its SHA separately. Metadata,targeted tests and all holdout processes reuse the production extension from one dedicated build directory and must agree on its binary SHA.",
+    "counting": "Repeated1876 configurations are three execution modes, not5628 distinct inputs. Original1800 and its200 N256 subset,28 metadata and16 directed conditions are separate scopes. No old performance measurements imported."
+  },
+  "holdout": {
+    "rows": [
+      2,
+      3,
+      16,
+      18,
+      63,
+      65,
+      255,
+      256,
+      258,
+      4095,
+      4097,
+      16383,
+      16385
+    ],
+    "dims": [
+      256
+    ],
+    "dtypes": [
+      "fp16",
+      "bf16"
+    ],
+    "normalized": [
+      false,
+      true
+    ],
+    "expected_configurations": 52,
+    "block_threads": 128,
+    "mode": "fused_int4_only",
+    "layouts": [
+      "original",
+      "contiguous256"
+    ],
+    "exclude_initial_rows": [
+      1,
+      17,
+      64,
+      257,
+      4096,
+      16384
+    ],
+    "correctness": "Same52 configurations and7patterns/seeds x0/2-byte offset: all-elements original transform vs fixed Dao with unchanged strict0.01/0.05 limits; original/candidate/split and independent CPU packed/scales remain bit-exact; inputs/guards unchanged. On first/middle/last sample rows, record FP64 rounded/unrounded differences and ULP and require the exact forward-error certificate below.728 input conditions perprocess remain unchanged.",
+    "patterns_and_seeds": {
+      "normal": [
+        2026,
+        95811
+      ],
+      "uniform": [
+        2026,
+        95811
+      ],
+      "outlier": [
+        2026,
+        95811
+      ],
+      "zeros": [
+        2026
+      ]
+    },
+    "strict_abs_limit": {
+      "fp16": 0.01,
+      "bf16": 0.05
+    },
+    "scale": "1 or exactly1/16, identical for both methods; no Dao denominator for fused timing"
+  },
+  "timing": {
+    "processes": 3,
+    "groups": 5,
+    "api_warmup_calls": 25,
+    "captured_calls": 64,
+    "replays_per_group": 20,
+    "graph_warmup_replays": 5,
+    "input": "aligned normal seed2026, same tensor shared by both layouts",
+    "method_order": "cyclic offset(run_index-1+case_index+group) across original/contiguous256",
+    "configuration_order": "Random(92700+run_index) shuffle of fixed52 configurations",
+    "outputs": "64 independent retained output tuples per privateGraph, every component pointer disjoint within/across methods; allcaptured bytes match eager before/after timing",
+    "units": "Keep raw CUDA event intervals ms and percall ms/us; median5groups perprocess. Includes captured GPU work and amortized replay scheduling, not isolated kernel/eager/E2E latency."
+  },
+  "decision": {
+    "precondition": "Exact reused regression/source/binary identity and the new validation manifest verified. V2 is separate and requires independent review/freeze before execution; original v1 failure remains immutable.",
+    "stable_improvement": "At least5% reduction in eachof3processes vs same-run original",
+    "regression_gate": "Report every case with any>3% regression; retain all negative cases, no automatic shape dispatch or arbitrary-M/crossGPU guarantee",
+    "no_scope_expansion": "Only52 new M/dtype/scale fused configurations; do not merge initial24 samples or time transform/standalone quantization in holdout."
+  },
+  "resource_policy": "Await coordinator window after other GPU work. Single concurrency, existing environment, separatebuild/cache under thisdirectory. Before each GPU subprocess require two0% NVML samples2s apart within60s, recordprocesses and exits; never stop unknown PIDs or claim exclusive tenancy. Preserve all failures and stop dependent work.",
+  "revision": {
+    "original_protocol_sha256": "9b54ac20f7ab2d3edd7b80c5f16bac13dfe945b6b654a69a3bb45a1830eb1da4",
+    "original_failure_sha256": "91b494c8c825b42ba4fad1c60c1283ea58636359e30f3ca7b462e12b935a75c1",
+    "diagnostic_sha256": "f888b6470f21a17f785a3ee989781d71aaf7499150440623d2002eaf005b731f",
+    "original_result": "FAIL_BEFORE_TIMING; retain original49 complete configurations/688 checks and zero benchmark samples. Never relabel v1 as PASS.",
+    "reason": "Official FP16/BF16 thresholds apply to reference implementation output. The v1 auxiliary FP64-rounded threshold failed at a storage-grid midpoint despite originalGPU=Dao=CPUstageFP32. Replace only the auxiliary gate by a derived exact forward-error certificate, while retaining all matrix entries, seeds, primary reference limits and exact INT4 checks.",
+    "witness": {
+      "rows": 16383,
+      "dim": 256,
+      "dtype": "fp16",
+      "scale": 1,
+      "pattern": "normal",
+      "seed": 95811,
+      "row": 8191,
+      "column": 230,
+      "gpu_bits": "cc7e",
+      "exact_rounded_bits": "cc7d",
+      "rounded_gap": 0.015625
+    },
+    "source_or_math_changed": false,
+    "matrix_or_seed_or_timing_changed": false
+  },
+  "reused_regression": {
+    "report_relative_to_integration_root": "runs/regression/regression_report.json",
+    "report_sha256": "c525cc8371a6c9faa514243613b9e62e769f17ce29d20e8fbebb564b56704ace",
+    "source_manifest_sha256": "ae562cf54a65f306650945e73a6985eb6989099b17cbeba3ea2f607debedb932",
+    "original_run_manifest_sha256": "9ebb353585ca881f1a59864e1e097654be3f6886de7f3ddea1ef043ab6922ee9",
+    "production_binary_sha256": "eb3f03f28b7f993bfc3351a8afc1022ccc5f93301c95ed3163fd437f6e1f3468",
+    "reference_binary_sha256": "2e38b886e3fc6c31c3b837a4fd7354e844dd81d4a20b30f39fbd0c351d8620a4",
+    "policy": "Reuse actual full regression PASS only after verifying the original27 file manifest, all13 source bytes, exact report SHA and actual loaded production binary. Compatibility binary remains a separate identity; no rebuild or source rewrite is required."
+  },
+  "sample_certificate": {
+    "rows": "sorted unique{0,M//2,M-1}",
+    "mathematical_reference": "Decode actual input16-bit values, lift eachrow to a common power-of-two denominator, and compute integer FWHT8stages plus exact rational scale. Independently retain FP64 dense matrix output and its deviation from exact integer result; never add that FP64 deviation to the FP32 hard bound.",
+    "cpu_fp32": "Explicit NumPy float32 add/sub at eachof8stages and one float32 scale multiplication; independently apply exact integer nearest-even FP16/BF16 rounding. Every sample storage bit must equal actual GPU transform output.",
+    "u32": "2^-24",
+    "eta32": "2^-149",
+    "gamma9": "9u32/(1-9u32)",
+    "E32": "gamma9*abs(scale)*sum(abs(input)) + (eta32/2)*(abs(scale)*255*(1+u32)^8+1)",
+    "derivation": "Each output depends on256 input leaves and255 add/sub nodes, with atmost8 additions/subtractions plus1scale rounding per input path. RN32 relative error products are bounded by gamma9; each add/sub absolute gradual-underflow contribution is atmosteta32/2 and passes through atmost8 remaining rounding factors, plus the final scale underflow contribution.",
+    "hard_gates": [
+      "all finite, no intermediate/output overflow, modeled IEEE RN32 and gradual underflow",
+      "abs(CPUpre-exact_math)<=E32 using exact Fraction",
+      "RN_dtype(CPUpre) raw bits equal GPU sample raw bits",
+      "delta_storage=abs(RN_dtype(CPUpre)-CPUpre) recorded separately",
+      "abs(GPUstored-exact_math)<=E32+delta_storage using exact Fraction"
+    ],
+    "display": "Keep exact fractions for L1,gamma,bounds/errors. If bounds are exported as float, round outward with nextafter toward+infinity; displayed values do not decide gates.",
+    "diagnostics_only": "Retain old FP64->FP32->dtype rounded error, directly correctly-rounded exact-math dtype error, unrounded FP64 error, local ULP and rounding-route differences. No fixed0.01/0.05 gate on the independently rounded FP64 auxiliary result.",
+    "assumptions": "FP16/BF16 embedding in FP32 is exact; finite inputs; eight-stage FWHT then finite positive scale; IEEE round-to-nearest-even arithmetic and gradual FP32 underflow; no fast-math/FTZ-enabled build. Fail explicitly if required model conditions cannot be established."
+  },
+  "reference_input_alignment": "For offset2 correctness only, fixed Dao receives an aligned clone verified bit-identical to actual input; both tested fused layouts receive the real offset view. Timing uses one aligned shared input, with no clone measured."
+}

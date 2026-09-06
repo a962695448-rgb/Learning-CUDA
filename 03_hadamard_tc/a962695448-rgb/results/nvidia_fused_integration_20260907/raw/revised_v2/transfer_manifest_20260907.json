@@ -1,0 +1,119 @@
+{
+  "files": {
+    "protocol_v2.json": {
+      "sha256": "725e860f23704eb69e03037d2c006974c1ee29cf59569b5c1145b45bc752d299",
+      "size": 12257
+    },
+    "prepare_protocol.py": {
+      "sha256": "e17abd5c0073361e4da833a134697255511a3eb23e4f2779bbd77cd66bed98bc",
+      "size": 6681
+    },
+    "numeric_certificate.py": {
+      "sha256": "5a7b70c55fe01ee0433614524bc9f62596d8478c06cbcd2a9c2a4cddbaa642e8",
+      "size": 21523
+    },
+    "certificate_notes.md": {
+      "sha256": "6cf32f45fef64606a3272bcfc4e82d67c7e546b0de91484ce0fc07227eee326b",
+      "size": 7355
+    },
+    "checks_v2.py": {
+      "sha256": "a557674a74d3c35ad35af4ac4975052ef443756623bc2862528ceab70eaf589c",
+      "size": 7367
+    },
+    "run_v2.py": {
+      "sha256": "bd45b86add484d93f5327f21ade6a6b4b6e8b0bac44af7dff5c85b32be27f8da",
+      "size": 8341
+    },
+    "run_suite_v2.py": {
+      "sha256": "8516efb24791c9e14e5b65b79a54e63680c63386a77ebd07e9b28a759010be81",
+      "size": 3339
+    },
+    "analyze_v2.py": {
+      "sha256": "ca5af6eb1d607d428a69c36d0bb356cc7c751ee73c1371cbb45824fc4a744ef1",
+      "size": 30342
+    },
+    "freeze_v2.py": {
+      "sha256": "470d83ccae31a6d481e89634cd6e17d0be8c571fa6aa7193a74171388e9f264e",
+      "size": 2563
+    },
+    "README.md": {
+      "sha256": "03c014e1cfa67be0f72c4899e92a6ebb93772a4c8b5283883934e92419773d25",
+      "size": 3386
+    },
+    "manifest_v2.json": {
+      "sha256": "04a7088f021b51d9553a654a4779b885c4c991d61aa27d96fdb56a804c94655a",
+      "size": 1714
+    },
+    "session_restart.json": {
+      "sha256": "47ae04a6c9a6be89732e62238055cb74517ce46a16025e19e2e888fd31a95853",
+      "size": 1556
+    },
+    "session_final.json": {
+      "sha256": "5504ca5d68726488eee8277784df5d6eb2e779d600956922eb83f0dc5c93e44b",
+      "size": 314
+    },
+    "controller_20260907.log": {
+      "sha256": "07bcc1fec90dff2dfb9be390a73b98da51da0b5545d4bf78a87b8df9229dbaa1",
+      "size": 3619
+    },
+    "analysis_20260907.log": {
+      "sha256": "e2ebce934538cf8a3d41d58f5fdf963ae0b5445b3a4aec13eb42f33ddc617585",
+      "size": 227
+    },
+    "runs_20260907/run1.json": {
+      "sha256": "3a3d0f229457625e0455f5b5c08f31463cc5d54fd1b25cf4f57e2f721d375690",
+      "size": 16490479
+    },
+    "runs_20260907/run1.log": {
+      "sha256": "da1fae417f190bb8f449263b08d297c28478123855f337c950dc5385147296d9",
+      "size": 12089
+    },
+    "runs_20260907/run1_sample_buffers.json": {
+      "sha256": "5feef3e46129c4a9885d2c6bcde2a2e067b0c7b90a33228e0bd90a3b272eb41e",
+      "size": 2150333
+    },
+    "runs_20260907/run2.json": {
+      "sha256": "6ebee713f3127b0600e5921eecceab2fee913d476eebf07aeeced8089b01a594",
+      "size": 16490519
+    },
+    "runs_20260907/run2.log": {
+      "sha256": "8dfa72c35bb0fd5beb09c2fea5be4547a13fb511ee3536b22361e440d89d620e",
+      "size": 12089
+    },
+    "runs_20260907/run2_sample_buffers.json": {
+      "sha256": "5feef3e46129c4a9885d2c6bcde2a2e067b0c7b90a33228e0bd90a3b272eb41e",
+      "size": 2150333
+    },
+    "runs_20260907/run3.json": {
+      "sha256": "0cd46b717e1401d064605f45bba154a9016b2cf2afc06cfb52e0d4f7c4b3d4df",
+      "size": 16490478
+    },
+    "runs_20260907/run3.log": {
+      "sha256": "dffc37a16ec4539fce6d317bd09423191ce7c0991ef457a32ba829a48a6f1d65",
+      "size": 12089
+    },
+    "runs_20260907/run3_sample_buffers.json": {
+      "sha256": "5feef3e46129c4a9885d2c6bcde2a2e067b0c7b90a33228e0bd90a3b272eb41e",
+      "size": 2150333
+    },
+    "runs_20260907/suite_status_v2.json": {
+      "sha256": "5c3d27ab3e56ec00d58242d34527066233195752a9b6a864de22a54193360e2b",
+      "size": 4579
+    },
+    "derived_20260907/analysis.json": {
+      "sha256": "bd122794ca5b32206234070b7fa44050ce7dbc84df771968502f13c426f98f5e",
+      "size": 10898
+    },
+    "derived_20260907/comparison.csv": {
+      "sha256": "dbb58dddf378ed1d70c2644fc8be4b0431b3b4ff28c8c48c00e3cc909270efd3",
+      "size": 36359
+    },
+    "derived_20260907/samples.csv": {
+      "sha256": "f340192ecc05169a459588fb77eefc89333b81d121d5725aeeb52fb413295fba",
+      "size": 220068
+    }
+  },
+  "base_source_manifest_sha256": "ae562cf54a65f306650945e73a6985eb6989099b17cbeba3ea2f607debedb932",
+  "v1_failure_preserved": true,
+  "current_host": "6c79eb7695b5"
+}

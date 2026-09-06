@@ -1,0 +1,6 @@
+mkdir -p build
+/usr/local/cuda-12.8/bin/nvcc -O3 -std=c++17 -lineinfo -arch=sm_89 -Iinclude src/main.cu -o build/hadamard
+mkdir -p build
+g++ -O3 -std=c++17 -Iinclude tests/cpu_reference_test.cpp -o build/cpu_reference_test
+./build/cpu_reference_test
+PASS: 9 matrix-oracle/involution cases, rounding, packing, zero, invalid shape
