@@ -1,0 +1,32 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/infinitensor-2026/experiments/nvidia-small-batch-20260906/build/build.ninja...
+Building extension module hadamard_small_batch_thread_config_20260906...
+Using envvar MAX_JOBS (1) as the number of workers...
+[1/2] /usr/local/cuda-12.8/bin/nvcc --generate-dependencies-with-compile --dependency-output torch_binding_thread_config.cuda.o.d -DTORCH_EXTENSION_NAME=hadamard_small_batch_thread_config_20260906 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -I/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/sources -isystem /usr/local/lib/python3.12/dist-packages/torch/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/TH -isystem /usr/local/lib/python3.12/dist-packages/torch/include/THC -isystem /usr/local/cuda-12.8/include -isystem /usr/include/python3.12 -D_GLIBCXX_USE_CXX11_ABI=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -std=c++17 -lineinfo -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr -c /data/infinitensor-2026/experiments/nvidia-small-batch-20260906/sources/torch_binding_thread_config.cu -o torch_binding_thread_config.cuda.o 
+[2/2] c++ torch_binding_thread_config.cuda.o -shared -L/usr/local/lib/python3.12/dist-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda-12.8/lib64 -lcudart -o hadamard_small_batch_thread_config_20260906.so
+Loading extension module hadamard_small_batch_thread_config_20260906...
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": false, "scale": 1.0, "timed_configurations": 1}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0, "timed_configurations": 2}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0, "timed_configurations": 3}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": true, "scale": 0.125, "timed_configurations": 4}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": true, "scale": 0.125, "timed_configurations": 5}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": true, "scale": 0.125, "timed_configurations": 6}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 7}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": false, "scale": 1.0, "timed_configurations": 8}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0, "timed_configurations": 9}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": true, "scale": 0.125, "timed_configurations": 10}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": false, "scale": 1.0, "timed_configurations": 11}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 12}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": false, "scale": 1.0, "timed_configurations": 13}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": true, "scale": 0.125, "timed_configurations": 14}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 15}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": false, "scale": 1.0, "timed_configurations": 16}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0, "timed_configurations": 17}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": false, "scale": 1.0, "timed_configurations": 18}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 19}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 20}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": true, "scale": 0.125, "timed_configurations": 21}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0, "timed_configurations": 22}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 23}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0, "timed_configurations": 24}
+{"status": "PASS", "summary": {"unique_configurations": 24, "correctness_input_cases": 168, "graph_configurations": 24, "eager_configurations": 24}, "output": "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/runs/screen/run1.json"}

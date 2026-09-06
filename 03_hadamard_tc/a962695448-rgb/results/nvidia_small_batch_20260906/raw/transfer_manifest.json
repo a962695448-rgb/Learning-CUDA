@@ -1,0 +1,148 @@
+{
+  "files": {
+    "protocol.json": {
+      "sha256": "843b462525b8ab9443404703b282a985eba7e6908b5379fb341cd2ecd4956e38",
+      "size": 4464
+    },
+    "source_manifest.json": {
+      "sha256": "dd881f3cf79c75c9832cfd3ea6d4ddec9f427a18e074630ae81ff334172bd43d",
+      "size": 1532
+    },
+    "run_experiment.py": {
+      "sha256": "eeeb315a6761c6ca3acd3c9fd0e09741cfdd314ff0a3f505a956ae485d4448fc",
+      "size": 19317
+    },
+    "run_suite.py": {
+      "sha256": "0e0492edf17c532c684683f7e701c3998e55d2b5b436d9ec8791bc1ef20f59bf",
+      "size": 3219
+    },
+    "analyze_runs.py": {
+      "sha256": "2eb2384562c1a5290d6615c8a1507ca8df5b4ceb719a1e80787c3a02a4f9917b",
+      "size": 25612
+    },
+    "prepare_sources.py": {
+      "sha256": "71eb30c2d072ddbd6f296492802bac3f04a9d1b62b61b82c991b8981f8aff0ce",
+      "size": 2618
+    },
+    "freeze_manifest.py": {
+      "sha256": "ab24aeafe90a8f26c931ccc6f69f62c41609db78d562b021c1dfac2744102564",
+      "size": 993
+    },
+    "thread_config.patch": {
+      "sha256": "fee60e41062e3d432f3f4cf1094dad46cf6c91959b613fdfdd59eb4f8711e81a",
+      "size": 2027
+    },
+    "sources/build_torch_extension.py": {
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "size": 2486
+    },
+    "sources/compare_reference.py": {
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "size": 21015
+    },
+    "sources/kernels.cuh": {
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "size": 6024
+    },
+    "sources/torch_binding_original.cu": {
+      "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "size": 5752
+    },
+    "sources/torch_binding_thread_config.cu": {
+      "sha256": "faf3ab85255f8dde518a306c5024d018de57dc3cc2a4e588c43263aedb7f9018",
+      "size": 5830
+    },
+    "run_manifest.json": {
+      "sha256": "d4aeb9caf8d71c575f07e3b0c909ab954b9d580797db42f72fed06dd35e5f88d",
+      "size": 1920
+    },
+    "README.md": {
+      "sha256": "2f4676773a26a561ef5e3b6d8a653eab1ca866c521ba0f5557177113e19d3235",
+      "size": 4317
+    },
+    "continue_suite.py": {
+      "sha256": "e1a557a6dc4ec0949ed80d90a52bed9d5787af5cd0ac2816d581c57a9e706756",
+      "size": 4534
+    },
+    "screen_suite.log": {
+      "sha256": "8531b8b7454dc6155018a111824ef0654a0a467efe0b1cfd036524a97080c869",
+      "size": 1176
+    },
+    "screen_resume.log": {
+      "sha256": "fe5428ffef2259e54fd02f644fd4a6c2a6b583d4b46387226f3a9a06a173f944",
+      "size": 2451
+    },
+    "screen_analysis.log": {
+      "sha256": "3e8ed45782157de05e0983a107f23d5059b469a4960d40e7a4715bc5032b8aa2",
+      "size": 198
+    },
+    "build/build.ninja": {
+      "sha256": "674f22fbee399c651ca85912742613947bc7e1518ee1ce95b22ded53ba28172b",
+      "size": 2728
+    },
+    "build_provenance.json": {
+      "sha256": "4d7c8ae3490e280c0f53da72d3b7e6d580ad48609ad0012e4c8fa21f9cd0f136",
+      "size": 450
+    },
+    "execution_note.json": {
+      "sha256": "978b583ed5f63d1b0522728b1b0edd5f9ce773edde2901b2d6c041c76da2b614",
+      "size": 1473
+    },
+    "runs/screen/run1.json": {
+      "sha256": "1e9151c7cffc8f7a8625bc19c726ee2c3c76cf6de2ffe7e90dbf9b3ed17034b9",
+      "size": 296306
+    },
+    "runs/screen/run1.log": {
+      "sha256": "06786d69b6550fd25899da2b19f1a66eab74fe72e9e58c675d34a2145e2ba3b8",
+      "size": 5362
+    },
+    "runs/screen/run2.json": {
+      "sha256": "1ea0dae5eb64921d38625e2493ebf47606094b1e7bea394569f8bba1774c6a94",
+      "size": 3816
+    },
+    "runs/screen/run2.log": {
+      "sha256": "5b8b0d5e4f196cf039f7986b29573297b5a12e40ff7ff47c77d9490afe8c7d27",
+      "size": 485
+    },
+    "runs/screen/suite_status.json": {
+      "sha256": "57503847fce26ac53961edb2037a70ed3a32b9411a9a84898836d278c05b7571",
+      "size": 1829
+    },
+    "runs/screen_resume/continuation_status.json": {
+      "sha256": "de0df13c0c6b23b56303453c610f1312bb8f7e1851e580e6d3e5f66d4f7e1aef",
+      "size": 3153
+    },
+    "runs/screen_resume/run2.json": {
+      "sha256": "5dfa6fb4505fee405adff4d2936e618b4148d5ae30c90e767c04f9554181f0f1",
+      "size": 296349
+    },
+    "runs/screen_resume/run2.log": {
+      "sha256": "a0bea6c0c403fab76d30484dbf912a829d704c86942388a93b7b562c4bb02762",
+      "size": 3810
+    },
+    "runs/screen_resume/run3.json": {
+      "sha256": "5a6e1f5b8e5ff09d30b32e22cbde079730cf7697735d8e9e5f4ae50eaff90479",
+      "size": 296269
+    },
+    "runs/screen_resume/run3.log": {
+      "sha256": "a65eefc7591b167a85d9c0dd364ed752e672ca6c614b7ea70afbf59c8971179e",
+      "size": 3810
+    },
+    "derived/screen/analysis.json": {
+      "sha256": "6776740f303213ddebab34b887321f3712fe9e71a8809247be1af17f0488cd27",
+      "size": 346518
+    },
+    "derived/screen/comparison.csv": {
+      "sha256": "002de78a6c0c46b29d907b36bc8e0ed638d7fcdaa7a9c8caf812dac9ea8779fb",
+      "size": 130078
+    },
+    "derived/screen/samples.csv": {
+      "sha256": "a45d3913e118d4f0aa8d36eb1f59b36d0fd62722933a4594297945db5cd4a713",
+      "size": 441179
+    },
+    "derived/screen/selection.json": {
+      "sha256": "27dc556d90a549f235a0e38fea4105a12ab84b83a2a1dcaa47255b8172f3f8da",
+      "size": 1087
+    }
+  }
+}

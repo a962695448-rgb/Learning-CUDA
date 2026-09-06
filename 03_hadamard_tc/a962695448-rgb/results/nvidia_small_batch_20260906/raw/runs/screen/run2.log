@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/run_experiment.py", line 290, in main
+    raise RuntimeError("GPU activity observed before job; coordinate rather than stopping other processes")
+RuntimeError: GPU activity observed before job; coordinate rather than stopping other processes
+
+{"status": "FAIL", "summary": null, "output": "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/runs/screen/run2.json"}

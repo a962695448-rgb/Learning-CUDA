@@ -1,0 +1,56 @@
+{
+  "files": {
+    "protocol.json": {
+      "sha256": "843b462525b8ab9443404703b282a985eba7e6908b5379fb341cd2ecd4956e38",
+      "size": 4464
+    },
+    "source_manifest.json": {
+      "sha256": "dd881f3cf79c75c9832cfd3ea6d4ddec9f427a18e074630ae81ff334172bd43d",
+      "size": 1532
+    },
+    "run_experiment.py": {
+      "sha256": "eeeb315a6761c6ca3acd3c9fd0e09741cfdd314ff0a3f505a956ae485d4448fc",
+      "size": 19317
+    },
+    "run_suite.py": {
+      "sha256": "0e0492edf17c532c684683f7e701c3998e55d2b5b436d9ec8791bc1ef20f59bf",
+      "size": 3219
+    },
+    "analyze_runs.py": {
+      "sha256": "2eb2384562c1a5290d6615c8a1507ca8df5b4ceb719a1e80787c3a02a4f9917b",
+      "size": 25612
+    },
+    "prepare_sources.py": {
+      "sha256": "71eb30c2d072ddbd6f296492802bac3f04a9d1b62b61b82c991b8981f8aff0ce",
+      "size": 2618
+    },
+    "freeze_manifest.py": {
+      "sha256": "ab24aeafe90a8f26c931ccc6f69f62c41609db78d562b021c1dfac2744102564",
+      "size": 993
+    },
+    "thread_config.patch": {
+      "sha256": "fee60e41062e3d432f3f4cf1094dad46cf6c91959b613fdfdd59eb4f8711e81a",
+      "size": 2027
+    },
+    "sources/build_torch_extension.py": {
+      "sha256": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+      "size": 2486
+    },
+    "sources/compare_reference.py": {
+      "sha256": "aca622b5768141b8f0da6d264e693d632f1f25ad6b64e8abc222cb099a704171",
+      "size": 21015
+    },
+    "sources/kernels.cuh": {
+      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+      "size": 6024
+    },
+    "sources/torch_binding_original.cu": {
+      "sha256": "3d1570ab1619a7e9ca56e5233d803d0e4ae4e19f9c69b503cca9516a37f99eec",
+      "size": 5752
+    },
+    "sources/torch_binding_thread_config.cu": {
+      "sha256": "faf3ab85255f8dde518a306c5024d018de57dc3cc2a4e588c43263aedb7f9018",
+      "size": 5830
+    }
+  }
+}

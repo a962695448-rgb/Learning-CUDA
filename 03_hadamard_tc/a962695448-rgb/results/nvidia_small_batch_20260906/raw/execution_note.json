@@ -1,0 +1,25 @@
+{
+  "primary_runs": [
+    "runs/screen/run1.json",
+    "runs/screen_resume/run2.json",
+    "runs/screen_resume/run3.json"
+  ],
+  "retained_non_primary": [
+    "runs/screen/run2.json",
+    "runs/screen/run2.log",
+    "runs/screen/suite_status.json"
+  ],
+  "non_primary_reason": "Second process of immediate scheduler failed the GPU-utilization preflight before importing Torch, with 20% shown in its preflight snapshot. It contains zero correctness or benchmark entries. All prior processes had exited; later independent check showed0% and only the same resident context. A new controller waited for two consecutive0% samples, at most60s; frozen worker/protocol/measurement unchanged. No failed timing samples discarded.",
+  "controller_sha256": "e1a557a6dc4ec0949ed80d90a52bed9d5787af5cd0ac2816d581c57a9e706756",
+  "selection_sha256": "27dc556d90a549f235a0e38fea4105a12ab84b83a2a1dcaa47255b8172f3f8da",
+  "validation_executed": false,
+  "stop_reason": "No32/64 thread configuration qualified under predeclared three-run>=5% screen rule.",
+  "unique_shape_dtype_scale_configurations": 24,
+  "unique_correctness_inputs": 168,
+  "correctness_input_executions_across3runs": 504,
+  "performance_scopes": [
+    "graph",
+    "eager"
+  ],
+  "residency_note": "NVML lists a448MiB resident context not fully mapped to container identity. Notebook Torch allocation was0bytes,reservation2MiB;GPU utilization0% at independent checks. This is not proof of exclusive hardware tenancy."
+}

@@ -1,0 +1,31 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/infinitensor-2026/experiments/nvidia-small-batch-20260906/build/build.ninja...
+Building extension module hadamard_small_batch_thread_config_20260906...
+Using envvar MAX_JOBS (1) as the number of workers...
+ninja: no work to do.
+Loading extension module hadamard_small_batch_thread_config_20260906...
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 1}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": false, "scale": 1.0, "timed_configurations": 2}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": true, "scale": 0.125, "timed_configurations": 3}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0, "timed_configurations": 4}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": false, "scale": 1.0, "timed_configurations": 5}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0, "timed_configurations": 6}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0, "timed_configurations": 7}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": true, "scale": 0.125, "timed_configurations": 8}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 9}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": false, "scale": 1.0, "timed_configurations": 10}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 11}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": false, "scale": 1.0, "timed_configurations": 12}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 17, "shape": [17, 64], "normalized": true, "scale": 0.125, "timed_configurations": 13}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": false, "scale": 1.0, "timed_configurations": 14}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": true, "scale": 0.125, "timed_configurations": 15}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": false, "scale": 1.0, "timed_configurations": 16}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 64, "shape": [64, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 17}
+PROGRESS {"dtype": "bf16", "dim": 256, "rows": 1, "shape": [1, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 18}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": true, "scale": 0.125, "timed_configurations": 19}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": true, "scale": 0.0625, "timed_configurations": 20}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": false, "scale": 1.0, "timed_configurations": 21}
+PROGRESS {"dtype": "fp16", "dim": 256, "rows": 17, "shape": [17, 256], "normalized": false, "scale": 1.0, "timed_configurations": 22}
+PROGRESS {"dtype": "bf16", "dim": 64, "rows": 64, "shape": [64, 64], "normalized": false, "scale": 1.0, "timed_configurations": 23}
+PROGRESS {"dtype": "fp16", "dim": 64, "rows": 1, "shape": [1, 64], "normalized": true, "scale": 0.125, "timed_configurations": 24}
+{"status": "PASS", "summary": {"unique_configurations": 24, "correctness_input_cases": 168, "graph_configurations": 24, "eager_configurations": 24}, "output": "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/runs/screen_resume/run3.json"}

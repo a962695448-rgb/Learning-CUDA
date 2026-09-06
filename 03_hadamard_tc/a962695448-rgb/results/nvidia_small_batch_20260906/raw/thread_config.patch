@@ -1,0 +1,24 @@
+--- sources/torch_binding_original.cu
++++ sources/torch_binding_thread_config.cu
+@@ -12,7 +12,7 @@
+ namespace {
+ 
+ void validate(const at::Tensor& input, double scale, int block_threads) {
+-    TORCH_CHECK(block_threads == 128 || block_threads == 256, "block_threads must be 128 or 256");
++    TORCH_CHECK(block_threads == 32 || block_threads == 64 || block_threads == 128 || block_threads == 256, "block_threads must be 32, 64, 128 or 256");
+     TORCH_CHECK(input.is_cuda(), "input must be a CUDA tensor");
+     TORCH_CHECK(input.scalar_type() == at::kHalf || input.scalar_type() == at::kBFloat16,
+                 "input dtype must be float16 or bfloat16");
+@@ -99,9 +99,9 @@
+ 
+ PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
+     module.def("hadamard", &transform, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
+-               "Forward-only last-axis Hadamard; finite CUDA FP16/BF16 input, 2D or 4D contiguous. block_threads=128 (default) or 256; explicit, no auto-tuning.");
++               "Forward-only last-axis Hadamard; finite CUDA FP16/BF16 input, 2D or 4D contiguous. block_threads=32, 64, 128 (default) or 256; explicit, no auto-tuning.");
+     module.def("hadamard_int4", &quantized<true>, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
+-               "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). block_threads=128 (default) or 256.");
++               "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). block_threads=32, 64, 128 (default) or 256.");
+     module.def("quantize_int4", &quantize_only, pybind11::arg("input"), pybind11::arg("block_threads") = 128,
+-               "Quantize an already-rounded FP16/BF16 tensor; even values occupy the low nibble. block_threads=128 (default) or 256.");
++               "Quantize an already-rounded FP16/BF16 tensor; even values occupy the low nibble. block_threads=32, 64, 128 (default) or 256.");
+ }

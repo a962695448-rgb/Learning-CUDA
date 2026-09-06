@@ -1,0 +1,38 @@
+{
+  "protocol_id": "nvidia_small_batch_thread_config_20260906_v1",
+  "status_at_freeze": "LOCAL_PREPARATION_NO_GPU_RESULTS",
+  "source_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "reference_commit": "e7706faf8d1c3b9f241e36860640ad1dac644ede",
+  "hypothesis": "Fewer whole warps per CTA may reduce small-batch transform latency, especially M17 N256. Changing launch geometry need not improve every shape or beat Dao.",
+  "hardware": {"required_name_contains": "RTX 4090", "required_sm": [8, 9], "compile_arch": "8.9", "max_jobs": "1"},
+  "domain": {"rows": [1, 3, 16, 17, 31, 32, 33, 64, 65], "dims": [16, 64, 128, 256], "dtypes": ["fp16", "bf16"], "normalized": [false, true]},
+  "screen": {"rows": [1, 17, 64], "dims": [64, 256], "expected_configurations": 24, "threads": [32, 64, 128, 256]},
+  "validation": {"holdout_only": true, "expected_holdout_configurations": 120, "reuse_screen_configurations": 24, "control_threads": [128, 256]},
+  "correctness": {
+    "patterns_and_seeds": {"normal": [2026, 95811], "uniform": [2026, 95811], "outlier": [2026, 95811], "zeros": [2026]},
+    "all_elements": ["transform bitwise equality against thread128", "fused packed/scales bitwise equality against thread128", "each fused equals its same-thread transform then quantize", "independent CPU float32 division/RNE INT4 packed/scales for all rows"],
+    "fp64_dense_rows": ["0", "rows//2", "rows-1"],
+    "strict_abs_limit": {"fp16": 0.01, "bf16": 0.05},
+    "scale": "1 or normalized scale rounded once to IEEE float32, then the same value passed to every implementation and CPU oracle",
+    "failure_policy": "Abort timing for this process on any numerical/provenance failure; retain JSON context, first mismatch and CPU witness. Do not relax expectation."
+  },
+  "timing": {
+    "mode": "transform_only",
+    "input_pattern": "normal", "input_seed": 2026,
+    "processes": 3, "groups": 5, "api_warmup_calls": 25,
+    "graph": {"captured_calls": 64, "replays_per_group": 20, "warmup_replays": 5, "outputs": "64 distinct retained allocations per method, disjoint across private graphs; bytewise equality before and after timing"},
+    "eager": {"calls_per_group": 200, "scope": "CUDA events around allocating Python API calls, including host-dispatch GPU idle gaps, not pure kernel or CPU wall-clock end-to-end"},
+    "order": "Per-process method order uses deterministic Random(91000+run_index); each group cyclically rotates methods by group+case_index; graph/eager order alternates by case+run index. Config order uses Random(92000+run_index). Record actual order.",
+    "samples": "Keep every raw event interval in ms and per-call ms/us; median of 5 groups within each process; never combine scopes or use earlier study timings as denominators."
+  },
+  "selection": {
+    "eligible_threads": [32, 64],
+    "screen_rule": "Thread qualifies for holdout only if at least one of 24 screen configurations shows >=5% graph time reduction versus same-run128 in each of 3 valid processes. Keep and report every slow case. All three processes must pass numerical checks.",
+    "validation_rule": "Run the fixed 120 holdout configurations for all qualified threads and controls128/256/Dao. Combine screen and holdout only as 144 predeclared configurations, preserving stage labels and same-run denominators. No automatic production dispatch is implemented.",
+    "no_candidate": "Stop after screen with a negative or inconclusive finding; no new search domain or looser threshold.",
+    "target_gap": "M17 N256 evaluated separately by dtype and scale; gap closed only if candidate median <= Dao median in all 3 processes. Differences <=1% are near-ties, not durable wins.",
+    "range_safety": "Any proposed dispatch range must list all included cases and every >3% regression against128 in any process. A stable >=5% winner alone does not establish safe dispatch for neighbors or other hardware."
+  },
+  "resource_policy": "Wait for coordinator GPU window; check jobs/GPU utilization before execution; do not stop unrelated processes. Three workers run sequentially in a dedicated directory/cache. Existing idle resident contexts are recorded, not treated as proof of exclusive tenancy. No dependency upgrades.",
+  "claim_limits": "Only launch configuration changes. No automatic shape policy, new butterfly arithmetic, quantization contract changes, physical bandwidth claims, or proof of global optimality. Quantization is correctness-only in this experiment."
+}

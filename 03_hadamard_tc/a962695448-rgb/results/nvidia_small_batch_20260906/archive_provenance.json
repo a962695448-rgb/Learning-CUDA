@@ -1,0 +1,18 @@
+{
+  "source_commit": "9f5fdc363b4149d4a211701f24ab0548084ca3e5",
+  "protocol_sha256": "843b462525b8ab9443404703b282a985eba7e6908b5379fb341cd2ecd4956e38",
+  "run_manifest_sha256": "d4aeb9caf8d71c575f07e3b0c909ab954b9d580797db42f72fed06dd35e5f88d",
+  "transfer_zip_sha256": "cb2118936354f7a189dac4dfdbcfb0fc85bdd68fe5f151637422ba24b2891a2b",
+  "original_transfer_manifest_sha256": "c4e63abdb880be9d1f26cadae8fe5c224531c75df6b442e308d85530b7f98d79",
+  "raw_files": 37,
+  "all_raw_bytes_unchanged": true,
+  "redactions": [],
+  "binaries_included": false,
+  "offline_comparison_and_samples_csv_byte_identical": true,
+  "primary_runs": [
+    "raw/runs/screen/run1.json",
+    "raw/runs/screen_resume/run2.json",
+    "raw/runs/screen_resume/run3.json"
+  ],
+  "retained_preflight_failure": "raw/runs/screen/run2.json"
+}

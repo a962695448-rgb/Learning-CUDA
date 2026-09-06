@@ -1,0 +1,8 @@
+{
+  "binary_file": "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/build/hadamard_small_batch_thread_config_20260906.so",
+  "binary_sha256": "ee60c0e82d36b3bed177e595ac57b4c6cae0901a003db25458ee00ece7123636",
+  "cuobjdump_exit": 0,
+  "cuobjdump_stdout": "ELF file    1: torch_binding_thread_config.sm_89.cubin\n",
+  "cuobjdump_stderr": "",
+  "build_ninja_sha256": "674f22fbee399c651ca85912742613947bc7e1518ee1ce95b22ded53ba28172b"
+}

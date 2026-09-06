@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "phase": "screen",
+  "protocol_sha256": "843b462525b8ab9443404703b282a985eba7e6908b5379fb341cd2ecd4956e38",
+  "selected_threads": [],
+  "qualifying_graph_cases": {
+    "32": [],
+    "64": []
+  },
+  "screen_configurations": 24,
+  "process_runs": 3,
+  "selection_scope": "graph",
+  "minimum_reduction_percent_in_each_run": 5,
+  "production_dispatch": false,
+  "input_runs": {
+    "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/runs/screen/run1.json": {
+      "bytes": 296306,
+      "sha256": "1e9151c7cffc8f7a8625bc19c726ee2c3c76cf6de2ffe7e90dbf9b3ed17034b9"
+    },
+    "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/runs/screen_resume/run2.json": {
+      "bytes": 296349,
+      "sha256": "5dfa6fb4505fee405adff4d2936e618b4148d5ae30c90e767c04f9554181f0f1"
+    },
+    "/data/infinitensor-2026/experiments/nvidia-small-batch-20260906/runs/screen_resume/run3.json": {
+      "bytes": 296269,
+      "sha256": "5a6e1f5b8e5ff09d30b32e22cbde079730cf7697735d8e9e5f4ae50eaff90479"
+    }
+  },
+  "next_action": "STOP_NO_QUALIFYING_THREAD"
+}
