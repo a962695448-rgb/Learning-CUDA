@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "purpose": "Separate Python argument passing from the existing row-selection behavior; no implementation change and no extrapolation to end-to-end application speed.",
+  "source_commit": "24dfef776ad73a4128cb6138674c5886c21e49c0",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "cases": [
+    {
+      "dim": 1,
+      "rows": 1,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 1,
+      "rows": 1,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 4,
+      "rows": 17,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 4,
+      "rows": 17,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 65,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 65,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 8,
+      "rows": 4096,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 8,
+      "rows": 4096,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 2,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 2,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "bf16",
+      "scale": 1
+    }
+  ],
+  "rounds": 3,
+  "timing": {
+    "groups": 9,
+    "calls_per_group": 2000,
+    "warmup_calls_per_group": 200,
+    "measurement": "Host perf_counter_ns, synchronized at batch boundaries; allocating API calls. Each group rotates method order; all methods use a cached bound function."
+  },
+  "methods": [
+    "original_pos3",
+    "original_pos_full",
+    "auto_pos_full",
+    "packed_pos_full",
+    "original_kwrow",
+    "auto_kwrow",
+    "packed_kwrow"
+  ],
+  "seed": 20260908,
+  "decision": "Retain all observations; compare auto vs original with identical argument style, and keyword vs positional with identical implementation. Only use this for diagnosis; any implementation candidate needs separate correctness and paired measurements."
+}

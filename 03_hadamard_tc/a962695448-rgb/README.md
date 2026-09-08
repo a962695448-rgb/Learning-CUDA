@@ -8,13 +8,15 @@
 
 ## 当前状态
 
-当前生产源码为 `a3703fda3cfd7aa1b45342210dc57fb030f0d904`。新增 N=1/2/4/8/16 的行打包实现和显式 `row_layout="packed"/"auto"`；默认仍为 `original`。auto 只对实测 A800-SXM4-40GB、RTX 4090 的规则启用新路径，其他设备（含 A100、4090 D）回退原路径。详见[小维度实现与验证](reports/packed-rows-validation.md)。
+当前生产源码为 `24dfef776ad73a4128cb6138674c5886c21e49c0`。N=1/2/4/8/16支持显式packed/auto，默认仍original；新增A100-SXM4-40GB经过独立筛选和留出验证的9条自动规则，已有A800/4090规则不变。详见[A100规则与调用方式报告](reports/a100-calling-validation.md)。
 
-两卡分别通过同一套1876项CLI矩阵的七种模式、原1800项Dao对照、280项大行数/偏移/stream检查及接口边界；Compute Sanitizer memcheck/synccheck均零错误，nsys确认真实内核路径。重复执行不累计为更多独立输入。完整输入、原始样本、拒绝规则与SHA-256见[本轮档案](results/nvidia_packed_rows_20260908/README.md)。
+最终源码在A100与4090分别通过同一1876项CLI矩阵的七种模式、原1800项Dao对照、280项大行数/偏移/stream条件及接口/CSV检查。A100另外完成160条原生安全夹具、memcheck和synccheck零错误；两卡nsys执行路径核验完成。全部原始数据、失败与哈希见[本轮档案](results/nvidia_a100_calling_20260908/README.md)。
 
-生产整合后的62个启用配置在每卡三轮Graph中均减少至少5%耗时，相对同轮更快的原128/256线程路径，A800范围6.17%～68.85%，4090范围5.20%～66.82%。这仅是已测Graph配置的结果；八个普通Python逐次调用配置反而变慢，A800为7.13%～10.40%、4090为8.76%～13.52%。默认保留原路径，auto应在用户实际Graph工作负载中另行测量。
+最终Graph中，A100的64个启用配置、4090的62个启用配置三轮均减少至少5%耗时，相对同轮更快的原128/256线程路径，范围分别为5.24%～68.56%、5.51%～66.74%。两卡各24个回退控制的波动范围在约±0.31%内。这些是已测配置的均摊Graph结果，不是应用整体收益。
 
-此前N256的显式 `fused_layout="contiguous256"` 已完成独立[4090验证](reports/fused-layout-validation.md)和[A100验证](reports/fused-layout-a100-validation.md)。A100的52配置中51项三轮更快，47项每轮至少减少5%，一次8.43%退化及后续诊断均保留；不能将旧A100结果用于证明新行打包版本已实测。PR与正式提交待项目所有者验收。
+普通Python调用可使用已有位置参数写法：相对同一auto的关键字写法，12配置三轮的耗时减少范围为A100 6.22%～9.49%、4090 5.95%～12.31%。相对原默认调用仍有最高约3.45%的额外开销，默认original保留。旧A800/4090负例、A100首次PATH配置失败和时间线检查脚本的范围误判均独立保留。
+
+此前N256显式 `fused_layout="contiguous256"` 的[4090记录](reports/fused-layout-validation.md)和[A100记录](reports/fused-layout-a100-validation.md)保留各自版本与负例。PR与正式提交待项目所有者验收。
 
 ## 已完成的基线与平台验证
 
@@ -171,8 +173,8 @@ packed, scales = op.hadamard_int4(x, 1.0, 128, fused_layout="contiguous256")
 
 ```python
 # x 的最后一维为1/2/4/8/16；旧调用默认仍是original。
-y = op.hadamard(x, 1.0, row_layout="auto")
-packed, row_scales = op.hadamard_int4(x, 1.0, row_layout="auto")
+y = op.hadamard(x, 1.0, 128, "auto")
+packed, row_scales = op.hadamard_int4(x, 1.0, 128, "original", "auto")
 y_packed = op.hadamard(x, 1.0, block_threads=256, row_layout="packed")
 ```
 
@@ -182,7 +184,7 @@ y_packed = op.hadamard(x, 1.0, block_threads=256, row_layout="packed")
   --dim 8 --dtype fp16 --row-layout auto --csv results/rows-auto-new.csv
 ```
 
-`packed`明确要求N≤16；auto可在已有规则中选择256线程，否则回退到调用者指定的128/256。自测的packed模式只切换N≤16，其他维度仍执行原实现。非original行布局不能与contiguous256组合。自动阈值、未采用的N16融合、普通Python调用的退化与有限性能覆盖范围，均见[完整报告](reports/packed-rows-validation.md)。
+`packed`明确要求N≤16；auto可在已有规则中选择256线程，否则回退到调用者指定的128/256。自测的packed模式只切换N≤16，其他维度仍执行原实现。非original行布局不能与contiguous256组合。A100-SXM4-40GB也已完成独立规则验证。关键字写法仍支持，位置参数可减少所测调用开销；普通调用相对原默认仍有少量成本。自动阈值、未采用的N16融合和有限覆盖范围见[最新报告](reports/a100-calling-validation.md)。
 
 CSV默认original仍为21列；packed/auto采用24列，在末尾增加`requested_row_layout`、`resolved_row_layout`、`quantize_block_threads`。`warp_block_threads`记录实际选择的变换/融合线程，split的独立量化保留调用者线程并单列记录。不同表头拒绝混写，使用新的输出文件。
 
@@ -347,7 +349,7 @@ Nsight Compute 退出码为 1，明确报 `ERR_NVGPUCTRPERM`。当前容器没�
 
 ## 后续验收
 
-- 新增行打包/auto版本尚未在A100实测；已有A100原线程及N256融合记录保留为各自版本证据。九齿的A100实机测试记录在九齿仓库，不能代替本项目新版验证。
+- 本轮A100-SXM4-40GB与4090的新版验证已完成；其他设备型号、更广形状与真实应用仍按新实验分别验证，不能继承本轮有限范围。九齿的A100记录在九齿仓库独立保存。
 - 在平台允许硬件计数器采集后补充 ncu；结合已取得的 nsys 时间线，进一步检查访存、寄存器与当前 WMMA 路径，评估分解 Hadamard 的 Tensor Core 算法。
 - 提交前核对训练营“包含测试”与通用“无测试代码”的措辞冲突；保留完整开发验证证据。
 

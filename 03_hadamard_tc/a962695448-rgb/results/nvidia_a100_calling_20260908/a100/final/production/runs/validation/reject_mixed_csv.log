@@ -1,0 +1,2 @@
+GPU=NVIDIA A100-SXM4-40GB sm=80
+ERROR: CSV header differs; choose a new file to preserve existing results

@@ -1,0 +1,2 @@
+Argument error: --benchmark with --row-layout packed requires --dim <= 16
+Use --help for usage.

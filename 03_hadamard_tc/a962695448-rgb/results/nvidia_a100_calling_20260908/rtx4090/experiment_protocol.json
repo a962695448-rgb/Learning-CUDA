@@ -1,0 +1,83 @@
+{
+  "base_commit": "53e7b8641cb9f8038ce2d86e8f836740bae96684",
+  "hypothesis": "For N<=16, independent width-N subgroups pack multiple rows per warp, preserving the original FP32 stage order. Static lane use motivates the candidate; no hardware-counter claim.",
+  "correctness_rows": [
+    1,
+    2,
+    3,
+    4,
+    16,
+    17,
+    18,
+    31,
+    32,
+    33,
+    63,
+    64,
+    65,
+    127,
+    128,
+    129,
+    255,
+    256,
+    257,
+    4095,
+    4096,
+    4097,
+    16383,
+    16384,
+    16385
+  ],
+  "screen_rows": [
+    1,
+    17,
+    64,
+    257,
+    4096,
+    16384
+  ],
+  "holdout_rows": [
+    16,
+    18,
+    63,
+    65,
+    256,
+    258,
+    4095,
+    4097,
+    16383,
+    16385
+  ],
+  "dtypes": [
+    "fp16",
+    "bf16"
+  ],
+  "dims": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "scales": "1 and 1/sqrt(N), deduplicated at N=1",
+  "methods": [
+    "original128",
+    "original256",
+    "packed128",
+    "packed256"
+  ],
+  "modes": [
+    "hadamard",
+    "hadamard_int4"
+  ],
+  "timing": {
+    "processes": 3,
+    "groups": 5,
+    "api_warmup_calls": 25,
+    "captured_calls": 64,
+    "replays_per_group": 20,
+    "graph_warmup_replays": 256
+  },
+  "decision": "Retain all negative results; compare with both original128 and the better same-run original128/256. Only stable >=5% gains in three screen and three holdout processes can support a dispatch proposal; unchanged-production controls and full production regression still required before adoption.",
+  "limitations": "New timing protocol and hardware records; previous datasets are not relabelled. A800 results do not substitute for A100 acceptance."
+}

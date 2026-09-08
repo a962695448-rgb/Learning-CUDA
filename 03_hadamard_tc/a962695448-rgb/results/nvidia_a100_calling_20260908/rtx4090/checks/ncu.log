@@ -1,0 +1,15 @@
+==PROF== Connected to process 3060 (/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/production/project/build/hadamard)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,4096,1,8] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only          107.520 us (0.107520 ms)  3.0476e+08 elements/s
+warp                kernel_only          201.728 us (0.201728 ms)  1.6244e+08 elements/s
+split_int4          kernel_only          280.576 us (0.280576 ms)  1.1679e+08 elements/s
+fused_int4          kernel_only          209.920 us (0.209920 ms)  1.5610e+08 elements/s
+cpu_fp32_fwht       cpu_compute           76.872 us (0.076872 ms)  4.2627e+08 elements/s
+warp_h2d_d2h        host_e2e             249.129 us (0.249129 ms)  1.3153e+08 elements/s
+==PROF== Disconnected from process 3060

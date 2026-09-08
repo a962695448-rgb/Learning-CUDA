@@ -1,0 +1,8 @@
+timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms,fused_layout,requested_row_layout,resolved_row_layout,quantize_block_threads
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,naive_global,kernel_only,1,23.1359992176,2832641866.19,0,32,,0.0231359992176,,packed,,
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,warp,kernel_only,1,6.14400021732,10666666289.4,0,32,128,0.00614400021732,,packed,packed,
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,tensor_core,kernel_only,1,7.16800009832,9142857017.45,0,32,,0.00716800009832,,packed,,
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,split_int4,kernel_only,1,10.2399997413,6400000161.68,0,32,128,0.0102399997413,,packed,packed,128
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,fused_int4,kernel_only,1,7.16800009832,9142857017.45,0,32,128,0.00716800009832,original,packed,packed,
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,cpu_fp32_fwht,cpu_compute,1,157.034,417336373.015,0,32,,0.157034,,packed,,
+2026-09-08T09:38:57Z,"NVIDIA A100-SXM4-40GB",80,12040,12040,1,4096,1,16,fp16,1,warp_h2d_d2h,host_e2e,1,66.658,983167811.816,0,32,128,0.066658,,packed,packed,

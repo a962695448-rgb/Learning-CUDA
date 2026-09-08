@@ -1,0 +1,188 @@
+{
+  "status": "FAIL",
+  "started_utc": "2026-09-08T09:33:16Z",
+  "steps": [
+    {
+      "name": "build",
+      "argv": [
+        "make",
+        "-j1",
+        "ARCH=80",
+        "CUDA_HOME=/usr/local/cuda",
+        "all",
+        "cpu-test"
+      ],
+      "pid": 1884,
+      "exit_code": 0
+    },
+    {
+      "name": "legacy_cli",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/scripts/run_validation.py",
+        "--label",
+        "rows_default"
+      ],
+      "pid": 1934,
+      "exit_code": 0
+    },
+    {
+      "name": "original256",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--self-test",
+        "--block-threads",
+        "256"
+      ],
+      "pid": 1956,
+      "exit_code": 0
+    },
+    {
+      "name": "contiguous256",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--self-test",
+        "--fused-layout",
+        "contiguous256"
+      ],
+      "pid": 1962,
+      "exit_code": 0
+    },
+    {
+      "name": "packed128",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "packed"
+      ],
+      "pid": 1968,
+      "exit_code": 0
+    },
+    {
+      "name": "packed256",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "packed",
+        "--block-threads",
+        "256"
+      ],
+      "pid": 1974,
+      "exit_code": 0
+    },
+    {
+      "name": "auto128",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "auto"
+      ],
+      "pid": 1980,
+      "exit_code": 0
+    },
+    {
+      "name": "auto256",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "auto",
+        "--block-threads",
+        "256"
+      ],
+      "pid": 1986,
+      "exit_code": 0
+    },
+    {
+      "name": "row_reject_0",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--row-layout",
+        "bad"
+      ],
+      "pid": 1992,
+      "exit_code": 2
+    },
+    {
+      "name": "row_reject_1",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--row-layout",
+        ""
+      ],
+      "pid": 1993,
+      "exit_code": 2
+    },
+    {
+      "name": "row_reject_2",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--row-layout"
+      ],
+      "pid": 1994,
+      "exit_code": 2
+    },
+    {
+      "name": "row_reject_3",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--benchmark",
+        "--row-layout",
+        "packed",
+        "--dim",
+        "64"
+      ],
+      "pid": 1995,
+      "exit_code": 2
+    },
+    {
+      "name": "row_reject_4",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--row-layout",
+        "auto",
+        "--fused-layout",
+        "contiguous256"
+      ],
+      "pid": 1996,
+      "exit_code": 2
+    },
+    {
+      "name": "row_reject_5",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/build/hadamard",
+        "--row-layout",
+        "packed",
+        "--fused-layout",
+        "contiguous256"
+      ],
+      "pid": 1997,
+      "exit_code": 2
+    },
+    {
+      "name": "row_api",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/validate_row_api.py",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform",
+        "--out",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/runs/validation/row-api"
+      ],
+      "pid": 1998,
+      "exit_code": 1
+    }
+  ],
+  "checks": {
+    "cli_modes": 7,
+    "cases_per_cli_mode": 1876,
+    "row_cli_rejections": 6
+  },
+  "source_commit": "a3703fda3cfd7aa1b45342210dc57fb030f0d904",
+  "error": "AssertionError('row_api')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/vipuser/infinitensor-2026/a100-eager-20260908/production/production_validate.py\", line 29, in <module>\n    run('row_api',[sys.executable,ROOT/'validate_row_api.py','--reference-repo',os.environ['REFERENCE_REPO'],'--out',OUT/'row-api'])\n  File \"/home/vipuser/infinitensor-2026/a100-eager-20260908/production/production_validate.py\", line 14, in run\n    save();assert entry['exit_code']==expected,name\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: row_api\n",
+  "finished_utc": "2026-09-08T09:33:40Z"
+}

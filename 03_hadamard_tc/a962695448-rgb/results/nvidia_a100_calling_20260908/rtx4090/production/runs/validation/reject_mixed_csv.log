@@ -1,0 +1,2 @@
+GPU=NVIDIA GeForce RTX 4090 sm=89
+ERROR: CSV header differs; choose a new file to preserve existing results

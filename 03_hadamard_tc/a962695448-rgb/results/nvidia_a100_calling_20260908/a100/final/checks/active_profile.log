@@ -1,0 +1,16 @@
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,256,1,2] dtype=fp16 scale=1 rows=256 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           25.824 us (0.025824 ms)  1.9827e+07 elements/s
+warp                kernel_only            6.016 us (0.006016 ms)  8.5106e+07 elements/s
+split_int4          kernel_only           10.496 us (0.010496 ms)  4.8780e+07 elements/s
+fused_int4          kernel_only            5.888 us (0.005888 ms)  8.6957e+07 elements/s
+cpu_fp32_fwht       cpu_compute            2.107 us (0.002106 ms)  2.4306e+08 elements/s
+warp_h2d_d2h        host_e2e              29.470 us (0.029470 ms)  1.7374e+07 elements/s
+Generating '/tmp/nsys-report-4a95.qdstrm'
+[1/1] [0%                          ] active.nsys-rep[1/1] [0%                          ] active.nsys-rep[1/1] [14%                         ] active.nsys-rep[1/1] [==19%                       ] active.nsys-rep[1/1] [===23%                      ] active.nsys-rep[1/1] [=============58%            ] active.nsys-rep[1/1] [=======================93%  ] active.nsys-rep[1/1] [=======================94%  ] active.nsys-rep[1/1] [========================100%] active.nsys-rep[1/1] [========================100%] active.nsys-rep
+Generated:
+    /home/vipuser/infinitensor-2026/a100-eager-20260908/final/checks/active.nsys-rep

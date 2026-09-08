@@ -1,0 +1,184 @@
+{
+  "status": "ANALYZED",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        31.592195294066272,
+        56.3856028792741
+      ]
+    },
+    {
+      "dim": 1,
+      "mode": "hadamard_int4",
+      "min_rows": 1,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        6.085403591533534,
+        64.46145341573
+      ]
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        29.81366679694095,
+        52.241054172982906
+      ]
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard_int4",
+      "min_rows": 1,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        6.4213551063028955,
+        62.78107876957577
+      ]
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        25.909935476754143,
+        47.83100376797456
+      ]
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256,
+      "reduction_pct_range": [
+        8.262709269085233,
+        71.64516830456331
+      ],
+      "validation": "independent_refinement"
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        21.636366227646842,
+        39.748103917810084
+      ]
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "min_rows": 64,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        5.393896069623794,
+        53.23146409759756
+      ]
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        12.613160678010683,
+        27.773777515386655
+      ]
+    }
+  ],
+  "refinement_accepted": [
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256,
+      "active_cases": 52,
+      "reduction_pct_range": [
+        8.262709269085233,
+        71.64516830456331
+      ],
+      "failures": []
+    }
+  ],
+  "refinement_rejected": [
+    {
+      "dim": 16,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256,
+      "active_cases": 52,
+      "reduction_pct_range": [
+        4.599258503988635,
+        48.17265941475153
+      ],
+      "failures": [
+        {
+          "case": [
+            "bf16",
+            16,
+            511,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            5.877087772960943,
+            4.739650110563476,
+            4.600003942598862
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            16,
+            511,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.8862098645701675,
+            6.0384868912249035,
+            6.108890381829124
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            16,
+            511,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.599258503988635,
+            6.108890381829124,
+            5.44126931793365
+          ]
+        }
+      ]
+    }
+  ],
+  "original_rejected_rules_preserved": 2,
+  "refined_source_hashes": {
+    "runs/refined1/report.json": "ab85c67a55ecd4e807e28cb4b5f78bfbcf490adf67f55d877fe10b745ed044af",
+    "runs/refined2/report.json": "3c47fbcc4f6d7acf465e5f2a9f4dba22194b703de96affd17e7481a59f8fc4cc",
+    "runs/refined3/report.json": "d3e4a974018ba546a3dd91057ff1f51515995d6b1962810b5ab049d61a8144a6"
+  },
+  "first_policy_sha256": "934539984fdcbabe1404de000bdcbb6c0b3d4087b877ad9f7fac445c213008a9",
+  "refinement_protocol_sha256": "765282c41cbccc95b1653fe17e85f9b10d5f78af85f80f7939879de8f2796c57"
+}

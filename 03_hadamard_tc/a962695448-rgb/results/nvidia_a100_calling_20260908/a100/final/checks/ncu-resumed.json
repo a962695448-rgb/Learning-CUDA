@@ -1,0 +1,31 @@
+{
+  "status": "PERMISSION_DENIED",
+  "argv": [
+    "/usr/local/cuda/bin/ncu",
+    "--set",
+    "basic",
+    "--kernel-name",
+    "regex:packed_rows_kernel",
+    "--launch-count",
+    "1",
+    "--csv",
+    "/home/vipuser/infinitensor-2026/a100-eager-20260908/final/production/project/build/hadamard",
+    "--benchmark",
+    "--batch",
+    "1",
+    "--seq",
+    "4096",
+    "--heads",
+    "1",
+    "--dim",
+    "8",
+    "--row-layout",
+    "auto",
+    "--warmup",
+    "1",
+    "--repetitions",
+    "1"
+  ],
+  "exit_code": 1,
+  "log_sha256": "40fef6137dcc1cc7f4284c53e1d13e3cb952919e098de193ec0ba4fd01541ca7"
+}

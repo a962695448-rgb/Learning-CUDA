@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "cases": 12,
+  "rounds": 3,
+  "binary_sha256": "f52d0567fc42a1e5890f72d19d133c688531efd70bbd49672600d4b9fef4e9d0",
+  "comparisons": {
+    "auto_vs_original_positional": {
+      "min": -1.7778653623750973,
+      "max": 0.658390487842031,
+      "all_rounds_faster": 0,
+      "all_rounds_at_least_5_percent": 0
+    },
+    "auto_vs_original_keyword": {
+      "min": -2.2427327806457287,
+      "max": 0.3611983205715097,
+      "all_rounds_faster": 0,
+      "all_rounds_at_least_5_percent": 0
+    },
+    "remove_keyword_auto": {
+      "min": 5.544473791730587,
+      "max": 10.798376230019347,
+      "all_rounds_faster": 12,
+      "all_rounds_at_least_5_percent": 12
+    },
+    "original_keyword_vs_legacy": {
+      "min": -11.62734486090895,
+      "max": -5.926107728773222,
+      "all_rounds_faster": 0,
+      "all_rounds_at_least_5_percent": 0
+    },
+    "auto_positional_vs_legacy": {
+      "min": -1.8512261387234386,
+      "max": 0.387224086862914,
+      "all_rounds_faster": 0,
+      "all_rounds_at_least_5_percent": 0
+    },
+    "packed_vs_original_positional": {
+      "min": -1.5063630567891062,
+      "max": 1.455985740071264,
+      "all_rounds_faster": 1,
+      "all_rounds_at_least_5_percent": 0
+    }
+  },
+  "scope": "Controlled eager diagnostics on A100; time reductions use same-round group medians. Does not replace original A800/4090 observations."
+}

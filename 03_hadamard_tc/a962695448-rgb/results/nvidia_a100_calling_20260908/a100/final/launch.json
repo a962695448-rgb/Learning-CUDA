@@ -1,0 +1,6 @@
+{
+  "pid": 4766,
+  "source_commit": "24dfef776ad73a4128cb6138674c5886c21e49c0",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "work": "/home/vipuser/infinitensor-2026/a100-eager-20260908/final"
+}

@@ -1,0 +1,16 @@
+==PROF== Connected to process 6061 (/home/vipuser/infinitensor-2026/a100-eager-20260908/final/production/project/build/hadamard)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+GPU=NVIDIA A100-SXM4-40GB sm=80
+BENCHMARK shape=[1,4096,1,8] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           97.280 us (0.097280 ms)  3.3684e+08 elements/s
+warp                kernel_only          174.080 us (0.174080 ms)  1.8824e+08 elements/s
+split_int4          kernel_only          179.200 us (0.179200 ms)  1.8286e+08 elements/s
+fused_int4          kernel_only          189.440 us (0.189440 ms)  1.7297e+08 elements/s
+cpu_fp32_fwht       cpu_compute           78.007 us (0.078007 ms)  4.2006e+08 elements/s
+warp_h2d_d2h        host_e2e             242.007 us (0.242007 ms)  1.3540e+08 elements/s
+==PROF== Disconnected from process 6061
+==WARNING== No kernels were profiled.

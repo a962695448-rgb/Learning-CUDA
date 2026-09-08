@@ -1,0 +1,24 @@
+Generating SQLite file /home/vipuser/infinitensor-2026/a100-eager-20260908/final/checks/fallback.sqlite from /home/vipuser/infinitensor-2026/a100-eager-20260908/final/checks/fallback.nsys-rep
+Processing [/home/vipuser/infinitensor-2026/a100-eager-20260908/final/checks/fallback.sqlite] with [/usr/local/cuda-12.4/nsight-systems-2023.4.4/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+34.4,29425,11,2675.0,2657.0,2625,2881,73.3,"void hadamard::warp_kernel<__half, (int)2, (bool)1, (bool)0>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)"
+15.1,12872,4,3218.0,3218.0,3138,3298,92.4,"void hadamard::warp_kernel<__half, (int)2, (bool)0, (bool)1>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)"
+14.0,11972,4,2993.0,2961.0,2945,3105,76.2,"void hadamard::packed_rows_kernel<__half, (int)2, (bool)1, (bool)1>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)"
+12.4,10565,4,2641.3,2465.0,2401,3234,397.2,"void hadamard::to_float_kernel<__half>(const T1 *, float *, unsigned long)"
+12.3,10501,4,2625.3,2449.0,2433,3170,363.5,"hadamard::butterfly_stage(const float *, float *, unsigned long, int)"
+11.8,10085,4,2521.3,2449.0,2401,2786,178.4,"void hadamard::from_float_kernel<__half>(const float *, T1 *, unsigned long, float)"
+
+Processing [/home/vipuser/infinitensor-2026/a100-eager-20260908/final/checks/fallback.sqlite] with [/usr/local/cuda-12.4/nsight-systems-2023.4.4/host-linux-x64/reports/cuda_api_sum.py]... 
+Time (%),Total Time (ns),Num Calls,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+51.0,2898906,2,1449453.0,1449453.0,1381564,1517342,96009.5,cudaGetDeviceProperties_v2_v12000
+40.2,2286280,31,73751.0,3228.0,2414,2137813,383094.8,cudaLaunchKernel
+3.3,189469,13,14574.5,14699.0,3240,22980,7132.0,cudaMemcpy
+1.8,100353,6,16725.5,3693.5,2264,83471,32712.2,cudaMalloc
+1.7,98495,6,16415.8,2405.0,2017,82172,32281.0,cudaFree
+0.9,48439,4,12109.8,12211.5,10871,13145,1174.6,cudaEventSynchronize
+0.6,33523,5,6704.6,7692.0,1538,8402,2908.0,cudaDeviceSynchronize
+0.2,12332,8,1541.5,1244.5,1078,3758,901.7,cudaEventRecord
+0.1,7976,8,997.0,426.0,380,4862,1564.0,cudaEventCreate
+0.1,2846,8,355.8,293.5,260,847,199.3,cudaEventDestroy
+0.0,2676,1,2676.0,2676.0,2676,2676,0.0,cuModuleGetLoadingMode
+

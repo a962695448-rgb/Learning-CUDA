@@ -1,0 +1,50 @@
+{
+  "source_commit": "24dfef776ad73a4128cb6138674c5886c21e49c0",
+  "base_bundle_sha256": "50c84d6eb45eacdcfd1a316aaf8f6ac9eed7ae7adc288d76b26a698e080b30c5",
+  "files": {
+    "devices/a100/eager_protocol.json": {
+      "bytes": 2565,
+      "sha256": "22c017546491841faa1053c067e35c881d06976210d79114a785e8f72632b365"
+    },
+    "devices/a100/final_policy.json": {
+      "bytes": 1279,
+      "sha256": "8ff146fecc312a4ba8f6e5a2499ee5e88543fae26e40ffeee19d1d004c3c2972"
+    },
+    "devices/rtx4090/eager_protocol.json": {
+      "bytes": 2567,
+      "sha256": "3d2f1342b2ee5e5a89bdb3b5865ac89a957ef3fca603e89069d9f70eb64d8786"
+    },
+    "devices/rtx4090/final_policy.json": {
+      "bytes": 4229,
+      "sha256": "a249478a25ad9ee3ba048a548fd75a4f97d7d6db269574cff303dd64fd1ab40b"
+    },
+    "eager_ablation.py": {
+      "bytes": 3991,
+      "sha256": "a2bd0bcc009c6139221b8a722f1241fd5169c160e93b8809bfe623372695bae4"
+    },
+    "experiment_protocol.json": {
+      "bytes": 1707,
+      "sha256": "53a296f9b6112ba054310c6249aca8a91d4510e5ded543760cfe8b803220b308"
+    },
+    "final_perf.py": {
+      "bytes": 3253,
+      "sha256": "4b0727bd0bac5f555f6ba59adf55c92b1574367076599aa8e0038aaafa8ee8b0"
+    },
+    "measurement_helpers.py": {
+      "bytes": 7620,
+      "sha256": "11951ea749add5ecc5426c3b900451ec8e263d07718ff3031d58ffa0dd7c0304"
+    },
+    "run_final.py": {
+      "bytes": 1208,
+      "sha256": "ddb7815709dab54153250a36f3ccecd25c4373cad1c0639917d001b94f25fe47"
+    },
+    "source_delta/project/include/row_policy.hpp": {
+      "bytes": 2328,
+      "sha256": "57c319d22f5e9c74539134bf6cb077a43ab81e4c0f4dacf23348379f1e562a62"
+    },
+    "source_manifest.json": {
+      "bytes": 2721,
+      "sha256": "f79f63a6ddb87c504c9325ee560831fea10612a7b39f2c529cfcd98f27635afd"
+    }
+  }
+}

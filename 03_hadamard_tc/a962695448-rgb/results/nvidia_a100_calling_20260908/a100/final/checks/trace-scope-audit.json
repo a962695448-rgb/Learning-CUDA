@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "Audit of existing raw traces without rerunning profiling. N2/M255 falls back only for transform; fused N2 remains packed because its independent threshold is M>=1.",
+  "initial_wrapper_status": "FAIL",
+  "initial_failure_reason": "Wrapper incorrectly required absence of every packed kernel in a multi-path CLI benchmark. Correct per-operation dispatch is verified from template instantiations. No computation, thresholds, or original logs changed.",
+  "active_kernel_names": [
+    "void hadamard::packed_rows_kernel<__half, (int)2, (bool)1, (bool)0>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)",
+    "void hadamard::warp_kernel<__half, (int)2, (bool)0, (bool)1>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)",
+    "void hadamard::packed_rows_kernel<__half, (int)2, (bool)1, (bool)1>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)",
+    "void hadamard::to_float_kernel<__half>(const T1 *, float *, unsigned long)",
+    "hadamard::butterfly_stage(const float *, float *, unsigned long, int)",
+    "void hadamard::from_float_kernel<__half>(const float *, T1 *, unsigned long, float)"
+  ],
+  "fallback_kernel_names": [
+    "void hadamard::warp_kernel<__half, (int)2, (bool)1, (bool)0>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)",
+    "void hadamard::warp_kernel<__half, (int)2, (bool)0, (bool)1>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)",
+    "void hadamard::packed_rows_kernel<__half, (int)2, (bool)1, (bool)1>(const T1 *, T1 *, unsigned char *, float *, unsigned long, float)",
+    "void hadamard::to_float_kernel<__half>(const T1 *, float *, unsigned long)",
+    "hadamard::butterfly_stage(const float *, float *, unsigned long, int)",
+    "void hadamard::from_float_kernel<__half>(const float *, T1 *, unsigned long, float)"
+  ],
+  "source_hashes": {
+    "report.json": "81de248b7c61af9adf94e5a018890cafc5a60857b11aa6023b56541d430c3493",
+    "active_stats.log": "ffd3a48140436776085996cae89cc9da24704a2439f3b5a4cbd3889e1abc6950",
+    "fallback_stats.log": "b7faeed8b13b34ee4b67cc6f99b450641bebd31ae9a9ee20314757c44852d397"
+  }
+}

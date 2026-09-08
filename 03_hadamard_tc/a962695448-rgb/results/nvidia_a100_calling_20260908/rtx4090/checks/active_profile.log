@@ -1,0 +1,17 @@
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,4096,1,8] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           21.728 us (0.021728 ms)  1.5081e+09 elements/s
+warp                kernel_only            5.488 us (0.005488 ms)  5.9708e+09 elements/s
+split_int4          kernel_only            9.392 us (0.009392 ms)  3.4889e+09 elements/s
+fused_int4          kernel_only            5.328 us (0.005328 ms)  6.1502e+09 elements/s
+cpu_fp32_fwht       cpu_compute           76.906 us (0.076906 ms)  4.2608e+08 elements/s
+warp_h2d_d2h        host_e2e              42.528 us (0.042528 ms)  7.7050e+08 elements/s
+Collecting data...
+Generating '/tmp/nsys-report-d20f.qdstrm'
+[1/1] [0%                          ] active.nsys-rep[1/1] [0%                          ] active.nsys-rep[1/1] [==18%                       ] active.nsys-rep[1/1] [======34%                   ] active.nsys-rep[1/1] [===================81%      ] active.nsys-rep[1/1] [========================100%] active.nsys-rep[1/1] [========================100%] active.nsys-rep
+Generated:
+    /data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/checks/active.nsys-rep

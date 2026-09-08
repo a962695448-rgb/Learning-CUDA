@@ -1,0 +1,3233 @@
+{
+  "status": "PASS",
+  "round": 1,
+  "started_utc": "2026-09-08T10:20:32Z",
+  "protocol_sha256": "22c017546491841faa1053c067e35c881d06976210d79114a785e8f72632b365",
+  "script_sha256": "a2bd0bcc009c6139221b8a722f1241fd5169c160e93b8809bfe623372695bae4",
+  "cases": [
+    {
+      "dim": 16,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "fp16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.005174226,
+          0.0052028115,
+          0.005345513,
+          0.0054152745,
+          0.00516141,
+          0.005215768,
+          0.0050543275000000006,
+          0.0051752455,
+          0.00510578
+        ],
+        "original_pos_full": [
+          0.005144002999999999,
+          0.0051255275,
+          0.005460598,
+          0.0054800845,
+          0.0050953635,
+          0.0051187715,
+          0.0050832305,
+          0.005188842,
+          0.0051143815
+        ],
+        "auto_pos_full": [
+          0.0052091130000000005,
+          0.005228792499999999,
+          0.0052147619999999995,
+          0.005244055,
+          0.0051832935,
+          0.0051887665,
+          0.0051985495,
+          0.0053068559999999996,
+          0.0051785555
+        ],
+        "packed_pos_full": [
+          0.0051149444999999995,
+          0.0051569534999999994,
+          0.0051410135000000004,
+          0.0054317845,
+          0.005100189999999999,
+          0.005119506500000001,
+          0.00509994,
+          0.005409707000000001,
+          0.0050934555
+        ],
+        "original_kwrow": [
+          0.0056691255,
+          0.00563153,
+          0.005692511999999999,
+          0.0058464885,
+          0.0056466545,
+          0.0056257755,
+          0.005575331,
+          0.0060689035,
+          0.0055168655
+        ],
+        "auto_kwrow": [
+          0.0057367415,
+          0.0056902045,
+          0.0058434215,
+          0.0061219915,
+          0.0057155535,
+          0.0056841185,
+          0.0056699775,
+          0.0059028810000000004,
+          0.005632682
+        ],
+        "packed_kwrow": [
+          0.005557003,
+          0.0058216679999999995,
+          0.005864117,
+          0.005944273,
+          0.0056581324999999995,
+          0.005694488,
+          0.005588,
+          0.0056224335,
+          0.0055903685
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          10348452,
+          10405623,
+          10691026,
+          10830549,
+          10322820,
+          10431536,
+          10108655,
+          10350491,
+          10211560
+        ],
+        "original_pos_full": [
+          10288006,
+          10251055,
+          10921196,
+          10960169,
+          10190727,
+          10237543,
+          10166461,
+          10377684,
+          10228763
+        ],
+        "auto_pos_full": [
+          10418226,
+          10457585,
+          10429524,
+          10488110,
+          10366587,
+          10377533,
+          10397099,
+          10613712,
+          10357111
+        ],
+        "packed_pos_full": [
+          10229889,
+          10313907,
+          10282027,
+          10863569,
+          10200380,
+          10239013,
+          10199880,
+          10819414,
+          10186911
+        ],
+        "original_kwrow": [
+          11338251,
+          11263060,
+          11385024,
+          11692977,
+          11293309,
+          11251551,
+          11150662,
+          12137807,
+          11033731
+        ],
+        "auto_kwrow": [
+          11473483,
+          11380409,
+          11686843,
+          12243983,
+          11431107,
+          11368237,
+          11339955,
+          11805762,
+          11265364
+        ],
+        "packed_kwrow": [
+          11114006,
+          11643336,
+          11728234,
+          11888546,
+          11316265,
+          11388976,
+          11176000,
+          11244867,
+          11180737
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.0051752455,
+        "original_pos_full": 0.0051255275,
+        "auto_pos_full": 0.0052091130000000005,
+        "packed_pos_full": 0.005119506500000001,
+        "original_kwrow": 0.0056466545,
+        "auto_kwrow": 0.0057155535,
+        "packed_kwrow": 0.0056581324999999995
+      },
+      "group_order": [
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 16,
+      "rows": 65,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0065291509999999995,
+          0.006601518,
+          0.0066887735,
+          0.0066628155,
+          0.006660687,
+          0.006655311,
+          0.0066296215,
+          0.0066936705,
+          0.0065284195
+        ],
+        "original_pos_full": [
+          0.0066059685,
+          0.006502319499999999,
+          0.006644116,
+          0.0066865794999999995,
+          0.0066288825,
+          0.0066520730000000005,
+          0.00664719,
+          0.0066903295,
+          0.0066448670000000005
+        ],
+        "auto_pos_full": [
+          0.0066112375000000004,
+          0.006589483,
+          0.0067612515,
+          0.0067523515,
+          0.006684028,
+          0.006728589,
+          0.0067888725,
+          0.0068775115,
+          0.006813886999999999
+        ],
+        "packed_pos_full": [
+          0.006680101,
+          0.0065048860000000005,
+          0.006617194000000001,
+          0.006729728,
+          0.006534228,
+          0.0065249585,
+          0.006638499,
+          0.006688100000000001,
+          0.0066550995
+        ],
+        "original_kwrow": [
+          0.0072021135,
+          0.0072073355,
+          0.0072361535,
+          0.007199953,
+          0.0071712975,
+          0.0071023625,
+          0.0072715735000000005,
+          0.0072336375,
+          0.0072071850000000005
+        ],
+        "auto_kwrow": [
+          0.007293433,
+          0.00733329,
+          0.007193708,
+          0.0072481755000000005,
+          0.007286198999999999,
+          0.0072731194999999995,
+          0.0072360745,
+          0.0073540394999999995,
+          0.0073147735
+        ],
+        "packed_kwrow": [
+          0.007097161,
+          0.0072172595,
+          0.007224437,
+          0.007213677,
+          0.0072646835,
+          0.0072518305,
+          0.0071519489999999995,
+          0.0072529025,
+          0.007116020000000001
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13058302,
+          13203036,
+          13377547,
+          13325631,
+          13321374,
+          13310622,
+          13259243,
+          13387341,
+          13056839
+        ],
+        "original_pos_full": [
+          13211937,
+          13004639,
+          13288232,
+          13373159,
+          13257765,
+          13304146,
+          13294380,
+          13380659,
+          13289734
+        ],
+        "auto_pos_full": [
+          13222475,
+          13178966,
+          13522503,
+          13504703,
+          13368056,
+          13457178,
+          13577745,
+          13755023,
+          13627774
+        ],
+        "packed_pos_full": [
+          13360202,
+          13009772,
+          13234388,
+          13459456,
+          13068456,
+          13049917,
+          13276998,
+          13376200,
+          13310199
+        ],
+        "original_kwrow": [
+          14404227,
+          14414671,
+          14472307,
+          14399906,
+          14342595,
+          14204725,
+          14543147,
+          14467275,
+          14414370
+        ],
+        "auto_kwrow": [
+          14586866,
+          14666580,
+          14387416,
+          14496351,
+          14572398,
+          14546239,
+          14472149,
+          14708079,
+          14629547
+        ],
+        "packed_kwrow": [
+          14194322,
+          14434519,
+          14448874,
+          14427354,
+          14529367,
+          14503661,
+          14303898,
+          14505805,
+          14232040
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.006655311,
+        "original_pos_full": 0.0066448670000000005,
+        "auto_pos_full": 0.0067523515,
+        "packed_pos_full": 0.006638499,
+        "original_kwrow": 0.0072071850000000005,
+        "auto_kwrow": 0.007286198999999999,
+        "packed_kwrow": 0.0072172595
+      },
+      "group_order": [
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 16,
+      "rows": 65,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0066164675,
+          0.006606793499999999,
+          0.00665751,
+          0.006674174,
+          0.006762871,
+          0.0070332945,
+          0.006756197,
+          0.0066706875,
+          0.0067659785
+        ],
+        "original_pos_full": [
+          0.006600504,
+          0.006670505,
+          0.006701423,
+          0.006739083,
+          0.006747523500000001,
+          0.0067565865,
+          0.0066496125,
+          0.0067199085,
+          0.006679299
+        ],
+        "auto_pos_full": [
+          0.0067857485,
+          0.006759259,
+          0.006843353,
+          0.0068168725000000005,
+          0.0068225505,
+          0.006792543,
+          0.0067346125,
+          0.006999078000000001,
+          0.0067889925
+        ],
+        "packed_pos_full": [
+          0.006582761499999999,
+          0.0068929494999999995,
+          0.0066998985,
+          0.0067367225,
+          0.006745126000000001,
+          0.0067125775000000006,
+          0.006665184,
+          0.00680394,
+          0.006716651
+        ],
+        "original_kwrow": [
+          0.0071467215,
+          0.0070641305,
+          0.0071869645,
+          0.007190457999999999,
+          0.0075626435,
+          0.0072023385,
+          0.0072536015,
+          0.007158479999999999,
+          0.0072784015
+        ],
+        "auto_kwrow": [
+          0.0071845985,
+          0.007252066,
+          0.007226697,
+          0.0072824335,
+          0.0077077355,
+          0.0071470605,
+          0.0075392535,
+          0.0072867735000000005,
+          0.007321718
+        ],
+        "packed_kwrow": [
+          0.0071449965,
+          0.0071569555,
+          0.0072018505,
+          0.0073207455,
+          0.007207567,
+          0.0070718135,
+          0.0073620095,
+          0.007226349,
+          0.0071929755
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13232935,
+          13213587,
+          13315020,
+          13348348,
+          13525742,
+          14066589,
+          13512394,
+          13341375,
+          13531957
+        ],
+        "original_pos_full": [
+          13201008,
+          13341010,
+          13402846,
+          13478166,
+          13495047,
+          13513173,
+          13299225,
+          13439817,
+          13358598
+        ],
+        "auto_pos_full": [
+          13571497,
+          13518518,
+          13686706,
+          13633745,
+          13645101,
+          13585086,
+          13469225,
+          13998156,
+          13577985
+        ],
+        "packed_pos_full": [
+          13165523,
+          13785899,
+          13399797,
+          13473445,
+          13490252,
+          13425155,
+          13330368,
+          13607880,
+          13433302
+        ],
+        "original_kwrow": [
+          14293443,
+          14128261,
+          14373929,
+          14380916,
+          15125287,
+          14404677,
+          14507203,
+          14316960,
+          14556803
+        ],
+        "auto_kwrow": [
+          14369197,
+          14504132,
+          14453394,
+          14564867,
+          15415471,
+          14294121,
+          15078507,
+          14573547,
+          14643436
+        ],
+        "packed_kwrow": [
+          14289993,
+          14313911,
+          14403701,
+          14641491,
+          14415134,
+          14143627,
+          14724019,
+          14452698,
+          14385951
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.006674174,
+        "original_pos_full": 0.006701423,
+        "auto_pos_full": 0.006792543,
+        "packed_pos_full": 0.006716651,
+        "original_kwrow": 0.007190457999999999,
+        "auto_kwrow": 0.0072824335,
+        "packed_kwrow": 0.0072018505
+      },
+      "group_order": [
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 16,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "bf16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.005145296000000001,
+          0.005113694,
+          0.0050365825,
+          0.0051667185,
+          0.0050782685,
+          0.0051929825,
+          0.005248141,
+          0.005215724000000001,
+          0.005119622
+        ],
+        "original_pos_full": [
+          0.005164578499999999,
+          0.005150461,
+          0.005046313,
+          0.0051783345,
+          0.005210663999999999,
+          0.005189446,
+          0.0052380874999999995,
+          0.0051607975,
+          0.0051741885
+        ],
+        "auto_pos_full": [
+          0.0051970225,
+          0.005222497,
+          0.005149760000000001,
+          0.0052565665,
+          0.00520591,
+          0.0052761035000000005,
+          0.005248819,
+          0.005235504,
+          0.005232474
+        ],
+        "packed_pos_full": [
+          0.0050775295,
+          0.005151462000000001,
+          0.0051681570000000005,
+          0.005122409,
+          0.0051406229999999995,
+          0.0051836925,
+          0.0052054065,
+          0.0052141555,
+          0.005170633
+        ],
+        "original_kwrow": [
+          0.005553234000000001,
+          0.0055931385,
+          0.0056151395000000005,
+          0.0055926355,
+          0.005661122,
+          0.0056333595,
+          0.005828237500000001,
+          0.005799626,
+          0.005635237
+        ],
+        "auto_kwrow": [
+          0.005705140500000001,
+          0.00559317,
+          0.005668437,
+          0.0055558915,
+          0.005751453,
+          0.005756842,
+          0.005712572,
+          0.0057700205,
+          0.00567763
+        ],
+        "packed_kwrow": [
+          0.005662615,
+          0.0055097765,
+          0.00557072,
+          0.005572926000000001,
+          0.005663017,
+          0.005677332500000001,
+          0.005696769,
+          0.0056567805,
+          0.0056430055
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          10290592,
+          10227388,
+          10073165,
+          10333437,
+          10156537,
+          10385965,
+          10496282,
+          10431448,
+          10239244
+        ],
+        "original_pos_full": [
+          10329157,
+          10300922,
+          10092626,
+          10356669,
+          10421328,
+          10378892,
+          10476175,
+          10321595,
+          10348377
+        ],
+        "auto_pos_full": [
+          10394045,
+          10444994,
+          10299520,
+          10513133,
+          10411820,
+          10552207,
+          10497638,
+          10471008,
+          10464948
+        ],
+        "packed_pos_full": [
+          10155059,
+          10302924,
+          10336314,
+          10244818,
+          10281246,
+          10367385,
+          10410813,
+          10428311,
+          10341266
+        ],
+        "original_kwrow": [
+          11106468,
+          11186277,
+          11230279,
+          11185271,
+          11322244,
+          11266719,
+          11656475,
+          11599252,
+          11270474
+        ],
+        "auto_kwrow": [
+          11410281,
+          11186340,
+          11336874,
+          11111783,
+          11502906,
+          11513684,
+          11425144,
+          11540041,
+          11355260
+        ],
+        "packed_kwrow": [
+          11325230,
+          11019553,
+          11141440,
+          11145852,
+          11326034,
+          11354665,
+          11393538,
+          11313561,
+          11286011
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.005145296000000001,
+        "original_pos_full": 0.0051741885,
+        "auto_pos_full": 0.005232474,
+        "packed_pos_full": 0.0051681570000000005,
+        "original_kwrow": 0.0056333595,
+        "auto_kwrow": 0.005705140500000001,
+        "packed_kwrow": 0.0056567805
+      },
+      "group_order": [
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 8,
+      "rows": 4096,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.006649624,
+          0.006532413999999999,
+          0.006636944499999999,
+          0.006654705,
+          0.0066333215,
+          0.006607015999999999,
+          0.0066631535,
+          0.006640792499999999,
+          0.0066396715
+        ],
+        "original_pos_full": [
+          0.0067041800000000006,
+          0.0066397275,
+          0.006614001,
+          0.0066598405,
+          0.0066377714999999995,
+          0.0065576085,
+          0.0066070765000000005,
+          0.006624029,
+          0.006630673
+        ],
+        "auto_pos_full": [
+          0.0068463345,
+          0.006795773,
+          0.0067634035,
+          0.006758877000000001,
+          0.006822140500000001,
+          0.0067613425,
+          0.0067675755,
+          0.006763374,
+          0.0067234155
+        ],
+        "packed_pos_full": [
+          0.006722459,
+          0.0067282115,
+          0.006734273,
+          0.0067766475,
+          0.0067311674999999994,
+          0.006685487,
+          0.006673244,
+          0.0066928225,
+          0.0066348395
+        ],
+        "original_kwrow": [
+          0.00742025,
+          0.0072633925,
+          0.0073613565,
+          0.0072596885,
+          0.0072797905,
+          0.007258285,
+          0.007226221,
+          0.007208578,
+          0.007104478
+        ],
+        "auto_kwrow": [
+          0.0072253625000000005,
+          0.007311542000000001,
+          0.007257818,
+          0.0072865945,
+          0.007250562,
+          0.007268223,
+          0.0072440575,
+          0.007270784,
+          0.0072140535
+        ],
+        "packed_kwrow": [
+          0.0072029979999999995,
+          0.0072156695,
+          0.0072712195,
+          0.007219621,
+          0.0072577725,
+          0.007162827,
+          0.007199404499999999,
+          0.0072440609999999996,
+          0.007208338
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13299248,
+          13064828,
+          13273889,
+          13309410,
+          13266643,
+          13214032,
+          13326307,
+          13281585,
+          13279343
+        ],
+        "original_pos_full": [
+          13408360,
+          13279455,
+          13228002,
+          13319681,
+          13275543,
+          13115217,
+          13214153,
+          13248058,
+          13261346
+        ],
+        "auto_pos_full": [
+          13692669,
+          13591546,
+          13526807,
+          13517754,
+          13644281,
+          13522685,
+          13535151,
+          13526748,
+          13446831
+        ],
+        "packed_pos_full": [
+          13444918,
+          13456423,
+          13468546,
+          13553295,
+          13462335,
+          13370974,
+          13346488,
+          13385645,
+          13269679
+        ],
+        "original_kwrow": [
+          14840500,
+          14526785,
+          14722713,
+          14519377,
+          14559581,
+          14516570,
+          14452442,
+          14417156,
+          14208956
+        ],
+        "auto_kwrow": [
+          14450725,
+          14623084,
+          14515636,
+          14573189,
+          14501124,
+          14536446,
+          14488115,
+          14541568,
+          14428107
+        ],
+        "packed_kwrow": [
+          14405996,
+          14431339,
+          14542439,
+          14439242,
+          14515545,
+          14325654,
+          14398809,
+          14488122,
+          14416676
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.0066396715,
+        "original_pos_full": 0.006630673,
+        "auto_pos_full": 0.0067634035,
+        "packed_pos_full": 0.006722459,
+        "original_kwrow": 0.0072596885,
+        "auto_kwrow": 0.007257818,
+        "packed_kwrow": 0.0072156695
+      },
+      "group_order": [
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 1,
+      "rows": 1,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0067337815,
+          0.00670007,
+          0.006682654499999999,
+          0.006631458,
+          0.006643203,
+          0.006669867,
+          0.006680829,
+          0.0066849629999999995,
+          0.006697278
+        ],
+        "original_pos_full": [
+          0.006718518,
+          0.0067236605,
+          0.006690985,
+          0.0066984415,
+          0.0066637275,
+          0.006646783999999999,
+          0.0065996054999999994,
+          0.006679935499999999,
+          0.0066734435
+        ],
+        "auto_pos_full": [
+          0.0067918615,
+          0.0067659295,
+          0.006737666,
+          0.0067513105,
+          0.006721087000000001,
+          0.006744172499999999,
+          0.0066999665000000005,
+          0.0066918095000000006,
+          0.006734851
+        ],
+        "packed_pos_full": [
+          0.007102028000000001,
+          0.006712684500000001,
+          0.0068193705,
+          0.0066759355,
+          0.0065999495,
+          0.006635572,
+          0.006714724,
+          0.0066468195,
+          0.0066636275
+        ],
+        "original_kwrow": [
+          0.0076694250000000005,
+          0.007130475999999999,
+          0.0073584845,
+          0.007175216000000001,
+          0.0072254495,
+          0.0072215045,
+          0.0071569475,
+          0.007264865,
+          0.0072060495
+        ],
+        "auto_kwrow": [
+          0.007204113000000001,
+          0.007330573999999999,
+          0.007557111,
+          0.0072788155,
+          0.0073249134999999995,
+          0.0072902325,
+          0.0073013755,
+          0.007308304,
+          0.0073594635
+        ],
+        "packed_kwrow": [
+          0.007221339,
+          0.0072246685,
+          0.0072555575,
+          0.0070906385,
+          0.007149824999999999,
+          0.0072334185,
+          0.0071863625000000006,
+          0.007231006,
+          0.007205860499999999
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13467563,
+          13400140,
+          13365309,
+          13262916,
+          13286406,
+          13339734,
+          13361658,
+          13369926,
+          13394556
+        ],
+        "original_pos_full": [
+          13437036,
+          13447321,
+          13381970,
+          13396883,
+          13327455,
+          13293568,
+          13199211,
+          13359871,
+          13346887
+        ],
+        "auto_pos_full": [
+          13583723,
+          13531859,
+          13475332,
+          13502621,
+          13442174,
+          13488345,
+          13399933,
+          13383619,
+          13469702
+        ],
+        "packed_pos_full": [
+          14204056,
+          13425369,
+          13638741,
+          13351871,
+          13199899,
+          13271144,
+          13429448,
+          13293639,
+          13327255
+        ],
+        "original_kwrow": [
+          15338850,
+          14260952,
+          14716969,
+          14350432,
+          14450899,
+          14443009,
+          14313895,
+          14529730,
+          14412099
+        ],
+        "auto_kwrow": [
+          14408226,
+          14661148,
+          15114222,
+          14557631,
+          14649827,
+          14580465,
+          14602751,
+          14616608,
+          14718927
+        ],
+        "packed_kwrow": [
+          14442678,
+          14449337,
+          14511115,
+          14181277,
+          14299650,
+          14466837,
+          14372725,
+          14462012,
+          14411721
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.006682654499999999,
+        "original_pos_full": 0.006679935499999999,
+        "auto_pos_full": 0.006737666,
+        "packed_pos_full": 0.0066759355,
+        "original_kwrow": 0.0072215045,
+        "auto_kwrow": 0.007308304,
+        "packed_kwrow": 0.007221339
+      },
+      "group_order": [
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 4,
+      "rows": 17,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0067875515,
+          0.0067285445,
+          0.0067524025,
+          0.00673491,
+          0.0067488805,
+          0.0067343355,
+          0.0067768835,
+          0.006754026,
+          0.0067272849999999995
+        ],
+        "original_pos_full": [
+          0.00673612,
+          0.0067313265,
+          0.006767270000000001,
+          0.006696734,
+          0.0066563149999999995,
+          0.0066988130000000005,
+          0.006594698,
+          0.006736255500000001,
+          0.006749787500000001
+        ],
+        "auto_pos_full": [
+          0.0067145495,
+          0.0067484375,
+          0.0068073125,
+          0.0067263455000000005,
+          0.00670917,
+          0.0066970810000000006,
+          0.0067097780000000004,
+          0.006702108500000001,
+          0.0066898705
+        ],
+        "packed_pos_full": [
+          0.0067470385,
+          0.006679453,
+          0.0066798395,
+          0.006728188,
+          0.0067064355,
+          0.0066898445,
+          0.0065883265,
+          0.006759243000000001,
+          0.0066132955000000005
+        ],
+        "original_kwrow": [
+          0.007243365,
+          0.007209443,
+          0.007407352,
+          0.0072245315,
+          0.007207970500000001,
+          0.007373647,
+          0.007123671999999999,
+          0.007749793499999999,
+          0.0072268085
+        ],
+        "auto_kwrow": [
+          0.0071073085,
+          0.007247936,
+          0.0073318294999999995,
+          0.0072730095,
+          0.007304995,
+          0.0073091985,
+          0.00722521,
+          0.007339814,
+          0.007282841
+        ],
+        "packed_kwrow": [
+          0.007259703,
+          0.0072283765000000005,
+          0.007276542499999999,
+          0.0072239125000000005,
+          0.007186273,
+          0.007233014,
+          0.007228724,
+          0.007148965,
+          0.0072395590000000004
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13575103,
+          13457089,
+          13504805,
+          13469820,
+          13497761,
+          13468671,
+          13553767,
+          13508052,
+          13454570
+        ],
+        "original_pos_full": [
+          13472240,
+          13462653,
+          13534540,
+          13393468,
+          13312630,
+          13397626,
+          13189396,
+          13472511,
+          13499575
+        ],
+        "auto_pos_full": [
+          13429099,
+          13496875,
+          13614625,
+          13452691,
+          13418340,
+          13394162,
+          13419556,
+          13404217,
+          13379741
+        ],
+        "packed_pos_full": [
+          13494077,
+          13358906,
+          13359679,
+          13456376,
+          13412871,
+          13379689,
+          13176653,
+          13518486,
+          13226591
+        ],
+        "original_kwrow": [
+          14486730,
+          14418886,
+          14814704,
+          14449063,
+          14415941,
+          14747294,
+          14247344,
+          15499587,
+          14453617
+        ],
+        "auto_kwrow": [
+          14214617,
+          14495872,
+          14663659,
+          14546019,
+          14609990,
+          14618397,
+          14450420,
+          14679628,
+          14565682
+        ],
+        "packed_kwrow": [
+          14519406,
+          14456753,
+          14553085,
+          14447825,
+          14372546,
+          14466028,
+          14457448,
+          14297930,
+          14479118
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.0067488805,
+        "original_pos_full": 0.0067313265,
+        "auto_pos_full": 0.0067097780000000004,
+        "packed_pos_full": 0.0066898445,
+        "original_kwrow": 0.0072268085,
+        "auto_kwrow": 0.007282841,
+        "packed_kwrow": 0.007228724
+      },
+      "group_order": [
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 2,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "fp16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0051742405,
+          0.0051506040000000005,
+          0.005132464,
+          0.0051337825000000005,
+          0.0051588895000000004,
+          0.005217754,
+          0.005147288,
+          0.005161409499999999,
+          0.005058212
+        ],
+        "original_pos_full": [
+          0.005240571,
+          0.00522534,
+          0.0051736355,
+          0.005160850999999999,
+          0.0051805015,
+          0.005143582000000001,
+          0.005149106,
+          0.0051083644999999995,
+          0.0051808670000000005
+        ],
+        "auto_pos_full": [
+          0.0052241685,
+          0.0052359385000000005,
+          0.005264451,
+          0.0052342495,
+          0.005234019,
+          0.005205296,
+          0.0052186310000000005,
+          0.0052024639999999995,
+          0.0052410140000000004
+        ],
+        "packed_pos_full": [
+          0.005179309500000001,
+          0.0051614305000000004,
+          0.00514196,
+          0.0051464565,
+          0.005135604,
+          0.005122398,
+          0.0051407250000000005,
+          0.0051362095,
+          0.005166174
+        ],
+        "original_kwrow": [
+          0.0056814915,
+          0.0055849904999999995,
+          0.0056839080000000005,
+          0.005638309,
+          0.005632727,
+          0.0056182125,
+          0.005597895,
+          0.0056175185,
+          0.005610563
+        ],
+        "auto_kwrow": [
+          0.005692588,
+          0.005586877499999999,
+          0.005723532,
+          0.005699419,
+          0.00569937,
+          0.00571756,
+          0.005665384,
+          0.005687088,
+          0.0056488549999999995
+        ],
+        "packed_kwrow": [
+          0.005760721999999999,
+          0.005614758,
+          0.0055896335,
+          0.0056267425,
+          0.005733891499999999,
+          0.005656857,
+          0.005623792999999999,
+          0.005604348,
+          0.0055352935
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          10348481,
+          10301208,
+          10264928,
+          10267565,
+          10317779,
+          10435508,
+          10294576,
+          10322819,
+          10116424
+        ],
+        "original_pos_full": [
+          10481142,
+          10450680,
+          10347271,
+          10321702,
+          10361003,
+          10287164,
+          10298212,
+          10216729,
+          10361734
+        ],
+        "auto_pos_full": [
+          10448337,
+          10471877,
+          10528902,
+          10468499,
+          10468038,
+          10410592,
+          10437262,
+          10404928,
+          10482028
+        ],
+        "packed_pos_full": [
+          10358619,
+          10322861,
+          10283920,
+          10292913,
+          10271208,
+          10244796,
+          10281450,
+          10272419,
+          10332348
+        ],
+        "original_kwrow": [
+          11362983,
+          11169981,
+          11367816,
+          11276618,
+          11265454,
+          11236425,
+          11195790,
+          11235037,
+          11221126
+        ],
+        "auto_kwrow": [
+          11385176,
+          11173755,
+          11447064,
+          11398838,
+          11398740,
+          11435120,
+          11330768,
+          11374176,
+          11297710
+        ],
+        "packed_kwrow": [
+          11521444,
+          11229516,
+          11179267,
+          11253485,
+          11467783,
+          11313714,
+          11247586,
+          11208696,
+          11070587
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.0051506040000000005,
+        "original_pos_full": 0.0051736355,
+        "auto_pos_full": 0.005234019,
+        "packed_pos_full": 0.00514196,
+        "original_kwrow": 0.0056182125,
+        "auto_kwrow": 0.005692588,
+        "packed_kwrow": 0.005623792999999999
+      },
+      "group_order": [
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 8,
+      "rows": 4096,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0066759775,
+          0.0066631139999999995,
+          0.0067283405,
+          0.0066767735,
+          0.006671167,
+          0.006686162,
+          0.0066999525,
+          0.0067213945,
+          0.006670132499999999
+        ],
+        "original_pos_full": [
+          0.006591493499999999,
+          0.0068265415,
+          0.006727743499999999,
+          0.0066589265,
+          0.0067001155,
+          0.0066735614999999995,
+          0.006739087499999999,
+          0.0067608655,
+          0.0067090325
+        ],
+        "auto_pos_full": [
+          0.006710323000000001,
+          0.006726578,
+          0.006883091,
+          0.006851887,
+          0.006887051000000001,
+          0.0068729355,
+          0.0068746195,
+          0.006910527,
+          0.006885022
+        ],
+        "packed_pos_full": [
+          0.0067658365000000005,
+          0.0067387935,
+          0.006642489,
+          0.006709806,
+          0.0067734530000000005,
+          0.0066956645,
+          0.006769814000000001,
+          0.006856498999999999,
+          0.0068034160000000005
+        ],
+        "original_kwrow": [
+          0.0072195435,
+          0.0072602495,
+          0.0071845885,
+          0.0071732770000000005,
+          0.007293593,
+          0.007275529,
+          0.0072629875,
+          0.007882732,
+          0.0073814555
+        ],
+        "auto_kwrow": [
+          0.0072282465,
+          0.0073185935,
+          0.007465692,
+          0.007286634,
+          0.007330270999999999,
+          0.007393980499999999,
+          0.0073238975,
+          0.007583635,
+          0.007349838
+        ],
+        "packed_kwrow": [
+          0.0072665605,
+          0.007236099,
+          0.007302343,
+          0.0072154015,
+          0.007221883,
+          0.0072804639999999995,
+          0.007307902,
+          0.0072192359999999995,
+          0.0071749045
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13351955,
+          13326228,
+          13456681,
+          13353547,
+          13342334,
+          13372324,
+          13399905,
+          13442789,
+          13340265
+        ],
+        "original_pos_full": [
+          13182987,
+          13653083,
+          13455487,
+          13317853,
+          13400231,
+          13347123,
+          13478175,
+          13521731,
+          13418065
+        ],
+        "auto_pos_full": [
+          13420646,
+          13453156,
+          13766182,
+          13703774,
+          13774102,
+          13745871,
+          13749239,
+          13821054,
+          13770044
+        ],
+        "packed_pos_full": [
+          13531673,
+          13477587,
+          13284978,
+          13419612,
+          13546906,
+          13391329,
+          13539628,
+          13712998,
+          13606832
+        ],
+        "original_kwrow": [
+          14439087,
+          14520499,
+          14369177,
+          14346554,
+          14587186,
+          14551058,
+          14525975,
+          15765464,
+          14762911
+        ],
+        "auto_kwrow": [
+          14456493,
+          14637187,
+          14931384,
+          14573268,
+          14660542,
+          14787961,
+          14647795,
+          15167270,
+          14699676
+        ],
+        "packed_kwrow": [
+          14533121,
+          14472198,
+          14604686,
+          14430803,
+          14443766,
+          14560928,
+          14615804,
+          14438472,
+          14349809
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.0066767735,
+        "original_pos_full": 0.0067090325,
+        "auto_pos_full": 0.0068746195,
+        "packed_pos_full": 0.0067658365000000005,
+        "original_kwrow": 0.0072629875,
+        "auto_kwrow": 0.007330270999999999,
+        "packed_kwrow": 0.007236099
+      },
+      "group_order": [
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 4,
+      "rows": 17,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0066198505,
+          0.0066508525,
+          0.0066863090000000005,
+          0.006729098,
+          0.0066765604999999995,
+          0.006714050500000001,
+          0.0067155595,
+          0.006730819000000001,
+          0.0065763029999999995
+        ],
+        "original_pos_full": [
+          0.0066289735,
+          0.0065158745,
+          0.006756333,
+          0.006701201,
+          0.0067240475,
+          0.0067130545,
+          0.006635653500000001,
+          0.006696551,
+          0.006662901
+        ],
+        "auto_pos_full": [
+          0.0069208774999999995,
+          0.006709765,
+          0.0067341065,
+          0.006888768,
+          0.006906989,
+          0.0066986235,
+          0.006727167,
+          0.006807516,
+          0.0067495125
+        ],
+        "packed_pos_full": [
+          0.0067571115,
+          0.0066589234999999995,
+          0.006662999,
+          0.0066835055,
+          0.00669739,
+          0.006639295,
+          0.006697051000000001,
+          0.0067025045,
+          0.0066807115
+        ],
+        "original_kwrow": [
+          0.0073344989999999995,
+          0.0072019745000000005,
+          0.0071996315,
+          0.007136239,
+          0.007083774,
+          0.006987997500000001,
+          0.0071128775,
+          0.0071982325,
+          0.0072180855000000006
+        ],
+        "auto_kwrow": [
+          0.007264403,
+          0.007259545,
+          0.007293707500000001,
+          0.0072679485,
+          0.007335154000000001,
+          0.0072851105,
+          0.0072262920000000005,
+          0.007283695,
+          0.0072456989999999995
+        ],
+        "packed_kwrow": [
+          0.007192680999999999,
+          0.0071889300000000005,
+          0.0072384625,
+          0.007220479500000001,
+          0.007237078,
+          0.007156322,
+          0.007164763,
+          0.0074559985,
+          0.0071529515
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13239701,
+          13301705,
+          13372618,
+          13458196,
+          13353121,
+          13428101,
+          13431119,
+          13461638,
+          13152606
+        ],
+        "original_pos_full": [
+          13257947,
+          13031749,
+          13512666,
+          13402402,
+          13448095,
+          13426109,
+          13271307,
+          13393102,
+          13325802
+        ],
+        "auto_pos_full": [
+          13841755,
+          13419530,
+          13468213,
+          13777536,
+          13813978,
+          13397247,
+          13454334,
+          13615032,
+          13499025
+        ],
+        "packed_pos_full": [
+          13514223,
+          13317847,
+          13325998,
+          13367011,
+          13394780,
+          13278590,
+          13394102,
+          13405009,
+          13361423
+        ],
+        "original_kwrow": [
+          14668998,
+          14403949,
+          14399263,
+          14272478,
+          14167548,
+          13975995,
+          14225755,
+          14396465,
+          14436171
+        ],
+        "auto_kwrow": [
+          14528806,
+          14519090,
+          14587415,
+          14535897,
+          14670308,
+          14570221,
+          14452584,
+          14567390,
+          14491398
+        ],
+        "packed_kwrow": [
+          14385362,
+          14377860,
+          14476925,
+          14440959,
+          14474156,
+          14312644,
+          14329526,
+          14911997,
+          14305903
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.0066863090000000005,
+        "original_pos_full": 0.006696551,
+        "auto_pos_full": 0.0067495125,
+        "packed_pos_full": 0.0066835055,
+        "original_kwrow": 0.0071982325,
+        "auto_kwrow": 0.0072679485,
+        "packed_kwrow": 0.007192680999999999
+      },
+      "group_order": [
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 2,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "bf16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.005070316,
+          0.005131648,
+          0.005608575,
+          0.0052021485,
+          0.005182085,
+          0.0051724855,
+          0.005120721999999999,
+          0.005141334,
+          0.0051411185
+        ],
+        "original_pos_full": [
+          0.0051567505000000005,
+          0.006614732,
+          0.0053586395,
+          0.005999768,
+          0.005240233,
+          0.005161843,
+          0.005136354,
+          0.0051273015,
+          0.005157777
+        ],
+        "auto_pos_full": [
+          0.0052811135,
+          0.005725749,
+          0.006539641,
+          0.0051539205,
+          0.0052455175,
+          0.0052500129999999996,
+          0.0052357115,
+          0.0052021795,
+          0.0052507205
+        ],
+        "packed_pos_full": [
+          0.005171581,
+          0.0054924125,
+          0.005248049,
+          0.0051597955,
+          0.005152103,
+          0.005153974,
+          0.005166171000000001,
+          0.005107369499999999,
+          0.0052497645
+        ],
+        "original_kwrow": [
+          0.005606791,
+          0.005662682,
+          0.0059207965000000005,
+          0.005578711500000001,
+          0.005636810000000001,
+          0.0056224875,
+          0.00562013,
+          0.005648968,
+          0.00563729
+        ],
+        "auto_kwrow": [
+          0.0057274610000000005,
+          0.0057338104999999995,
+          0.0069660815000000004,
+          0.00580956,
+          0.0057635265,
+          0.0057204565,
+          0.005727599,
+          0.0057243755,
+          0.00573168
+        ],
+        "packed_kwrow": [
+          0.005679705,
+          0.0056001225000000005,
+          0.007268877,
+          0.005744375,
+          0.0056637975,
+          0.005686223,
+          0.005618555,
+          0.0057183645,
+          0.005628033
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          10140632,
+          10263296,
+          11217150,
+          10404297,
+          10364170,
+          10344971,
+          10241444,
+          10282668,
+          10282237
+        ],
+        "original_pos_full": [
+          10313501,
+          13229464,
+          10717279,
+          11999536,
+          10480466,
+          10323686,
+          10272708,
+          10254603,
+          10315554
+        ],
+        "auto_pos_full": [
+          10562227,
+          11451498,
+          13079282,
+          10307841,
+          10491035,
+          10500026,
+          10471423,
+          10404359,
+          10501441
+        ],
+        "packed_pos_full": [
+          10343162,
+          10984825,
+          10496098,
+          10319591,
+          10304206,
+          10307948,
+          10332342,
+          10214739,
+          10499529
+        ],
+        "original_kwrow": [
+          11213582,
+          11325364,
+          11841593,
+          11157423,
+          11273620,
+          11244975,
+          11240260,
+          11297936,
+          11274580
+        ],
+        "auto_kwrow": [
+          11454922,
+          11467621,
+          13932163,
+          11619120,
+          11527053,
+          11440913,
+          11455198,
+          11448751,
+          11463360
+        ],
+        "packed_kwrow": [
+          11359410,
+          11200245,
+          14537754,
+          11488750,
+          11327595,
+          11372446,
+          11237110,
+          11436729,
+          11256066
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.005141334,
+        "original_pos_full": 0.005161843,
+        "auto_pos_full": 0.0052500129999999996,
+        "packed_pos_full": 0.005166171000000001,
+        "original_kwrow": 0.005636810000000001,
+        "auto_kwrow": 0.00573168,
+        "packed_kwrow": 0.005679705
+      },
+      "group_order": [
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    },
+    {
+      "dim": 1,
+      "rows": 1,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1,
+      "samples_ms": {
+        "original_pos3": [
+          0.0066915315,
+          0.00667881,
+          0.006686986,
+          0.0066544295000000005,
+          0.006552440499999999,
+          0.00661478,
+          0.0066075095,
+          0.0064948720000000005,
+          0.006450572
+        ],
+        "original_pos_full": [
+          0.006747957000000001,
+          0.006661469,
+          0.0066603635000000005,
+          0.0066507015,
+          0.0065361975,
+          0.0065573855,
+          0.0066553355,
+          0.0065958295,
+          0.006508154499999999
+        ],
+        "auto_pos_full": [
+          0.006651939999999999,
+          0.006683022,
+          0.00681841,
+          0.006732561,
+          0.006574837,
+          0.006695405,
+          0.0066260925,
+          0.00673829,
+          0.006715395999999999
+        ],
+        "packed_pos_full": [
+          0.006652890999999999,
+          0.006611633,
+          0.0067343245,
+          0.0066170145,
+          0.0066878935,
+          0.006623008,
+          0.006645821,
+          0.00660147,
+          0.006617783499999999
+        ],
+        "original_kwrow": [
+          0.007096053,
+          0.007136031,
+          0.0071591334999999996,
+          0.00709398,
+          0.007108509,
+          0.007189371,
+          0.0071366465,
+          0.007084905,
+          0.007157063500000001
+        ],
+        "auto_kwrow": [
+          0.007219481,
+          0.0073098734999999995,
+          0.007194082,
+          0.0071105715,
+          0.0072853965,
+          0.0072088605,
+          0.0072420085,
+          0.007135664,
+          0.007216772
+        ],
+        "packed_kwrow": [
+          0.0071706865,
+          0.007242564,
+          0.007180245,
+          0.0070314719999999995,
+          0.007016348,
+          0.00712243,
+          0.007039052,
+          0.0071298915,
+          0.007124287500000001
+        ]
+      },
+      "raw_batch_ns": {
+        "original_pos3": [
+          13383063,
+          13357620,
+          13373972,
+          13308859,
+          13104881,
+          13229560,
+          13215019,
+          12989744,
+          12901144
+        ],
+        "original_pos_full": [
+          13495914,
+          13322938,
+          13320727,
+          13301403,
+          13072395,
+          13114771,
+          13310671,
+          13191659,
+          13016309
+        ],
+        "auto_pos_full": [
+          13303880,
+          13366044,
+          13636820,
+          13465122,
+          13149674,
+          13390810,
+          13252185,
+          13476580,
+          13430792
+        ],
+        "packed_pos_full": [
+          13305782,
+          13223266,
+          13468649,
+          13234029,
+          13375787,
+          13246016,
+          13291642,
+          13202940,
+          13235567
+        ],
+        "original_kwrow": [
+          14192106,
+          14272062,
+          14318267,
+          14187960,
+          14217018,
+          14378742,
+          14273293,
+          14169810,
+          14314127
+        ],
+        "auto_kwrow": [
+          14438962,
+          14619747,
+          14388164,
+          14221143,
+          14570793,
+          14417721,
+          14484017,
+          14271328,
+          14433544
+        ],
+        "packed_kwrow": [
+          14341373,
+          14485128,
+          14360490,
+          14062944,
+          14032696,
+          14244860,
+          14078104,
+          14259783,
+          14248575
+        ]
+      },
+      "median_ms": {
+        "original_pos3": 0.00661478,
+        "original_pos_full": 0.0066507015,
+        "auto_pos_full": 0.006695405,
+        "packed_pos_full": 0.006623008,
+        "original_kwrow": 0.007136031,
+        "auto_kwrow": 0.007216772,
+        "packed_kwrow": 0.007124287500000001
+      },
+      "group_order": [
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ],
+        [
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow"
+        ],
+        [
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow"
+        ],
+        [
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3"
+        ],
+        [
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full"
+        ],
+        [
+          "packed_pos_full",
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full"
+        ],
+        [
+          "original_kwrow",
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full"
+        ],
+        [
+          "auto_kwrow",
+          "packed_kwrow",
+          "original_pos3",
+          "original_pos_full",
+          "auto_pos_full",
+          "packed_pos_full",
+          "original_kwrow"
+        ]
+      ],
+      "outputs_bitwise_equal": true,
+      "input_unchanged": true
+    }
+  ],
+  "validation_sha256": "b1ff5e821b62d6f97e9eb617848cb2ea3911c76e282cf2dc679d6aaea0bbaebb",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "before": {
+    "utc": "2026-09-08T10:20:33Z",
+    "gpu": {
+      "exit_code": 0,
+      "stdout": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 550.127.05, 0 %, 17 MiB, 40, 1410 MHz, 39.98 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit_code": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+      "stderr": ""
+    }
+  },
+  "binary_sha256": "5e789685eeb2c7c40218a9b67007bc580b239ecebc1b8506b5069b9d033c61eb",
+  "case_order": [
+    {
+      "dim": 16,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 65,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 65,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 16,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 8,
+      "rows": 4096,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 1,
+      "rows": 1,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 4,
+      "rows": 17,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 2,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 8,
+      "rows": 4096,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 4,
+      "rows": 17,
+      "mode": "hadamard_int4",
+      "dtype": "fp16",
+      "scale": 1
+    },
+    {
+      "dim": 2,
+      "rows": 4096,
+      "mode": "hadamard",
+      "dtype": "bf16",
+      "scale": 1
+    },
+    {
+      "dim": 1,
+      "rows": 1,
+      "mode": "hadamard_int4",
+      "dtype": "bf16",
+      "scale": 1
+    }
+  ],
+  "finished_utc": "2026-09-08T10:20:45Z",
+  "after": {
+    "utc": "2026-09-08T10:20:45Z",
+    "gpu": {
+      "exit_code": 0,
+      "stdout": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 550.127.05, 45 %, 515 MiB, 40, 1410 MHz, 47.31 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit_code": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n5038, /home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python, 492 MiB\n",
+      "stderr": ""
+    }
+  }
+}

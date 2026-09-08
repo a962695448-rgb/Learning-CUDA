@@ -1,0 +1,18 @@
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,65,1,16] dtype=fp16 scale=1 rows=65 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           24.688 us (0.024688 ms)  4.2126e+07 elements/s
+warp                kernel_only            5.568 us (0.005568 ms)  1.8678e+08 elements/s
+tensor_core         kernel_only            5.072 us (0.005072 ms)  2.0505e+08 elements/s
+split_int4          kernel_only            8.688 us (0.008688 ms)  1.1971e+08 elements/s
+fused_int4          kernel_only            5.136 us (0.005136 ms)  2.0249e+08 elements/s
+cpu_fp32_fwht       cpu_compute            2.280 us (0.002280 ms)  4.5604e+08 elements/s
+warp_h2d_d2h        host_e2e              20.600 us (0.020600 ms)  5.0484e+07 elements/s
+Collecting data...
+Generating '/tmp/nsys-report-86cc.qdstrm'
+[1/1] [0%                          ] fallback.nsys-rep[1/1] [0%                          ] fallback.nsys-rep[1/1] [=16%                        ] fallback.nsys-rep[1/1] [=====31%                    ] fallback.nsys-rep[1/1] [===================81%      ] fallback.nsys-rep[1/1] [========================100%] fallback.nsys-rep[1/1] [========================100%] fallback.nsys-rep
+Generated:
+    /data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/checks/fallback.nsys-rep

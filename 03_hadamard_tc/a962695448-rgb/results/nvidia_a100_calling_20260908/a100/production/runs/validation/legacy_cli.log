@@ -1,0 +1,16 @@
+PASS --self-test
+PASS --benchmark --dim 0
+PASS --benchmark --dim 3
+PASS --benchmark --dim 512
+PASS --benchmark --batch -1
+PASS --benchmark --seq 0
+PASS --benchmark --heads abc
+PASS --benchmark --dtype fp32
+PASS --benchmark --scale nan
+PASS --benchmark --scale 2
+PASS --benchmark --batch 18446744073709551615 --seq 2
+PASS --benchmark --batch 18446744073709551616
+PASS --benchmark --repetitions 0
+PASS --benchmark --warmup -1
+PASS --benchmark --dim
+PASS --unsupported

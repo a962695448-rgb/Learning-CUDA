@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "validation",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/production/production_validate.py"
+      ],
+      "pid": 2059,
+      "exit_code": 0
+    },
+    {
+      "name": "graph1",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/final_perf.py",
+        "--round",
+        "1"
+      ],
+      "pid": 2291,
+      "exit_code": 0
+    },
+    {
+      "name": "graph2",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/final_perf.py",
+        "--round",
+        "2"
+      ],
+      "pid": 2333,
+      "exit_code": 0
+    },
+    {
+      "name": "graph3",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/final_perf.py",
+        "--round",
+        "3"
+      ],
+      "pid": 2377,
+      "exit_code": 0
+    },
+    {
+      "name": "eager1",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/eager_ablation.py",
+        "--round",
+        "1"
+      ],
+      "pid": 2419,
+      "exit_code": 0
+    },
+    {
+      "name": "eager2",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/eager_ablation.py",
+        "--round",
+        "2"
+      ],
+      "pid": 2450,
+      "exit_code": 0
+    },
+    {
+      "name": "eager3",
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/final-calling-20260908/eager_ablation.py",
+        "--round",
+        "3"
+      ],
+      "pid": 2480,
+      "exit_code": 0
+    }
+  ],
+  "scope": "Execution/correctness status; performance acceptance is evaluated separately from raw results."
+}

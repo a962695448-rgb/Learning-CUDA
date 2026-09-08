@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "correctness",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/calibration/run_packed_rows.py",
+        "--stage",
+        "correctness",
+        "--out",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/calibration/runs/correctness",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform"
+      ],
+      "pid": 3733,
+      "exit_code": 0
+    },
+    {
+      "name": "screen",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/calibration/run_three.py",
+        "screen"
+      ],
+      "pid": 3805,
+      "exit_code": 0
+    },
+    {
+      "name": "freeze",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/calibration/freeze_policy.py"
+      ],
+      "pid": 3917,
+      "exit_code": 0
+    },
+    {
+      "name": "holdout",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/calibration/run_three.py",
+        "holdout"
+      ],
+      "pid": 3918,
+      "exit_code": 0
+    },
+    {
+      "name": "validate_policy",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/a100-eager-20260908/calibration/check_policy.py"
+      ],
+      "pid": 4037,
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/validate_row_api.py", line 29, in main
+    op=load_extension(verbose=True,build_directory=str(ROOT/'build/production'));checked=CheckedRows(torch,op)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vipuser/infinitensor-2026/a100-eager-20260908/production/project/scripts/build_torch_extension.py", line 21, in load_extension
+    return load(
+           ^^^^^
+  File "/home/vipuser/miniconda3/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1314, in load
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "/home/vipuser/miniconda3/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1721, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/home/vipuser/miniconda3/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1803, in _write_ninja_file_and_build_library
+    verify_ninja_availability()
+  File "/home/vipuser/miniconda3/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1852, in verify_ninja_availability
+    raise RuntimeError("Ninja is required to load C++ extensions")
+RuntimeError: Ninja is required to load C++ extensions
+
+{"status": "FAIL", "summary": null, "large_stream_cases": 0, "rejections": 0}

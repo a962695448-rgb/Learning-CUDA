@@ -1,0 +1,8 @@
+{
+  "reason": "Initial runner omitted the existing virtualenv bin from PATH; Ninja was installed but unavailable to the extension builder. No package/source/threshold changes.",
+  "initial_report_sha256": "aaeae65d6523a7ef05b5a7839062663d55cc269550a3f4ba85d1a287de9a8949",
+  "ninja_path": "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/ninja",
+  "retry_source_manifest_sha256": "2dcacace027ca26e486e9a6378662c158108506b25e3107b11addc50e74e81e0",
+  "pid": 2655,
+  "started_utc": "2026-09-08T09:37:43.011382+00:00"
+}

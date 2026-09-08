@@ -1,0 +1,61 @@
+{
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "min_rows": 256,
+      "block_threads": 256
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256
+    },
+    {
+      "dim": 1,
+      "mode": "hadamard_int4",
+      "min_rows": 1,
+      "block_threads": 256
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard_int4",
+      "min_rows": 1,
+      "block_threads": 256
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "min_rows": 16,
+      "block_threads": 256
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "min_rows": 64,
+      "block_threads": 256
+    }
+  ],
+  "accepted_source_sha256": "22325afb8a9a0d91905f3580a507a663acd4cc0fd39a5f7ae701eef47e314bba",
+  "scope": "Only first holdout accepted rules; N16 fused remains disabled. Other GPU rules unchanged."
+}

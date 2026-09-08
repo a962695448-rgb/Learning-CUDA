@@ -1,0 +1,16 @@
+{
+  "files": {
+    "eager_protocol.json": {
+      "sha256": "af52292eddcbcf3a0ef00e5e369a952ca5b1d751993644ff3eeda80954924224",
+      "bytes": 2455
+    },
+    "eager_ablation.py": {
+      "sha256": "d9c6eaa1a7bfd876d7232d040a9d41fb6cc50beb92ce40a17ee00a57b7e9a084",
+      "bytes": 3997
+    },
+    "run_eager.py": {
+      "sha256": "e6a997d2ab48bd1164711e728464ab39fb150aeebb13ecf92cef947293d13cb8",
+      "bytes": 1182
+    }
+  }
+}
