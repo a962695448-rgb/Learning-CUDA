@@ -1,0 +1,16 @@
+{
+  "pid": 4307,
+  "argv": [
+    "/data/infinitensor-2026/.venv/bin/python",
+    "/data/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+    "--stage",
+    "correctness",
+    "--round",
+    "1",
+    "--out",
+    "/data/infinitensor-2026/profile-dispatch-20260908/runs/correctness",
+    "--reference-repo",
+    "/data/infinitensor-2026/fast-hadamard-transform"
+  ],
+  "out": "/data/infinitensor-2026/profile-dispatch-20260908/runs/correctness"
+}

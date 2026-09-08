@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "pid": 8701,
+  "stage": "holdout",
+  "runs": [
+    {
+      "index": 1,
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+        "--stage",
+        "holdout",
+        "--round",
+        "1",
+        "--out",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/runs/holdout1",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform"
+      ],
+      "pid": 8704,
+      "exit_code": 0
+    },
+    {
+      "index": 2,
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+        "--stage",
+        "holdout",
+        "--round",
+        "2",
+        "--out",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/runs/holdout2",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform"
+      ],
+      "pid": 8767,
+      "exit_code": 0
+    },
+    {
+      "index": 3,
+      "argv": [
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+        "--stage",
+        "holdout",
+        "--round",
+        "3",
+        "--out",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/runs/holdout3",
+        "--reference-repo",
+        "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform"
+      ],
+      "pid": 8829,
+      "exit_code": 0
+    }
+  ]
+}

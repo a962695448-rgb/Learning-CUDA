@@ -1,0 +1,13 @@
+GPU=NVIDIA A800-SXM4-40GB sm=80
+BENCHMARK shape=[1,4096,1,16] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 warp_block_threads=128 fused_layout=original row_layout=packed
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           29.120 us (0.029120 ms)  2.2505e+09 elements/s
+warp                kernel_only            8.192 us (0.008192 ms)  8.0000e+09 elements/s
+tensor_core         kernel_only            9.216 us (0.009216 ms)  7.1111e+09 elements/s
+split_int4          kernel_only           13.312 us (0.013312 ms)  4.9231e+09 elements/s
+fused_int4          kernel_only            8.192 us (0.008192 ms)  8.0000e+09 elements/s
+cpu_fp32_fwht       cpu_compute          219.657 us (0.219657 ms)  2.9836e+08 elements/s
+warp_h2d_d2h        host_e2e              64.261 us (0.064261 ms)  1.0198e+09 elements/s

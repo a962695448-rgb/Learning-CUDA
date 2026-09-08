@@ -1,0 +1,16 @@
+{
+  "pid": 7404,
+  "argv": [
+    "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+    "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+    "--stage",
+    "correctness",
+    "--round",
+    "1",
+    "--out",
+    "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/runs/correctness",
+    "--reference-repo",
+    "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/fast-hadamard-transform"
+  ],
+  "out": "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/runs/correctness"
+}

@@ -1,0 +1,36 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "rules": [
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256
+    }
+  ],
+  "rows": [
+    253,
+    259,
+    511,
+    513,
+    1023,
+    1025,
+    4093,
+    4099,
+    8191,
+    8192,
+    8193,
+    32767,
+    32768,
+    32769
+  ],
+  "input_seed": 9090807,
+  "decision": "New independent shape/data validation of narrower regions for previously rejected rules. Retain all original rejections. Fixed 256 threads; any activated case below 5% in any round rejects the rule, with no further refit in this iteration.",
+  "script_sha256": "490479a398b263a81906ec5ab32b13aa7c96cb0902adaaf97f81f24d62cabfef"
+}

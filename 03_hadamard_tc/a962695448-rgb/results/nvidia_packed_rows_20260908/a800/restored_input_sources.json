@@ -1,0 +1,14 @@
+[
+  {
+    "path": "project/tests/cpu_reference_test.cpp",
+    "source_bundle": "experiment_inputs.zip",
+    "sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+    "reason": "Remote archive extension filter omitted cpp inputs; restored from frozen pre-upload bundle and matched server-verified input manifest. Not downloaded as output."
+  },
+  {
+    "path": "production/project/tests/cpu_reference_test.cpp",
+    "source_bundle": "production_inputs.zip",
+    "sha256": "d436dd007f22669dcb80df7057e1536b223b8e03f7f11f10a6257163939597cc",
+    "reason": "Remote archive extension filter omitted cpp inputs; restored from frozen pre-upload bundle and matched server-verified input manifest. Not downloaded as output."
+  }
+]

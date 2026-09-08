@@ -1,0 +1,2 @@
+name, uuid, driver_version, memory.total [MiB], mig.mode.current, utilization.gpu [%]
+NVIDIA GeForce RTX 4090, GPU-43e1afcd-d419-7025-711b-d8127b5544a5, 570.124.06, 24564 MiB, [N/A], 0 %

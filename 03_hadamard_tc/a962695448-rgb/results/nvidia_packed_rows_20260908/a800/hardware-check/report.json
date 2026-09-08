@@ -1,0 +1,170 @@
+{
+  "status": "FAIL",
+  "started_utc": "2026-09-08T04:45:22.281280+00:00",
+  "expected_sm": "80",
+  "sudo_profile": false,
+  "commands": [
+    {
+      "label": "device",
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=name,uuid,driver_version,memory.total,mig.mode.current,utilization.gpu",
+        "--format=csv"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "compute-processes",
+      "argv": [
+        "nvidia-smi",
+        "--query-compute-apps=pid,process_name,used_memory",
+        "--format=csv,noheader"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "telemetry",
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=name,clocks.sm,clocks.mem,temperature.gpu,power.draw,power.limit",
+        "--format=csv"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "nvcc-version",
+      "argv": [
+        "/usr/local/cuda/bin/nvcc",
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "ncu-version",
+      "argv": [
+        "/usr/local/cuda/bin/ncu",
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "compile",
+      "argv": [
+        "/usr/local/cuda/bin/nvcc",
+        "-O2",
+        "-lineinfo",
+        "-arch=sm_80",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/hardware_probe.cu",
+        "-o",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/hardware-check/hardware_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "cuda-launch",
+      "argv": [
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/hardware-check/hardware_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "ncu",
+      "argv": [
+        "/usr/local/cuda/bin/ncu",
+        "--set",
+        "basic",
+        "--launch-count",
+        "1",
+        "--clock-control",
+        "none",
+        "--csv",
+        "--log-file",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/hardware-check/ncu-metrics.csv",
+        "/home/vipuser/infinitensor-2026/profile-dispatch-20260908/hardware-check/hardware_probe"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "notes": [
+    "This probes profiling capability, not project performance or exclusive tenancy.",
+    "No module parameters, persistence, power limits, or clock locks are changed."
+  ],
+  "probe_source_sha256": "8a2fe7071f505e30780e2cf9ecde6ac27af4dcf9f89d3a3f82fc9b2761f4c446",
+  "error": "ncu failed; see retained logs",
+  "exit_code": 1,
+  "finished_utc": "2026-09-08T04:45:25.326708+00:00",
+  "artifacts": {
+    "device.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "device.stdout.log": {
+      "bytes": 188,
+      "sha256": "5c3d194e78a8a1d45a0b28d7a343298eb027e6220209dc3dfd6de5fd80ec077c"
+    },
+    "compile.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cuda-launch.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "nvcc-version.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compute-processes.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ncu.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compile.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ncu.stdout.log": {
+      "bytes": 82,
+      "sha256": "fde5d58c5f3289d93aa7e41e8f0139ecac8343c3313891a7b05b740567921ff3"
+    },
+    "compute-processes.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "telemetry.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ncu-version.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cuda-launch.stdout.log": {
+      "bytes": 82,
+      "sha256": "fde5d58c5f3289d93aa7e41e8f0139ecac8343c3313891a7b05b740567921ff3"
+    },
+    "ncu-version.stdout.log": {
+      "bytes": 144,
+      "sha256": "278c16b34bf2a0841a02b434972ad7d120153f3f5607420faec231c2b7e01c54"
+    },
+    "hardware_probe": {
+      "bytes": 1001800,
+      "sha256": "dd906159397748488f29266646bdda41a109159e832dbcfc359487022d2b3d68"
+    },
+    "telemetry.stdout.log": {
+      "bytes": 173,
+      "sha256": "d4d2c6631638f156e9d547ca9224abb5031ac1d3585ae6803cf7b007698bc527"
+    },
+    "nvcc-version.stdout.log": {
+      "bytes": 208,
+      "sha256": "c2a3e2a4025d1be81124baae1f7cd5909fe3f1d87d1d82343b47f2a7c8b8f267"
+    },
+    "ncu-metrics.csv": {
+      "bytes": 573,
+      "sha256": "321ac430f60337c2f67379dd8585ac07c55901657a8e15158d5ec1c7a3568a3c"
+    }
+  }
+}

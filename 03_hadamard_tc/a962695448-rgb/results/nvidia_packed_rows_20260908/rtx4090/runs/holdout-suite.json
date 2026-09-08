@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "pid": 6576,
+  "stage": "holdout",
+  "runs": [
+    {
+      "index": 1,
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+        "--stage",
+        "holdout",
+        "--round",
+        "1",
+        "--out",
+        "/data/infinitensor-2026/profile-dispatch-20260908/runs/holdout1",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform"
+      ],
+      "pid": 6583,
+      "exit_code": 0
+    },
+    {
+      "index": 2,
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+        "--stage",
+        "holdout",
+        "--round",
+        "2",
+        "--out",
+        "/data/infinitensor-2026/profile-dispatch-20260908/runs/holdout2",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform"
+      ],
+      "pid": 6750,
+      "exit_code": 0
+    },
+    {
+      "index": 3,
+      "argv": [
+        "/data/infinitensor-2026/.venv/bin/python",
+        "/data/infinitensor-2026/profile-dispatch-20260908/run_packed_rows.py",
+        "--stage",
+        "holdout",
+        "--round",
+        "3",
+        "--out",
+        "/data/infinitensor-2026/profile-dispatch-20260908/runs/holdout3",
+        "--reference-repo",
+        "/data/infinitensor-2026/fast-hadamard-transform"
+      ],
+      "pid": 6924,
+      "exit_code": 0
+    }
+  ]
+}

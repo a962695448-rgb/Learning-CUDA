@@ -1,0 +1,17 @@
+GPU=NVIDIA A800-SXM4-40GB sm=80
+BENCHMARK shape=[1,65,1,16] dtype=fp16 scale=1 rows=65 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           27.616 us (0.027616 ms)  3.7659e+07 elements/s
+warp                kernel_only            6.752 us (0.006752 ms)  1.5403e+08 elements/s
+tensor_core         kernel_only            6.960 us (0.006960 ms)  1.4943e+08 elements/s
+split_int4          kernel_only           10.720 us (0.010720 ms)  9.7015e+07 elements/s
+fused_int4          kernel_only            6.544 us (0.006544 ms)  1.5892e+08 elements/s
+cpu_fp32_fwht       cpu_compute            3.598 us (0.003598 ms)  2.8909e+08 elements/s
+warp_h2d_d2h        host_e2e              35.957 us (0.035957 ms)  2.8923e+07 elements/s
+Generating '/tmp/nsys-report-cce6.qdstrm'
+[1/1] [0%                          ] fallback.nsys-rep[1/1] [0%                          ] fallback.nsys-rep[1/1] [5%                          ] fallback.nsys-rep[1/1] [===23%                      ] fallback.nsys-rep[1/1] [=============58%            ] fallback.nsys-rep[1/1] [=======================93%  ] fallback.nsys-rep[1/1] [========================100%] fallback.nsys-rep[1/1] [========================100%] fallback.nsys-rep
+Generated:
+    /home/vipuser/infinitensor-2026/profile-dispatch-20260908/production/runs/nsys/fallback.nsys-rep

@@ -1,0 +1,234 @@
+{
+  "status": "ANALYZED",
+  "gpu": "NVIDIA A800-SXM4-40GB",
+  "rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "reduction_pct_range": [
+        23.14250672873972,
+        64.72654374423911
+      ],
+      "validation": "independent_refinement"
+    },
+    {
+      "dim": 1,
+      "mode": "hadamard_int4",
+      "min_rows": 1,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        9.356224282456937,
+        67.05539427866556
+      ]
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "reduction_pct_range": [
+        21.62053497255577,
+        63.919712183638325
+      ],
+      "validation": "independent_refinement"
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard_int4",
+      "min_rows": 1,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        9.426904954525995,
+        66.72521089700254
+      ]
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "reduction_pct_range": [
+        19.08580267014002,
+        59.63913974070265
+      ],
+      "validation": "independent_refinement"
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "min_rows": 16,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        6.316653503490077,
+        65.06362842162028
+      ]
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        13.096645750790204,
+        40.743352496173436
+      ]
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256,
+      "reduction_pct_range": [
+        6.752653836485411,
+        69.0648040799324
+      ],
+      "validation": "independent_refinement"
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "validation": "first_holdout",
+      "reduction_pct_range": [
+        10.812914013588216,
+        28.574682020766463
+      ]
+    }
+  ],
+  "refinement_accepted": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "active_cases": 14,
+      "reduction_pct_range": [
+        23.14250672873972,
+        64.72654374423911
+      ],
+      "failures": []
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "active_cases": 28,
+      "reduction_pct_range": [
+        21.62053497255577,
+        63.919712183638325
+      ],
+      "failures": []
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "min_rows": 4096,
+      "block_threads": 256,
+      "active_cases": 28,
+      "reduction_pct_range": [
+        19.08580267014002,
+        59.63913974070265
+      ],
+      "failures": []
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256,
+      "active_cases": 52,
+      "reduction_pct_range": [
+        6.752653836485411,
+        69.0648040799324
+      ],
+      "failures": []
+    }
+  ],
+  "refinement_rejected": [
+    {
+      "dim": 16,
+      "mode": "hadamard_int4",
+      "min_rows": 256,
+      "block_threads": 256,
+      "active_cases": 52,
+      "reduction_pct_range": [
+        3.4752042632100966,
+        55.97900450642241
+      ],
+      "failures": [
+        {
+          "case": [
+            "fp16",
+            16,
+            259,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            5.824134070745601,
+            4.973016687243548,
+            3.7816780163664077
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            16,
+            259,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            5.472642623242963,
+            3.4752042632100966,
+            4.944424960086813
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            16,
+            259,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.87711343653644,
+            5.976400172331897,
+            4.460829090210217
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            16,
+            259,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.957726742549884,
+            5.301579634698294,
+            5.581037972579028
+          ]
+        }
+      ]
+    }
+  ],
+  "original_rejected_rules_preserved": 5,
+  "refined_source_hashes": {
+    "runs/refined1/report.json": "ce0460776e0c0eb6bbdc991c1ed009d0fbf7b311c3b8ba7020f71af5568c41f2",
+    "runs/refined2/report.json": "4dbee23eeb48fd780a00ae952c626f7798611c69d0916a17a65efcfb753196a2",
+    "runs/refined3/report.json": "8dddac5386f48558d47c300efc30c73b99ecc46520b7f4363d320961575b9e12"
+  },
+  "first_policy_sha256": "1aa4f692c1973b4dd470df5dbd0a7df3f223b0ec815b8e4c05fd4225c9675173",
+  "refinement_protocol_sha256": "b342553528a94b7150b45516f178a1af0667aa5ab3c5bc3421e82da3fd0a91e6"
+}

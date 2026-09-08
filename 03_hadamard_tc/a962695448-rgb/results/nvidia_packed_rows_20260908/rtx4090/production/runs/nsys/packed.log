@@ -1,0 +1,17 @@
+GPU=NVIDIA GeForce RTX 4090 sm=89
+BENCHMARK shape=[1,4096,1,8] dtype=fp16 scale=1 rows=4096 dense_oracle_rows=32 fallback_block_threads=128 fused_layout=original row_layout=auto
+Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;
+cpu_compute=FP32 FWHT host wall time, input reset excluded;
+host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.
+Throughput=input elements / elapsed seconds; it is not FLOP/s or physical memory bandwidth.
+naive_global        kernel_only           22.640 us (0.022640 ms)  1.4473e+09 elements/s
+warp                kernel_only            5.216 us (0.005216 ms)  6.2822e+09 elements/s
+split_int4          kernel_only            8.736 us (0.008736 ms)  3.7509e+09 elements/s
+fused_int4          kernel_only            5.344 us (0.005344 ms)  6.1317e+09 elements/s
+cpu_fp32_fwht       cpu_compute           76.958 us (0.076958 ms)  4.2579e+08 elements/s
+warp_h2d_d2h        host_e2e              45.761 us (0.045761 ms)  7.1607e+08 elements/s
+Collecting data...
+Generating '/tmp/nsys-report-ecc8.qdstrm'
+[1/1] [0%                          ] packed.nsys-rep[1/1] [0%                          ] packed.nsys-rep[1/1] [==========48%               ] packed.nsys-rep[1/1] [==============64%           ] packed.nsys-rep[1/1] [===================81%      ] packed.nsys-rep[1/1] [========================100%] packed.nsys-rep[1/1] [========================100%] packed.nsys-rep
+Generated:
+    /data/infinitensor-2026/profile-dispatch-20260908/production/runs/nsys/packed.nsys-rep

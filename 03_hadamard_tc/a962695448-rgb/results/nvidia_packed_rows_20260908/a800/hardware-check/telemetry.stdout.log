@@ -1,0 +1,2 @@
+name, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W]
+NVIDIA A800-SXM4-40GB, 210 MHz, 1215 MHz, 29, 45.74 W, 400.00 W

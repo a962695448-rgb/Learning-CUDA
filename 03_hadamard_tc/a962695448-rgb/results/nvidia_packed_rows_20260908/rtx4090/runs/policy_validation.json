@@ -1,0 +1,260 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "status": "PASS",
+  "accepted_rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.5466095783701235,
+        "worst_reduction_pct": 31.47335227801058
+      },
+      "holdout_active_cases": 6,
+      "reduction_pct_range": [
+        31.592195294066272,
+        56.3856028792741
+      ],
+      "failures": []
+    },
+    {
+      "dim": 1,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 1,
+        "block_threads": 256,
+        "geomean_ratio": 0.7161905384958603,
+        "worst_reduction_pct": 5.575408703580386
+      },
+      "holdout_active_cases": 20,
+      "reduction_pct_range": [
+        6.085403591533534,
+        64.46145341573
+      ],
+      "failures": []
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.5743752734350952,
+        "worst_reduction_pct": 30.84054165790674
+      },
+      "holdout_active_cases": 12,
+      "reduction_pct_range": [
+        29.81366679694095,
+        52.241054172982906
+      ],
+      "failures": []
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 1,
+        "block_threads": 256,
+        "geomean_ratio": 0.7453541638579648,
+        "worst_reduction_pct": 6.011733196229541
+      },
+      "holdout_active_cases": 40,
+      "reduction_pct_range": [
+        6.4213551063028955,
+        62.78107876957577
+      ],
+      "failures": []
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.6133423995878189,
+        "worst_reduction_pct": 28.000004871533367
+      },
+      "holdout_active_cases": 12,
+      "reduction_pct_range": [
+        25.909935476754143,
+        47.83100376797456
+      ],
+      "failures": []
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.6858306175958989,
+        "worst_reduction_pct": 21.7654207365106
+      },
+      "holdout_active_cases": 12,
+      "reduction_pct_range": [
+        21.636366227646842,
+        39.748103917810084
+      ],
+      "failures": []
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.7176746831077528,
+        "worst_reduction_pct": 7.157746238223773
+      },
+      "holdout_active_cases": 28,
+      "reduction_pct_range": [
+        5.393896069623794,
+        53.23146409759756
+      ],
+      "failures": []
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.7869154034085086,
+        "worst_reduction_pct": 14.311597412205558
+      },
+      "holdout_active_cases": 12,
+      "reduction_pct_range": [
+        12.613160678010683,
+        27.773777515386655
+      ],
+      "failures": []
+    }
+  ],
+  "rejected_rules": [
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.6931542314452808,
+        "worst_reduction_pct": 6.082041677671512
+      },
+      "holdout_active_cases": 28,
+      "reduction_pct_range": [
+        3.9768667696980065,
+        58.27559667257118
+      ],
+      "failures": [
+        {
+          "case": [
+            "bf16",
+            4,
+            65,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            3.9768667696980065,
+            4.538905992864617,
+            4.312242618434048
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            4,
+            65,
+            0.5,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.217297070777359,
+            4.13989848184777,
+            4.080177737941204
+          ]
+        }
+      ]
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.7868674282229734,
+        "worst_reduction_pct": 6.150655268638216
+      },
+      "holdout_active_cases": 28,
+      "reduction_pct_range": [
+        4.646814672787336,
+        39.076841926349594
+      ],
+      "failures": [
+        {
+          "case": [
+            "bf16",
+            16,
+            65,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.7416873448722585,
+            5.798081472654248,
+            4.664343892019818
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            16,
+            65,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            5.307262478999308,
+            4.859150986328819,
+            4.985539111098014
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            16,
+            65,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            5.923341442654384,
+            5.174824070391059,
+            4.646814672787336
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            16,
+            65,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.792102660102449,
+            5.277140047794915,
+            4.792102660102449
+          ]
+        }
+      ]
+    }
+  ],
+  "holdout_source_hashes": {
+    "runs/holdout1/report.json": "00609ee115df022a4b8eb6cbe74ac1de8db2fbbbbb0dd310d1b6f517383b606c",
+    "runs/holdout2/report.json": "cdb8572dc846e20cd7b1a16eb65cc0eec45ca501ddf958a46a01fc68b03a3b1d",
+    "runs/holdout3/report.json": "0a071cd29bc550a462f8796a01dc44920c7d0f7d2d8a3ef350ad9ed32306b1d5"
+  },
+  "screen_policy_sha256": "04670fb8b27be1de836f0f07fe9051a99014323dac55bd6829f9ee2c8f6fe2d2"
+}

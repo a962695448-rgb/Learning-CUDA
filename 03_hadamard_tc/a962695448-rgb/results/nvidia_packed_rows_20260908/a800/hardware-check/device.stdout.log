@@ -1,0 +1,2 @@
+name, uuid, driver_version, memory.total [MiB], mig.mode.current, utilization.gpu [%]
+NVIDIA A800-SXM4-40GB, GPU-d6d9d7f7-5941-4b9c-b4bc-de4784f6b499, 550.127.05, 40960 MiB, Disabled, 0 %

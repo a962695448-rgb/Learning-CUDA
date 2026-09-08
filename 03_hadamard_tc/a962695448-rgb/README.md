@@ -8,11 +8,13 @@
 
 ## 当前状态
 
-当前接口源码为 `155a05a8b957bdf558ef93a2db1e3aea9fadf36f`，新增 N256 融合 INT4 的显式 `fused_layout="contiguous256"` 选项；默认仍为 `original`。三个模式各执行同一套 1,876 项 CLI 矩阵、原 1,800 项参考对照（其中 200 项 N256 同时核查新融合）、28 项张量元数据检查与 16 项定向接口检查均通过。子集和重复执行不累计为更多独立输入。
+当前生产源码为 `a3703fda3cfd7aa1b45342210dc57fb030f0d904`。新增 N=1/2/4/8/16 的行打包实现和显式 `row_layout="packed"/"auto"`；默认仍为 `original`。auto 只对实测 A800-SXM4-40GB、RTX 4090 的规则启用新路径，其他设备（含 A100、4090 D）回退原路径。详见[小维度实现与验证](reports/packed-rows-validation.md)。
 
-[初轮布局实验](results/nvidia_contiguous256_20260906/RESULTS.md)的 24 个融合配置三轮均减少耗时，范围 4.43%～16.23%；普通变换多数退化，保留原实现。[生产整合与52配置验证](reports/fused-layout-validation.md)三轮全部更快，耗时减少4.7837%～14.3440%，其中41项每轮至少减少5%。[四 warp WMMA 实验](results/nvidia_wmma_reuse_20260906/RESULTS.md)完整保留120个配置和所有负例，继续作为对照。旧辅助FP64舍入检查的失败、修订原因和独立数值证书分别归档，不追认旧失败为通过。
+两卡分别通过同一套1876项CLI矩阵的七种模式、原1800项Dao对照、280项大行数/偏移/stream检查及接口边界；Compute Sanitizer memcheck/synccheck均零错误，nsys确认真实内核路径。重复执行不累计为更多独立输入。完整输入、原始样本、拒绝规则与SHA-256见[本轮档案](results/nvidia_packed_rows_20260908/README.md)。
 
-新融合布局只在 `N=256`、`block_threads=128` 使用，不能套用旧 A100 报告证明它已跨卡验证。当前完成范围以实际 4090 记录为准，PR 与正式提交待项目所有者验收。
+生产整合后的62个启用配置在每卡三轮Graph中均减少至少5%耗时，相对同轮更快的原128/256线程路径，A800范围6.17%～68.85%，4090范围5.20%～66.82%。这仅是已测Graph配置的结果；八个普通Python逐次调用配置反而变慢，A800为7.13%～10.40%、4090为8.76%～13.52%。默认保留原路径，auto应在用户实际Graph工作负载中另行测量。
+
+此前N256的显式 `fused_layout="contiguous256"` 已完成独立[4090验证](reports/fused-layout-validation.md)和[A100验证](reports/fused-layout-a100-validation.md)。A100的52配置中51项三轮更快，47项每轮至少减少5%，一次8.43%退化及后续诊断均保留；不能将旧A100结果用于证明新行打包版本已实测。PR与正式提交待项目所有者验收。
 
 ## 已完成的基线与平台验证
 
@@ -165,9 +167,28 @@ packed, scales = op.hadamard_int4(x, 1.0, 128, fused_layout="contiguous256")
 
 该选项只改变融合路径；独立变换和独立量化继续使用原 kernel。自测仍执行全矩阵，仅 N256 的融合项切换布局。CSV 增加第 21 列 `fused_layout`，仅融合行填写实际选项；旧表头拒绝混写，复现时使用新文件名。
 
+## 小维度显式行布局
+
+```python
+# x 的最后一维为1/2/4/8/16；旧调用默认仍是original。
+y = op.hadamard(x, 1.0, row_layout="auto")
+packed, row_scales = op.hadamard_int4(x, 1.0, row_layout="auto")
+y_packed = op.hadamard(x, 1.0, block_threads=256, row_layout="packed")
+```
+
+```bash
+./build/hadamard --self-test --row-layout auto
+./build/hadamard --benchmark --batch 1 --seq 4096 --heads 1 \
+  --dim 8 --dtype fp16 --row-layout auto --csv results/rows-auto-new.csv
+```
+
+`packed`明确要求N≤16；auto可在已有规则中选择256线程，否则回退到调用者指定的128/256。自测的packed模式只切换N≤16，其他维度仍执行原实现。非original行布局不能与contiguous256组合。自动阈值、未采用的N16融合、普通Python调用的退化与有限性能覆盖范围，均见[完整报告](reports/packed-rows-validation.md)。
+
+CSV默认original仍为21列；packed/auto采用24列，在末尾增加`requested_row_layout`、`resolved_row_layout`、`quantize_block_threads`。`warp_block_threads`记录实际选择的变换/融合线程，split的独立量化保留调用者线程并单列记录。不同表头拒绝混写，使用新的输出文件。
+
 ## 显式选择 NVIDIA 线程数
 
-省略参数仍使用128线程；256仅是可选配置，不会根据形状自动切换。 本次接口源码可定位至[`24849f6`](https://github.com/a962695448-rgb/Learning-CUDA/commit/24849f61ef06350f4e8bcd224ef93d97622c9744)；实机原字节与提交后的LF内容核查分别保存在下方归档。正确性已覆盖原全部dim=1～256的二次幂，性能证据仅覆盖N=16/64：变换M=4096/16384及各自M±1，融合INT4为M=4096及M±1。更一般的 M 范围和其他 GPU 仍需分别验证；已测 A100 的范围与结果见 [A100 报告](reports/a100-validation.md)。
+默认row_layout="original"时，省略线程参数仍使用128；显式auto的选择规则另见上一节。以下为早期128/256线程实验： 本次接口源码可定位至[`24849f6`](https://github.com/a962695448-rgb/Learning-CUDA/commit/24849f61ef06350f4e8bcd224ef93d97622c9744)；实机原字节与提交后的LF内容核查分别保存在下方归档。正确性已覆盖原全部dim=1～256的二次幂，性能证据仅覆盖N=16/64：变换M=4096/16384及各自M±1，融合INT4为M=4096及M±1。更一般的 M 范围和其他 GPU 仍需分别验证；已测 A100 的范围与结果见 [A100 报告](reports/a100-validation.md)。
 
 ```python
 # 保留原调用；x仍须满足前述CUDA/形状/连续存储约束。
@@ -193,7 +214,7 @@ python scripts/verify_block_threads.py \
 
 CLI选项只影响warp变换、独立量化、split/fused和warp含复制路径；naive、Tensor Core和CPU路径不变。不支持的线程值会明确拒绝。输入检查、设备guard、当前CUDA stream和原来的输出精度/INT4舍入语义均保留。
 
-计时日志同时显示us和ms。CSV保留原18列及`mean_us`，在末尾追加`warp_block_threads`和`mean_ms`，后者严格按`mean_us/1000`换算；不涉及warp的行将线程字段留空。已有旧表头的CSV会被拒绝追加，请使用新的结果文件，避免不同格式混写。
+计时日志同时显示us和ms。初次线程接口扩展时，CSV在原18列后追加`warp_block_threads`和`mean_ms`；当前original还含第21列`fused_layout`，packed/auto的24列另见上节。`mean_ms`严格按`mean_us/1000`换算；不涉及warp的行将线程字段留空。已有旧表头的CSV会被拒绝追加，请使用新的结果文件，避免不同格式混写。
 
 [256线程独立Graph复核与原始源码](results/nvidia_thread_promotion_20260905/README.md)保存三轮全部72配置及原始采样；[生产接口集成验证](results/nvidia_api_integration_20260906/README.md)保存28个原始文件及对应源码SHA。集成后只复测了六个既有代表配置，256线程相对128减少耗时7.12%～25.34%，没有扩大性能搜索。Graph均摊时间仍不等于独立单kernel延迟或端到端时间；未知驻留CUDA上下文及单卡限制均在归档中说明。
 
@@ -326,7 +347,7 @@ Nsight Compute 退出码为 1，明确报 `ERR_NVGPUCTRPERM`。当前容器没�
 
 ## 后续验收
 
-- 获得 A100 后重编、自测和规模扫描，作为 Hadamard 的跨卡补充验证；九齿的 A100 官方差分验收另行完成。
+- 新增行打包/auto版本尚未在A100实测；已有A100原线程及N256融合记录保留为各自版本证据。九齿的A100实机测试记录在九齿仓库，不能代替本项目新版验证。
 - 在平台允许硬件计数器采集后补充 ncu；结合已取得的 nsys 时间线，进一步检查访存、寄存器与当前 WMMA 路径，评估分解 Hadamard 的 Tensor Core 算法。
 - 提交前核对训练营“包含测试”与通用“无测试代码”的措辞冲突；保留完整开发验证证据。
 

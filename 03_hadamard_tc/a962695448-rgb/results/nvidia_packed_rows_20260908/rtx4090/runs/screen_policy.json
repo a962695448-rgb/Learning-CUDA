@@ -1,0 +1,113 @@
+{
+  "status": "FROZEN_BEFORE_HOLDOUT",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "source_hashes": {
+    "runs/screen1/report.json": "a5f9ed6492b542c8cf04958af9f04396e77f1d9f7311e4d04c5e0e0ac92adc75",
+    "runs/screen2/report.json": "d04f17f963a597b6f0dd6c8405a564b1532b186703894bd2a04f4a6608f00e38",
+    "runs/screen3/report.json": "ea3a6726ad0e32ee721df6d678ae114878e91c9f6988530e409716665219cbe5"
+  },
+  "rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.5466095783701235,
+        "worst_reduction_pct": 31.47335227801058
+      }
+    },
+    {
+      "dim": 1,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 1,
+        "block_threads": 256,
+        "geomean_ratio": 0.7161905384958603,
+        "worst_reduction_pct": 5.575408703580386
+      }
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.5743752734350952,
+        "worst_reduction_pct": 30.84054165790674
+      }
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 1,
+        "block_threads": 256,
+        "geomean_ratio": 0.7453541638579648,
+        "worst_reduction_pct": 6.011733196229541
+      }
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.6133423995878189,
+        "worst_reduction_pct": 28.000004871533367
+      }
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.6931542314452808,
+        "worst_reduction_pct": 6.082041677671512
+      }
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.6858306175958989,
+        "worst_reduction_pct": 21.7654207365106
+      }
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.7176746831077528,
+        "worst_reduction_pct": 7.157746238223773
+      }
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.7869154034085086,
+        "worst_reduction_pct": 14.311597412205558
+      }
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.7868674282229734,
+        "worst_reduction_pct": 6.150655268638216
+      }
+    }
+  ],
+  "selection": "Among candidates passing >=5% in every activated screening case and each of three rounds, choose widest row range, then lowest geometric mean ratio. Baseline is better same-run original128/256.",
+  "holdout_policy": "A rule is rejected as a whole if any activated holdout case loses its >=5% three-round gate; do not refit thresholds using the same holdout."
+}

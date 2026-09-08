@@ -1,0 +1,347 @@
+{
+  "gpu": "NVIDIA A800-SXM4-40GB",
+  "status": "PASS",
+  "accepted_rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 1,
+        "block_threads": 256,
+        "geomean_ratio": 0.6803923594948371,
+        "worst_reduction_pct": 6.149737697199198
+      },
+      "holdout_active_cases": 20,
+      "reduction_pct_range": [
+        9.356224282456937,
+        67.05539427866556
+      ],
+      "failures": []
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 1,
+        "block_threads": 256,
+        "geomean_ratio": 0.7055749524723619,
+        "worst_reduction_pct": 6.3362050451189695
+      },
+      "holdout_active_cases": 40,
+      "reduction_pct_range": [
+        9.426904954525995,
+        66.72521089700254
+      ],
+      "failures": []
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 16,
+        "block_threads": 256,
+        "geomean_ratio": 0.683500880229216,
+        "worst_reduction_pct": 7.359665560309625
+      },
+      "holdout_active_cases": 40,
+      "reduction_pct_range": [
+        6.316653503490077,
+        65.06362842162028
+      ],
+      "failures": []
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.7160199379589047,
+        "worst_reduction_pct": 13.15165799421546
+      },
+      "holdout_active_cases": 12,
+      "reduction_pct_range": [
+        13.096645750790204,
+        40.743352496173436
+      ],
+      "failures": []
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 4096,
+        "block_threads": 256,
+        "geomean_ratio": 0.7986367588326406,
+        "worst_reduction_pct": 10.912622865632493
+      },
+      "holdout_active_cases": 12,
+      "reduction_pct_range": [
+        10.812914013588216,
+        28.574682020766463
+      ],
+      "failures": []
+    }
+  ],
+  "rejected_rules": [
+    {
+      "dim": 1,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 16,
+        "block_threads": 256,
+        "geomean_ratio": 0.7713597298828773,
+        "worst_reduction_pct": 5.969332532834571
+      },
+      "holdout_active_cases": 20,
+      "reduction_pct_range": [
+        4.961831770338088,
+        51.40233503293724
+      ],
+      "failures": [
+        {
+          "case": [
+            "fp16",
+            1,
+            18,
+            1.0,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            4.961831770338088,
+            11.158567431417355,
+            11.25333234985667
+          ]
+        }
+      ]
+    },
+    {
+      "dim": 2,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 16,
+        "block_threads": 256,
+        "geomean_ratio": 0.7866900491869518,
+        "worst_reduction_pct": 5.209912673783879
+      },
+      "holdout_active_cases": 40,
+      "reduction_pct_range": [
+        4.83271340990119,
+        48.309177059499596
+      ],
+      "failures": [
+        {
+          "case": [
+            "bf16",
+            2,
+            18,
+            0.7071067811865475,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            4.83271340990119,
+            11.09359032678061,
+            11.449575625174447
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            2,
+            63,
+            0.7071067811865475,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            6.144071232362814,
+            10.757182870838268,
+            4.941552024070884
+          ]
+        }
+      ]
+    },
+    {
+      "dim": 4,
+      "mode": "hadamard",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 256,
+        "geomean_ratio": 0.7786711265150972,
+        "worst_reduction_pct": 5.137713833759294
+      },
+      "holdout_active_cases": 28,
+      "reduction_pct_range": [
+        2.989853841895307,
+        46.166870029825965
+      ],
+      "failures": [
+        {
+          "case": [
+            "fp16",
+            4,
+            65,
+            0.5,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            3.25580874869289,
+            3.827749389809798,
+            3.655355940600835
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            4,
+            65,
+            1.0,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            3.7558727641897494,
+            3.653448120296643,
+            4.010416988779387
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            4,
+            65,
+            1.0,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            3.6998416169196857,
+            4.791345177547757,
+            2.989853841895307
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            4,
+            65,
+            0.5,
+            "hadamard"
+          ],
+          "reduction_pct": [
+            4.231976685307915,
+            4.279751602761284,
+            3.0873879441608465
+          ]
+        }
+      ]
+    },
+    {
+      "dim": 8,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 16,
+        "block_threads": 256,
+        "geomean_ratio": 0.7206190478772432,
+        "worst_reduction_pct": 6.421269198410274
+      },
+      "holdout_active_cases": 40,
+      "reduction_pct_range": [
+        4.994046807174691,
+        59.92371496653646
+      ],
+      "failures": [
+        {
+          "case": [
+            "fp16",
+            8,
+            63,
+            0.35355339059327373,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            5.664137106137057,
+            5.376347874755105,
+            4.994046807174691
+          ]
+        }
+      ]
+    },
+    {
+      "dim": 16,
+      "mode": "hadamard_int4",
+      "chosen": {
+        "min_rows": 64,
+        "block_threads": 128,
+        "geomean_ratio": 0.7765139048895078,
+        "worst_reduction_pct": 6.389534271496844
+      },
+      "holdout_active_cases": 28,
+      "reduction_pct_range": [
+        3.1237444091971156,
+        42.499354350332155
+      ],
+      "failures": [
+        {
+          "case": [
+            "bf16",
+            16,
+            65,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            3.8621762532322745,
+            4.150192517816831,
+            3.9525625497698558
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            16,
+            65,
+            0.25,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            3.3173435195655965,
+            3.792968569610289,
+            3.4865283390604684
+          ]
+        },
+        {
+          "case": [
+            "bf16",
+            16,
+            65,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            4.10417765621498,
+            3.1237444091971156,
+            3.79596817226191
+          ]
+        },
+        {
+          "case": [
+            "fp16",
+            16,
+            65,
+            1.0,
+            "hadamard_int4"
+          ],
+          "reduction_pct": [
+            3.947890423812439,
+            3.914583834316643,
+            3.8765750721816428
+          ]
+        }
+      ]
+    }
+  ],
+  "holdout_source_hashes": {
+    "runs/holdout1/report.json": "71ece21ba56c6b3dfc36c743484f74bd9380fdd4df77991db1576d023d36f073",
+    "runs/holdout2/report.json": "2b8396383a81d1fd4753a54af6a493d8ada5e5912844a68c4d6d215006ddd0f5",
+    "runs/holdout3/report.json": "86245b525927f5c70b1d44178594449a3abfe294e343f8c9860c51270d190d2e"
+  },
+  "screen_policy_sha256": "21c60ee257d74b25c3c4b31540672bb97732d8596d06866804878ef1c7fa73de"
+}

@@ -1,0 +1,387 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-08T07:37:28Z",
+  "environment": {
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "extension_sha256": "d90a818018214973726e2365447773ec7e0f55ac57a26a76d4b2077847f36211"
+  },
+  "cases": [
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "rejected_lazy_alias": true,
+      "materialized_output_bitwise_equal": true,
+      "error": "input must not have a lazy negative bit; call resolve_neg() first"
+    }
+  ],
+  "source_sha256": {
+    "src/torch_binding.cu": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8",
+    "include/kernels.cuh": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+    "include/contiguous256.cuh": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+    "scripts/verify_tensor_metadata.py": "c0e7e33bd82a1a582a31035ced93cd4a2b0df8f9d8c81a39df0892a76a6eaf12"
+  },
+  "finished_utc": "2026-09-08T07:37:30Z"
+}
