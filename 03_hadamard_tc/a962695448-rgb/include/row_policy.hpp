@@ -8,7 +8,7 @@
 namespace hadamard {
 
 enum class RowLayout { Original, Packed, Auto };
-enum class RowDevice { Unknown, A800, RTX4090 };
+enum class RowDevice { Unknown, A800, RTX4090, A100 };
 struct RowChoice { bool packed; int threads; };
 
 inline RowLayout parse_row_layout(const std::string& name) {
@@ -21,6 +21,7 @@ inline RowLayout parse_row_layout(const std::string& name) {
 inline RowDevice row_device(const char* name) {
     if (std::strcmp(name, "NVIDIA A800-SXM4-40GB") == 0) return RowDevice::A800;
     if (std::strcmp(name, "NVIDIA GeForce RTX 4090") == 0) return RowDevice::RTX4090;
+    if (std::strcmp(name, "NVIDIA A100-SXM4-40GB") == 0) return RowDevice::A100;
     return RowDevice::Unknown;
 }
 
@@ -37,10 +38,13 @@ inline RowChoice choose_rows(RowLayout layout, RowDevice device, std::size_t row
     constexpr std::size_t a800_fused[5] = {1, 1, 16, 256, 0};
     constexpr std::size_t rtx4090_transform[5] = {4096, 4096, 4096, 4096, 4096};
     constexpr std::size_t rtx4090_fused[5] = {1, 1, 256, 64, 0};
+    constexpr std::size_t a100_transform[5] = {4096, 256, 4096, 4096, 4096};
+    constexpr std::size_t a100_fused[5] = {1, 1, 16, 64, 0};
     // END GENERATED RULES
     std::size_t minimum = 0;
     if (device == RowDevice::A800) minimum = (fused ? a800_fused : a800_transform)[index];
     if (device == RowDevice::RTX4090) minimum = (fused ? rtx4090_fused : rtx4090_transform)[index];
+    if (device == RowDevice::A100) minimum = (fused ? a100_fused : a100_transform)[index];
     return minimum && rows >= minimum ? RowChoice{true, 256} : RowChoice{false, fallback_threads};
 }
 
