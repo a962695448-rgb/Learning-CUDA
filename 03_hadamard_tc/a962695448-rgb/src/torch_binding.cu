@@ -5,6 +5,9 @@
 
 #include "kernels.cuh"
 #include "contiguous256.cuh"
+#include "packed_rows.cuh"
+#include "row_policy.hpp"
+#include <ATen/cuda/CUDAContext.h>
 
 #include <cmath>
 #include <limits>
@@ -37,13 +40,22 @@ void validate(const at::Tensor& input, double scale, int block_threads) {
 template <class T, int N, bool Transform, bool Quantize>
 void launch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
             at::Tensor& scales, float scale, cudaStream_t stream, int block_threads,
-            bool contiguous256_fused) {
+            bool contiguous256_fused, bool packed_rows) {
     const auto rows = static_cast<std::size_t>(input.numel() / N);
     const auto blocks = static_cast<unsigned int>((rows - 1) / (block_threads / 32) + 1);
     const auto* source = reinterpret_cast<const T*>(input.data_ptr());
     auto* destination = output.defined() ? reinterpret_cast<T*>(output.data_ptr()) : nullptr;
     auto* bytes = packed.defined() ? packed.data_ptr<std::uint8_t>() : nullptr;
     auto* row_scales = scales.defined() ? scales.data_ptr<float>() : nullptr;
+    if constexpr (N <= 16 && Transform) {
+        if (packed_rows) {
+            const auto packed_blocks = static_cast<unsigned int>((rows - 1) / (block_threads / N) + 1);
+            hadamard::packed_rows_kernel<T, N, Transform, Quantize><<<packed_blocks, block_threads, 0, stream>>>(
+                source, destination, bytes, row_scales, rows, scale);
+            C10_CUDA_KERNEL_LAUNCH_CHECK();
+            return;
+        }
+    }
     if constexpr (N == 256 && Transform && Quantize) {
         if (contiguous256_fused) {
             hadamard::contiguous256_kernel<T, true, true><<<blocks, block_threads, 0, stream>>>(
@@ -60,9 +72,9 @@ void launch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
 template <class T, bool Transform, bool Quantize>
 void dispatch_dim(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
                   at::Tensor& scales, float scale, cudaStream_t stream, int block_threads,
-                  bool contiguous256_fused) {
+                  bool contiguous256_fused, bool packed_rows) {
     switch (input.size(-1)) {
-#define DIM_CASE(N) case N: launch<T, N, Transform, Quantize>(input, output, packed, scales, scale, stream, block_threads, contiguous256_fused); break
+#define DIM_CASE(N) case N: launch<T, N, Transform, Quantize>(input, output, packed, scales, scale, stream, block_threads, contiguous256_fused, packed_rows); break
         DIM_CASE(1); DIM_CASE(2); DIM_CASE(4); DIM_CASE(8); DIM_CASE(16);
         DIM_CASE(32); DIM_CASE(64); DIM_CASE(128); DIM_CASE(256);
 #undef DIM_CASE
@@ -72,29 +84,46 @@ void dispatch_dim(const at::Tensor& input, at::Tensor& output, at::Tensor& packe
 
 template <bool Transform, bool Quantize>
 void dispatch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
-              at::Tensor& scales, double scale, int block_threads, bool contiguous256_fused = false) {
+              at::Tensor& scales, double scale, int block_threads, bool contiguous256_fused = false, bool packed_rows = false) {
     const auto stream = c10::cuda::getCurrentCUDAStream(input.get_device()).stream();
     if (input.scalar_type() == at::kHalf)
-        dispatch_dim<__half, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused);
+        dispatch_dim<__half, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused, packed_rows);
     else
-        dispatch_dim<__nv_bfloat16, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused);
+        dispatch_dim<__nv_bfloat16, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused, packed_rows);
 }
 
-at::Tensor transform(const at::Tensor& input, double scale, int block_threads) {
+hadamard::RowChoice row_choice(const at::Tensor& input, const std::string& name,
+                                  bool fused, int fallback_threads) {
+    const auto layout = hadamard::parse_row_layout(name);
+    TORCH_CHECK(layout != hadamard::RowLayout::Packed || input.size(-1) <= 16,
+                "row_layout='packed' requires last dimension at most 16");
+    auto device = hadamard::RowDevice::Unknown;
+    if (layout == hadamard::RowLayout::Auto)
+        device = hadamard::row_device(at::cuda::getDeviceProperties(input.get_device())->name);
+    return hadamard::choose_rows(layout, device, input.numel() / input.size(-1),
+                                  static_cast<int>(input.size(-1)), fused, fallback_threads);
+}
+
+at::Tensor transform(const at::Tensor& input, double scale, int block_threads,
+                     const std::string& row_layout = "original") {
     validate(input, scale, block_threads);
     const c10::cuda::CUDAGuard device_guard(input.device());
     auto output = at::empty_like(input);
     at::Tensor packed, scales;
-    dispatch<true, false>(input, output, packed, scales, scale, block_threads);
+    const auto choice = row_choice(input, row_layout, false, block_threads);
+    dispatch<true, false>(input, output, packed, scales, scale, choice.threads, false, choice.packed);
     return output;
 }
 
 template <bool Transform>
 std::tuple<at::Tensor, at::Tensor> quantized(const at::Tensor& input, double scale, int block_threads,
-                                         const std::string& fused_layout = "original") {
+                                         const std::string& fused_layout = "original",
+                                         const std::string& row_layout = "original") {
     validate(input, scale, block_threads);
     TORCH_CHECK(fused_layout == "original" || fused_layout == "contiguous256",
                 "fused_layout must be 'original' or 'contiguous256'");
+    TORCH_CHECK(fused_layout == "original" || row_layout == "original",
+                "row_layout cannot be combined with contiguous256");
     const bool contiguous256_fused = fused_layout == "contiguous256";
     if (contiguous256_fused) {
         TORCH_CHECK(Transform, "contiguous256 is only supported for fused Hadamard INT4");
@@ -109,7 +138,8 @@ std::tuple<at::Tensor, at::Tensor> quantized(const at::Tensor& input, double sca
     auto packed = at::empty(packed_shape, input.options().dtype(at::kByte));
     auto scales = at::empty(scale_shape, input.options().dtype(at::kFloat));
     at::Tensor output;
-    dispatch<Transform, true>(input, output, packed, scales, scale, block_threads, contiguous256_fused);
+    const auto choice = row_choice(input, row_layout, true, block_threads);
+    dispatch<Transform, true>(input, output, packed, scales, scale, choice.threads, contiguous256_fused, choice.packed);
     return {packed, scales};
 }
 
@@ -120,11 +150,11 @@ std::tuple<at::Tensor, at::Tensor> quantize_only(const at::Tensor& input, int bl
 }  // namespace
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
-    module.def("hadamard", &transform, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
-               "Forward-only last-axis Hadamard; finite CUDA FP16/BF16 input, 2D or 4D contiguous. block_threads=128 (default) or 256; explicit, no auto-tuning.");
+    module.def("hadamard", &transform, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128, pybind11::arg("row_layout") = "original",
+               "Forward-only last-axis Hadamard; finite CUDA FP16/BF16 input, 2D or 4D contiguous. block_threads=128 (default) or 256; row_layout=original (default), packed (N<=16), or auto (verified model/range rules; may select 256 threads).");
     module.def("hadamard_int4", &quantized<true>, pybind11::arg("input"), pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
-               pybind11::arg("fused_layout") = "original",
-               "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). fused_layout='original' (default) supports block_threads=128 or 256; explicit 'contiguous256' requires N256 and block_threads=128.");
+               pybind11::arg("fused_layout") = "original", pybind11::arg("row_layout") = "original",
+               "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). fused_layout='original' (default) supports block_threads=128 or 256; explicit 'contiguous256' requires N256 and block_threads=128. row_layout=packed/auto selects small-N row packing and cannot be combined with contiguous256.");
     module.def("quantize_int4", &quantize_only, pybind11::arg("input"), pybind11::arg("block_threads") = 128,
                "Quantize an already-rounded FP16/BF16 tensor; even values occupy the low nibble. block_threads=128 (default) or 256.");
 }

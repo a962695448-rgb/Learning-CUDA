@@ -1,5 +1,7 @@
 #include "kernels.cuh"
 #include "contiguous256.cuh"
+#include "packed_rows.cuh"
+#include "row_policy.hpp"
 #include "reference.hpp"
 
 #include <array>
@@ -93,7 +95,7 @@ const char* method_name(Method method) {
 struct Options {
     bool self_test = false, benchmark = false, normalized = false;
     std::size_t batch = 4, seq = 128, heads = 8, dim = 256;
-    std::string dtype = "fp16", csv, fused_layout = "original";
+    std::string dtype = "fp16", csv, fused_layout = "original", row_layout = "original";
     int repetitions = 200, warmup = 20, block_threads = 128;
     std::size_t rows() const { return product(product(batch, seq), heads); }
     std::size_t elements() const { return product(rows(), dim); }
@@ -114,6 +116,9 @@ void help() {
               << "  --fused-layout original|contiguous256  Fused INT4 only; default original\n"
               << "                               contiguous256 requires N256 and block_threads=128\n"
               << "                               Self-test: only N256 fused uses it; other N remain original\n"
+              << "  --row-layout original|packed|auto  N<=16 row mapping; default original\n"
+              << "                               auto may choose 256 threads on validated models\n"
+              << "                               self-test: other N use original; incompatible with contiguous256\n"
               << "  --csv FILE                   Append measured rows, with header if empty\n"
               << "No mode selects --self-test. Self-tests always cover both dtypes/scales.\n"
               << "INT4: rowwise symmetric [-7,7], scale=max(abs(y))/7 (zero row:1),\n"
@@ -146,6 +151,7 @@ Options parse(int argc, char** argv) {
         else if (argument == "--dtype") options.dtype = next();
         else if (argument == "--csv") options.csv = next();
         else if (argument == "--fused-layout") options.fused_layout = next();
+        else if (argument == "--row-layout") options.row_layout = next();
         else if (argument == "--block-threads") {
             const auto value = unsigned_number(next(), argument);
             if (value != 128 && value != 256)
@@ -170,6 +176,11 @@ Options parse(int argc, char** argv) {
         throw std::invalid_argument("--dtype must be fp16 or bf16");
     if (options.fused_layout != "original" && options.fused_layout != "contiguous256")
         throw std::invalid_argument("--fused-layout must be original or contiguous256");
+    const auto row_layout = hadamard::parse_row_layout(options.row_layout);
+    if (row_layout != hadamard::RowLayout::Original && options.fused_layout != "original")
+        throw std::invalid_argument("--row-layout cannot be combined with contiguous256");
+    if (row_layout == hadamard::RowLayout::Packed && options.benchmark && options.dim > 16)
+        throw std::invalid_argument("--benchmark with --row-layout packed requires --dim <= 16");
     if (options.fused_layout == "contiguous256") {
         if (options.block_threads != 128)
             throw std::invalid_argument("--fused-layout contiguous256 requires --block-threads 128");
@@ -185,14 +196,16 @@ Options parse(int argc, char** argv) {
 template <class T> class Runner {
 public:
     Runner(std::size_t row_count, int dimension, float transform_scale, int warp_block_threads = 128,
-           bool use_contiguous256_fused = false)
+           bool use_contiguous256_fused = false,
+           hadamard::RowLayout row_layout = hadamard::RowLayout::Original)
         : rows(row_count), dim(dimension), scale(transform_scale), block_threads(warp_block_threads),
-          contiguous256_fused(use_contiguous256_fused), count(product(rows, dim)),
+          contiguous256_fused(use_contiguous256_fused), requested_row_layout(row_layout), count(product(rows, dim)),
           input(count), output(count), scratch_a(count), scratch_b(count),
           matrix(dim >= 16 ? dim * dim : 0),
           packed(product(rows, (dim + 1) / 2)), quant_scales(rows) {
         cudaDeviceProp properties{};
         CUDA_CHECK(cudaGetDeviceProperties(&properties, 0));
+        row_device_family = hadamard::row_device(properties.name);
         if (divide_up(count, 256) > static_cast<std::size_t>(properties.maxGridSize[0]) ||
             divide_up(rows, block_threads / 32) > static_cast<std::size_t>(properties.maxGridSize[0]))
             throw std::invalid_argument("shape exceeds CUDA launch grid limits");
@@ -238,6 +251,8 @@ public:
     float scale;
     int block_threads;
     bool contiguous256_fused;
+    hadamard::RowLayout requested_row_layout;
+    hadamard::RowDevice row_device_family = hadamard::RowDevice::Unknown;
     std::size_t count;
     DeviceBuffer<T> input, output;
     DeviceBuffer<float> scratch_a, scratch_b;
@@ -248,6 +263,28 @@ public:
 private:
     template <int N> void specialized(Method method) {
         const auto blocks = static_cast<unsigned int>(divide_up(rows, block_threads / 32));
+        if constexpr (N <= 16) {
+            const auto choice = hadamard::choose_rows(requested_row_layout, row_device_family, rows, N,
+                                                      method == Method::FusedInt4, block_threads);
+            if (choice.packed && method != Method::TensorCore) {
+                const auto packed_blocks = static_cast<unsigned int>(divide_up(rows, choice.threads / N));
+                if (method == Method::FusedInt4) {
+                    hadamard::packed_rows_kernel<T, N, true, true><<<packed_blocks, choice.threads>>>(
+                        input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale);
+                    CUDA_CHECK(cudaGetLastError());
+                } else {
+                    hadamard::packed_rows_kernel<T, N, true, false><<<packed_blocks, choice.threads>>>(
+                        input.data(), output.data(), nullptr, nullptr, rows, scale);
+                    CUDA_CHECK(cudaGetLastError());
+                    if (method == Method::SplitInt4) {
+                        hadamard::warp_kernel<T, N, false, true><<<blocks, block_threads>>>(
+                            output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1);
+                        CUDA_CHECK(cudaGetLastError());
+                    }
+                }
+                return;
+            }
+        }
         if (method == Method::TensorCore) {
             if constexpr (N >= 16) {
                 const dim3 grid(static_cast<unsigned int>(divide_up(rows, 16)), N / 16);
@@ -387,7 +424,7 @@ Validation validate(Runner<T>& runner, const std::vector<T>& input, bool all_row
 }
 
 template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, Validation& totals,
-                                      int block_threads, bool contiguous256_fused) {
+                                      int block_threads, bool contiguous256_fused, hadamard::RowLayout row_layout) {
     auto record = [&](const Validation& validation) {
         totals.max_error = std::max(totals.max_error, validation.max_error);
         totals.dense_rows += validation.dense_rows;
@@ -400,7 +437,7 @@ template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, V
         for (const bool normalized : {false, true})
             for (const std::size_t rows : {1u, 3u, 17u, 65u}) {
                 const float scale = normalized ? 1.0f / std::sqrt(static_cast<float>(dim)) : 1.0f;
-                Runner<T> runner(rows, dim, scale, block_threads, contiguous256_fused && dim == 256);
+                Runner<T> runner(rows, dim, scale, block_threads, contiguous256_fused && dim == 256, row_layout);
                 auto test = [&](const char* pattern, std::uint32_t seed) {
                     const auto input = make_input<T>(rows, dim, pattern, seed);
                     try {
@@ -422,7 +459,7 @@ template <class T> void self_test_dtype(const char* dtype, std::size_t& cases, V
     }
     // Larger, non-multiple batch: full split/fused/CPU-quant comparison, 32 dense rows.
     for (const bool normalized : {false, true}) {
-        Runner<T> runner(1025, 256, normalized ? 1.0f / 16.0f : 1.0f, block_threads, contiguous256_fused);
+        Runner<T> runner(1025, 256, normalized ? 1.0f / 16.0f : 1.0f, block_threads, contiguous256_fused, row_layout);
         record(validate(runner, make_input<T>(1025, 256, "random", 95811), false));
     }
 }
@@ -462,7 +499,9 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
     CUDA_CHECK(cudaRuntimeGetVersion(&runtime));
     CUDA_CHECK(cudaDriverGetVersion(&driver));
     std::ofstream csv;
-    const std::string csv_header = "timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms,fused_layout";
+    std::string csv_header = "timestamp_utc,gpu,compute_capability,cuda_runtime,cuda_driver,batch,seq,heads,dim,dtype,scale,method,scope,repetitions,mean_us,input_elements_per_second,max_abs_error,dense_oracle_rows,warp_block_threads,mean_ms,fused_layout";
+    const bool detailed_rows = options.row_layout != "original";
+    if (detailed_rows) csv_header += ",requested_row_layout,resolved_row_layout,quantize_block_threads";
     bool header = false;
     if (!options.csv.empty()) {
         const std::filesystem::path path(options.csv);
@@ -484,7 +523,8 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
     std::cout << "BENCHMARK shape=[" << options.batch << ',' << options.seq << ',' << options.heads << ','
               << options.dim << "] dtype=" << options.dtype << " scale=" << options.scale()
               << " rows=" << options.rows() << " dense_oracle_rows=" << dense_rows
-              << " warp_block_threads=" << options.block_threads << " fused_layout=" << options.fused_layout << '\n';
+              << (options.row_layout == "auto" ? " fallback_block_threads=" : " warp_block_threads=") << options.block_threads
+              << " fused_layout=" << options.fused_layout << " row_layout=" << options.row_layout << '\n';
     std::cout << "Timing: kernel_only=CUDA events, allocations/H2D/matrix setup excluded;\n"
               << "cpu_compute=FP32 FWHT host wall time, input reset excluded;\n"
               << "host_e2e=pageable H2D + warp transform + D2H, preallocated buffers.\n"
@@ -503,9 +543,18 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
                 << ',' << options.dim << ',' << options.dtype << ',' << std::setprecision(9) << options.scale()
                 << ',' << measured.method << ',' << measured.scope << ',' << measured.repetitions << ','
                 << std::setprecision(12) << measured.microseconds << ',' << throughput << ',' << max_error << ',' << dense_rows << ',';
-            if (uses_warp) csv << options.block_threads;
+            const auto choice = hadamard::choose_rows(hadamard::parse_row_layout(options.row_layout),
+                hadamard::row_device(gpu.name), options.rows(), static_cast<int>(options.dim),
+                measured.method == "fused_int4", options.block_threads);
+            if (uses_warp) csv << choice.threads;
             csv << ',' << measured.microseconds / 1000.0 << ',';
             if (measured.method == "fused_int4") csv << options.fused_layout;
+            if (detailed_rows) {
+                csv << ',' << options.row_layout << ',';
+                if (uses_warp) csv << (choice.packed ? "packed" : "original");
+                csv << ',';
+                if (measured.method == "split_int4") csv << options.block_threads;
+            }
             csv << '\n';
         }
     }
@@ -514,7 +563,7 @@ void report(const Options& options, const cudaDeviceProp& gpu, const std::vector
 
 template <class T> void benchmark(const Options& options, const cudaDeviceProp& gpu) {
     Runner<T> runner(options.rows(), static_cast<int>(options.dim), options.scale(), options.block_threads,
-                     options.fused_layout == "contiguous256");
+                     options.fused_layout == "contiguous256", hadamard::parse_row_layout(options.row_layout));
     const auto input = make_input<T>(runner.rows, runner.dim, "random", 20260905);
     const auto validation = validate(runner, input, false);
     std::vector<Measurement> measurements;
@@ -572,14 +621,15 @@ int main(int argc, char** argv) {
             std::size_t cases = 0;
             Validation totals;
             const bool contiguous256_fused = options.fused_layout == "contiguous256";
-            self_test_dtype<__half>("fp16", cases, totals, options.block_threads, contiguous256_fused);
-            self_test_dtype<__nv_bfloat16>("bf16", cases, totals, options.block_threads, contiguous256_fused);
+            self_test_dtype<__half>("fp16", cases, totals, options.block_threads, contiguous256_fused, hadamard::parse_row_layout(options.row_layout));
+            self_test_dtype<__nv_bfloat16>("bf16", cases, totals, options.block_threads, contiguous256_fused, hadamard::parse_row_layout(options.row_layout));
             std::cout << "SELF_TEST PASS cases=" << cases << " max_abs_error=" << totals.max_error
                       << " CPU/split/fused_INT4_bytes=exact scales=exact"
                       << " rounded_warp_vs_dense_elements=" << totals.rounded_warp_mismatches
                       << " dense_quant_differing_bytes=" << totals.dense_quant_byte_mismatches
                       << " dense_quant_differing_scales=" << totals.dense_quant_scale_mismatches
-                      << " warp_block_threads=" << options.block_threads
+                      << (options.row_layout == "auto" ? " fallback_block_threads=" : " warp_block_threads=") << options.block_threads
+                      << " row_layout=" << options.row_layout
                       << " fused_layout=" << options.fused_layout
                       << " fused_layout_scope=" << (contiguous256_fused ? "N256_only_other_N_original" : "all_N_original") << '\n';
         }
