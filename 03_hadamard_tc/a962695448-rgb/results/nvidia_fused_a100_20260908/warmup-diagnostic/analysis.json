@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "distinct_shapes_dtype_scale": 4,
+  "warmup_arms": 2,
+  "processes": 3,
+  "raw_timing_samples": 240,
+  "comparisons": [
+    {
+      "rows": 16383,
+      "scale": 0.0625,
+      "warmup_replays": 5,
+      "run1_reduction_pct": 7.77930952617133,
+      "run2_reduction_pct": 7.795029064561132,
+      "run3_reduction_pct": 7.174866298094029,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16383,
+      "scale": 0.0625,
+      "warmup_replays": 256,
+      "run1_reduction_pct": 7.808074556773093,
+      "run2_reduction_pct": 7.544661682256704,
+      "run3_reduction_pct": 7.9138474990594005,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16383,
+      "scale": 1.0,
+      "warmup_replays": 5,
+      "run1_reduction_pct": 6.936186602954542,
+      "run2_reduction_pct": 7.4260614147733435,
+      "run3_reduction_pct": 7.345078571803276,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16383,
+      "scale": 1.0,
+      "warmup_replays": 256,
+      "run1_reduction_pct": 7.622297531426203,
+      "run2_reduction_pct": 7.968397104370661,
+      "run3_reduction_pct": 7.075604087882437,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16385,
+      "scale": 0.0625,
+      "warmup_replays": 5,
+      "run1_reduction_pct": 7.231117885407912,
+      "run2_reduction_pct": 7.303201228034317,
+      "run3_reduction_pct": 7.871831147675512,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16385,
+      "scale": 0.0625,
+      "warmup_replays": 256,
+      "run1_reduction_pct": 7.173393744301926,
+      "run2_reduction_pct": 7.8426483278636105,
+      "run3_reduction_pct": 7.61526185587752,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16385,
+      "scale": 1.0,
+      "warmup_replays": 5,
+      "run1_reduction_pct": 8.048714638667242,
+      "run2_reduction_pct": 7.916580916185312,
+      "run3_reduction_pct": 8.83982984722934,
+      "all_three_at_least_5pct": true
+    },
+    {
+      "rows": 16385,
+      "scale": 1.0,
+      "warmup_replays": 256,
+      "run1_reduction_pct": 7.708175601854849,
+      "run2_reduction_pct": 7.8271523818443605,
+      "run3_reduction_pct": 7.488468152998696,
+      "all_three_at_least_5pct": true
+    }
+  ],
+  "input_hashes": {
+    "run1.json": "df45e5038f6789ffa5389c08ad5ee9430ac7c212a6af9231b8cb18a9eeab0739",
+    "run2.json": "c1df3f609e17d7b3cd0ad4f59123984d01eeab85aac808ca48d251aa9f229d76",
+    "run3.json": "179bb58dddf1b0bd3628c18556ee8bb214a8fd721a3bc9ddddc45da5a7196774"
+  },
+  "interpretation": "Separate warmup diagnostic. Does not replace the original 52-case results or establish the sole cause of the third-round transient."
+}

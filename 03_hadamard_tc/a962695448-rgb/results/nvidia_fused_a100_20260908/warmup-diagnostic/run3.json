@@ -1,0 +1,697 @@
+{
+  "status": "PASS",
+  "run": 3,
+  "started_utc": "2026-09-08T03:08:48Z",
+  "protocol": {
+    "rows": [
+      16383,
+      16385
+    ],
+    "dtype": "bf16",
+    "scales": [
+      1.0,
+      0.0625
+    ],
+    "graph_warmup_replays": [
+      5,
+      256
+    ],
+    "processes": 3,
+    "groups": 5,
+    "reason": "One original run changed latency regimes; vary only warmup count outside measured intervals. This diagnostic does not replace any original result."
+  },
+  "comparisons": [
+    {
+      "rows": 16385,
+      "scale": 1.0,
+      "warmup_replays": 5,
+      "samples_us": {
+        "original": [
+          19.45199966430664,
+          18.358400464057922,
+          16.597600281238556,
+          16.072799265384674,
+          16.2992000579834
+        ],
+        "contiguous256": [
+          18.019999563694,
+          18.012799322605133,
+          15.105600655078888,
+          14.99280035495758,
+          15.130400657653809
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          24.8985595703125,
+          23.49875259399414,
+          21.24492835998535,
+          20.573183059692383,
+          20.86297607421875
+        ],
+        "contiguous256": [
+          23.06559944152832,
+          23.05638313293457,
+          19.335168838500977,
+          19.190784454345703,
+          19.366912841796875
+        ]
+      },
+      "median_us": {
+        "original": 16.597600281238556,
+        "contiguous256": 15.130400657653809
+      },
+      "median_ms": {
+        "original": 0.016597600281238557,
+        "contiguous256": 0.015130400657653809
+      },
+      "group_order": [
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 5,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16383,
+      "scale": 1.0,
+      "warmup_replays": 5,
+      "samples_us": {
+        "original": [
+          15.315200388431549,
+          16.068799793720245,
+          16.304799914360046,
+          16.32319986820221,
+          16.486400365829468
+        ],
+        "contiguous256": [
+          14.095200598239899,
+          15.080000460147858,
+          15.107199549674988,
+          15.143999457359314,
+          15.15520066022873
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          19.603456497192383,
+          20.568063735961914,
+          20.87014389038086,
+          20.893695831298828,
+          21.10259246826172
+        ],
+        "contiguous256": [
+          18.04185676574707,
+          19.302400588989258,
+          19.337215423583984,
+          19.384319305419922,
+          19.398656845092773
+        ]
+      },
+      "median_us": {
+        "original": 16.304799914360046,
+        "contiguous256": 15.107199549674988
+      },
+      "median_ms": {
+        "original": 0.016304799914360048,
+        "contiguous256": 0.015107199549674988
+      },
+      "group_order": [
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 5,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16385,
+      "scale": 0.0625,
+      "warmup_replays": 256,
+      "samples_us": {
+        "original": [
+          16.10559970140457,
+          16.29360020160675,
+          16.32480025291443,
+          16.300000250339508,
+          16.21599942445755
+        ],
+        "contiguous256": [
+          15.012800693511963,
+          15.012800693511963,
+          15.190400183200836,
+          15.166400372982025,
+          15.052799880504608
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          20.61516761779785,
+          20.85580825805664,
+          20.89574432373047,
+          20.86400032043457,
+          20.756479263305664
+        ],
+        "contiguous256": [
+          19.216384887695312,
+          19.216384887695312,
+          19.44371223449707,
+          19.412992477416992,
+          19.2675838470459
+        ]
+      },
+      "median_us": {
+        "original": 16.29360020160675,
+        "contiguous256": 15.052799880504608
+      },
+      "median_ms": {
+        "original": 0.01629360020160675,
+        "contiguous256": 0.015052799880504609
+      },
+      "group_order": [
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 256,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16383,
+      "scale": 0.0625,
+      "warmup_replays": 256,
+      "samples_us": {
+        "original": [
+          16.48160070180893,
+          16.48399978876114,
+          16.303199529647827,
+          16.305600106716156,
+          16.1871999502182
+        ],
+        "contiguous256": [
+          15.20639955997467,
+          15.051199495792389,
+          15.015199780464172,
+          14.96880054473877,
+          14.902399480342865
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          21.09644889831543,
+          21.099519729614258,
+          20.86809539794922,
+          20.87116813659668,
+          20.719615936279297
+        ],
+        "contiguous256": [
+          19.464191436767578,
+          19.265535354614258,
+          19.21945571899414,
+          19.160064697265625,
+          19.075071334838867
+        ]
+      },
+      "median_us": {
+        "original": 16.305600106716156,
+        "contiguous256": 15.015199780464172
+      },
+      "median_ms": {
+        "original": 0.016305600106716157,
+        "contiguous256": 0.015015199780464172
+      },
+      "group_order": [
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 256,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16385,
+      "scale": 0.0625,
+      "warmup_replays": 5,
+      "samples_us": {
+        "original": [
+          15.265600383281708,
+          16.173599660396576,
+          16.390399634838104,
+          16.179999709129333,
+          16.179199516773224
+        ],
+        "contiguous256": [
+          14.468799531459808,
+          14.800800383090973,
+          15.191200375556946,
+          15.069599449634552,
+          14.905600249767303
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          19.539968490600586,
+          20.702207565307617,
+          20.979711532592773,
+          20.710399627685547,
+          20.709375381469727
+        ],
+        "contiguous256": [
+          18.520063400268555,
+          18.945024490356445,
+          19.44473648071289,
+          19.289087295532227,
+          19.07916831970215
+        ]
+      },
+      "median_us": {
+        "original": 16.179199516773224,
+        "contiguous256": 14.905600249767303
+      },
+      "median_ms": {
+        "original": 0.016179199516773223,
+        "contiguous256": 0.014905600249767304
+      },
+      "group_order": [
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 5,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16385,
+      "scale": 1.0,
+      "warmup_replays": 256,
+      "samples_us": {
+        "original": [
+          16.311199963092804,
+          16.486400365829468,
+          16.302399337291718,
+          16.221599280834198,
+          16.19040071964264
+        ],
+        "contiguous256": [
+          15.184800326824188,
+          15.175199508666992,
+          15.024000406265259,
+          15.081599354743958,
+          14.917600154876709
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          20.87833595275879,
+          21.10259246826172,
+          20.8670711517334,
+          20.763647079467773,
+          20.723712921142578
+        ],
+        "contiguous256": [
+          19.43654441833496,
+          19.42425537109375,
+          19.23072052001953,
+          19.304447174072266,
+          19.094528198242188
+        ]
+      },
+      "median_us": {
+        "original": 16.302399337291718,
+        "contiguous256": 15.081599354743958
+      },
+      "median_ms": {
+        "original": 0.016302399337291718,
+        "contiguous256": 0.015081599354743958
+      },
+      "group_order": [
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 256,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16383,
+      "scale": 1.0,
+      "warmup_replays": 256,
+      "samples_us": {
+        "original": [
+          16.096000373363495,
+          16.315199434757233,
+          16.48319959640503,
+          16.312000155448914,
+          16.48080050945282
+        ],
+        "contiguous256": [
+          15.014399588108063,
+          15.02320021390915,
+          15.186400711536407,
+          15.160800516605377,
+          15.186400711536407
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          20.602880477905273,
+          20.883455276489258,
+          21.098495483398438,
+          20.87936019897461,
+          21.09542465209961
+        ],
+        "contiguous256": [
+          19.21843147277832,
+          19.22969627380371,
+          19.4385929107666,
+          19.405824661254883,
+          19.4385929107666
+        ]
+      },
+      "median_us": {
+        "original": 16.315199434757233,
+        "contiguous256": 15.160800516605377
+      },
+      "median_ms": {
+        "original": 0.016315199434757233,
+        "contiguous256": 0.015160800516605377
+      },
+      "group_order": [
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 256,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    },
+    {
+      "rows": 16383,
+      "scale": 0.0625,
+      "warmup_replays": 5,
+      "samples_us": {
+        "original": [
+          15.532000362873077,
+          16.24560058116913,
+          16.197599470615387,
+          16.35040044784546,
+          16.256800293922424
+        ],
+        "contiguous256": [
+          14.166399836540222,
+          15.175999701023102,
+          15.104000270366669,
+          15.080000460147858,
+          15.080000460147858
+        ]
+      },
+      "raw_event_intervals_ms": {
+        "original": [
+          19.88096046447754,
+          20.794368743896484,
+          20.732927322387695,
+          20.928512573242188,
+          20.808704376220703
+        ],
+        "contiguous256": [
+          18.132991790771484,
+          19.42527961730957,
+          19.333120346069336,
+          19.302400588989258,
+          19.302400588989258
+        ]
+      },
+      "median_us": {
+        "original": 16.24560058116913,
+        "contiguous256": 15.080000460147858
+      },
+      "median_ms": {
+        "original": 0.01624560058116913,
+        "contiguous256": 0.015080000460147857
+      },
+      "group_order": [
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ],
+        [
+          "original",
+          "contiguous256"
+        ],
+        [
+          "contiguous256",
+          "original"
+        ]
+      ],
+      "independent_output_buffers": true,
+      "cross_method_output_pointers_disjoint": true,
+      "outputs_bitwise_equal_eager_before_and_after": true,
+      "captured_calls_per_graph": 64,
+      "replays_per_group": 20,
+      "graph_warmup_replays": 5,
+      "api_warmup_calls": 25,
+      "scope": "CUDA-event intervals divided by 64 captured calls and 20 replays; captured GPU work plus amortized replay scheduling, not standalone kernel latency."
+    }
+  ],
+  "before": {
+    "utc": "2026-09-08T03:08:49Z",
+    "gpu": {
+      "exit_code": 0,
+      "stdout": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 550.127.05, 12 %, 14 MiB, 39, 1410 MHz, 56.01 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit_code": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n",
+      "stderr": ""
+    }
+  },
+  "frozen_manifest_sha256": "b5a8a6dc2cdd6982b17303b395161841c2b3d75b5ffd02a01820225ae379cb2a",
+  "regression_report_sha256": "905eb1408e62b9476e65979ccd1d504228e6e80618bcaa237fda42a02d4d03b9",
+  "extension_sha256": "8ce26695882bb149edae9fa45c8814d0a0c4c4de51f256c151c69e77e7bb840b",
+  "order": [
+    [
+      16385,
+      1.0,
+      5
+    ],
+    [
+      16383,
+      1.0,
+      5
+    ],
+    [
+      16385,
+      0.0625,
+      256
+    ],
+    [
+      16383,
+      0.0625,
+      256
+    ],
+    [
+      16385,
+      0.0625,
+      5
+    ],
+    [
+      16385,
+      1.0,
+      256
+    ],
+    [
+      16383,
+      1.0,
+      256
+    ],
+    [
+      16383,
+      0.0625,
+      5
+    ]
+  ],
+  "finished_utc": "2026-09-08T03:08:55Z",
+  "after": {
+    "utc": "2026-09-08T03:08:55Z",
+    "gpu": {
+      "exit_code": 0,
+      "stdout": "name, driver_version, utilization.gpu [%], memory.used [MiB], temperature.gpu, clocks.current.sm [MHz], power.draw [W]\nNVIDIA A100-SXM4-40GB, 550.127.05, 56 %, 885 MiB, 47, 1365 MHz, 242.90 W\n",
+      "stderr": ""
+    },
+    "processes": {
+      "exit_code": 0,
+      "stdout": "pid, process_name, used_gpu_memory [MiB]\n8865, /home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python, 862 MiB\n",
+      "stderr": ""
+    }
+  }
+}

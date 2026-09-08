@@ -1,5 +1,9 @@
 # N256 融合布局：实现与验证
 
+## 2026-09-08 A100 补充验证
+
+现有融合源码已在 A100 sm80 重新编译，完整回归及三轮 52 配置验证通过。51/52 三轮更快，47/52 每轮至少减少 5%；一配置第三轮退化 8.43%，后续预热诊断没有重现，但不覆盖原负例。默认 original 保留。见[A100 报告](fused-layout-a100-validation.md)和[原始数据](../results/nvidia_fused_a100_20260908/README.md)。以下历史实验和适用范围分别保留。
+
 源码提交：`155a05a8b957bdf558ef93a2db1e3aea9fadf36f`。新增 `fused_layout="contiguous256"`，仅支持 N256、128 线程的融合 Hadamard 与 INT4；默认 `original`、独立变换和独立量化保持原路径。完整源文件、编译、失败记录和复算入口见[证据目录](../results/nvidia_fused_integration_20260907/)。
 
 ## 实现与接口

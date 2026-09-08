@@ -1,0 +1,31 @@
+from pathlib import Path
+import csv
+import hashlib
+import json
+import math
+import statistics
+root=Path(__file__).resolve().parents[1]
+raw=root/'evidence/a100-final-20260908/all-raw/nine/warmup-diagnostic'
+out=root/'evidence/a100-final-20260908/warmup-analysis';out.mkdir(exist_ok=False)
+expected={(m,s,w) for m in (16383,16385) for s in (1.,.0625) for w in (5,256)}
+rows=[];groups=[];inputs={};allvals={k:[] for k in expected}
+for i in (1,2,3):
+    path=raw/f'run{i}.json';r=json.loads(path.read_text());assert r['status']=='PASS' and r['run']==i
+    inputs[path.name]=hashlib.sha256(path.read_bytes()).hexdigest()
+    assert len(r['comparisons'])==8 and {(c['rows'],c['scale'],c['warmup_replays']) for c in r['comparisons']}==expected
+    for c in r['comparisons']:
+        key=(c['rows'],c['scale'],c['warmup_replays'])
+        assert c['independent_output_buffers'] and c['outputs_bitwise_equal_eager_before_and_after'] and c['cross_method_output_pointers_disjoint']
+        assert c['graph_warmup_replays']==c['warmup_replays']
+        for method in ('original','contiguous256'):
+            values=c['samples_us'][method];events=c['raw_event_intervals_ms'][method]
+            assert len(values)==len(events)==5 and statistics.median(values)==c['median_us'][method]
+            for j,(us,ms) in enumerate(zip(values,events)):
+                assert math.isfinite(ms) and ms>0 and math.isclose(us,ms*1000/(64*20),rel_tol=1e-12)
+                groups.append({'run':i,'rows':key[0],'scale':key[1],'warmup_replays':key[2],'method':method,'group':j,'event_ms':ms,'per_call_ms':us/1000})
+        improvement=(1-c['median_us']['contiguous256']/c['median_us']['original'])*100;allvals[key].append(improvement)
+for key,values in sorted(allvals.items()):rows.append({'rows':key[0],'scale':key[1],'warmup_replays':key[2],'run1_reduction_pct':values[0],'run2_reduction_pct':values[1],'run3_reduction_pct':values[2],'all_three_at_least_5pct':all(v>=5 for v in values)})
+for name,data in [('comparison.csv',rows),('samples.csv',groups)]:
+    with (out/name).open('w',encoding='utf-8',newline='') as f:w=csv.DictWriter(f,fieldnames=list(data[0]));w.writeheader();w.writerows(data)
+summary={'status':'PASS','distinct_shapes_dtype_scale':4,'warmup_arms':2,'processes':3,'raw_timing_samples':len(groups),'comparisons':rows,'input_hashes':inputs,'interpretation':'Separate warmup diagnostic. Does not replace the original 52-case results or establish the sole cause of the third-round transient.'}
+(out/'analysis.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

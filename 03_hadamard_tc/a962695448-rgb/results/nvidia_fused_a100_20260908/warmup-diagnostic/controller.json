@@ -1,0 +1,35 @@
+[
+  {
+    "command": [
+      "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+      "/home/vipuser/infinitensor-2026/tools/a100_warmup_diagnostic_20260908.py",
+      "--run",
+      "1",
+      "--out",
+      "/home/vipuser/infinitensor-2026/runs/a100-final-20260908/warmup-diagnostic/run1.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+      "/home/vipuser/infinitensor-2026/tools/a100_warmup_diagnostic_20260908.py",
+      "--run",
+      "2",
+      "--out",
+      "/home/vipuser/infinitensor-2026/runs/a100-final-20260908/warmup-diagnostic/run2.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/home/vipuser/infinitensor-2026/hadamard-cuda-a100/.venv/bin/python",
+      "/home/vipuser/infinitensor-2026/tools/a100_warmup_diagnostic_20260908.py",
+      "--run",
+      "3",
+      "--out",
+      "/home/vipuser/infinitensor-2026/runs/a100-final-20260908/warmup-diagnostic/run3.json"
+    ],
+    "exit_code": 0
+  }
+]

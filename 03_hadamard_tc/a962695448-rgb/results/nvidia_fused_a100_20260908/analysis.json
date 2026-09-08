@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "hardware": "A100-SXM4-40GB sm80",
+  "source_commit": "35f79b9cc595b0459a6172e0e2a63dcb9f4854af",
+  "distinct_configurations": 52,
+  "conditions_per_process": 728,
+  "processes": 3,
+  "raw_timing_samples": 1560,
+  "unique_buffers": 470,
+  "replayed_cpu_certificates": 364,
+  "official_max_abs_error": {
+    "fp16": 0.0,
+    "bf16": 0.0
+  },
+  "all_process_reduction_min_pct": -8.432459129446347,
+  "all_process_reduction_max_pct": 12.043688907470129,
+  "all_three_positive": 51,
+  "all_three_at_least_5pct": 47,
+  "any_over_3pct_regression": [
+    [
+      "bf16",
+      16385,
+      1.0
+    ]
+  ],
+  "input_hashes": {
+    "runs\\holdout\\run1.json": "279b032876fa718ad5bdbc5242532228185d011807fad54697425c386f85bd53",
+    "runs\\holdout\\run2.json": "1d9685a1ce672e50aa4af2313e2d1766d08355d4fcc866b455ba4d48fac9bc80",
+    "runs\\holdout\\run3.json": "488522e5f8bbf1f2735c70510d1170084f3cf13ee70372232465b90a8f0c34f4"
+  },
+  "regression_report_sha256": "905eb1408e62b9476e65979ccd1d504228e6e80618bcaa237fda42a02d4d03b9",
+  "scope": "Same-process original-fused versus contiguous256 CUDA Graph timing; no cross-device or end-to-end denominator."
+}

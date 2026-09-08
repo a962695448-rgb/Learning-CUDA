@@ -1,0 +1,43 @@
+"""Predeclared four-case warmup diagnostic; never replace the original 52-case results."""
+import argparse
+from pathlib import Path
+import json
+import os
+import random
+import sys
+import traceback
+base=Path.home()/'infinitensor-2026/hadamard-final-20260908'
+sys.path.insert(0,str(base))
+import integration_checks as checks
+import measurement_helpers as measure
+parser=argparse.ArgumentParser();parser.add_argument('--run',type=int,choices=(1,2,3),required=True);parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
+assert not args.out.exists();args.out.parent.mkdir(parents=True,exist_ok=True)
+report={'status':'RUNNING','run':args.run,'started_utc':measure.utc(),'protocol':{'rows':[16383,16385],'dtype':'bf16','scales':[1.0,0.0625],'graph_warmup_replays':[5,256],'processes':3,'groups':5,'reason':'One original run changed latency regimes; vary only warmup count outside measured intervals. This diagnostic does not replace any original result.'},'comparisons':[]}
+try:
+    assert __debug__ and sys.flags.optimize==0
+    assert json.loads((base/'runs/holdout/run3.json').read_text())['status']=='PASS'
+    manifest=checks.check_frozen_files();reg=json.loads((base/'runs/regression/regression_report.json').read_text());assert reg['status']=='PASS'
+    report.update(before=measure.snapshot(),frozen_manifest_sha256=measure.sha(base/'run_manifest.json'),regression_report_sha256=measure.sha(base/'runs/regression/regression_report.json'))
+    import torch
+    assert list(torch.cuda.get_device_capability())==[8,0] and 'A100' in torch.cuda.get_device_name()
+    op=checks.load_production();assert measure.sha(op.__file__)==reg['binaries']['production_extension']['sha256']
+    report['extension_sha256']=measure.sha(op.__file__)
+    protocol=json.loads((base/'protocol.json').read_text())
+    cases=[(m,s,w) for m in (16383,16385) for s in (1.,.0625) for w in (5,256)]
+    random.Random(908300+args.run).shuffle(cases);report['order']=cases
+    with torch.inference_mode():
+        for i,(m,s,w) in enumerate(cases):
+            x=checks.reference_tools.make_input(torch,[m,256],torch.bfloat16,'normal',2026,'cuda')
+            before=x.clone()
+            original=op.hadamard_int4(x,s,128);candidate=op.hadamard_int4(x,s,128,'contiguous256')
+            measure.exact(torch,original,candidate,'diagnostic fused outputs')
+            timing=dict(protocol['timing'],graph_warmup_replays=w)
+            funcs={'original':lambda:op.hadamard_int4(x,s,128),'contiguous256':lambda:op.hadamard_int4(x,s,128,'contiguous256')}
+            result=measure.measure_graph(torch,funcs,args.run,i,timing)
+            measure.exact(torch,x,before,'input unchanged')
+            report['comparisons'].append({'rows':m,'scale':s,'warmup_replays':w,**result})
+            args.out.write_text(json.dumps(report,indent=2)+'\n');print('DONE',m,s,w,flush=True)
+    checks.check_frozen_files();report['status']='PASS'
+except Exception as e:report.update(status='FAIL',error=repr(e),traceback=traceback.format_exc())
+report.update(finished_utc=measure.utc(),after=measure.snapshot());args.out.write_text(json.dumps(report,indent=2)+'\n');print(report['status'],flush=True)
+raise SystemExit(0 if report['status']=='PASS' else 1)

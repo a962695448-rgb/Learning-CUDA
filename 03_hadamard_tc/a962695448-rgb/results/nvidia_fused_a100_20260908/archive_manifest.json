@@ -1,0 +1,85 @@
+{
+  "files": {
+    ".gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "analysis.json": {
+      "bytes": 1203,
+      "sha256": "e1dc5869b3fb14bf78834d79de7d3967bac7c68c7518112a80a9acf1f323fc0b"
+    },
+    "analyze.py": {
+      "bytes": 7055,
+      "sha256": "18b857e576704352653166bbc4dc57e6aab1f7e989cd081433acc1c4bb2f7714"
+    },
+    "comparison.csv": {
+      "bytes": 6247,
+      "sha256": "1fa03d62ea4b054c8d33d5508f748954c1b4042790cb8f5c8ae710b70677c8e2"
+    },
+    "raw.zip": {
+      "bytes": 5179976,
+      "sha256": "f5b45842113b1298067ae1092d6aab68869df076cdf6f11f1315ec92901dd3f4"
+    },
+    "raw_manifest.json": {
+      "bytes": 13193,
+      "sha256": "6c33c46485abd0920c47f620b5ae2cf9a37cd73bb28127eb2db146bc10249014"
+    },
+    "README.md": {
+      "bytes": 1501,
+      "sha256": "8de9338acbe7d1138c34522aeda6bbf8e95fdd979a044bfd6492211bb01e3703"
+    },
+    "samples.csv": {
+      "bytes": 138844,
+      "sha256": "8266ccf2b6677d76a2b7b334224094822c1745eb6bea33a479612e834e4eb805"
+    },
+    "warmup-diagnostic/analysis.json": {
+      "bytes": 2771,
+      "sha256": "35c8b6526ede6b2370161a94c33e5f020e9ffe9b1f905dd1df7479a5f33cffde"
+    },
+    "warmup-diagnostic/analyze_diagnostic.py.txt": {
+      "bytes": 2589,
+      "sha256": "b86f8143caad0deec2a1763d5f47e39e884071a6a5a0be7d12912e5cc4a82e0f"
+    },
+    "warmup-diagnostic/comparison.csv": {
+      "bytes": 705,
+      "sha256": "a3523e1aaa60eb079405f05ed4d1e45da5919a4779f09a4d476bdb70414ecd07"
+    },
+    "warmup-diagnostic/controller.json": {
+      "bytes": 1038,
+      "sha256": "f9750fcc3202ba7825c41789c0f840dbfb5b5fd00c8f8ac340f798514efd35f9"
+    },
+    "warmup-diagnostic/run1.json": {
+      "bytes": 17767,
+      "sha256": "df45e5038f6789ffa5389c08ad5ee9430ac7c212a6af9231b8cb18a9eeab0739"
+    },
+    "warmup-diagnostic/run1.log": {
+      "bytes": 500,
+      "sha256": "1343b94a9f058a7b7de176c30e28069c4267d44fbf2c9ecf354952222386ad8f"
+    },
+    "warmup-diagnostic/run2.json": {
+      "bytes": 17784,
+      "sha256": "c1df3f609e17d7b3cd0ad4f59123984d01eeab85aac808ca48d251aa9f229d76"
+    },
+    "warmup-diagnostic/run2.log": {
+      "bytes": 500,
+      "sha256": "f2e5677cc6f6e9329e24ac1f2421115b671d9393cf795a73723c1ec88f545615"
+    },
+    "warmup-diagnostic/run3.json": {
+      "bytes": 17783,
+      "sha256": "179bb58dddf1b0bd3628c18556ee8bb214a8fd721a3bc9ddddc45da5a7196774"
+    },
+    "warmup-diagnostic/run3.log": {
+      "bytes": 500,
+      "sha256": "5b29f8355b0724ae63906b333bd4164b69ab1b4ff198cb5c337f4d1ebaa3a6f6"
+    },
+    "warmup-diagnostic/run_diagnostic.py.txt": {
+      "bytes": 3229,
+      "sha256": "c5e2b8cfe372f1862ed28b2e697facb8de9c7f78be8e38e1527b44033ad7352c"
+    },
+    "warmup-diagnostic/samples.csv": {
+      "bytes": 16905,
+      "sha256": "f9987c1f470e107057e04a9857f4a13c592e791ea17e9978492bfaa8130b2219"
+    }
+  },
+  "source_commit": "35f79b9cc595b0459a6172e0e2a63dcb9f4854af"
+}
