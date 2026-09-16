@@ -79,6 +79,18 @@ CPU 检查在 macOS（NumPy 2.3.5）与服务器 Linux（NumPy 1.23.5）分别�
 
 ## 证据、复现与交付范围
 
+公开复现入口：[repro/README.zh-CN.md](repro/README.zh-CN.md)。其中包含 14 份原始结果文本、冻结旧版对照、配对计时程序、CPU/GPU 量化对照源码和可重新生成夹具的入口；[MANIFEST.json](repro/MANIFEST.json) 记录来源与哈希。三轮 CSV 和主要验收清单已可直接从仓库取得，其他历史归档仍保留在本地交付包。
+
+从项目目录执行以下命令，可离线重算全部配对结果，输出目录须为新目录：
+
+~~~bash
+python3 platforms/moore/repro/analyze_optimization.py --output /tmp/moore-analysis-new
+~~~
+
+本次公开整理没有改变 GPU 内核，也没有重新租用或启动 GPU。使用仓库原参考头文件重新编译的 CPU 对照生成了与原实机输入字节一致的夹具；公开复算器的全部数值结果与原分析一致。
+
+以下保留完整本地交付包的索引，便于追溯其余文件：
+
 - 最新源码及实机哈希：本目录及 [VERIFICATION.json](VERIFICATION.json)。六份 Moore 执行相关源文件与实测版本字节一致；仓库共享参考比实测副本少一个末尾空行，代码内容一致，两份字节哈希分别记录。
 - 交付 ZIP 的 optimization/evidence/raw：本轮 77 份已逐字节校验的源码、日志、清单与 CSV。
 - 完整矩阵和关闭候选的原始清单：上述目录中的 runs/full/run_summary.json、runs/disabled/run_summary.json。

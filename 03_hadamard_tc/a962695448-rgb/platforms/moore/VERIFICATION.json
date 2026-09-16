@@ -225,5 +225,13 @@
     "gpu_tested_sha256": "1ff2c70cc8849020bd413a1d174718683bd89d5b6d8f25ee0a01d1c9b8876888",
     "difference": "实测副本比仓库文件多一个末尾空行；代码内容一致，仓库参考文件未修改。"
   },
-  "publication_record": "实际提交及分支状态以 GitHub 历史为准；此文件记录实机验证证据。"
+  "publication_record": "实际提交及分支状态以 GitHub 历史为准；此文件记录实机验证证据。",
+  "public_reproduction": {
+    "directory": "repro",
+    "manifest": "repro/MANIFEST.json",
+    "recorded_text_files": 14,
+    "gpu_binaries_included": false,
+    "fixture_regenerable": true,
+    "new_gpu_run_for_publication": false
+  }
 }

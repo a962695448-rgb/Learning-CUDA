@@ -34,8 +34,9 @@ line; VERIFICATION.json records both hashes.
 The previous port's 145 text files are preserved separately. Seven new build
 binaries and ten previous executables were not downloaded; the stopped server
 has a finite retention period. Source, logs, raw CSVs and fixture are included
-in the local optimized delivery ZIP. This directory contains the source,
-report and verification summary for the project branch.
+in the local optimized delivery ZIP. The core recorded measurements, frozen
+control, fixture generator and offline analysis are now available in the
+[public reproduction directory](repro/README.zh-CN.md).
 
 The initial device probe compiled and executed on MTT S4000, MUSA SDK/mcc 5.1.0,
 driver 5.1.0-server, target `mp_22`. Host device properties report warp size 128;
@@ -93,11 +94,10 @@ The default full run performs three separate benchmark processes, five timing
 groups per method/configuration, and 100 calls per event interval.
 
 The commands above reproduce validation and the current-version baseline
-benchmark. To inspect or reproduce the old/new paired experiment, use the
-optimized delivery ZIP's optimization directory and REPRODUCE.zh-CN.md. The
-frozen control, paired harness, CPU fixture generator and raw commands are
-included there. The paired 6,750-row dataset and older 4,050-row baseline dataset
-are separate experiments.
+benchmark. The [public reproduction guide](repro/README.zh-CN.md) contains the
+old/new paired harness, frozen control, raw measurements and CPU fixture
+generator. Offline reanalysis uses only the Python standard library. The paired
+6,750-row dataset and older 4,050-row baseline dataset are separate experiments.
 
 ## Validation and timing boundaries
 
