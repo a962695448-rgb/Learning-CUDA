@@ -2,6 +2,8 @@
 #include <c10/cuda/CUDAGuard.h>
 #include <c10/cuda/CUDAException.h>
 #include <c10/cuda/CUDAStream.h>
+#include <c10/core/InferenceMode.h>
+#include <torch/csrc/autograd/VariableTypeUtils.h>
 
 #include "kernels.cuh"
 #include "contiguous256.cuh"
@@ -10,6 +12,7 @@
 #include <ATen/cuda/CUDAContext.h>
 
 #include <cmath>
+#include <cstdint>
 #include <limits>
 #include <string>
 #include <tuple>
@@ -147,6 +150,78 @@ std::tuple<at::Tensor, at::Tensor> quantize_only(const at::Tensor& input, int bl
     return quantized<false>(input, 1.0, block_threads);
 }
 
+void validate_buffer(const at::Tensor& input, const at::Tensor& buffer,
+                     at::ScalarType dtype, int rank, const char* name) {
+    TORCH_CHECK(buffer.is_cuda() && buffer.device() == input.device(), name, " must be on the input CUDA device");
+    TORCH_CHECK(buffer.scalar_type() == dtype, name, " has incorrect dtype");
+    TORCH_CHECK(buffer.dim() == rank, name, " has incorrect rank");
+    TORCH_CHECK(buffer.is_contiguous(), name, " must be contiguous");
+    TORCH_CHECK(!buffer.is_neg() && !buffer.is_conj(), name, " must not have lazy negative/conjugate metadata");
+    TORCH_CHECK(!buffer.requires_grad(), name, " must not require gradients");
+    TORCH_CHECK(!buffer.is_inference() || c10::InferenceMode::is_enabled(),
+                name, " is an inference tensor; update it inside inference_mode");
+}
+
+void require_disjoint(const at::Tensor& first, const at::Tensor& second) {
+    // Both tensors have validated contiguous shapes on one device. Compare the
+    // active byte intervals, including distinct storage wrappers (e.g. DLPack).
+    const auto a = reinterpret_cast<std::uintptr_t>(first.data_ptr());
+    const auto b = reinterpret_cast<std::uintptr_t>(second.data_ptr());
+    const auto a_size = static_cast<std::uintptr_t>(first.numel()) * first.element_size();
+    const auto b_size = static_cast<std::uintptr_t>(second.numel()) * second.element_size();
+    TORCH_CHECK(a < b ? b - a >= a_size : a - b >= b_size,
+                "input and output buffers must have disjoint active byte ranges");
+}
+
+void transform_out(const at::Tensor& input, at::Tensor output, double scale,
+                   int block_threads, const std::string& row_layout) {
+    validate(input, scale, block_threads);
+    validate_buffer(input, output, input.scalar_type(), input.dim(), "output");
+    TORCH_CHECK(output.sizes() == input.sizes(), "output has incorrect shape");
+    require_disjoint(input, output);
+    const c10::cuda::CUDAGuard device_guard(input.device());
+    const auto choice = row_choice(input, row_layout, false, block_threads);
+    at::Tensor packed, scales;
+    torch::autograd::increment_version(output);
+    dispatch<true, false>(input, output, packed, scales, scale, choice.threads, false, choice.packed);
+}
+
+template <bool Transform>
+void quantized_out(const at::Tensor& input, at::Tensor packed, at::Tensor scales,
+                   double scale, int block_threads, const std::string& fused_layout,
+                   const std::string& row_layout) {
+    validate(input, scale, block_threads);
+    TORCH_CHECK(fused_layout == "original" || fused_layout == "contiguous256",
+                "fused_layout must be 'original' or 'contiguous256'");
+    TORCH_CHECK(fused_layout == "original" || row_layout == "original",
+                "row_layout cannot be combined with contiguous256");
+    const bool contiguous256 = fused_layout == "contiguous256";
+    if (contiguous256) {
+        TORCH_CHECK(Transform && input.size(-1) == 256 && block_threads == 128,
+                    "contiguous256 requires fused Hadamard, dimension 256, and 128 threads");
+    }
+    validate_buffer(input, packed, at::kByte, input.dim(), "packed output");
+    validate_buffer(input, scales, at::kFloat, input.dim() - 1, "scales output");
+    TORCH_CHECK(packed.size(-1) == (input.size(-1) + 1) / 2, "packed output has incorrect shape");
+    for (int i = 0; i < input.dim() - 1; ++i) {
+        TORCH_CHECK(packed.size(i) == input.size(i), "packed output has incorrect shape");
+        TORCH_CHECK(scales.size(i) == input.size(i), "scales output has incorrect shape");
+    }
+    require_disjoint(input, packed);
+    require_disjoint(input, scales);
+    require_disjoint(packed, scales);
+    const c10::cuda::CUDAGuard device_guard(input.device());
+    const auto choice = row_choice(input, row_layout, true, block_threads);
+    at::Tensor output;
+    torch::autograd::increment_version(packed);
+    torch::autograd::increment_version(scales);
+    dispatch<Transform, true>(input, output, packed, scales, scale, choice.threads, contiguous256, choice.packed);
+}
+
+void quantize_only_out(const at::Tensor& input, at::Tensor packed, at::Tensor scales, int block_threads) {
+    quantized_out<false>(input, packed, scales, 1.0, block_threads, "original", "original");
+}
+
 }  // namespace
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
@@ -157,4 +232,14 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
                "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). fused_layout='original' (default) supports block_threads=128 or 256; explicit 'contiguous256' requires N256 and block_threads=128. row_layout=packed/auto selects small-N row packing and cannot be combined with contiguous256.");
     module.def("quantize_int4", &quantize_only, pybind11::arg("input"), pybind11::arg("block_threads") = 128,
                "Quantize an already-rounded FP16/BF16 tensor; even values occupy the low nibble. block_threads=128 (default) or 256.");
+    module.def("hadamard_out", &transform_out, pybind11::arg("input"), pybind11::arg("output"),
+               pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128, pybind11::arg("row_layout") = "original",
+               "Write Hadamard into a preallocated, disjoint same-shape/dtype output; returns None. No resizing or output allocation.");
+    module.def("hadamard_int4_out", &quantized_out<true>, pybind11::arg("input"), pybind11::arg("packed"), pybind11::arg("scales"),
+               pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128,
+               pybind11::arg("fused_layout") = "original", pybind11::arg("row_layout") = "original",
+               "Write fused INT4 into preallocated uint8 packed and float32 scales buffers; returns None. All active byte ranges must be disjoint.");
+    module.def("quantize_int4_out", &quantize_only_out, pybind11::arg("input"), pybind11::arg("packed"), pybind11::arg("scales"),
+               pybind11::arg("block_threads") = 128,
+               "Write INT4 quantization into preallocated disjoint buffers; returns None. No resizing or output allocation.");
 }

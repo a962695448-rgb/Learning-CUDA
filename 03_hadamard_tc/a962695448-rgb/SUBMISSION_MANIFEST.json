@@ -250,8 +250,10 @@
     },
     {
       "path": "src/torch_binding.cu",
-      "git_blob_sha": "8919d8e441a2972bc78edb4e0d5b7a23079ad276",
-      "sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8"
+      "git_blob_sha": "426f5eb299dad956297ad0215bed6a7631ae73cc",
+      "sha256": "3a474a8a3f2070f0e91018019c35cef4c5290319300e6d20524399d427ee6f88",
+      "archive_git_blob_sha": "8919d8e441a2972bc78edb4e0d5b7a23079ad276",
+      "archive_sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8"
     },
     {
       "path": "src/tune_launch.cu",
@@ -280,23 +282,45 @@
       "path": "tests/row_policy_test.cpp",
       "git_blob_sha": "26207f53a5165d4f44c83f1b850ad226c180fbf4",
       "sha256": "f40bf7370539863f61630a98501f096908bc13fd5115e663ce33c37a679606d4"
+    },
+    {
+      "path": "scripts/verify_out_buffers.py",
+      "sha256": "07daf545e33a099e530586526c19afb79c80efdf2d78273150d1b659312a5cd8",
+      "git_blob_sha": "b3bccd0f09ea513cd8901c8c5be227db1e566b55"
     }
   ],
-  "supplemental_test_scope": "Current hashes are in sources; changed entries retain their original archive hashes. Two source/build files changed for bounded RTX 4090 D auto routing and the CPU test target; compute kernels unchanged.",
+  "supplemental_test_scope": "Current hashes and original archive hashes are retained. Three original source/build files have changed; all device kernel files remain unchanged.",
   "original_source_changes": [
     "Makefile",
-    "include/row_policy.hpp"
+    "include/row_policy.hpp",
+    "src/torch_binding.cu"
   ],
-  "original_sources_unchanged_count": 49,
+  "original_sources_unchanged_count": 48,
   "compute_kernels_unchanged": true,
+  "previous_validations": [
+    {
+      "base_commit": "c591085756fec139c55f3de59c2a4ba0742dc5cc",
+      "device": "NVIDIA GeForce RTX 4090 D",
+      "unique_configurations": 180,
+      "paired_rounds": 3,
+      "comparisons": 540,
+      "new_route_context_configurations": 16,
+      "cpu_row_policy_checks": 270,
+      "decision": "ACCEPT"
+    }
+  ],
   "current_validation": {
-    "base_commit": "c591085756fec139c55f3de59c2a4ba0742dc5cc",
+    "base_commit": "bce004ecb2097a20207080f7507e4cfd2ee49d06",
+    "feature": "reusable output APIs",
     "device": "NVIDIA GeForce RTX 4090 D",
-    "unique_configurations": 180,
+    "positive_configurations": 372,
+    "negative_checks": 63,
+    "mutation_checks": 4,
+    "execution_context_configurations": 24,
     "paired_rounds": 3,
-    "comparisons": 540,
-    "new_route_context_configurations": 16,
-    "cpu_row_policy_checks": 270,
-    "decision": "ACCEPT"
+    "benchmark_configurations": 72,
+    "benchmark_records": 216,
+    "decision": "ACCEPT",
+    "metric": "synchronized ordinary Python host wall time"
   }
 }
