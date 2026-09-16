@@ -1,0 +1,46 @@
+{
+  "candidate": "RTX 4090 D exact device identity: packed 256-thread auto route only for rows 4096..65536 and dim 1,2,4,8,16; old devices and other ranges unchanged",
+  "discovery_sha256": "2b6fc5d062b4fc53222ca369ea2bf9ab0edde1f53e4d19420317547872f05c6e",
+  "paired_rounds": 3,
+  "groups": 9,
+  "graph_ops": 32,
+  "graph_replays": 20,
+  "primary_metric": "Median GPU event time per call in repeated-op CUDA Graph; resident-data workload",
+  "acceptance": {
+    "each_target_speedup_at_least": 1.05,
+    "each_control_regression_at_most": 0.03,
+    "all_rounds_required": true,
+    "correctness": "independent CPU oracle; unchanged outputs and input buffers; non-default stream + changing-input graph on added route"
+  },
+  "target_rows": [
+    4096,
+    4097,
+    8193,
+    32767,
+    65535,
+    65536
+  ],
+  "control_rows": [
+    17,
+    4095,
+    65537
+  ],
+  "dimensions": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "dtypes": [
+    "float16",
+    "bfloat16"
+  ],
+  "methods": [
+    "hadamard",
+    "hadamard_int4"
+  ],
+  "seed": 7312026,
+  "block_threads": 128,
+  "layout": "auto"
+}

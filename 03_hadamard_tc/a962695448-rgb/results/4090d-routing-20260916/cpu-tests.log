@@ -1,0 +1,7 @@
+mkdir -p build
+c++ -O3 -std=c++17 -Iinclude tests/cpu_reference_test.cpp -o build/cpu_reference_test
+./build/cpu_reference_test
+PASS: 9 matrix-oracle/involution cases, rounding, packing, zero, invalid shape
+c++ -O3 -std=c++17 -Iinclude tests/row_policy_test.cpp -o build/row_policy_test
+./build/row_policy_test
+PASS: 270 row-policy checks
