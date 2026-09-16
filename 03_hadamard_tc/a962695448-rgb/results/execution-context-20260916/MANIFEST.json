@@ -1,0 +1,9 @@
+{
+  "INPUT_MANIFEST.json": "17976a9f29dd9f737fc8a35004ea45433103d100cc1092e41064b0db04e68ae1",
+  "README.zh-CN.md": "7c4547dc1097c302e98bb0623e03700524eac78ee7090d0c0bc1f363ae71ddad",
+  "build_torch_extension.py": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+  "cuda-context.json": "464a7355157df0210567a0fb5fe4f6c294524601b9a4823096a9500abe840d8d",
+  "cuda-context.log": "e7ad8376b180b38ce6027d55a451e0d17fc9428d0dc1199b5aedf3de7dec3e17",
+  "environment.json": "2d7db1077f2e732e63df3058752cd8019e673c440cf5b3130835d6b7df085017",
+  "verify_execution_context.py": "a2c1e11c233e388b0b6beec3f6ccadf9cdaa0628f894a7711aaf5de16a165c53"
+}

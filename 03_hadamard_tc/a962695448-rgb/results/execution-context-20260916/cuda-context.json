@@ -1,0 +1,5703 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.float16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        3,
+        1
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        8
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "packed",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        64
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        17,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 128,
+      "method": "hadamard_int4",
+      "fused_layout": "contiguous256",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "quantize_int4",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "original",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    },
+    {
+      "shape": [
+        2,
+        1,
+        3,
+        256
+      ],
+      "block_threads": 256,
+      "method": "hadamard_int4",
+      "row_layout": "auto",
+      "dtype": "torch.bfloat16",
+      "status": "PASS",
+      "stream_oracle_bitwise_equal": true,
+      "stream_input_unchanged": true,
+      "graph_replays": [
+        {
+          "phase": 0,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 1,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 2,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        },
+        {
+          "phase": 3,
+          "oracle_bitwise_equal": true,
+          "input_unchanged": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "fault": "consumer_on_default_stream",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        },
+        {
+          "fault": "stale_graph_output",
+          "detected": true,
+          "reason": "output 0 bits differ from the CPU oracle"
+        }
+      ]
+    }
+  ],
+  "delay_cycles": 50000000,
+  "started_utc": "2026-09-16T13:44:22Z",
+  "limitations": [
+    "Single-device correctness only; no speedup claim.",
+    "Delay uses the test-only torch.cuda._sleep API; unavailable or undetected controls fail.",
+    "Representative shapes/layouts, not every possible stream schedule."
+  ],
+  "environment": {
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "numpy": "1.26.4",
+    "gpu": "NVIDIA GeForce RTX 4090 D",
+    "capability": [
+      8,
+      9
+    ],
+    "extension_sha256": "9dab7eddb8faab1bc21b6c4622d6f0f45c57e06a5e3bf7a45954a02fedbd2bc3"
+  },
+  "source_sha256": {
+    "include/contiguous256.cuh": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+    "include/kernels.cuh": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+    "include/packed_rows.cuh": "6a0dfe4c020cd8c3fba5da4c35f1ceabdb2b2b948e1ab90553bc0cd1b9c93b30",
+    "platforms/iluvatar/hadamard_api.cu": "7b33cd38339efaeb36b5829338fda044109a9b1cd38f1b925cc79cbe063c7330",
+    "platforms/iluvatar/shared_baseline.cu": "d8b00f6e60feaf0dd450ca66255e05bd7e0e01a060d911a9fc7c61779023f180",
+    "platforms/iluvatar/validate_and_benchmark.cu": "3712dc8513b5a298d572d32a6faacac468a47d21d73a7cc37a724613a7f7405d",
+    "platforms/metax/hadamard_api.cu": "407e6b7e962f9f14c910a6714c5443446bd4b99e33ea2c15fb018065c7f15b71",
+    "platforms/metax/validate_and_benchmark.cu": "cce649557ed63f8459c5b03e6fc8943aef47dcf8dc26b10d24a659995752ad47",
+    "src/main.cu": "a77680855fe3bdd907b45651dc5144f6f067c134e7a3e22775d8d27713cac9bc",
+    "src/torch_binding.cu": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8",
+    "src/tune_launch.cu": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212",
+    "scripts/build_torch_extension.py": "b27c9f2e4867ca7a0de79554f1591689124c7b13eb9fb47f0d0300cb7d62402a",
+    "scripts/verify_execution_context.py": "a2c1e11c233e388b0b6beec3f6ccadf9cdaa0628f894a7711aaf5de16a165c53"
+  },
+  "finished_utc": "2026-09-16T13:46:30Z"
+}
