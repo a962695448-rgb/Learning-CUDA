@@ -8,7 +8,7 @@
 namespace hadamard {
 
 enum class RowLayout { Original, Packed, Auto };
-enum class RowDevice { Unknown, A800, RTX4090, A100 };
+enum class RowDevice { Unknown, A800, RTX4090, A100, RTX4090D };
 struct RowChoice { bool packed; int threads; };
 
 inline RowLayout parse_row_layout(const std::string& name) {
@@ -22,6 +22,7 @@ inline RowDevice row_device(const char* name) {
     if (std::strcmp(name, "NVIDIA A800-SXM4-40GB") == 0) return RowDevice::A800;
     if (std::strcmp(name, "NVIDIA GeForce RTX 4090") == 0) return RowDevice::RTX4090;
     if (std::strcmp(name, "NVIDIA A100-SXM4-40GB") == 0) return RowDevice::A100;
+    if (std::strcmp(name, "NVIDIA GeForce RTX 4090 D") == 0) return RowDevice::RTX4090D;
     return RowDevice::Unknown;
 }
 
@@ -30,6 +31,10 @@ inline RowChoice choose_rows(RowLayout layout, RowDevice device, std::size_t row
     if (layout == RowLayout::Original || dim < 1 || dim > 16 || (dim & (dim - 1)))
         return {false, fallback_threads};
     if (layout == RowLayout::Packed) return {true, fallback_threads};
+    // This model has separate measured bounds; do not inherit the 4090 rules.
+    if (device == RowDevice::RTX4090D)
+        return rows >= 4096 && rows <= 65536 ? RowChoice{true, 256}
+                                           : RowChoice{false, fallback_threads};
     int index = 0;
     for (int n = dim; n > 1; n /= 2) ++index;
     // Zero disables a rule. Only independently accepted device-specific ranges are installed.

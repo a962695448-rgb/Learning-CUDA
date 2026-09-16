@@ -2,12 +2,14 @@
   "archive_commit": "3676727fc21ea27bda668d743d10e52d7e138f68",
   "upstream_base": "a17ce401ad3e49d0871e946d6ac6d7d09c35cb74",
   "historical_results_files_referenced_externally": 2586,
-  "computation_and_build_sources_unchanged": true,
+  "computation_and_build_sources_unchanged": false,
   "sources": [
     {
       "path": "Makefile",
-      "git_blob_sha": "288f6b6cfefc7f8e63e469ed9fa7d16d4021c9ca",
-      "sha256": "8f15a347ded757dfcb6c54cb2444265e549c3245d928e2652d8195e342cd4d73"
+      "git_blob_sha": "97e13167aabe95e5461df101aaaf6cbf4be30d96",
+      "sha256": "61ff9c3d8ecd66773e8d59b6496201bbbfb661a12232e690d776dc8a1630e93f",
+      "archive_git_blob_sha": "288f6b6cfefc7f8e63e469ed9fa7d16d4021c9ca",
+      "archive_sha256": "8f15a347ded757dfcb6c54cb2444265e549c3245d928e2652d8195e342cd4d73"
     },
     {
       "path": "include/contiguous256.cuh",
@@ -31,8 +33,10 @@
     },
     {
       "path": "include/row_policy.hpp",
-      "git_blob_sha": "b2d64d5437446cecd69c49e1e1460afc4ff38c10",
-      "sha256": "57c319d22f5e9c74539134bf6cb077a43ab81e4c0f4dacf23348379f1e562a62"
+      "git_blob_sha": "84f9fce567cb156dab9e9d3642f4fb4a20f26653",
+      "sha256": "9f4bea3233106a446d650e8d4b9f96dfae22571abc2eed8a1cce0b4b5215253d",
+      "archive_git_blob_sha": "b2d64d5437446cecd69c49e1e1460afc4ff38c10",
+      "archive_sha256": "57c319d22f5e9c74539134bf6cb077a43ab81e4c0f4dacf23348379f1e562a62"
     },
     {
       "path": "platforms/ascend/CMakeLists.txt",
@@ -271,7 +275,28 @@
       "path": "scripts/verify_execution_context.py",
       "git_blob_sha": "c9034a55d357025c455a3f48fba3ea7a04f4d68f",
       "sha256": "a2c1e11c233e388b0b6beec3f6ccadf9cdaa0628f894a7711aaf5de16a165c53"
+    },
+    {
+      "path": "tests/row_policy_test.cpp",
+      "git_blob_sha": "26207f53a5165d4f44c83f1b850ad226c180fbf4",
+      "sha256": "f40bf7370539863f61630a98501f096908bc13fd5115e663ce33c37a679606d4"
     }
   ],
-  "supplemental_test_scope": "Added single-device stream/graph correctness verifier; the 51 historical source/build files above remain unchanged."
+  "supplemental_test_scope": "Current hashes are in sources; changed entries retain their original archive hashes. Two source/build files changed for bounded RTX 4090 D auto routing and the CPU test target; compute kernels unchanged.",
+  "original_source_changes": [
+    "Makefile",
+    "include/row_policy.hpp"
+  ],
+  "original_sources_unchanged_count": 49,
+  "compute_kernels_unchanged": true,
+  "current_validation": {
+    "base_commit": "c591085756fec139c55f3de59c2a4ba0742dc5cc",
+    "device": "NVIDIA GeForce RTX 4090 D",
+    "unique_configurations": 180,
+    "paired_rounds": 3,
+    "comparisons": 540,
+    "new_route_context_configurations": 16,
+    "cpu_row_policy_checks": 270,
+    "decision": "ACCEPT"
+  }
 }

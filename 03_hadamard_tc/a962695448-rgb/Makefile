@@ -23,10 +23,12 @@ self-test: build/hadamard
 benchmark: build/hadamard
 	./build/hadamard --benchmark --csv results/benchmark.csv
 
-cpu-test: tests/cpu_reference_test.cpp include/reference.hpp
+cpu-test: tests/cpu_reference_test.cpp include/reference.hpp tests/row_policy_test.cpp include/row_policy.hpp
 	mkdir -p build
 	$(CXX) -O3 -std=c++17 -Iinclude tests/cpu_reference_test.cpp -o build/cpu_reference_test
 	./build/cpu_reference_test
+	$(CXX) -O3 -std=c++17 -Iinclude tests/row_policy_test.cpp -o build/row_policy_test
+	./build/row_policy_test
 
 clean:
-	rm -f build/hadamard build/cpu_reference_test build/config.txt build/config.tmp
+	rm -f build/hadamard build/cpu_reference_test build/row_policy_test build/config.txt build/config.tmp
