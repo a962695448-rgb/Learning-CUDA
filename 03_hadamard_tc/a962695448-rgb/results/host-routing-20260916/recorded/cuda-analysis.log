@@ -1,0 +1,24 @@
+{
+  "accepted": false,
+  "observations": 3456,
+  "rounds": [
+    {
+      "round": 1,
+      "target_unweighted_geomean_time_reduction_percent": -1.1454706888829103,
+      "worst_case_regression_percent": 20.663610118478815,
+      "accepted": false
+    },
+    {
+      "round": 2,
+      "target_unweighted_geomean_time_reduction_percent": -0.04484824591339809,
+      "worst_case_regression_percent": 7.379519546650282,
+      "accepted": false
+    },
+    {
+      "round": 3,
+      "target_unweighted_geomean_time_reduction_percent": 0.6024872224350442,
+      "worst_case_regression_percent": 0.9957196939354818,
+      "accepted": false
+    }
+  ]
+}

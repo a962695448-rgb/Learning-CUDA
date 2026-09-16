@@ -1,0 +1,16 @@
+[
+  {
+    "label": "nine",
+    "repository": "a962695448-rgb/ninetoothed",
+    "commit": "1b68040f73553de9b5929cd61067c4d4369f7f22",
+    "archive_sha256": "691f993ddb522c07ff2e9a5652671a5a9d253439bacbe970402098649997e5e2",
+    "archive_bytes": 353318
+  },
+  {
+    "label": "cuda",
+    "repository": "a962695448-rgb/Learning-CUDA",
+    "commit": "4049323cf400c73bd160f19b6c8b7defc678bf01",
+    "archive_sha256": "136b2d6c4012782559a010c136f2c57e28462882aa575346f95b85fb4cadc237",
+    "archive_bytes": 452538
+  }
+]

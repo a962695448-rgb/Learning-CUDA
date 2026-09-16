@@ -1,0 +1,102 @@
+{
+  "CUDA_PROTOCOL.json": {
+    "bytes": 1271,
+    "sha256": "d04673494deaa0e4f797ff528877e13f56eb4117306fb0e77870353412415644"
+  },
+  "README.zh-CN.md": {
+    "bytes": 4964,
+    "sha256": "446c6d2c313c27152faefa00e3b12d3a4db366768ae85e03b899673de5975e99"
+  },
+  "SOURCE_ARCHIVES.json": {
+    "bytes": 513,
+    "sha256": "a788b9da996804f15085a149c4212bc8db7951fdc6889fce7c65244241fd4219"
+  },
+  "SOURCE_TREES.json": {
+    "bytes": 83790,
+    "sha256": "774f271bd8a18da37c06fa5aa69bb6947da9e8b330a3d8227a94b7bc9a8cf4d5"
+  },
+  "analyze_cuda.py": {
+    "bytes": 6003,
+    "sha256": "c603c326d0b7e9ce42ecb159db676a67e6520e8570adf9250632c230c62403fe"
+  },
+  "candidate_torch_binding.cu": {
+    "bytes": 9590,
+    "sha256": "3c4202f3318278500c3f5c7ad050d55cd7fb45d693cf0b2f408c9193f9aa972d"
+  },
+  "checks/host-routing/result.json": {
+    "bytes": 621,
+    "sha256": "56e0f836d0f2822068c95abd8823a746f6bd72720efe14262969d84ae0c16f4f"
+  },
+  "cuda_worker.py": {
+    "bytes": 17144,
+    "sha256": "36077c54ebb0f689e211f80f364e2a40490afff3b6c64059bbab0130bb3b93c1"
+  },
+  "environment.json": {
+    "bytes": 22094,
+    "sha256": "fe5941fc0bab5412f14699eb53fa1d3d283a285f3cb5f1463fd4ad75ecad5d0a"
+  },
+  "prepare_sources.py": {
+    "bytes": 2689,
+    "sha256": "02844dc92a7eef244a5dab184b7ea756d89428c068566ef187ab3193e881bbc3"
+  },
+  "recorded/cuda-analysis.json": {
+    "bytes": 63848,
+    "sha256": "93293d686480f4af0b06f9a5b0810341137c462bbde792909248b3b6d1abfb58"
+  },
+  "recorded/cuda-analysis.log": {
+    "bytes": 644,
+    "sha256": "cfd140f75d08b4ff9c0ebedbc31042cc25e08a5ee36afff2df184d9e73020a75"
+  },
+  "recorded/cuda-round1.json": {
+    "bytes": 376847,
+    "sha256": "6f2b82f58010a873fb0a88878126f841a39c8edf4eb97c0dfad43e0ef39f9cd4"
+  },
+  "recorded/cuda-round1.log": {
+    "bytes": 751,
+    "sha256": "5a849115126a3aab4a5f4308a42bbb28889e051067637598ca888369f446e73d"
+  },
+  "recorded/cuda-round2.json": {
+    "bytes": 376842,
+    "sha256": "180569abf64e6087901b7248dcde9d11fe38fa765d59699e2e92b61ddf802e22"
+  },
+  "recorded/cuda-round2.log": {
+    "bytes": 751,
+    "sha256": "e77c2e9f859ef1f17a50b3a5a266cb84583dccec818ea9c7405a6538c52609ed"
+  },
+  "recorded/cuda-round3.json": {
+    "bytes": 376994,
+    "sha256": "2318de787bf1e37a3626586ffb310da25b8531c8db74455a5e71b49bbd891ff6"
+  },
+  "recorded/cuda-round3.log": {
+    "bytes": 751,
+    "sha256": "6638812559d23bf5f8199e8c2d0b8bd44758af9b70bacaf3a3eb45326eff0105"
+  },
+  "recorded/cuda-validation.json": {
+    "bytes": 1377,
+    "sha256": "14d2c579d51c0054684d719755d55427cfa3510b09de165c1754aec8e6d6b9c5"
+  },
+  "recorded/cuda-validation.log": {
+    "bytes": 3654,
+    "sha256": "f3e8beb58223ff5c419cae842f418693b529a1bf86194a8b3e8d1b220ad5f515"
+  },
+  "recorded/run-summary.json": {
+    "bytes": 4325,
+    "sha256": "c5e17f8bdb05fd0a59f101e8f8b206629db0794904e6cab3228d101a8646a505"
+  },
+  "run_cuda_experiment.py": {
+    "bytes": 3089,
+    "sha256": "a24c5feec0163758835b1d3abe0fc9982ba81767b42c6bcc634993317696a939"
+  },
+  "test_validation_tools.py": {
+    "bytes": 5605,
+    "sha256": "8d840fb6b57448c0cea958fbd1464ffc520452b80d498ef7f376ebd3a9dafb44"
+  },
+  "validate_host_policy.py": {
+    "bytes": 6341,
+    "sha256": "bd0c68f2b6568bc378fc482936ee2fcef0990926b978493cfa3f7de90ac86bb5"
+  },
+  "validation_common.py": {
+    "bytes": 6065,
+    "sha256": "626acf1f6515e28152c40e463c2ca6b1f64bd128917da22302ae30fa6da23ea5"
+  }
+}

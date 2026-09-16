@@ -1,0 +1,67 @@
+{
+  "scope": "One host-routing candidate; GPU kernels, numerical rules, thresholds and public signatures remain unchanged.",
+  "seed": 20260916,
+  "rounds": 3,
+  "groups": 9,
+  "repeats": 2000,
+  "warmup": 200,
+  "scale": 1.0,
+  "target_shapes": [
+    [
+      1,
+      64
+    ],
+    [
+      1,
+      256
+    ],
+    [
+      17,
+      64
+    ],
+    [
+      17,
+      256
+    ]
+  ],
+  "control_shapes": [
+    [
+      1,
+      1
+    ],
+    [
+      17,
+      4
+    ],
+    [
+      65,
+      16
+    ],
+    [
+      4096,
+      8
+    ]
+  ],
+  "dtypes": [
+    "fp16",
+    "bf16"
+  ],
+  "layouts": [
+    "original",
+    "auto"
+  ],
+  "operations": [
+    "transform",
+    "fused"
+  ],
+  "acceptance": {
+    "target_geomean_time_reduction_at_least_percent_each_round": 5.0,
+    "maximum_case_time_regression_percent_each_round": 2.0,
+    "correctness": "All declared validation cases exactly match the original implementation; independent CPU checks retain the existing tolerances.",
+    "notes": [
+      "The unweighted geometric mean is an engineering selection statistic, not a workload-weighted application speedup.",
+      "No performance conclusion or production update before real GPU results.",
+      "Both successful and unsuccessful candidates remain recorded."
+    ]
+  }
+}

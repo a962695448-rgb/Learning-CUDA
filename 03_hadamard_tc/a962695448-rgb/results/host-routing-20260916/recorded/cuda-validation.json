@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "mode": "validate",
+  "hardware": {
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "visible_devices": 1,
+    "a100_validation": false,
+    "compute_capability": [
+      8,
+      9
+    ],
+    "total_memory_bytes": 25512443904,
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "python": "3.12.3"
+  },
+  "cuda_compiler": {
+    "available": true,
+    "version_output": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+    "returncode": 0
+  },
+  "numpy": "1.26.4",
+  "protocol_sha256": "d04673494deaa0e4f797ff528877e13f56eb4117306fb0e77870353412415644",
+  "control_binding_sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8",
+  "candidate_binding_sha256": "3c4202f3318278500c3f5c7ad050d55cd7fb45d693cf0b2f408c9193f9aa972d",
+  "binaries": {
+    "control": {
+      "sha256": "4e07750233d207e67a62bfaf01a0be9c85274c9c3fcf96c5cf429269ac87c1a9",
+      "name": "hadamard_routing_control.so"
+    },
+    "candidate": {
+      "sha256": "5645e8c785bd8f4981ee9aac448bd0b6a90bfe1a5d1ebd703fe83aab434dcd28",
+      "name": "hadamard_routing_candidate.so"
+    }
+  },
+  "result": {
+    "configurations": 696,
+    "rejections": 12,
+    "status": "PASS"
+  }
+}

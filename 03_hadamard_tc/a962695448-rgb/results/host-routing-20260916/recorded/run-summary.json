@@ -1,0 +1,136 @@
+{
+  "status": "REJECTED",
+  "stages": [
+    {
+      "name": "cuda-validation",
+      "command": [
+        "/data/validation-venv/bin/python",
+        "/data/gpu-validation/cuda_worker.py",
+        "--build-root",
+        "/data/gpu-validation/results/cuda-paired/build",
+        "--mode",
+        "validate",
+        "--output",
+        "/data/gpu-validation/results/cuda-paired/cuda-validation.json"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 98.24210159480572,
+      "log_sha256": "f3e8beb58223ff5c419cae842f418693b529a1bf86194a8b3e8d1b220ad5f515"
+    },
+    {
+      "name": "cuda-round1",
+      "command": [
+        "/data/validation-venv/bin/python",
+        "/data/gpu-validation/cuda_worker.py",
+        "--build-root",
+        "/data/gpu-validation/results/cuda-paired/build",
+        "--mode",
+        "benchmark",
+        "--round",
+        "1",
+        "--output",
+        "/data/gpu-validation/results/cuda-paired/cuda-round1.json"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 20.551526203751564,
+      "log_sha256": "5a849115126a3aab4a5f4308a42bbb28889e051067637598ca888369f446e73d"
+    },
+    {
+      "name": "cuda-round2",
+      "command": [
+        "/data/validation-venv/bin/python",
+        "/data/gpu-validation/cuda_worker.py",
+        "--build-root",
+        "/data/gpu-validation/results/cuda-paired/build",
+        "--mode",
+        "benchmark",
+        "--round",
+        "2",
+        "--output",
+        "/data/gpu-validation/results/cuda-paired/cuda-round2.json"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 20.954191252589226,
+      "log_sha256": "e77c2e9f859ef1f17a50b3a5a266cb84583dccec818ea9c7405a6538c52609ed"
+    },
+    {
+      "name": "cuda-round3",
+      "command": [
+        "/data/validation-venv/bin/python",
+        "/data/gpu-validation/cuda_worker.py",
+        "--build-root",
+        "/data/gpu-validation/results/cuda-paired/build",
+        "--mode",
+        "benchmark",
+        "--round",
+        "3",
+        "--output",
+        "/data/gpu-validation/results/cuda-paired/cuda-round3.json"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 20.600831523537636,
+      "log_sha256": "6638812559d23bf5f8199e8c2d0b8bd44758af9b70bacaf3a3eb45326eff0105"
+    },
+    {
+      "name": "cuda-analysis",
+      "command": [
+        "/data/validation-venv/bin/python",
+        "/data/gpu-validation/analyze_cuda.py",
+        "/data/gpu-validation/results/cuda-paired"
+      ],
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 0.11553087830543518,
+      "log_sha256": "cfd140f75d08b4ff9c0ebedbc31042cc25e08a5ee36afff2df184d9e73020a75"
+    }
+  ],
+  "protocol_sha256": "d04673494deaa0e4f797ff528877e13f56eb4117306fb0e77870353412415644",
+  "scope": "Experimental host routing; production PR remains unchanged until validation and acceptance.",
+  "accepted": false,
+  "artifacts": {
+    "cuda-round1.json": {
+      "bytes": 376847,
+      "sha256": "6f2b82f58010a873fb0a88878126f841a39c8edf4eb97c0dfad43e0ef39f9cd4"
+    },
+    "cuda-round2.log": {
+      "bytes": 751,
+      "sha256": "e77c2e9f859ef1f17a50b3a5a266cb84583dccec818ea9c7405a6538c52609ed"
+    },
+    "cuda-round1.log": {
+      "bytes": 751,
+      "sha256": "5a849115126a3aab4a5f4308a42bbb28889e051067637598ca888369f446e73d"
+    },
+    "cuda-round2.json": {
+      "bytes": 376842,
+      "sha256": "180569abf64e6087901b7248dcde9d11fe38fa765d59699e2e92b61ddf802e22"
+    },
+    "cuda-validation.log": {
+      "bytes": 3654,
+      "sha256": "f3e8beb58223ff5c419cae842f418693b529a1bf86194a8b3e8d1b220ad5f515"
+    },
+    "cuda-analysis.log": {
+      "bytes": 644,
+      "sha256": "cfd140f75d08b4ff9c0ebedbc31042cc25e08a5ee36afff2df184d9e73020a75"
+    },
+    "cuda-round3.json": {
+      "bytes": 376994,
+      "sha256": "2318de787bf1e37a3626586ffb310da25b8531c8db74455a5e71b49bbd891ff6"
+    },
+    "cuda-round3.log": {
+      "bytes": 751,
+      "sha256": "6638812559d23bf5f8199e8c2d0b8bd44758af9b70bacaf3a3eb45326eff0105"
+    },
+    "cuda-validation.json": {
+      "bytes": 1377,
+      "sha256": "14d2c579d51c0054684d719755d55427cfa3510b09de165c1754aec8e6d6b9c5"
+    },
+    "cuda-analysis.json": {
+      "bytes": 63848,
+      "sha256": "93293d686480f4af0b06f9a5b0810341137c462bbde792909248b3b6d1abfb58"
+    }
+  }
+}

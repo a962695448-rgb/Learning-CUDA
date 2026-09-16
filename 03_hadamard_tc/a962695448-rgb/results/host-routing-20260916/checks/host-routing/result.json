@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "cases": 21420,
+  "matching_rejections": 10472,
+  "original_metadata_reads_eliminated": 12852,
+  "unneeded_device_queries_eliminated": 1904,
+  "gpu_test": false,
+  "control_sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8",
+  "candidate_sha256": "3c4202f3318278500c3f5c7ad050d55cd7fb45d693cf0b2f408c9193f9aa972d",
+  "scope": "Actual extracted host routing, valid power-of-two dimensions and validated input shapes; tensor metadata is instrumented, not ATen/CUDA.",
+  "performance_claim": "None. Real GPU/API correctness and wall-clock measurements are still required."
+}
