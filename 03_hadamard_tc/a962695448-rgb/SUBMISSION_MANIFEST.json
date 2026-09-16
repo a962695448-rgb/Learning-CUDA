@@ -265,5 +265,13 @@
     "moore_offline_analysis": "6750 observations; complete result equals the previously validated analysis",
     "moore_analysis_tests": 6,
     "new_gpu_tests": false
-  }
+  },
+  "supplemental_test_sources": [
+    {
+      "path": "scripts/verify_execution_context.py",
+      "git_blob_sha": "c9034a55d357025c455a3f48fba3ea7a04f4d68f",
+      "sha256": "a2c1e11c233e388b0b6beec3f6ccadf9cdaa0628f894a7711aaf5de16a165c53"
+    }
+  ],
+  "supplemental_test_scope": "Added single-device stream/graph correctness verifier; the 51 historical source/build files above remain unchanged."
 }

@@ -88,3 +88,7 @@ Tensor Core 对照在部分已测场景中慢于 warp，相关结果完整保留
 3. src/main.cu、tests/cpu_reference_test.cpp：验证与基准入口。
 4. src/torch_binding.cu：张量契约和前向接口。
 5. 各国产平台目录与对应报告。
+
+## 2026-09-16 执行上下文补测
+
+新增 [120 组流与 CUDA Graph 回归](reports/execution-context-20260916.md)：独立 CPU 参考、输入变化、输入不可变性，以及默认流错误/旧输出负例。RTX 4090 D 实测全部通过；原计算内核和性能结论保持各自的历史验证范围。
