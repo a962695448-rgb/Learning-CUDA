@@ -1,0 +1,10 @@
+{
+  "cuda": {
+    "prepare_inputs_exit": 0,
+    "candidate_overlays_match": true
+  },
+  "nine": {
+    "prepare_inputs_exit": 0,
+    "candidate_overlays_match": true
+  }
+}

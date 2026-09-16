@@ -1,0 +1,30 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/api-optimization-20260917/build/control/build.ninja...
+Building extension module hadamard_out_control...
+Using envvar MAX_JOBS (1) as the number of workers...
+[1/2] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output torch_binding.cuda.o.d -DTORCH_EXTENSION_NAME=hadamard_out_control -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -I/data/api-optimization-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/TH -isystem /usr/local/lib/python3.12/dist-packages/torch/include/THC -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D_GLIBCXX_USE_CXX11_ABI=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -std=c++17 -lineinfo -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr -c /data/api-optimization-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu -o torch_binding.cuda.o 
+[2/2] c++ torch_binding.cuda.o -shared -L/usr/local/lib/python3.12/dist-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o hadamard_out_control.so
+Loading extension module hadamard_out_control...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /data/api-optimization-20260917/build/candidate/build.ninja...
+Building extension module hadamard_out_candidate...
+Using envvar MAX_JOBS (1) as the number of workers...
+[1/2] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output torch_binding.cuda.o.d -DTORCH_EXTENSION_NAME=hadamard_out_candidate -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -I/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.12/dist-packages/torch/include/TH -isystem /usr/local/lib/python3.12/dist-packages/torch/include/THC -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D_GLIBCXX_USE_CXX11_ABI=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -std=c++17 -lineinfo -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr -c /data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu -o torch_binding.cuda.o 
+[2/2] c++ torch_binding.cuda.o -shared -L/usr/local/lib/python3.12/dist-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o hadamard_out_candidate.so
+Loading extension module hadamard_out_candidate...
+positive 372 PASS
+Traceback (most recent call last):
+  File "/data/api-optimization-20260917/run_gpu.py", line 72, in <module>
+    correctness[key]=fn(*args);save('out-correctness.json',correctness);print(key,len(correctness[key]),'PASS',flush=True)
+                     ^^^^^^^^^
+  File "/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts/verify_out_buffers.py", line 154, in negative_cases
+    records.append(reject_without_mutation(torch, op, x, buffers, method, options, label))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts/verify_out_buffers.py", line 85, in reject_without_mutation
+    invoke(op, x, buffers, method, **options)
+  File "/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts/verify_out_buffers.py", line 34, in invoke
+    result = getattr(op, method + "_out")(x, *buffers, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: row_layout must be original, packed, or auto
+
+{"status": "FAIL", "cuda_decision": null, "bytes": 156035, "sha256": "56d8871dd3a2c071ece5a42fffb5a0660d60a0a09694863e3aaeb5c8680227e9"}

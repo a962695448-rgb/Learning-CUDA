@@ -1,0 +1,49 @@
+{
+  "bases": {
+    "nine": "64bd6958a610a0e5e61807aa141bf1cbc7881426",
+    "cuda": "bce004ecb2097a20207080f7507e4cfd2ee49d06"
+  },
+  "nine": {
+    "change": "Bounded cache for immutable dtype descriptors; values and fallback/error semantics unchanged",
+    "rounds": 3,
+    "samples": 7,
+    "target": "elementwise loop without trace, varied contiguous/strided shapes and int32/float32",
+    "minimum_each_target_speedup": 1.05,
+    "minimum_geomean_target_speedup": 1.1,
+    "max_control_regression_percent": 5,
+    "same_full_trace_digest": true
+  },
+  "cuda": {
+    "change": "Opt-in *_out forward interfaces reusing caller output buffers; ordinary allocating APIs retain their behavior",
+    "rounds": 3,
+    "groups": 9,
+    "calls_per_group": 2000,
+    "target_rows": [
+      1,
+      17,
+      256
+    ],
+    "target_dims": [
+      8,
+      64,
+      256
+    ],
+    "control_rows": [
+      65536
+    ],
+    "methods": [
+      "hadamard",
+      "hadamard_int4",
+      "quantize_int4"
+    ],
+    "dtypes": [
+      "float16",
+      "bfloat16"
+    ],
+    "minimum_each_method_geomean_speedup": 1.1,
+    "max_case_regression_percent": 5,
+    "primary_metric": "Synchronized host wall time per ordinary Python call; output preallocation is outside measured region for out variants; includes allocation for current variants",
+    "positive_checks": "independent numerical oracle, no reallocation, stream/graph replay",
+    "negative_checks": "bad dtype/shape/device/stride/metadata/grad and all active byte overlap rejected before writes"
+  }
+}

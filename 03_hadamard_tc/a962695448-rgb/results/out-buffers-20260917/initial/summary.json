@@ -1,0 +1,53 @@
+{
+  "status": "FAIL",
+  "jobs": [
+    {
+      "name": "nine-gpu",
+      "returncode": 0,
+      "seconds": 7.791969604790211,
+      "command": [
+        "/usr/bin/python3",
+        "scripts/verify_interpreter_gpu.py",
+        "--report",
+        "/data/api-optimization-20260917/results/nine-gpu.json"
+      ]
+    },
+    {
+      "name": "nine-dtype-tests",
+      "returncode": 0,
+      "seconds": 2.419461317360401,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_interpreter_dtype_cache.py",
+        "--junitxml=/data/api-optimization-20260917/results/nine-dtype-tests.xml"
+      ]
+    }
+  ],
+  "environment": {
+    "python": "3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0]",
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "cuda": "12.8",
+    "triton": "3.1.0",
+    "numpy": "1.26.4",
+    "gpu": "NVIDIA GeForce RTX 4090 D",
+    "arch_list": "8.9",
+    "capability": [
+      8,
+      9
+    ],
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+    "nvidia_smi": "Wed Sep 16 16:11:42 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |\n|-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4090 D      On  |   00000000:34:00.0 Off |                  Off |\n| 32%   33C    P8             15W /  425W |       4MiB /  24564MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n                                                                                         \n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n"
+  },
+  "input_manifest_sha256": "07cc9a050619c01a086c5c7c5b867e999df7b445b749ee528b54a9a480366740",
+  "runner_sha256": "6fc48924a02002d392dba5befddf7c90d5db665eb6338cba05d2db1fd5c7ba02",
+  "protocol_sha256": "8f8ab4bd961ba869ae1be856e60174dae771421019f9f7cb08cc1dc5b8aa3e78",
+  "extension_sha256": {
+    "control": "2249a1dc6e3cd1638adb94efc893c3bfb2726504831d4ec743eb318ad6247b88",
+    "candidate": "8f042a68ca79f7ff119672b4bd90a4ebf2b380aadbc12289b81387a91abcb361"
+  },
+  "cuda_error": "Traceback (most recent call last):\n  File \"/data/api-optimization-20260917/run_gpu.py\", line 72, in <module>\n    correctness[key]=fn(*args);save('out-correctness.json',correctness);print(key,len(correctness[key]),'PASS',flush=True)\n                     ^^^^^^^^^\n  File \"/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts/verify_out_buffers.py\", line 154, in negative_cases\n    records.append(reject_without_mutation(torch, op, x, buffers, method, options, label))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts/verify_out_buffers.py\", line 85, in reject_without_mutation\n    invoke(op, x, buffers, method, **options)\n  File \"/data/api-optimization-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts/verify_out_buffers.py\", line 34, in invoke\n    result = getattr(op, method + \"_out\")(x, *buffers, **options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: row_layout must be original, packed, or auto\n",
+  "sources_unchanged_during_run": true
+}

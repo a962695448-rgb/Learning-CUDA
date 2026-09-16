@@ -1,0 +1,23 @@
+{
+  "INPUT_MANIFEST.initial.json": "07cc9a050619c01a086c5c7c5b867e999df7b445b749ee528b54a9a480366740",
+  "INPUT_MANIFEST.json": "9342644bf603234a568ad4404f17af3a087d169b2154030bf8e8eb9d0f055c4e",
+  "PROTOCOL.json": "8f8ab4bd961ba869ae1be856e60174dae771421019f9f7cb08cc1dc5b8aa3e78",
+  "README.zh-CN.md": "b89a90471a718c7914e99a798a6fc2cd04a312646018e47df88140f09bf28caa",
+  "RECOVERY_RECEIPT.json": "c34b4f2215cc8365cb7c442de8cd8ed7918ceff91032b9b71bcf8b90372f41fb",
+  "cuda-base-tree.json": "92c8038a7f63261eae50a458967626f6d27585499b1d85b2087fc5f5ffd2cdb4",
+  "initial/out-correctness.json": "4e66a76970f81e66e780e8d5f6076028ed3a7b3f6b018b599fb55585be0dcc9e",
+  "initial/run.log": "a6c36060ee85aabbdd6324c668c52498b84eb243ceeb539c10b196d319aaf81f",
+  "initial/run_gpu.py": "6fc48924a02002d392dba5befddf7c90d5db665eb6338cba05d2db1fd5c7ba02",
+  "initial/summary.json": "2be70f89b14f88bd830b9eb59345698a63541d1767a8cadae40652a00e021f4b",
+  "initial/verify_out_buffers.py": "5f612a41b1755675bec2e03f6f921a088a23d90374d51c47796689dbb4dee30b",
+  "out-benchmark.json": "b9fa94c8f1d09e7c2bb9a76f23d4bf89c2df9d8e0fcb5dfe048d1fc3a273d318",
+  "out-correctness.json": "677e1b5b2e52d35ebc37dbad3824506ec83df9c95281517eee1d7c81663e3f76",
+  "prepare_inputs.py": "1454e0d5f77c17832423f529e9376545cec5098b5dd4a4f40a94c154e54ceef3",
+  "reproduction-smoke.json": "96994218db085900f4035a2ce57e55f2ce58c661e4672352ebbfd8838ffe19fe",
+  "retry-command.sh": "f3a4eb3a9b1a26644893cc6174528787901bbd38f219ead471f74c469e652793",
+  "run-retry.log": "c82f975be6e47ea1efd3fd4a3ba687631a9d0a8af97d893a05fe6caec746fa2f",
+  "run_gpu.py": "1c6cb74ea2619882d0b67e7df76afb2115c60d9040b02a8f44ab8ad47bba82a2",
+  "source/scripts/verify_out_buffers.py": "07daf545e33a099e530586526c19afb79c80efdf2d78273150d1b659312a5cd8",
+  "source/src/torch_binding.cu": "3a474a8a3f2070f0e91018019c35cef4c5290319300e6d20524399d427ee6f88",
+  "summary.json": "0e6fa0253817f7b8a4a545291a0da507714cc00d9f1732b894353ca821b6e4be"
+}
