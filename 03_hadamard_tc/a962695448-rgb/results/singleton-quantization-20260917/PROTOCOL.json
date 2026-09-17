@@ -1,0 +1,39 @@
+{
+  "bases": {"nine": "385a4a5c5b900e53e0ec724b76ebdbe68590e3d3", "cuda": "f9da76087f6cbf6aad52e9effa6cf3ac3aabccf0"},
+  "publication": "Push accepted implementations and reproducible evidence to existing feature/evidence branches; do not merge",
+  "nine": {
+    "change": "Copy identity reads directly into fresh result storage while retaining checked coordinates for observers and the existing indexed extraction path",
+    "rounds": 3,
+    "samples": 9,
+    "calls_per_sample": 5,
+    "target_shapes": [[1024,257],[16,8,16,32],[513,255]],
+    "target_layouts": ["contiguous","fortran","reversed"],
+    "controls": ["identity read plus output store", "arranged vector affine", "arranged softmax", "trace-enabled counterparts"],
+    "minimum_target_geomean_speedup": 1.15,
+    "minimum_each_target_speedup": 1.10,
+    "max_case_regression_percent": 5,
+    "full_trace_digests_equal": true,
+    "memory_metric": "tracemalloc peak during public interpret_program, preallocated input excluded, warm/cold caches; no RSS claim",
+    "primary_metric": "untraced read-only SSA array arithmetic through interpret_program; no output mem.store in target workloads"
+  },
+  "cuda": {
+    "change": "For packed quantization of one finite FP16/BF16 element per row, derive the quantized code from its sign; keep scale computation and nonfinite fallback unchanged",
+    "rounds": 3,
+    "groups": 7,
+    "target_rows": [65536,262147,1048579],
+    "target_dim": 1,
+    "control_rows": [1,4096],
+    "control_dims": [2,8,16],
+    "threads": [128,256],
+    "dtypes": ["float16","bfloat16"],
+    "graph_nodes": 64,
+    "graph_replays": 10,
+    "host_calls": 500,
+    "minimum_each_dtype_thread_round_target_geomean": 1.10,
+    "max_device_or_host_case_regression_percent": 5,
+    "controls": "small N1; packed quantization at other small dimensions; N1 original quantization and packed Hadamard/fused methods",
+    "correctness": "All 65536 storage bit patterns for each dtype, exact old/new comparison including nonfinite fallback; independent finite-value oracle; tails, 2D/4D, allocating/out buffers, guards and version counters, existing stream/graph and legacy regressions",
+    "primary_metric": "same-buffer CUDA event timing of 64-node graphs, 10 replays, current packed implementation as baseline",
+    "secondary_metric": "ordinary allocating and out calls at 256 threads with synchronization; each case must remain within 5% regression"
+  }
+}

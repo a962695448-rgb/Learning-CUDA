@@ -1,0 +1,18 @@
+{
+  "PROTOCOL.json": "cb53b8caa544e7f8a2160762bcdb7ae3d528f56ec66426ccb6011c0564e5a279",
+  "README.zh-CN.md": "15ee370212802243c392ef3c6810b1df94ab5ae5d68f76233a829bb5a9511cd6",
+  "cuda-base-tree.json": "9520a31e3063ded2199792a9814d93d1572aec172b2b7b5e8b421c27a005ecf4",
+  "measurements/INPUT_MANIFEST.json": "3cdebb44855a6b0fb36787d76bd6f0052a550d7250f259eeecfa307724be413c",
+  "measurements/benchmark.json": "9f0f2a38966b0628111475f77ee495db02ff91a172393fc879a85ae9ea6858a5",
+  "measurements/exhaustive-candidate.json": "488504c9e478f83ae0d8677af7a8fdce28b1e6aadf30fcb55fc89f4cd97fa013",
+  "measurements/exhaustive-control.json": "488504c9e478f83ae0d8677af7a8fdce28b1e6aadf30fcb55fc89f4cd97fa013",
+  "measurements/legacy-regression.json": "5b55b9b6f068d8aa24f39a71d0467e62cf3755ba44e37695f692dd18e6b4d275",
+  "measurements/packed-regression.json": "3c23c4ccbcf0b82acbfa8afa7e06fb1525c997d7594497c3643807d7dfdbc6f3",
+  "measurements/run.log": "771931a2f3d01e08b0eaffa4e9158b40f1eca264fb15a238fbe287a72c2a3bad",
+  "measurements/summary.json": "48f86a88fe847f00f6e569e73b6068940611230e2da20bdc7b404caf73468f25",
+  "prepare_inputs.py": "1454e0d5f77c17832423f529e9376545cec5098b5dd4a4f40a94c154e54ceef3",
+  "run_gpu.py": "fc047d4efa3b0a6d87adf8d3f8dd8179d05c8c4abc7fc0f9d7122c39972bd47f",
+  "run_gpu_measured.py": "fb9029d94df6086855fbb47928a3165ed939dd043a3ee9eabaac03e9aac8e09c",
+  "source/include/packed_rows.cuh": "26de887c452e9e6af0287f85b65aa78499c8b2855b56535bcc0d79e857d23df2",
+  "source/scripts/verify_singleton_quantization.py": "e839ed36f6f40c6c07be10d424e750570511b8066ad2f8c83275dc9c520d4977"
+}
