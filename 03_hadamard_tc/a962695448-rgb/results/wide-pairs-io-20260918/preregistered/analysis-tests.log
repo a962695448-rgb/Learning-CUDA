@@ -1,0 +1,13 @@
+test_common_mode_drift_is_recorded_without_relative_instability (test_analysis.AuditTests.test_common_mode_drift_is_recorded_without_relative_instability) ... ok
+test_fixed_size_scaled_calls_and_wrong_count_fail_closed (test_analysis.AuditTests.test_fixed_size_scaled_calls_and_wrong_count_fail_closed) ... ok
+test_full_original_matrix (test_analysis.AuditTests.test_full_original_matrix) ... ok
+test_input_alignment_is_part_of_case_identity (test_analysis.AuditTests.test_input_alignment_is_part_of_case_identity) ... ok
+test_matched_host_regression_is_rejected (test_analysis.AuditTests.test_matched_host_regression_is_rejected) ... ok
+test_missing_case_and_bad_timeline_fail_closed (test_analysis.AuditTests.test_missing_case_and_bad_timeline_fail_closed) ... ok
+test_output_offset_cannot_be_labelled_allocating (test_analysis.AuditTests.test_output_offset_cannot_be_labelled_allocating) ... ok
+test_relative_instability_still_fails (test_analysis.AuditTests.test_relative_instability_still_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.020s
+
+OK

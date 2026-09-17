@@ -1,0 +1,6 @@
+{
+  "original_warp_body_identical": true,
+  "body_sha256": "5b0b7497a6917cc667ccc72b8078856054b497eb536dd3ec03b2a5d35b4a4f75",
+  "checked_frontend_warp_calls": 7,
+  "note": "Static source checks only; no GPU correctness or performance claim"
+}

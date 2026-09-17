@@ -1,0 +1,22 @@
+{
+  "input_files": 254,
+  "zip_bytes": 1158224,
+  "zip_sha256": "d972bf0df3803ca4f0a7133d015b064ba36dc8c0e37f38ca4e6367bd8d18a677",
+  "parts": [
+    {
+      "name": "wide-pairs-io-inputs.part00",
+      "bytes": 400000,
+      "sha256": "97733e62425c7b9f0c96efb2e1970f734173619b170deabe77750d47912a7165"
+    },
+    {
+      "name": "wide-pairs-io-inputs.part01",
+      "bytes": 400000,
+      "sha256": "b33ca9fa023faad4539ab105c69431272baa9f3e32cbbe1f7bed202c6edb7ab3"
+    },
+    {
+      "name": "wide-pairs-io-inputs.part02",
+      "bytes": 358224,
+      "sha256": "cc3381201ec7df8f6987cdd8f974a4f64dd1f1206673befb3e31744de5b28356"
+    }
+  ]
+}
