@@ -50,3 +50,7 @@ results 路径属于完整档案检出。新运行可以在当前目录创建自
 [最终报告](reports/paired-quantization-20260917.md) 记录 RTX4090 的分量编码、偏移、旧接口、长采样和 A/A 校准。新增 kernel 与测试的哈希已登记；三版源码及失败协议分别归档，不借用别的型号或历史源码作为本轮验证。
 
 [本轮固定验证档案](https://github.com/a962695448-rgb/Learning-CUDA/tree/9b3bb79f3c67b6c5e284be7ded9559148b5ae448/03_hadamard_tc/a962695448-rgb/results/paired-quantization-20260917) 保留完整的所有阶段及原始判定。
+
+## 2026-09-17 打包变换验证与成对候选
+
+[本轮报告](reports/paired-hadamard-20260917.md) 列出基线验证与两个 REJECT 候选。计算/构建源码保持 b49fff4，新增验证器按实机通过的内容登记指纹；完整两版数据和源码通过报告中的固定归档链接复现。

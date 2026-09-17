@@ -302,9 +302,15 @@
       "path": "scripts/verify_paired_quantization.py",
       "sha256": "e752d64fd429d6923bd2f94bb30d63f682214fc5771951b48199ced908c604c6",
       "git_blob_sha": "f0249a5fe5cbf7d6a405d76c521994d37384b9bd"
+    },
+    {
+      "path": "scripts/verify_hadamard_packed.py",
+      "sha256": "78c24e33b34d95dba6b5e55959eabf97e3be16428a9116015616b7d96a72b090",
+      "git_blob_sha": "326b4112d4bb7e8c113ef63821d0dfe0344f3911",
+      "validated_origin": "initial/isolated source/scripts/verify_paired_hadamard.py; byte-identical body"
     }
   ],
-  "supplemental_test_scope": "Original source/build hashes and archive provenance retained. A new paired quantize-only CUDA kernel is added; original kernel headers remain unchanged.",
+  "supplemental_test_scope": "Prior source/build provenance retained. New packed Hadamard verification is validated on production b49fff4. Both paired-transform optimization candidates remain only in the evidence archive.",
   "original_source_changes": [
     "Makefile",
     "include/row_policy.hpp",
@@ -377,36 +383,67 @@
       "minimum_target_geomean": 1.1,
       "archive_commit": "5e80eadd156c82a299e7cc7991bf46d1904243e6",
       "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/5e80eadd156c82a299e7cc7991bf46d1904243e6/03_hadamard_tc/a962695448-rgb/results/singleton-quantization-20260917"
+    },
+    {
+      "base_commit": "fabe4aa1beb4f623564ba02ce8cdf24af5932b11",
+      "feature": "paired explicit quantize-only kernels with compile-time launch dimensions",
+      "device": "NVIDIA GeForce RTX 4090",
+      "finite_component_encodings": 128768,
+      "component_offset_configurations": 64,
+      "packed_positive_configurations": 700,
+      "packed_negative_conditions": 4,
+      "execution_context_configurations": 16,
+      "legacy_positive_configurations": 372,
+      "legacy_negative_checks": 63,
+      "mutation_checks": 4,
+      "paired_rounds": 3,
+      "device_benchmark_records": 288,
+      "host_benchmark_records": 288,
+      "same_function_calibrations": 9,
+      "decision": "ACCEPT",
+      "previous_candidate_decisions": [
+        "REJECT generic launcher",
+        "REJECT runtime-dimension dispatcher",
+        "REJECT long-sampling runtime dispatcher"
+      ],
+      "target_device_geomean_range": [
+        1.3609850971796464,
+        1.4253554874534755
+      ],
+      "archive_commit": "9b3bb79f3c67b6c5e284be7ded9559148b5ae448",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/9b3bb79f3c67b6c5e284be7ded9559148b5ae448/03_hadamard_tc/a962695448-rgb/results/paired-quantization-20260917"
     }
   ],
   "current_validation": {
-    "base_commit": "fabe4aa1beb4f623564ba02ce8cdf24af5932b11",
-    "feature": "paired explicit quantize-only kernels with compile-time launch dimensions",
+    "base_commit": "b49fff4ac57ae6702213077ebf7ff848cb8715d9",
+    "feature": "packed Hadamard verifier and rejected transform-pair experiments",
     "device": "NVIDIA GeForce RTX 4090",
+    "production_computation_and_build_unchanged_from_base": true,
+    "baseline_component_offset_configurations": 128,
+    "baseline_execution_context_configurations": 24,
     "finite_component_encodings": 128768,
-    "component_offset_configurations": 64,
-    "packed_positive_configurations": 700,
-    "packed_negative_conditions": 4,
-    "execution_context_configurations": 16,
-    "legacy_positive_configurations": 372,
-    "legacy_negative_checks": 63,
-    "mutation_checks": 4,
-    "paired_rounds": 3,
-    "device_benchmark_records": 288,
-    "host_benchmark_records": 288,
-    "same_function_calibrations": 9,
-    "decision": "ACCEPT",
-    "previous_candidate_decisions": [
-      "REJECT generic launcher",
-      "REJECT runtime-dimension dispatcher",
-      "REJECT long-sampling runtime dispatcher"
+    "candidate_overflow_compatibility_cases_each": 512,
+    "candidate_trials": [
+      {
+        "name": "initial",
+        "device_records": 588,
+        "host_records": 588,
+        "failed_host_records": 3,
+        "decision": "REJECT"
+      },
+      {
+        "name": "isolated fused host dispatch",
+        "device_records": 588,
+        "host_records": 588,
+        "failed_host_records": 5,
+        "decision": "REJECT"
+      }
     ],
-    "target_device_geomean_range": [
-      1.3609850971796464,
-      1.4253554874534755
-    ],
-    "archive_commit": "9b3bb79f3c67b6c5e284be7ded9559148b5ae448",
-    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/9b3bb79f3c67b6c5e284be7ded9559148b5ae448/03_hadamard_tc/a962695448-rgb/results/paired-quantization-20260917"
+    "verification_decision": "PASS",
+    "optimization_adoption_decision": "REJECT",
+    "decision": "KEEP_BASELINE",
+    "archive_commit": "3ff75126f3b29458c9a2dfb2665349afb3a4e58e",
+    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/3ff75126f3b29458c9a2dfb2665349afb3a4e58e/03_hadamard_tc/a962695448-rgb/results/paired-hadamard-20260917"
   },
   "supplemental_kernel_sources": [
     {
