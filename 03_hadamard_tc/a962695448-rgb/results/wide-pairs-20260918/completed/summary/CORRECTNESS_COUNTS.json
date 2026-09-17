@@ -1,0 +1,47 @@
+{
+  "wide-components": {
+    "status": "PASS",
+    "records": 416
+  },
+  "wide-contexts": {
+    "status": "PASS",
+    "cases": 64
+  },
+  "all-execution-contexts": {
+    "status": "PASS",
+    "cases": 120
+  },
+  "overflow-compatibility": {
+    "status": "PASS",
+    "records": 512
+  },
+  "small-transform-control": {
+    "status": "PASS",
+    "records": 128
+  },
+  "quantization-pairs": {
+    "status": "PASS",
+    "records": 64
+  },
+  "singleton": {
+    "status": "PASS",
+    "records": 8
+  },
+  "packed-regression": {
+    "status": "PASS",
+    "positive": 700,
+    "negative": 4,
+    "contexts": 16
+  },
+  "legacy-regression": {
+    "status": "PASS",
+    "positive": 372,
+    "negative": 63,
+    "mutation": 4,
+    "contexts": 24
+  },
+  "tensor-metadata": {
+    "status": "PASS",
+    "cases": 28
+  }
+}

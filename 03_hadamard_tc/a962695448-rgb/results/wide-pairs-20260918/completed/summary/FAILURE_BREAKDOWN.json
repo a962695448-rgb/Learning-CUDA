@@ -1,0 +1,26 @@
+{
+  "records": [
+    {
+      "kind": "original_hadamard",
+      "target": true,
+      "count": 27
+    },
+    {
+      "kind": "original_hadamard",
+      "target": false,
+      "count": 36
+    },
+    {
+      "kind": "original_fused",
+      "target": false,
+      "count": 96
+    }
+  ],
+  "host_records": [
+    {
+      "kind": "original_hadamard",
+      "target": true,
+      "count": 48
+    }
+  ]
+}

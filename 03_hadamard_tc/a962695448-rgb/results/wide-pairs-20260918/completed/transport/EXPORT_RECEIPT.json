@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "decision": "REJECT",
+  "files": 38,
+  "bytes": 66034082,
+  "sha256": "e790a8873f9c2d8958dd4561fdec44483f6293e0c50711431107e2a22749b946",
+  "gzip_bytes": 4868227,
+  "gzip_sha256": "e8ae8680da408862cd1a79b27246536cb9a829b186f5a7e7941dd05b3fbf8337",
+  "base64_characters": 6490972,
+  "parts": [
+    {
+      "name": "FINAL_EXPORT_PART_00.txt",
+      "characters": 400000,
+      "sha256": "7d55d6b28d3bd3b6e4920864276f54bad25944184b961bd4f80ebe2d58262fce"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_01.txt",
+      "characters": 400000,
+      "sha256": "40db744213f5861c7eab6cd22d9efe47c2411af7042e308d89ca986c478990c5"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_02.txt",
+      "characters": 400000,
+      "sha256": "f3bdae469e39be72ffd0ab8f9a65832a90334210c9e2e3cf30a5010bedca6331"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_03.txt",
+      "characters": 400000,
+      "sha256": "b2c4cd69b73c8c0418f0b3dcd097095b03ef4eb8bde690bced86c1bec98a2ec4"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_04.txt",
+      "characters": 400000,
+      "sha256": "e1617ae79e22288679a10b2e85d19bd60dbc99f81ae5f088a1ccb06102dc9880"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_05.txt",
+      "characters": 400000,
+      "sha256": "1c34c4502a360f77f96d9429cec1bf6d018d45358050cf7605479c7a0641baa5"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_06.txt",
+      "characters": 400000,
+      "sha256": "76a0c2b40cd8873d0dd52aaab231b02699527fa7262d57308fbfe384ca027750"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_07.txt",
+      "characters": 400000,
+      "sha256": "5084b57eb08f7499b89ea215a5a1be500d768f16ddd05b768327965490293960"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_08.txt",
+      "characters": 400000,
+      "sha256": "e415bbdf8b6b459970befd612dc6db4f447e49e197418bd3e2baeb16f82e1aa1"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_09.txt",
+      "characters": 400000,
+      "sha256": "7a57714e30f801c82e02735df003d81169a97dc83ce795c36f45966cf9d7681b"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_10.txt",
+      "characters": 400000,
+      "sha256": "b45e12e4515321634ee36d79c04e3a95e160966bc3a40523088a5ef9cd0b7f7d"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_11.txt",
+      "characters": 400000,
+      "sha256": "930d4670e7319558233d254ff303f2b983ee055d2f0d8c4b338540b5eb3e7f16"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_12.txt",
+      "characters": 400000,
+      "sha256": "681984b8ffeaccc0be75249230086feb610f17b97f41ac96f42049d052407e26"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_13.txt",
+      "characters": 400000,
+      "sha256": "7b8852c02ba275f6f2007ef93300d5735cd849576d4e49975dee7c6fce012132"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_14.txt",
+      "characters": 400000,
+      "sha256": "2bab810c10abddf5f0b540b15fcc7573b51574f758c41f3a50df4a09cc385769"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_15.txt",
+      "characters": 400000,
+      "sha256": "5832452e80a024d6c0a364bc67c62bf67d04ee67b838a7b389093e543ebf0d5e"
+    },
+    {
+      "name": "FINAL_EXPORT_PART_16.txt",
+      "characters": 90972,
+      "sha256": "fda4ad1c2beace83e4382c9d11be2aa793ab71418c7ed728140e0c4a1af100a5"
+    }
+  ]
+}

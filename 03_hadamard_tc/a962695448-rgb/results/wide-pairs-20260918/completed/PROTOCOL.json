@@ -1,0 +1,694 @@
+{
+  "base_commit": "bde0256944778d3749547b798045c5a05d0dab35",
+  "status": "PREPARED_BEFORE_FIRST_GPU_TIMING",
+  "cuda": {
+    "change": "N32–256 transform-only half-warp adjacent pairs; exact stage order and public storage rounding; original API/other paths retained",
+    "rounds": 3,
+    "groups": 18,
+    "dtypes": [
+      "float16",
+      "bfloat16"
+    ],
+    "threads": [
+      128,
+      256
+    ],
+    "target_kinds": [
+      "original_hadamard",
+      "original_fused"
+    ],
+    "cases": [
+      {
+        "kind": "original_hadamard",
+        "rows": 16387,
+        "dim": 32,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 16387,
+        "dim": 64,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 16387,
+        "dim": 128,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 16387,
+        "dim": 256,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 32,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 64,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 128,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 256,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 262147,
+        "dim": 32,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 262147,
+        "dim": 64,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 262147,
+        "dim": 128,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 262147,
+        "dim": 256,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 1,
+        "dim": 32,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 1,
+        "dim": 64,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 1,
+        "dim": 128,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 1,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 257,
+        "dim": 32,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 257,
+        "dim": 64,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 257,
+        "dim": 128,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 257,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 1,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 8,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_hadamard",
+        "rows": 65536,
+        "dim": 16,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 16387,
+        "dim": 32,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 16387,
+        "dim": 64,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 16387,
+        "dim": 128,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 16387,
+        "dim": 256,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 32,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 64,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 128,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 256,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 262147,
+        "dim": 32,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 262147,
+        "dim": 64,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 262147,
+        "dim": 128,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 262147,
+        "dim": 256,
+        "target": true,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 1,
+        "dim": 32,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 1,
+        "dim": 64,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 1,
+        "dim": 128,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 1,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 257,
+        "dim": 32,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 257,
+        "dim": 64,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 257,
+        "dim": 128,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 257,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 1,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 8,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_fused",
+        "rows": 65536,
+        "dim": 16,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "packed_hadamard",
+        "rows": 65536,
+        "dim": 2,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "packed_hadamard",
+        "rows": 65536,
+        "dim": 16,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "packed_fused",
+        "rows": 65536,
+        "dim": 2,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "packed_fused",
+        "rows": 65536,
+        "dim": 16,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "packed_quant",
+        "rows": 65536,
+        "dim": 2,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "packed_quant",
+        "rows": 65536,
+        "dim": 16,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_quant",
+        "rows": 65536,
+        "dim": 8,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_quant",
+        "rows": 65536,
+        "dim": 32,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "original_quant",
+        "rows": 65536,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128,
+          256
+        ]
+      },
+      {
+        "kind": "contiguous_fused",
+        "rows": 16387,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128
+        ]
+      },
+      {
+        "kind": "contiguous_fused",
+        "rows": 65536,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128
+        ]
+      },
+      {
+        "kind": "contiguous_fused",
+        "rows": 262147,
+        "dim": 256,
+        "target": false,
+        "threads": [
+          128
+        ]
+      }
+    ],
+    "seed": 9182030,
+    "graph_nodes": 64,
+    "graph_replays": 10,
+    "host_calls": 5000,
+    "min_host_calls": 128,
+    "host_element_budget": 4294967296,
+    "host_call_rule": "max(min_host_calls, min(host_calls, host_element_budget // (rows * dim))) fixed before sampling; same count for old/new and each group",
+    "minimum_each_kind_dtype_thread_round_target_geomean": 1.1,
+    "max_device_or_host_case_regression_percent": 5,
+    "max_host_iqr_percent": 10,
+    "max_paired_iqr_percent": 10,
+    "host_threads": [
+      128,
+      256
+    ],
+    "host_methods": [
+      "allocating",
+      "out"
+    ],
+    "primary_metric": "Shared-output CUDA Graph, 64 nodes and ten replays, 18 alternating paired samples; all declared dimensions, dtypes and threads in three fresh processes",
+    "secondary_metric": "Synchronized ordinary allocating/out calls for every supported case/thread; fixed input-size-derived calls per sample, 18 balanced old/new samples; full wall/process/thread/GC/switch timeline",
+    "stability": "Paired-ratio IQR/median <=10% is a gate; per-variant absolute IQR is diagnostic. Both ratio of medians and median paired ratio obey the 5% case gate.",
+    "same_source_aa_cases": [
+      [
+        "torch.float16",
+        "original_hadamard",
+        257,
+        32,
+        128,
+        "allocating"
+      ],
+      [
+        "torch.float16",
+        "original_fused",
+        16387,
+        64,
+        256,
+        "allocating"
+      ],
+      [
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256,
+        "out"
+      ],
+      [
+        "torch.float16",
+        "original_fused",
+        65536,
+        128,
+        128,
+        "out"
+      ],
+      [
+        "torch.float16",
+        "contiguous_fused",
+        16387,
+        256,
+        128,
+        "allocating"
+      ],
+      [
+        "torch.bfloat16",
+        "packed_hadamard",
+        65536,
+        16,
+        256,
+        "allocating"
+      ]
+    ]
+  },
+  "correctness": [
+    "CLI original/packed/auto at128/256 plus contiguous256 at128; baseline original128 and packed256; unchanged1876 input set and 15 invalid CLI checks",
+    "compile and execute changed tune_launch:96 cases,384 launch configurations,1920 raw samples; diagnostic timing only",
+    "all finite FP16/BF16 encodings at selected first/last/pair/subgroup components, bounded anchors, exact independent FP32 butterfly/storage/INT4 oracle, scale1 and1/sqrtN, offsets0/2B, allocating/out guards and versions",
+    "finite overflow/cancellation compatibility against control; independent correctness oracle restricted to finite-intermediate domain",
+    "original full stream/Graph negative controls plus explicit N32/64/128/256 contexts, both original/auto options",
+    "unchanged paired quantization/singleton/packed/out/API/metadata regressions"
+  ],
+  "acceptance": "All correctness jobs pass; all matrix points, target groups and same-source calibration pass. Preserve failure and stop after three frozen rounds; no reruns to reach acceptance.",
+  "environment": {
+    "cpu_affinity": "pin first available CPU, record it",
+    "torch_cpu_threads": 1,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "device": "record actual RTX4090D hardware, do not combine cross-session timings"
+  },
+  "expected_counts": {
+    "device_records": 678,
+    "host_records": 1356,
+    "target_groups": 24,
+    "same_source_calibrations": 18
+  }
+}

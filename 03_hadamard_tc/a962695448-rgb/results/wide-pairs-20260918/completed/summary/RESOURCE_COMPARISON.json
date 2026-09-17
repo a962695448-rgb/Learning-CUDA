@@ -1,0 +1,274 @@
+[
+  {
+    "dtype": "bfloat16",
+    "dim": 256,
+    "kind": "original_fused",
+    "control": {
+      "registers": 27,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 37,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 128,
+    "kind": "original_fused",
+    "control": {
+      "registers": 22,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 26,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 64,
+    "kind": "original_fused",
+    "control": {
+      "registers": 21,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 23,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 32,
+    "kind": "original_fused",
+    "control": {
+      "registers": 19,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 23,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 256,
+    "kind": "original_fused",
+    "control": {
+      "registers": 27,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 34,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 128,
+    "kind": "original_fused",
+    "control": {
+      "registers": 22,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 26,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 64,
+    "kind": "original_fused",
+    "control": {
+      "registers": 21,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 23,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 32,
+    "kind": "original_fused",
+    "control": {
+      "registers": 19,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 23,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 256,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 23,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 36,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 128,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 21,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 25,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 64,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 16,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 21,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "bfloat16",
+    "dim": 32,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 11,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 14,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 256,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 23,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 36,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 128,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 21,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 25,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 64,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 16,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 21,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  },
+  {
+    "dtype": "float16",
+    "dim": 32,
+    "kind": "original_hadamard",
+    "control": {
+      "registers": 11,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    },
+    "candidate": {
+      "registers": 14,
+      "stack": 0,
+      "shared": 0,
+      "local": 0
+    }
+  }
+]

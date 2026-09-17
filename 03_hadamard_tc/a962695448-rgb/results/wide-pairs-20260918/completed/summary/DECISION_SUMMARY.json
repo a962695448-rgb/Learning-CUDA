@@ -1,0 +1,23 @@
+{
+  "decision": "REJECT",
+  "round_failures": {
+    "0": 70,
+    "1": 70,
+    "2": 70
+  },
+  "group_ranges": {
+    "original_hadamard": [
+      1.0971183231412909,
+      1.2169215302394867
+    ],
+    "original_fused": [
+      1.3664864932131227,
+      1.3805502224956674
+    ]
+  },
+  "failure_categories": {
+    "device_us": 159,
+    "host_us": 48,
+    "target_group": 3
+  }
+}

@@ -1,0 +1,3479 @@
+{
+  "status": "AUDIT_PASS",
+  "decision": "REJECT",
+  "device_records": 678,
+  "host_records": 1356,
+  "groups": [
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.216064525762439,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.379522189156758,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.1066692629198727,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3713662097457435,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.2063172298030296,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3805502224956674,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.0971183231412909,
+      "gate_passed": false
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3684042110596584,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.2161930844676103,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3789279942237402,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.1077468777226844,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3693257899880842,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.206225114311803,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3778089033710186,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.0973197182375336,
+      "gate_passed": false
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3664864932131227,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.2169215302394867,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3801409641217348,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.1074077381395855,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3716677404821147,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.20677844794884,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3794379214676964,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.097364647450839,
+      "gate_passed": false
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3676465692631985,
+      "gate_passed": true
+    }
+  ],
+  "aa_cases": 18,
+  "failed_gates": [
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9324693452884829,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9318957761990698,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.821298710388351,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9267784940975929,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9166666519677629,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8702186222532663,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.745882338761871,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9057042534812573,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8759124511430937,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7810827768405539,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8569619713151181,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8567807534343441,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8365155142869248,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8277240249717891,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7943337009231687,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7656302151560814,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7394888628545977,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.6661710143678146,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.883617450219397,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.927130697141074,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8734177596734906,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9111922430570721,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8163471314664983,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8615384780708154,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7800962790170548,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_fused",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7926371114026401,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9193488500030584,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8905954064770076,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7813215290659393,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.93923917871454,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8832837949090694,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9223744579466924,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8780487939537854,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7566537257511472,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8945179026176511,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8793486646706348,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7833656008697149,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8580481164141396,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8584183983137003,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8355184679243869,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8260660507081172,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7895833628919119,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7636363796715324,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7337715887296189,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.6639653496461182,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.882424263718946,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9259740655383502,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8724138235569217,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9099756887411085,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8114342729267827,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.858307841028651,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7747797294103738,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.800300267624139,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9331341156404044,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9300427628355243,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8224525150133546,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.928548638171834,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9160594311943262,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8708589860543348,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.744859001691442,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9057105427992135,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.876603039117849,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7807486416137732,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8571428045804056,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8567807534343441,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8359096279346939,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8286051992377411,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7940848297196585,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7647058163736133,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7391965479592212,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.6651785745220908,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8837772712756047,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9265625298833979,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.873563257611187,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9106383225662722,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8165322668187577,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8611040240101835,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7797778396371263,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_fused",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7939849691188664,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9186914715044965,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8904134818487505,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7803802947404521,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9393419243907536,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8851194877681461,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9209726623918536,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8782138171442911,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7566859996173171,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8951507601325578,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8784762614567845,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7826323559905959,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8589581035751708,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8579846012339867,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8355184679243869,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8272189914864577,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7891440284136013,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7633815827187392,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7345547615972909,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.6646795820013234,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8825666083086714,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.926070079155625,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8724138235569217,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9099331906172926,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8116232179736852,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.858386926539449,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7763079103468117,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8004876222789372,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9331078398082397,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9306622497902645,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8234875042579405,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9283680802254345,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9166666519677629,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8701972714919864,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7442954054570883,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9069148841474072,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8759790093733497,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7811283860522218,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8581882740743748,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8567807534343441,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8365934688042632,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8277087352054235,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7943337009231687,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7659574806873812,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7394888628545977,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.665449339609206,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8836363941673242,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9262014678566575,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8739931380601349,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9111508414354172,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8163471314664983,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8605731601504271,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7800962790170548,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_fused",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7939731962912004,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9200133994505882,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.891376378384636,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7811555166022502,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.941582935202713,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.883781890979827,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9223744579466924,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8775285575704959,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7561547949875628,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8963255076365092,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8784597398054463,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7833656008697149,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8580481164141396,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8577896531282838,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8365155142869248,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8260355504850214,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7904066615297446,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7636363796715324,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.734208390116444,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        1,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.6644295275794936,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        32,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8830113849952079,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        32,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9259740655383502,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        64,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8729468843856535,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        64,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.9099756887411085,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        128,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8114342729267827,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        128,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.8577503587988977,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        256,
+        128
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.7761790704045632,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_fused",
+        257,
+        256,
+        256
+      ],
+      "metric": "device_us",
+      "method": null,
+      "speedup": 0.800300267624139,
+      "paired_speedup": null,
+      "iqr_percent": null
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9361929967289677,
+      "paired_speedup": 0.9364094933731139,
+      "iqr_percent": {
+        "control": 0.027693248826964657,
+        "candidate": 0.07236306063422002
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9228440535961916,
+      "paired_speedup": 0.9227363064640527,
+      "iqr_percent": {
+        "control": 0.03777472050902593,
+        "candidate": 0.0882933286292525
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9274122549997244,
+      "paired_speedup": 0.9274813752419423,
+      "iqr_percent": {
+        "control": 0.03796965467851875,
+        "candidate": 0.055828636658481104
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8228315312171962,
+      "paired_speedup": 0.8228290532338994,
+      "iqr_percent": {
+        "control": 0.0734148441410731,
+        "candidate": 0.05081681938292939
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8302961368882571,
+      "paired_speedup": 0.8302122916151875,
+      "iqr_percent": {
+        "control": 0.0317259075188913,
+        "candidate": 0.06165782466654162
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9294935842846863,
+      "paired_speedup": 0.9286722501716838,
+      "iqr_percent": {
+        "control": 0.48463397323772767,
+        "candidate": 0.1490631056325838
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9292217421185562,
+      "paired_speedup": 0.9290799477936149,
+      "iqr_percent": {
+        "control": 0.6750289492598559,
+        "candidate": 0.640932079911084
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9189185271315344,
+      "paired_speedup": 0.9187844312080813,
+      "iqr_percent": {
+        "control": 0.03264760717863677,
+        "candidate": 0.07221118673106881
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8885901867612378,
+      "paired_speedup": 0.8887925984659334,
+      "iqr_percent": {
+        "control": 0.16761835795953495,
+        "candidate": 0.17095060471994658
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8902077855080393,
+      "paired_speedup": 0.890308670649367,
+      "iqr_percent": {
+        "control": 0.12371960202357178,
+        "candidate": 0.13551890665283714
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.7858975775628738,
+      "paired_speedup": 0.7860977995270064,
+      "iqr_percent": {
+        "control": 0.03180262441654768,
+        "candidate": 0.10553013394046219
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.7871900128286977,
+      "paired_speedup": 0.7872122518699479,
+      "iqr_percent": {
+        "control": 0.02221254397356272,
+        "candidate": 0.06527854112743656
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9396755390341951,
+      "paired_speedup": 0.9402173209867668,
+      "iqr_percent": {
+        "control": 0.4421692394682188,
+        "candidate": 0.3166577592888154
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.938742056827382,
+      "paired_speedup": 0.9389685328865467,
+      "iqr_percent": {
+        "control": 0.05114547602506001,
+        "candidate": 0.09773609469033767
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8860084787112212,
+      "paired_speedup": 0.8851553037212143,
+      "iqr_percent": {
+        "control": 0.29607913922038404,
+        "candidate": 0.5174680797241593
+      }
+    },
+    {
+      "key": [
+        0,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8891167851472003,
+      "paired_speedup": 0.8876885636221448,
+      "iqr_percent": {
+        "control": 2.0075253086201728,
+        "candidate": 0.7545052112204006
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9339913531973156,
+      "paired_speedup": 0.934006690573935,
+      "iqr_percent": {
+        "control": 0.07366068726432069,
+        "candidate": 0.08632118301516728
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.922075731870865,
+      "paired_speedup": 0.9222241679694096,
+      "iqr_percent": {
+        "control": 0.03636974641562658,
+        "candidate": 0.08945423186860924
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9251267762366511,
+      "paired_speedup": 0.925178294209478,
+      "iqr_percent": {
+        "control": 0.04508340219239952,
+        "candidate": 0.06333395587742348
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.821803055784411,
+      "paired_speedup": 0.8218995090152003,
+      "iqr_percent": {
+        "control": 0.05688310964376518,
+        "candidate": 0.0739722490409258
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8261377880454003,
+      "paired_speedup": 0.8261893666249578,
+      "iqr_percent": {
+        "control": 0.03289762604782241,
+        "candidate": 0.04812177650435125
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9282547101197214,
+      "paired_speedup": 0.9280675968213324,
+      "iqr_percent": {
+        "control": 0.2337421396395907,
+        "candidate": 0.8817268225427959
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9255547444021646,
+      "paired_speedup": 0.9260854905290479,
+      "iqr_percent": {
+        "control": 0.1776581895990733,
+        "candidate": 0.5305549150314138
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9173464643933933,
+      "paired_speedup": 0.9174468952905732,
+      "iqr_percent": {
+        "control": 0.06535399549068101,
+        "candidate": 0.0508940748196454
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.88932952711306,
+      "paired_speedup": 0.8892902601362727,
+      "iqr_percent": {
+        "control": 0.05136412106839207,
+        "candidate": 0.08673639456250855
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.891161105412283,
+      "paired_speedup": 0.8911428665977423,
+      "iqr_percent": {
+        "control": 0.021732368475775657,
+        "candidate": 0.03894130240243895
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.7862441939920659,
+      "paired_speedup": 0.7862791307860637,
+      "iqr_percent": {
+        "control": 0.03588132945840638,
+        "candidate": 0.044591970154657753
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.7875508971884227,
+      "paired_speedup": 0.7875593061864283,
+      "iqr_percent": {
+        "control": 0.03267963277483454,
+        "candidate": 0.07552992396113167
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9392962927376285,
+      "paired_speedup": 0.9397562938920898,
+      "iqr_percent": {
+        "control": 0.4594694766744193,
+        "candidate": 0.3848092477928408
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9385706338320242,
+      "paired_speedup": 0.9386489569105713,
+      "iqr_percent": {
+        "control": 0.05165205677140307,
+        "candidate": 0.09616668548943884
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8888988971584842,
+      "paired_speedup": 0.8869098953842722,
+      "iqr_percent": {
+        "control": 0.2831446582735021,
+        "candidate": 0.5235019546516566
+      }
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8830722809222108,
+      "paired_speedup": 0.8876734975227809,
+      "iqr_percent": {
+        "control": 0.8508460020061618,
+        "candidate": 1.9006206264778192
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9365938116521167,
+      "paired_speedup": 0.9364173593509846,
+      "iqr_percent": {
+        "control": 0.03881552659470794,
+        "candidate": 0.09962548975588817
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9231701441846325,
+      "paired_speedup": 0.9230675263943575,
+      "iqr_percent": {
+        "control": 0.05996427206611428,
+        "candidate": 0.09504668238744912
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9281237297203717,
+      "paired_speedup": 0.92816835912022,
+      "iqr_percent": {
+        "control": 0.05817811492550571,
+        "candidate": 0.04249586553145682
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8235032276304596,
+      "paired_speedup": 0.823330563236969,
+      "iqr_percent": {
+        "control": 0.05096492769659677,
+        "candidate": 0.07100911558069227
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8313251971502053,
+      "paired_speedup": 0.8314631364033229,
+      "iqr_percent": {
+        "control": 0.03011565535102724,
+        "candidate": 0.1396532401886608
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9318189029384439,
+      "paired_speedup": 0.9292008956689135,
+      "iqr_percent": {
+        "control": 1.9563993996938756,
+        "candidate": 1.92875941077115
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9260288250477523,
+      "paired_speedup": 0.9262526277174763,
+      "iqr_percent": {
+        "control": 0.06922010883832021,
+        "candidate": 0.10554140450087988
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        128,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9189501855726699,
+      "paired_speedup": 0.9192380587984172,
+      "iqr_percent": {
+        "control": 0.039907011726493226,
+        "candidate": 0.10732392695264541
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8882113575309816,
+      "paired_speedup": 0.8881266168279982,
+      "iqr_percent": {
+        "control": 0.03915631826110134,
+        "candidate": 0.08702097769009277
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8901018029255879,
+      "paired_speedup": 0.8901095838846858,
+      "iqr_percent": {
+        "control": 0.026795912645348377,
+        "candidate": 0.08005282487752209
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.7857252816782527,
+      "paired_speedup": 0.7858196982940235,
+      "iqr_percent": {
+        "control": 0.03508220399624151,
+        "candidate": 0.10601840486322694
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        16387,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.7874094172408416,
+      "paired_speedup": 0.7872924068852303,
+      "iqr_percent": {
+        "control": 0.03798656399156,
+        "candidate": 0.10980396433059804
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9426538190657077,
+      "paired_speedup": 0.9423077037757253,
+      "iqr_percent": {
+        "control": 2.778129356262535,
+        "candidate": 2.449215363218679
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        128
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9379969405068923,
+      "paired_speedup": 0.9376570989266041,
+      "iqr_percent": {
+        "control": 0.3428237707358783,
+        "candidate": 0.1908381699277944
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8871545784806847,
+      "paired_speedup": 0.8849787465375958,
+      "iqr_percent": {
+        "control": 0.37673020745717317,
+        "candidate": 0.5606577246525151
+      }
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.8866719691916708,
+      "paired_speedup": 0.8873245943280381,
+      "iqr_percent": {
+        "control": 0.441806337199282,
+        "candidate": 0.5540588124602417
+      }
+    },
+    {
+      "group": [
+        0,
+        "torch.bfloat16",
+        256,
+        "original_hadamard"
+      ],
+      "geomean": 1.0971183231412909
+    },
+    {
+      "group": [
+        1,
+        "torch.bfloat16",
+        256,
+        "original_hadamard"
+      ],
+      "geomean": 1.0973197182375336
+    },
+    {
+      "group": [
+        2,
+        "torch.bfloat16",
+        256,
+        "original_hadamard"
+      ],
+      "geomean": 1.097364647450839
+    }
+  ]
+}

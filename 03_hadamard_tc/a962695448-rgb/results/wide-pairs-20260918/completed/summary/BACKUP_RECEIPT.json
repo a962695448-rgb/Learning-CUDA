@@ -1,0 +1,11 @@
+{
+  "files_verified": 38,
+  "raw_bytes": 66034082,
+  "raw_sha256": "e790a8873f9c2d8958dd4561fdec44483f6293e0c50711431107e2a22749b946",
+  "gzip_sha256": "e8ae8680da408862cd1a79b27246536cb9a829b186f5a7e7941dd05b3fbf8337",
+  "source_inputs_verified": 252,
+  "device_records": 678,
+  "host_records": 1356,
+  "decision": "REJECT",
+  "failed_gates": 210
+}
