@@ -451,5 +451,20 @@
       "sha256": "0678a75afe8b02a0841bb2baad839404bb6ba6e7cdd27e9e42a0258b970d3add",
       "git_blob_sha": "5314139ffb0aaff02f5330fc6720de214b90deeb"
     }
+  ],
+  "diagnostic_followups": [
+    {
+      "kind": "module-buffer-order host timing diagnostic",
+      "production_head": "55c8f48e3c75698ce1537c541e3f25831c74c4ed",
+      "processes": 3,
+      "cases": 4,
+      "conditions": 5,
+      "timed_blocks": 3240,
+      "same_source_calibrations_within_five_percent": true,
+      "adoption_decision": "NOT_APPLICABLE_DIAGNOSTIC_ONLY",
+      "prior_rejections_preserved": true,
+      "archive_commit": "dbe195f4a4c60947e42eb11cafe8aab689c6b7bc",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/dbe195f4a4c60947e42eb11cafe8aab689c6b7bc/03_hadamard_tc/a962695448-rgb/results/host-attribution-20260917"
+    }
   ]
 }
