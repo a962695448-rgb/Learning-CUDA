@@ -1,0 +1,8 @@
+test_complete_design_and_stable_effect (test_analysis.AnalysisTests.test_complete_design_and_stable_effect) ... ok
+test_missing_record_and_wrong_buffer_assignment_are_rejected (test_analysis.AnalysisTests.test_missing_record_and_wrong_buffer_assignment_are_rejected) ... ok
+test_separate_medians_do_not_override_conflicting_paired_evidence (test_analysis.AnalysisTests.test_separate_medians_do_not_override_conflicting_paired_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.105s
+
+OK

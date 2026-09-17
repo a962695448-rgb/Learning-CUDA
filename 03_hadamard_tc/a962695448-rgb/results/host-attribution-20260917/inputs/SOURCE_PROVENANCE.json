@@ -1,0 +1,62 @@
+{
+  "sources/control/include/contiguous256.cuh": {
+    "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include/contiguous256.cuh"
+  },
+  "sources/control/include/kernels.cuh": {
+    "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include/kernels.cuh"
+  },
+  "sources/control/include/packed_pairs.cuh": {
+    "sha256": "0678a75afe8b02a0841bb2baad839404bb6ba6e7cdd27e9e42a0258b970d3add",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include/packed_pairs.cuh"
+  },
+  "sources/control/include/packed_rows.cuh": {
+    "sha256": "6a0dfe4c020cd8c3fba5da4c35f1ceabdb2b2b948e1ab90553bc0cd1b9c93b30",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include/packed_rows.cuh"
+  },
+  "sources/control/include/reference.hpp": {
+    "sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include/reference.hpp"
+  },
+  "sources/control/include/row_policy.hpp": {
+    "sha256": "9f4bea3233106a446d650e8d4b9f96dfae22571abc2eed8a1cce0b4b5215253d",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/include/row_policy.hpp"
+  },
+  "sources/control/src/torch_binding.cu": {
+    "sha256": "950be67c774ed66994e2dee87412a5423b7498a21d62c0072f4ef7a399fdefb1",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/control/cuda/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu"
+  },
+  "sources/candidate/include/contiguous256.cuh": {
+    "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/contiguous256.cuh"
+  },
+  "sources/candidate/include/kernels.cuh": {
+    "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/kernels.cuh"
+  },
+  "sources/candidate/include/packed_pairs.cuh": {
+    "sha256": "0678a75afe8b02a0841bb2baad839404bb6ba6e7cdd27e9e42a0258b970d3add",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/packed_pairs.cuh"
+  },
+  "sources/candidate/include/packed_rows.cuh": {
+    "sha256": "6a0dfe4c020cd8c3fba5da4c35f1ceabdb2b2b948e1ab90553bc0cd1b9c93b30",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/packed_rows.cuh"
+  },
+  "sources/candidate/include/paired_hadamard.cuh": {
+    "sha256": "50d9ba110d66e2620186759edb00e2563b88b2dece46f0794b8b2ae1f21b6db2",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/paired_hadamard.cuh"
+  },
+  "sources/candidate/include/reference.hpp": {
+    "sha256": "5be2751c9ebf3729bf6a59e19c9b91ad52a6b3a7d86720de4a23880f76deb3c4",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/reference.hpp"
+  },
+  "sources/candidate/include/row_policy.hpp": {
+    "sha256": "9f4bea3233106a446d650e8d4b9f96dfae22571abc2eed8a1cce0b4b5215253d",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/include/row_policy.hpp"
+  },
+  "sources/candidate/src/torch_binding.cu": {
+    "sha256": "9db87451a875cb2498e7eac07b503b9cc22f3ac28a8a6c07c624a1597b23219e",
+    "origin": "/Users/apple/Projects/infinitensor-2026/paired-hadamard-v2-20260917/candidate/cuda/03_hadamard_tc/a962695448-rgb/src/torch_binding.cu"
+  }
+}

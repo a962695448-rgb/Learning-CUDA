@@ -1,0 +1,83 @@
+{
+  "purpose": "Diagnostic only: distinguish module/load-order, output-buffer and timing drift effects. This does not adopt a kernel or revise either earlier REJECT.",
+  "production_head": "55c8f48e3c75698ce1537c541e3f25831c74c4ed",
+  "control_computation": "b49fff4ac57ae6702213077ebf7ff848cb8715d9",
+  "candidate": "Recorded paired-hadamard-v2-20260917, unchanged rejected implementation",
+  "processes": 3,
+  "load_orders": [
+    [
+      "control_a",
+      "control_b",
+      "candidate"
+    ],
+    [
+      "control_b",
+      "candidate",
+      "control_a"
+    ],
+    [
+      "candidate",
+      "control_a",
+      "control_b"
+    ]
+  ],
+  "modules": "control_a and control_b compile the exact same source path with equal-length extension names; candidate uses the recorded v2 source",
+  "groups": 18,
+  "group_design": "All six module measurement permutations crossed with three output-pool rotations; every process contains all 18 combinations",
+  "calls_per_sample": 5000,
+  "warmup_calls_per_function": 100,
+  "threads": 256,
+  "scale": 1.0,
+  "conditions": [
+    "shared_0",
+    "shared_1",
+    "shared_2",
+    "rotating_separate",
+    "allocating"
+  ],
+  "cases": [
+    {
+      "id": "persistent_fused_out",
+      "dtype": "float16",
+      "rows": 65536,
+      "dim": 8,
+      "method": "hadamard_int4",
+      "row_layout": "packed"
+    },
+    {
+      "id": "unstable_fused_allocation",
+      "dtype": "float16",
+      "rows": 16387,
+      "dim": 2,
+      "method": "hadamard_int4",
+      "row_layout": "packed"
+    },
+    {
+      "id": "small_transform_allocation",
+      "dtype": "bfloat16",
+      "rows": 257,
+      "dim": 16,
+      "method": "hadamard",
+      "row_layout": "packed"
+    },
+    {
+      "id": "unchanged_original_fused",
+      "dtype": "float16",
+      "rows": 65536,
+      "dim": 8,
+      "method": "hadamard_int4",
+      "row_layout": "original"
+    }
+  ],
+  "seed": 9172040,
+  "correctness": "Independent CPU float32 butterfly, storage rounding and INT4 oracle; all module/pool combinations checked before timing; inputs checked after each case",
+  "metrics": "Raw synchronized wall time, process and current-thread CPU time per block; monotonic timestamps; per-process context-switch/page-fault and GC-collection deltas; optional CPU frequency. Record separate medians and within-group paired ratios/differences. These are diagnostic counters, not instruction-level attribution.",
+  "diagnostic_bounds": {
+    "aa_percent": 5,
+    "block_wall_spread_percent": 10
+  },
+  "decision_rule": "Report evidence by case/condition/process. A persistent difference requires the same direction beyond 5% in all three processes with matched control_a/control_b within 5%. Flag broad within-block variation separately. No automatic retry, no filtered samples and no production acceptance decision.",
+  "device": "RTX4090, actual GPU/driver/toolchain recorded",
+  "cpu": "Pin each measuring process to the first allowed CPU; torch/OMP/OpenBLAS threads=1",
+  "shutdown": "Recover all data and verify hashes before shutting down the instance"
+}

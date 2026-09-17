@@ -1,0 +1,13 @@
+{
+  "bytes": 2669316,
+  "sha256": "d2e59c496616270edaeca499c2015feba8f22fb82f82f671c8aa627bb3077101",
+  "files_verified": 14,
+  "inputs_verified": 26,
+  "process_records": [
+    1080,
+    1080,
+    1080
+  ],
+  "status": "PASS",
+  "purpose": "diagnostic only"
+}
