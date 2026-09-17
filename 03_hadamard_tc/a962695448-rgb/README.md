@@ -52,7 +52,7 @@ assert torch.equal(packed, split_packed)
 assert torch.equal(row_scales, split_scales)
 ~~~
 
-默认 row_layout 为 original、线程数为 128。packed/auto、256 线程和 contiguous256
+Hadamard 与融合接口默认 row_layout 为 original、线程数为 128。packed/auto、256 线程和 contiguous256
 融合布局均为显式选项，其设备及形状范围见 [完整接口与开发记录](docs/DEVELOPMENT.md)。
 Tensor Core 对照在部分已测场景中慢于 warp，相关结果完整保留。
 
@@ -78,8 +78,8 @@ Tensor Core 对照在部分已测场景中慢于 warp，相关结果完整保留
   三轮配对计时共 6,750 条，默认融合相对上一版在已测配置中为 2.012～2.898×。
 - 各平台记录各自的硬件、SDK、版本和计时方式；Graph、event 与端到端数据分别解释。
 
-这些是已归档实测结果。本次精简保持计算源码不变，没有重新运行 GPU；
-具体版本、完整计数、CPU 检查及限制见 [证据索引](EVIDENCE.md)。
+以上为首轮跨平台基线的归档结果，版本、计数与限制见 [证据索引](EVIDENCE.md)。
+后续增量优化与补测见下方专题报告，各次结论只覆盖对应源码、硬件和测试范围。
 
 ## 建议审查顺序
 
@@ -100,3 +100,7 @@ Tensor Core 对照在部分已测场景中慢于 warp，相关结果完整保留
 ## 复用输出缓冲区
 
 新增 [三个 out 前向接口](reports/out-buffers-20260917.md)，可复用预分配的输出。受测小、中批量的普通 Python 调用平均加速约 1.75～2.05×；输出由调用者持有，接口返回 None。原接口、默认参数及设备核函数源码保持不变。
+
+## 小维度独立量化
+
+新增显式 `quantize_int4_packed` 与 `quantize_int4_packed_out`，支持 N≤16。RTX4090D 的三轮分组设备加速约 2.87–3.17×，普通 allocating/out 调用整体几何平均约 1.36×/1.89×；原接口签名与默认路径保留。见 [使用方式、完整范围与原始实验取舍](reports/quantize-packed-20260917.md)。原始结果见[固定验证档案](https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917)。

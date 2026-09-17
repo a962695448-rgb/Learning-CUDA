@@ -25,11 +25,16 @@ results 路径属于完整档案检出。新运行可以在当前目录创建自
 | 摩尔原始计时与再生成 | [公开复现材料](platforms/moore/repro/README.zh-CN.md)，含 6,750 条计时、冻结对照和夹具生成器 |
 | 代码来源与本轮检查 | [SUBMISSION_MANIFEST.json](SUBMISSION_MANIFEST.json) |
 
-## 本轮收尾的验证边界
+## 首轮精简提交的验证边界
 
-本轮没有改变 CUDA/MUSA 等计算源码。保留代码的 Git blob SHA 与固定档案一致；
-新做的工作是精简提交、整理文档链接和执行 CPU 检查。此前 GPU 结果仍归属于
+初次精简阶段没有改变 CUDA/MUSA 等计算源码。保留代码的 Git blob SHA 与固定档案一致；
+当时的工作是精简提交、整理文档链接和执行 CPU 检查。此前 GPU 结果仍归属于
 其清单明确记录的实测版本，不将本轮整理写成新的 GPU 实验。
 
 本地 CPU reference 检查、摩尔离线复算及数据完整性检查通过。原始 GPU 结果中
 测试范围、跳过项、慢例及计时方式均保留，跨设备及不同计时口径不直接相除。
+
+## 2026-09-17 独立量化入口
+
+新增显式 packed 量化入口的完整范围见 [报告](reports/quantize-packed-20260917.md)。
+[固定档案](https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917) 包含最终双重性能门槛、正确性检查、源码和复现准备工具，也保存新增参数引入主机开销的初版实验。当前源文件与新测试哈希已在 SUBMISSION_MANIFEST.json 更新；未将先前的跨卡或国产平台记录当成本轮新入口的实测证据。

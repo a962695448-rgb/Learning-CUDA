@@ -50,7 +50,7 @@ void launch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
     auto* destination = output.defined() ? reinterpret_cast<T*>(output.data_ptr()) : nullptr;
     auto* bytes = packed.defined() ? packed.data_ptr<std::uint8_t>() : nullptr;
     auto* row_scales = scales.defined() ? scales.data_ptr<float>() : nullptr;
-    if constexpr (N <= 16 && Transform) {
+    if constexpr (N <= 16) {
         if (packed_rows) {
             const auto packed_blocks = static_cast<unsigned int>((rows - 1) / (block_threads / N) + 1);
             hadamard::packed_rows_kernel<T, N, Transform, Quantize><<<packed_blocks, block_threads, 0, stream>>>(
@@ -150,6 +150,10 @@ std::tuple<at::Tensor, at::Tensor> quantize_only(const at::Tensor& input, int bl
     return quantized<false>(input, 1.0, block_threads);
 }
 
+std::tuple<at::Tensor, at::Tensor> quantize_only_packed(const at::Tensor& input, int block_threads) {
+    return quantized<false>(input, 1.0, block_threads, "original", "packed");
+}
+
 void validate_buffer(const at::Tensor& input, const at::Tensor& buffer,
                      at::ScalarType dtype, int rank, const char* name) {
     TORCH_CHECK(buffer.is_cuda() && buffer.device() == input.device(), name, " must be on the input CUDA device");
@@ -222,6 +226,10 @@ void quantize_only_out(const at::Tensor& input, at::Tensor packed, at::Tensor sc
     quantized_out<false>(input, packed, scales, 1.0, block_threads, "original", "original");
 }
 
+void quantize_only_packed_out(const at::Tensor& input, at::Tensor packed, at::Tensor scales, int block_threads) {
+    quantized_out<false>(input, packed, scales, 1.0, block_threads, "original", "packed");
+}
+
 }  // namespace
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
@@ -232,6 +240,8 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
                "Fused transform and rowwise symmetric INT4; returns (uint8 packed, float32 scales). fused_layout='original' (default) supports block_threads=128 or 256; explicit 'contiguous256' requires N256 and block_threads=128. row_layout=packed/auto selects small-N row packing and cannot be combined with contiguous256.");
     module.def("quantize_int4", &quantize_only, pybind11::arg("input"), pybind11::arg("block_threads") = 128,
                "Quantize an already-rounded FP16/BF16 tensor; even values occupy the low nibble. block_threads=128 (default) or 256.");
+    module.def("quantize_int4_packed", &quantize_only_packed, pybind11::arg("input"), pybind11::arg("block_threads") = 128,
+               "Opt-in row-packed INT4 quantization for N<=16. Same rounding and packed output contract as quantize_int4; no automatic device policy.");
     module.def("hadamard_out", &transform_out, pybind11::arg("input"), pybind11::arg("output"),
                pybind11::arg("scale") = 1.0, pybind11::arg("block_threads") = 128, pybind11::arg("row_layout") = "original",
                "Write Hadamard into a preallocated, disjoint same-shape/dtype output; returns None. No resizing or output allocation.");
@@ -242,4 +252,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {
     module.def("quantize_int4_out", &quantize_only_out, pybind11::arg("input"), pybind11::arg("packed"), pybind11::arg("scales"),
                pybind11::arg("block_threads") = 128,
                "Write INT4 quantization into preallocated disjoint buffers; returns None. No resizing or output allocation.");
+    module.def("quantize_int4_packed_out", &quantize_only_packed_out, pybind11::arg("input"), pybind11::arg("packed"), pybind11::arg("scales"),
+               pybind11::arg("block_threads") = 128,
+               "Write row-packed INT4 quantization for N<=16 into disjoint caller buffers. Returns None; no resizing or output allocation.");
 }

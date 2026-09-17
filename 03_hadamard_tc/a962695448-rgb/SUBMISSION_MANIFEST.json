@@ -250,8 +250,8 @@
     },
     {
       "path": "src/torch_binding.cu",
-      "git_blob_sha": "426f5eb299dad956297ad0215bed6a7631ae73cc",
-      "sha256": "3a474a8a3f2070f0e91018019c35cef4c5290319300e6d20524399d427ee6f88",
+      "git_blob_sha": "98754e43401ed23a1ee6c9c3f825f214bb5d92bc",
+      "sha256": "8fc9618e4fa54181d7800b61fe277878846e7f8ad4606ab3e8398e0d56be69dd",
       "archive_git_blob_sha": "8919d8e441a2972bc78edb4e0d5b7a23079ad276",
       "archive_sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8"
     },
@@ -287,6 +287,11 @@
       "path": "scripts/verify_out_buffers.py",
       "sha256": "07daf545e33a099e530586526c19afb79c80efdf2d78273150d1b659312a5cd8",
       "git_blob_sha": "b3bccd0f09ea513cd8901c8c5be227db1e566b55"
+    },
+    {
+      "path": "scripts/verify_quantize_packed.py",
+      "git_blob_sha": "92b63effad45ff1e125c6460cd1d24193d833078",
+      "sha256": "a3cfa1fb9e7b08e2e24f5c4855f497e0c1eafd7a79ace722c4822e6c41e7d57d"
     }
   ],
   "supplemental_test_scope": "Current hashes and original archive hashes are retained. Three original source/build files have changed; all device kernel files remain unchanged.",
@@ -307,20 +312,40 @@
       "new_route_context_configurations": 16,
       "cpu_row_policy_checks": 270,
       "decision": "ACCEPT"
+    },
+    {
+      "base_commit": "bce004ecb2097a20207080f7507e4cfd2ee49d06",
+      "feature": "reusable output APIs",
+      "device": "NVIDIA GeForce RTX 4090 D",
+      "positive_configurations": 372,
+      "negative_checks": 63,
+      "mutation_checks": 4,
+      "execution_context_configurations": 24,
+      "paired_rounds": 3,
+      "benchmark_configurations": 72,
+      "benchmark_records": 216,
+      "decision": "ACCEPT",
+      "metric": "synchronized ordinary Python host wall time"
     }
   ],
   "current_validation": {
-    "base_commit": "bce004ecb2097a20207080f7507e4cfd2ee49d06",
-    "feature": "reusable output APIs",
+    "base_commit": "28fb3a95ca8bcdf53a66949cfde23820bf7e4005",
+    "feature": "explicit packed quantize-only APIs preserving legacy signatures",
     "device": "NVIDIA GeForce RTX 4090 D",
-    "positive_configurations": 372,
-    "negative_checks": 63,
+    "positive_configurations": 700,
+    "negative_condition_groups": 4,
+    "execution_context_configurations": 16,
+    "graph_replays": 64,
+    "detected_context_negative_controls": 32,
+    "legacy_positive_configurations": 372,
+    "legacy_negative_checks": 63,
     "mutation_checks": 4,
-    "execution_context_configurations": 24,
     "paired_rounds": 3,
-    "benchmark_configurations": 72,
-    "benchmark_records": 216,
+    "device_benchmark_records": 240,
+    "host_benchmark_records": 240,
     "decision": "ACCEPT",
-    "metric": "synchronized ordinary Python host wall time"
+    "metric": "CUDA Graph device event timing and separate synchronized ordinary Python host wall time",
+    "archive_commit": "29bb34a0b2817e282a9554bd92c3911a3c010762",
+    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917"
   }
 }
