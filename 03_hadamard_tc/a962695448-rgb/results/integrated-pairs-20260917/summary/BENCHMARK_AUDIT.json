@@ -1,0 +1,221 @@
+{
+  "status": "AUDIT_PASS",
+  "decision": "REJECT",
+  "device_records": 588,
+  "host_records": 588,
+  "groups": [
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.4002600943622934,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3985605524139397,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2703570446435881,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3463433109522063,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.4007750814715918,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.379381818545146,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2732850133228923,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3292777742027106,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.3998512873952755,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.4002924424203136,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.271552468648298,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.342840314272676,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.4007194443258189,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.388002982820906,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2728004089410088,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3228544877637425,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.400164466315085,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.4076147947584747,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2711001216844307,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3408441982543204,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.4006381649991593,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3765767668780737,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.272968731792578,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.314354326391781,
+      "gate_passed": true
+    }
+  ],
+  "aa_cases": 18,
+  "failed_gates": [
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "packed_hadamard",
+        65536,
+        8,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9852078310455736,
+      "paired_speedup": 0.9874429642747984,
+      "iqr_percent": {
+        "control": 49.732452226885144,
+        "candidate": 44.102581745640656
+      }
+    }
+  ]
+}

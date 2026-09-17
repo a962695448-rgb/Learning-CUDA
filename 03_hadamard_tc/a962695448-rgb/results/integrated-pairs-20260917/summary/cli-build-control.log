@@ -1,0 +1,2 @@
+mkdir -p build
+/usr/local/cuda/bin/nvcc -O3 -std=c++17 -lineinfo -arch=sm_89 -Iinclude src/main.cu -o build/hadamard

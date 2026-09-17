@@ -1,0 +1,13 @@
+{
+  "base_commit": "4516fd4b1cd9afdd7cee499f09a4f614ef637400",
+  "status": "PREPARED_NOT_GPU_TESTED",
+  "changed_files": [
+    "03_hadamard_tc/a962695448-rgb/include/packed_rows.cuh",
+    "03_hadamard_tc/a962695448-rgb/src/main.cu",
+    "03_hadamard_tc/a962695448-rgb/src/torch_binding.cu"
+  ],
+  "all_control_blobs_verified": 118,
+  "cli_launch_grid_updated": true,
+  "torch_launch_grid_updated": true,
+  "production_published": false
+}

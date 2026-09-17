@@ -1,0 +1,9 @@
+test_calibration_spread_is_not_hidden_by_equal_medians (test_analysis.AuditTests.test_calibration_spread_is_not_hidden_by_equal_medians) ... ok
+test_full_original_matrix (test_analysis.AuditTests.test_full_original_matrix) ... ok
+test_matched_host_regression_is_rejected (test_analysis.AuditTests.test_matched_host_regression_is_rejected) ... ok
+test_missing_case_and_bad_timeline_fail_closed (test_analysis.AuditTests.test_missing_case_and_bad_timeline_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.195s
+
+OK

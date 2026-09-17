@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED",
+  "input_files": 245,
+  "result_files": 39,
+  "correctness": "PASS",
+  "candidate_decision": "REJECT",
+  "device_records": 588,
+  "host_records": 588,
+  "raw_export_sha256": "8d9f873fb102d1749ad2b6d8df58efacaa2832e066f31bc26a504ab7a2f24022"
+}
