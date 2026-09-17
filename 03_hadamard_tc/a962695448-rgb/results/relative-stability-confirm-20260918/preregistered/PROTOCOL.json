@@ -1,0 +1,115 @@
+{
+  "bases": {
+    "cuda": "4516fd4b1cd9afdd7cee499f09a4f614ef637400"
+  },
+  "status": "Prospective confirmation prepared after preserved integrated-pairs REJECT; no new timing yet",
+  "cuda": {
+    "change": "Reuse exact tested integrated-pairs binary/source; no implementation changes. Prospective stability measurement of paired relative times.",
+    "rounds": 3,
+    "groups": 18,
+    "target_rows": [
+      16387,
+      65536,
+      262147
+    ],
+    "target_dims": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "control_rows": [
+      1,
+      257
+    ],
+    "threads": [
+      128,
+      256
+    ],
+    "dtypes": [
+      "float16",
+      "bfloat16"
+    ],
+    "graph_nodes": 64,
+    "graph_replays": 10,
+    "host_calls": 5000,
+    "minimum_each_kind_dtype_thread_round_target_geomean": 1.1,
+    "max_device_or_host_case_regression_percent": 5,
+    "correctness": "Independent float32 butterfly then FP16/BF16 rounding and INT4 oracle, selected finite component encodings, both transform scales, scalar-offset storage/guards, legacy validation, changing-input stream/graph with negative controls",
+    "primary_metric": "Same-output-buffer warmed 64-node CUDA Graph, ten replays; three fresh processes with alternating module load order; 18 balanced old/new samples; original full matrix",
+    "secondary_metric": "Synchronized ordinary allocating/out calls; out uses the same output tensor objects for old and new; 18 balanced samples of 5000 calls; record paired ratios and raw wall/thread/process CPU timelines",
+    "controls": "Small packed transform/fused, N1, original transform/fused N8/256, packed quantization N2/16 and original quantization N8",
+    "additional_host_gates": "Both ratio of separate medians and median of group ratios keep the 5% regression bound. IQR/median of within-group ratios must be <=10%. Absolute per-variant spread remains fully recorded but is not by itself evidence of unstable relative performance.",
+    "same_source_aa_cases": [
+      [
+        "torch.float16",
+        "packed_hadamard",
+        257,
+        2,
+        "allocating"
+      ],
+      [
+        "torch.float16",
+        "packed_fused",
+        16387,
+        4,
+        "allocating"
+      ],
+      [
+        "torch.bfloat16",
+        "original_hadamard",
+        65536,
+        256,
+        "allocating"
+      ],
+      [
+        "torch.float16",
+        "packed_fused",
+        65536,
+        8,
+        "out"
+      ],
+      [
+        "torch.float16",
+        "packed_fused",
+        16387,
+        2,
+        "allocating"
+      ],
+      [
+        "torch.bfloat16",
+        "packed_hadamard",
+        257,
+        16,
+        "allocating"
+      ]
+    ],
+    "max_host_iqr_percent": 10,
+    "require_paired_host_gate": true,
+    "max_paired_iqr_percent": 10,
+    "relative_performance_limits_unchanged": true,
+    "stability_definition_revised_prospectively": "Absolute per-variant IQR gate becomes a recorded diagnostic flag; paired-ratio IQR is the new predeclared stability gate. This is a criterion-definition change for new data only, not a retroactive reinterpretation."
+  },
+  "environment": {
+    "cpu_affinity": "First allowed CPU recorded and pinned",
+    "torch_cpu_threads": 1,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "device": "Reuse RTX4090 if available; record actual hardware, never mix comparison ratios from different GPU models"
+  },
+  "aa_control": "Same-source control modules, both ratio estimators within5%, paired-ratio IQR/median<=10%; absolute dispersion retained as diagnostics",
+  "nine": "Unchanged; no extra GPU validation claimed in this CUDA confirmation.",
+  "publication": "Only accepted implementation goes to existing feature branch; preserve rejected candidates and all raw data on evidence branches; Chinese commits; no merging",
+  "shutdown": "Export results and source/protocol hashes; verify local backups before powering off the instance",
+  "prior_trial": {
+    "directory": "integrated-pairs-20260917",
+    "archive_commit": "704b0b3625cf93048b21ec47ac578f9bc0c32c0b",
+    "original_decision": "REJECT",
+    "original_failure": "one absolute-IQR gate, both relative performance ratios passed",
+    "raw_sha256": "8d9f873fb102d1749ad2b6d8df58efacaa2832e066f31bc26a504ab7a2f24022",
+    "reason_for_prospective_change": "Absolute common-mode drift and relative-effect variability are different quantities. New synthetic tests distinguish them; no old decision or raw sample is changed."
+  },
+  "additional_correctness": "Repeat 512 finite-input overflow/cancellation/guard compatibility cases before timing. Do not interpret nonfinite intermediate quantization as a mathematical INT4 guarantee.",
+  "cli_validation": "Reuse prior complete CLI and numeric validations only after every prior input and compiled binary SHA matches; each fresh benchmark process retains numerical checks before/after all cases.",
+  "export": "Lossless gzip+base64 of all JSON/log result files, SHA256 for raw/gzip/text parts; split UI-readable parts at 400000 characters if required. No sample filtering."
+}
