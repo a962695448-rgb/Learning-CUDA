@@ -1,0 +1,268 @@
+{
+  "status": "AUDIT_PASS",
+  "decision": "REJECT",
+  "device_records": 588,
+  "host_records": 588,
+  "groups": [
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.3956795880616366,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.402666481631875,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2671141443718685,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.337856919585705,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.396071348779489,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3826354352843433,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2660136112574167,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3192851086766886,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.395443921018318,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.4000697366088413,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.264442306345262,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3329695580739371,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.3956754029965084,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3828906399155774,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2665660759373993,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.319192034283222,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.3954400257377166,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.4024461404319963,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.2649633134591842,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.336706084758864,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.3951147150148249,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.3764290860480792,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_hadamard",
+      "target_geomean_speedup": 1.265839724582632,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "packed_fused",
+      "target_geomean_speedup": 1.314840119630351,
+      "gate_passed": true
+    }
+  ],
+  "aa_cases": 9,
+  "failed_gates": [
+    {
+      "key": [
+        0,
+        "torch.float16",
+        "packed_hadamard",
+        16387,
+        16,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9333522132076266
+    },
+    {
+      "key": [
+        1,
+        "torch.float16",
+        "packed_fused",
+        65536,
+        8,
+        256
+      ],
+      "metric": "host_us",
+      "method": "out",
+      "speedup": 0.9504553511305556
+    },
+    {
+      "key": [
+        1,
+        "torch.bfloat16",
+        "packed_hadamard",
+        257,
+        16,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9472990156445005
+    },
+    {
+      "key": [
+        2,
+        "torch.float16",
+        "packed_fused",
+        16387,
+        2,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.8096746781663804
+    },
+    {
+      "key": [
+        2,
+        "torch.bfloat16",
+        "packed_hadamard",
+        257,
+        8,
+        256
+      ],
+      "metric": "host_us",
+      "method": "allocating",
+      "speedup": 0.9325538294453178
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+000000000003a360 0000000000002143 t void (anonymous namespace)::dispatch_dim<__nv_bfloat16, true, true>(at::Tensor const&, at::Tensor&, at::Tensor&, at::Tensor&, float, CUstream_st*, int, bool, bool)
+0000000000038210 0000000000002143 t void (anonymous namespace)::dispatch_dim<__half, true, true>(at::Tensor const&, at::Tensor&, at::Tensor&, at::Tensor&, float, CUstream_st*, int, bool, bool)
+000000000002d080 000000000000023a t void (anonymous namespace)::launch_pairs<__nv_bfloat16, 16>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002c9d0 000000000000022a t void (anonymous namespace)::launch_pairs<__nv_bfloat16, 2>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002cc00 0000000000000232 t void (anonymous namespace)::launch_pairs<__nv_bfloat16, 4>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002ce40 000000000000023a t void (anonymous namespace)::launch_pairs<__nv_bfloat16, 8>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002c790 000000000000023a t void (anonymous namespace)::launch_pairs<__half, 16>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002c0e0 000000000000022a t void (anonymous namespace)::launch_pairs<__half, 2>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002c310 0000000000000232 t void (anonymous namespace)::launch_pairs<__half, 4>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002c550 000000000000023a t void (anonymous namespace)::launch_pairs<__half, 8>(at::Tensor const&, at::Tensor&, at::Tensor&, CUstream_st*, int)
+000000000002d970 0000000000000666 t void (anonymous namespace)::quantized_out<false>(at::Tensor const&, at::Tensor, at::Tensor, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+000000000003cd70 00000000000006ae t void (anonymous namespace)::quantized_out<true>(at::Tensor const&, at::Tensor, at::Tensor, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+00000000000184d0 00000000000004a0 t (anonymous namespace)::transform_out(at::Tensor const&, at::Tensor, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+0000000000010266 0000000000000054 t (anonymous namespace)::transform_out(at::Tensor const&, at::Tensor, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [clone .cold]
+0000000000018970 0000000000004199 t void (anonymous namespace)::dispatch<false, true>(at::Tensor const&, at::Tensor&, at::Tensor&, at::Tensor&, double, int, bool, bool)
+0000000000013850 0000000000003dc1 t void (anonymous namespace)::dispatch<true, false>(at::Tensor const&, at::Tensor&, at::Tensor&, at::Tensor&, double, int, bool, bool) [clone .isra.0]
+000000000003c4b0 0000000000000165 t void (anonymous namespace)::dispatch<true, true>(at::Tensor const&, at::Tensor&, at::Tensor&, at::Tensor&, double, int, bool, bool)
+000000000002d2c0 00000000000006b0 t std::tuple<at::Tensor, at::Tensor> (anonymous namespace)::quantized<false>(at::Tensor const&, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+000000000003c620 0000000000000746 t std::tuple<at::Tensor, at::Tensor> (anonymous namespace)::quantized<true>(at::Tensor const&, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+00000000000181f0 00000000000002d4 t (anonymous namespace)::transform(at::Tensor const&, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+000000000001020a 000000000000005c t (anonymous namespace)::transform(at::Tensor const&, double, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [clone .cold]

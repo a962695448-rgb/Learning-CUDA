@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "unique_storage_encodings": 131072,
+  "unique_finite_values": 128768,
+  "records": [
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        65536,
+        1
+      ],
+      "threads": 128,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 63488,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        65536,
+        1
+      ],
+      "threads": 256,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 63488,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        65539,
+        1
+      ],
+      "threads": 128,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 63491,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.float16",
+      "shape": [
+        1,
+        1,
+        65539,
+        1
+      ],
+      "threads": 256,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 63491,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        65536,
+        1
+      ],
+      "threads": 128,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 65280,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        65536,
+        1
+      ],
+      "threads": 256,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 65280,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        65539,
+        1
+      ],
+      "threads": 128,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 65283,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        1,
+        65539,
+        1
+      ],
+      "threads": 256,
+      "storage_encodings": 65536,
+      "finite_rows_checked": 65283,
+      "independent_finite_oracle": "PASS",
+      "legacy_fallback_bits": "PASS",
+      "out_guards_versions_and_storage": "PASS",
+      "input_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+python3 - <<'PY'
+from pathlib import Path
+import hashlib,importlib.util,json,re,subprocess,sys
+import torch
+r=Path('/data/paired-hadamard-v2-20260917');pid=json.loads((r/'RUN_PID.json').read_text())['pid']
+assert subprocess.run(['ps','-p',str(pid)],capture_output=True).returncode!=0
+sys.path.insert(0,str(r/'candidate/cuda/03_hadamard_tc/a962695448-rgb/scripts'))
+from verify_paired_hadamard import contexts
+name='hadamard_transform_pairs_control';path=r/'build/control'/f'{name}.so'
+spec=importlib.util.spec_from_file_location(name,path);op=importlib.util.module_from_spec(spec);spec.loader.exec_module(op)
+import numpy as np
+cases=contexts(torch,np,op)
+(r/'results-remote/control-contexts.json').write_text(json.dumps({'status':'PASS','cases':cases},indent=2)+'\n')
+for version in ('control','candidate'):
+ path=r/'build'/version/f'hadamard_transform_pairs_{version}.so'
+ nm=subprocess.run(['nm','-S','-C',str(path)],text=True,capture_output=True,check=True).stdout
+ symbols=[line for line in nm.splitlines() if '(anonymous namespace)' in line and any(k in line for k in ('launch','dispatch','quantized','transform'))]
+ (r/'results-remote'/f'host-symbols-{version}.txt').write_text('\n'.join(symbols)+'\n')
+ assembly=subprocess.run(['objdump','-dC','--no-show-raw-insn',str(path)],text=True,capture_output=True,check=True).stdout
+ blocks=re.split(r'(?=^[0-9a-f]+ <.+>:\n)',assembly,flags=re.M)
+ selected=[]
+ for block in blocks:
+  header=block.split('\n',1)[0]
+  if '(anonymous namespace)' in header and ('quantized' in header or 'fused_pairs' in header or ('dispatch' in header and 'true, true' in header)):
+   selected.append(block)
+ (r/'results-remote'/f'host-assembly-{version}.txt').write_text('\n'.join(selected))
+ print(version,'selected host assembly bytes',sum(len(b) for b in selected))
+d=json.loads((r/'results-remote/benchmark.json').read_text())
+print('FAILED_HOST',[(c['round'],c['dtype'],c['kind'],c['rows'],c['dim'],c['method'],c['speedup']) for c in d['host_records'] if not c['gate_passed']])
+print('CONTROL_CONTEXTS_PASS',len(cases))
+PY

@@ -1,0 +1,56 @@
+{
+  "bases": {
+    "cuda": "b49fff4ac57ae6702213077ebf7ff848cb8715d9",
+    "nine": "07062137e599cfead66d510cede3c0a3c1bbdf6b"
+  },
+  "status": "Frozen before any GPU execution",
+  "cuda": {
+    "change": "Two adjacent transform values per thread for explicit/auto packed Hadamard and fused INT4, N=2/4/8/16; original and quantize-only kernels retained",
+    "rounds": 3,
+    "groups": 9,
+    "target_rows": [
+      16387,
+      65536,
+      262147
+    ],
+    "target_dims": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "control_rows": [
+      1,
+      257
+    ],
+    "threads": [
+      128,
+      256
+    ],
+    "dtypes": [
+      "float16",
+      "bfloat16"
+    ],
+    "graph_nodes": 64,
+    "graph_replays": 10,
+    "host_calls": 5000,
+    "minimum_each_kind_dtype_thread_round_target_geomean": 1.1,
+    "max_device_or_host_case_regression_percent": 5,
+    "correctness": "Independent float32 butterfly then FP16/BF16 rounding and INT4 oracle, selected finite component encodings, both transform scales, scalar-offset storage/guards, legacy validation, changing-input stream/graph with negative controls",
+    "primary_metric": "Same-buffer warmed 64-node CUDA graph device events, ten replays; three timing rounds in one process, alternating old/new group order, scale=1; not cold calls or cache-exceeding workloads",
+    "secondary_metric": "Ordinary allocating/out calls at 256 threads; synchronization brackets each timed sample; 5000 calls per group; no >5% case regressions",
+    "controls": "Small packed transform/fused, N1, original transform/fused N8/256, packed quantization N2/16 and original quantization N8",
+    "no_threshold_relaxation": true
+  },
+  "environment": {
+    "cpu_affinity": "First allowed CPU recorded and pinned",
+    "torch_cpu_threads": 1,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "device": "Reuse RTX4090 if available; record actual hardware, never mix comparison ratios from different GPU models"
+  },
+  "aa_control": "Three same-control-function pairs per round; every ratio between 1/1.05 and 1.05",
+  "nine": "15 real GPU differential tests and 108 new layout/expression semantic tests on current published head; not the full repository GPU suite",
+  "publication": "Only accepted implementation goes to existing feature branch; preserve rejected candidates and all raw data on evidence branches; Chinese commits; no merging",
+  "shutdown": "Export results and source/protocol hashes; verify local backups before powering off the instance"
+}

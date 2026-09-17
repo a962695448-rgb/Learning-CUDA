@@ -1,0 +1,7 @@
+{
+  "source_files_identical": {
+    "initial": 232,
+    "isolated": 232
+  },
+  "scope": "All CUDA repository files in control/candidate; protocol/runner/tools identical; explicit CUDA-only replay"
+}

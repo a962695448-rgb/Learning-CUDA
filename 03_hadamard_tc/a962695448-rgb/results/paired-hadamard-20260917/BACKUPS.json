@@ -1,0 +1,32 @@
+{
+  "initial": {
+    "bytes": 1947025,
+    "sha256": "fef9810d2cd18d53454e9f5e1dae6a6cdf51ac7609e20641ecea6b3a7bd49d97",
+    "files_verified": 22,
+    "frozen_input_files": 432,
+    "correctness": "PASS",
+    "benchmark_decision": "REJECT",
+    "overflow_cases": 512,
+    "jobs": [
+      {
+        "name": "nine-gpu",
+        "returncode": 0,
+        "seconds": 4.975927799940109
+      },
+      {
+        "name": "nine-expression-tests",
+        "returncode": 0,
+        "seconds": 2.518149673938751
+      }
+    ]
+  },
+  "isolated": {
+    "bytes": 2570535,
+    "sha256": "0cdb269949fdaa0c75d088674df8aa6184d1d75aa950757a7f1af810150bab3c",
+    "files_verified": 23,
+    "frozen_inputs_verified": 238,
+    "status": "PASS",
+    "decision": "REJECT",
+    "baseline_context_cases": 24
+  }
+}

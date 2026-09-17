@@ -1,0 +1,513 @@
+CASE torch.float16 (257, 2) zero 1.0 0 128
+CASE torch.float16 (257, 2) zero 1.0 0 256
+CASE torch.float16 (257, 2) zero 1.0 1 128
+CASE torch.float16 (257, 2) zero 1.0 1 256
+CASE torch.float16 (257, 2) zero 0.7071067811865475 0 128
+CASE torch.float16 (257, 2) zero 0.7071067811865475 0 256
+CASE torch.float16 (257, 2) zero 0.7071067811865475 1 128
+CASE torch.float16 (257, 2) zero 0.7071067811865475 1 256
+CASE torch.float16 (257, 2) finite 1.0 0 128
+CASE torch.float16 (257, 2) finite 1.0 0 256
+CASE torch.float16 (257, 2) finite 1.0 1 128
+CASE torch.float16 (257, 2) finite 1.0 1 256
+CASE torch.float16 (257, 2) finite 0.7071067811865475 0 128
+CASE torch.float16 (257, 2) finite 0.7071067811865475 0 256
+CASE torch.float16 (257, 2) finite 0.7071067811865475 1 128
+CASE torch.float16 (257, 2) finite 0.7071067811865475 1 256
+CASE torch.float16 (257, 2) ties 1.0 0 128
+CASE torch.float16 (257, 2) ties 1.0 0 256
+CASE torch.float16 (257, 2) ties 1.0 1 128
+CASE torch.float16 (257, 2) ties 1.0 1 256
+CASE torch.float16 (257, 2) ties 0.7071067811865475 0 128
+CASE torch.float16 (257, 2) ties 0.7071067811865475 0 256
+CASE torch.float16 (257, 2) ties 0.7071067811865475 1 128
+CASE torch.float16 (257, 2) ties 0.7071067811865475 1 256
+CASE torch.float16 (1, 1, 257, 2) extreme 1.0 0 128
+CASE torch.float16 (1, 1, 257, 2) extreme 1.0 0 256
+CASE torch.float16 (1, 1, 257, 2) extreme 1.0 1 128
+CASE torch.float16 (1, 1, 257, 2) extreme 1.0 1 256
+CASE torch.float16 (1, 1, 257, 2) extreme 0.7071067811865475 0 128
+CASE torch.float16 (1, 1, 257, 2) extreme 0.7071067811865475 0 256
+CASE torch.float16 (1, 1, 257, 2) extreme 0.7071067811865475 1 128
+CASE torch.float16 (1, 1, 257, 2) extreme 0.7071067811865475 1 256
+CASE torch.float16 (257, 2) subnormal 1.0 0 128
+CASE torch.float16 (257, 2) subnormal 1.0 0 256
+CASE torch.float16 (257, 2) subnormal 1.0 1 128
+CASE torch.float16 (257, 2) subnormal 1.0 1 256
+CASE torch.float16 (257, 2) subnormal 0.7071067811865475 0 128
+CASE torch.float16 (257, 2) subnormal 0.7071067811865475 0 256
+CASE torch.float16 (257, 2) subnormal 0.7071067811865475 1 128
+CASE torch.float16 (257, 2) subnormal 0.7071067811865475 1 256
+CASE torch.float16 (1, 1, 257, 2) all_max 1.0 0 128
+CASE torch.float16 (1, 1, 257, 2) all_max 1.0 0 256
+CASE torch.float16 (1, 1, 257, 2) all_max 1.0 1 128
+CASE torch.float16 (1, 1, 257, 2) all_max 1.0 1 256
+CASE torch.float16 (1, 1, 257, 2) all_max 0.7071067811865475 0 128
+CASE torch.float16 (1, 1, 257, 2) all_max 0.7071067811865475 0 256
+CASE torch.float16 (1, 1, 257, 2) all_max 0.7071067811865475 1 128
+CASE torch.float16 (1, 1, 257, 2) all_max 0.7071067811865475 1 256
+CASE torch.float16 (1, 1, 257, 2) all_min 1.0 0 128
+CASE torch.float16 (1, 1, 257, 2) all_min 1.0 0 256
+CASE torch.float16 (1, 1, 257, 2) all_min 1.0 1 128
+CASE torch.float16 (1, 1, 257, 2) all_min 1.0 1 256
+CASE torch.float16 (1, 1, 257, 2) all_min 0.7071067811865475 0 128
+CASE torch.float16 (1, 1, 257, 2) all_min 0.7071067811865475 0 256
+CASE torch.float16 (1, 1, 257, 2) all_min 0.7071067811865475 1 128
+CASE torch.float16 (1, 1, 257, 2) all_min 0.7071067811865475 1 256
+CASE torch.float16 (1, 1, 257, 2) cancellation 1.0 0 128
+CASE torch.float16 (1, 1, 257, 2) cancellation 1.0 0 256
+CASE torch.float16 (1, 1, 257, 2) cancellation 1.0 1 128
+CASE torch.float16 (1, 1, 257, 2) cancellation 1.0 1 256
+CASE torch.float16 (1, 1, 257, 2) cancellation 0.7071067811865475 0 128
+CASE torch.float16 (1, 1, 257, 2) cancellation 0.7071067811865475 0 256
+CASE torch.float16 (1, 1, 257, 2) cancellation 0.7071067811865475 1 128
+CASE torch.float16 (1, 1, 257, 2) cancellation 0.7071067811865475 1 256
+CASE torch.float16 (257, 4) zero 1.0 0 128
+CASE torch.float16 (257, 4) zero 1.0 0 256
+CASE torch.float16 (257, 4) zero 1.0 1 128
+CASE torch.float16 (257, 4) zero 1.0 1 256
+CASE torch.float16 (257, 4) zero 0.5 0 128
+CASE torch.float16 (257, 4) zero 0.5 0 256
+CASE torch.float16 (257, 4) zero 0.5 1 128
+CASE torch.float16 (257, 4) zero 0.5 1 256
+CASE torch.float16 (257, 4) finite 1.0 0 128
+CASE torch.float16 (257, 4) finite 1.0 0 256
+CASE torch.float16 (257, 4) finite 1.0 1 128
+CASE torch.float16 (257, 4) finite 1.0 1 256
+CASE torch.float16 (257, 4) finite 0.5 0 128
+CASE torch.float16 (257, 4) finite 0.5 0 256
+CASE torch.float16 (257, 4) finite 0.5 1 128
+CASE torch.float16 (257, 4) finite 0.5 1 256
+CASE torch.float16 (257, 4) ties 1.0 0 128
+CASE torch.float16 (257, 4) ties 1.0 0 256
+CASE torch.float16 (257, 4) ties 1.0 1 128
+CASE torch.float16 (257, 4) ties 1.0 1 256
+CASE torch.float16 (257, 4) ties 0.5 0 128
+CASE torch.float16 (257, 4) ties 0.5 0 256
+CASE torch.float16 (257, 4) ties 0.5 1 128
+CASE torch.float16 (257, 4) ties 0.5 1 256
+CASE torch.float16 (1, 1, 257, 4) extreme 1.0 0 128
+CASE torch.float16 (1, 1, 257, 4) extreme 1.0 0 256
+CASE torch.float16 (1, 1, 257, 4) extreme 1.0 1 128
+CASE torch.float16 (1, 1, 257, 4) extreme 1.0 1 256
+CASE torch.float16 (1, 1, 257, 4) extreme 0.5 0 128
+CASE torch.float16 (1, 1, 257, 4) extreme 0.5 0 256
+CASE torch.float16 (1, 1, 257, 4) extreme 0.5 1 128
+CASE torch.float16 (1, 1, 257, 4) extreme 0.5 1 256
+CASE torch.float16 (257, 4) subnormal 1.0 0 128
+CASE torch.float16 (257, 4) subnormal 1.0 0 256
+CASE torch.float16 (257, 4) subnormal 1.0 1 128
+CASE torch.float16 (257, 4) subnormal 1.0 1 256
+CASE torch.float16 (257, 4) subnormal 0.5 0 128
+CASE torch.float16 (257, 4) subnormal 0.5 0 256
+CASE torch.float16 (257, 4) subnormal 0.5 1 128
+CASE torch.float16 (257, 4) subnormal 0.5 1 256
+CASE torch.float16 (1, 1, 257, 4) all_max 1.0 0 128
+CASE torch.float16 (1, 1, 257, 4) all_max 1.0 0 256
+CASE torch.float16 (1, 1, 257, 4) all_max 1.0 1 128
+CASE torch.float16 (1, 1, 257, 4) all_max 1.0 1 256
+CASE torch.float16 (1, 1, 257, 4) all_max 0.5 0 128
+CASE torch.float16 (1, 1, 257, 4) all_max 0.5 0 256
+CASE torch.float16 (1, 1, 257, 4) all_max 0.5 1 128
+CASE torch.float16 (1, 1, 257, 4) all_max 0.5 1 256
+CASE torch.float16 (1, 1, 257, 4) all_min 1.0 0 128
+CASE torch.float16 (1, 1, 257, 4) all_min 1.0 0 256
+CASE torch.float16 (1, 1, 257, 4) all_min 1.0 1 128
+CASE torch.float16 (1, 1, 257, 4) all_min 1.0 1 256
+CASE torch.float16 (1, 1, 257, 4) all_min 0.5 0 128
+CASE torch.float16 (1, 1, 257, 4) all_min 0.5 0 256
+CASE torch.float16 (1, 1, 257, 4) all_min 0.5 1 128
+CASE torch.float16 (1, 1, 257, 4) all_min 0.5 1 256
+CASE torch.float16 (1, 1, 257, 4) cancellation 1.0 0 128
+CASE torch.float16 (1, 1, 257, 4) cancellation 1.0 0 256
+CASE torch.float16 (1, 1, 257, 4) cancellation 1.0 1 128
+CASE torch.float16 (1, 1, 257, 4) cancellation 1.0 1 256
+CASE torch.float16 (1, 1, 257, 4) cancellation 0.5 0 128
+CASE torch.float16 (1, 1, 257, 4) cancellation 0.5 0 256
+CASE torch.float16 (1, 1, 257, 4) cancellation 0.5 1 128
+CASE torch.float16 (1, 1, 257, 4) cancellation 0.5 1 256
+CASE torch.float16 (257, 8) zero 1.0 0 128
+CASE torch.float16 (257, 8) zero 1.0 0 256
+CASE torch.float16 (257, 8) zero 1.0 1 128
+CASE torch.float16 (257, 8) zero 1.0 1 256
+CASE torch.float16 (257, 8) zero 0.35355339059327373 0 128
+CASE torch.float16 (257, 8) zero 0.35355339059327373 0 256
+CASE torch.float16 (257, 8) zero 0.35355339059327373 1 128
+CASE torch.float16 (257, 8) zero 0.35355339059327373 1 256
+CASE torch.float16 (257, 8) finite 1.0 0 128
+CASE torch.float16 (257, 8) finite 1.0 0 256
+CASE torch.float16 (257, 8) finite 1.0 1 128
+CASE torch.float16 (257, 8) finite 1.0 1 256
+CASE torch.float16 (257, 8) finite 0.35355339059327373 0 128
+CASE torch.float16 (257, 8) finite 0.35355339059327373 0 256
+CASE torch.float16 (257, 8) finite 0.35355339059327373 1 128
+CASE torch.float16 (257, 8) finite 0.35355339059327373 1 256
+CASE torch.float16 (257, 8) ties 1.0 0 128
+CASE torch.float16 (257, 8) ties 1.0 0 256
+CASE torch.float16 (257, 8) ties 1.0 1 128
+CASE torch.float16 (257, 8) ties 1.0 1 256
+CASE torch.float16 (257, 8) ties 0.35355339059327373 0 128
+CASE torch.float16 (257, 8) ties 0.35355339059327373 0 256
+CASE torch.float16 (257, 8) ties 0.35355339059327373 1 128
+CASE torch.float16 (257, 8) ties 0.35355339059327373 1 256
+CASE torch.float16 (1, 1, 257, 8) extreme 1.0 0 128
+CASE torch.float16 (1, 1, 257, 8) extreme 1.0 0 256
+CASE torch.float16 (1, 1, 257, 8) extreme 1.0 1 128
+CASE torch.float16 (1, 1, 257, 8) extreme 1.0 1 256
+CASE torch.float16 (1, 1, 257, 8) extreme 0.35355339059327373 0 128
+CASE torch.float16 (1, 1, 257, 8) extreme 0.35355339059327373 0 256
+CASE torch.float16 (1, 1, 257, 8) extreme 0.35355339059327373 1 128
+CASE torch.float16 (1, 1, 257, 8) extreme 0.35355339059327373 1 256
+CASE torch.float16 (257, 8) subnormal 1.0 0 128
+CASE torch.float16 (257, 8) subnormal 1.0 0 256
+CASE torch.float16 (257, 8) subnormal 1.0 1 128
+CASE torch.float16 (257, 8) subnormal 1.0 1 256
+CASE torch.float16 (257, 8) subnormal 0.35355339059327373 0 128
+CASE torch.float16 (257, 8) subnormal 0.35355339059327373 0 256
+CASE torch.float16 (257, 8) subnormal 0.35355339059327373 1 128
+CASE torch.float16 (257, 8) subnormal 0.35355339059327373 1 256
+CASE torch.float16 (1, 1, 257, 8) all_max 1.0 0 128
+CASE torch.float16 (1, 1, 257, 8) all_max 1.0 0 256
+CASE torch.float16 (1, 1, 257, 8) all_max 1.0 1 128
+CASE torch.float16 (1, 1, 257, 8) all_max 1.0 1 256
+CASE torch.float16 (1, 1, 257, 8) all_max 0.35355339059327373 0 128
+CASE torch.float16 (1, 1, 257, 8) all_max 0.35355339059327373 0 256
+CASE torch.float16 (1, 1, 257, 8) all_max 0.35355339059327373 1 128
+CASE torch.float16 (1, 1, 257, 8) all_max 0.35355339059327373 1 256
+CASE torch.float16 (1, 1, 257, 8) all_min 1.0 0 128
+CASE torch.float16 (1, 1, 257, 8) all_min 1.0 0 256
+CASE torch.float16 (1, 1, 257, 8) all_min 1.0 1 128
+CASE torch.float16 (1, 1, 257, 8) all_min 1.0 1 256
+CASE torch.float16 (1, 1, 257, 8) all_min 0.35355339059327373 0 128
+CASE torch.float16 (1, 1, 257, 8) all_min 0.35355339059327373 0 256
+CASE torch.float16 (1, 1, 257, 8) all_min 0.35355339059327373 1 128
+CASE torch.float16 (1, 1, 257, 8) all_min 0.35355339059327373 1 256
+CASE torch.float16 (1, 1, 257, 8) cancellation 1.0 0 128
+CASE torch.float16 (1, 1, 257, 8) cancellation 1.0 0 256
+CASE torch.float16 (1, 1, 257, 8) cancellation 1.0 1 128
+CASE torch.float16 (1, 1, 257, 8) cancellation 1.0 1 256
+CASE torch.float16 (1, 1, 257, 8) cancellation 0.35355339059327373 0 128
+CASE torch.float16 (1, 1, 257, 8) cancellation 0.35355339059327373 0 256
+CASE torch.float16 (1, 1, 257, 8) cancellation 0.35355339059327373 1 128
+CASE torch.float16 (1, 1, 257, 8) cancellation 0.35355339059327373 1 256
+CASE torch.float16 (257, 16) zero 1.0 0 128
+CASE torch.float16 (257, 16) zero 1.0 0 256
+CASE torch.float16 (257, 16) zero 1.0 1 128
+CASE torch.float16 (257, 16) zero 1.0 1 256
+CASE torch.float16 (257, 16) zero 0.25 0 128
+CASE torch.float16 (257, 16) zero 0.25 0 256
+CASE torch.float16 (257, 16) zero 0.25 1 128
+CASE torch.float16 (257, 16) zero 0.25 1 256
+CASE torch.float16 (257, 16) finite 1.0 0 128
+CASE torch.float16 (257, 16) finite 1.0 0 256
+CASE torch.float16 (257, 16) finite 1.0 1 128
+CASE torch.float16 (257, 16) finite 1.0 1 256
+CASE torch.float16 (257, 16) finite 0.25 0 128
+CASE torch.float16 (257, 16) finite 0.25 0 256
+CASE torch.float16 (257, 16) finite 0.25 1 128
+CASE torch.float16 (257, 16) finite 0.25 1 256
+CASE torch.float16 (257, 16) ties 1.0 0 128
+CASE torch.float16 (257, 16) ties 1.0 0 256
+CASE torch.float16 (257, 16) ties 1.0 1 128
+CASE torch.float16 (257, 16) ties 1.0 1 256
+CASE torch.float16 (257, 16) ties 0.25 0 128
+CASE torch.float16 (257, 16) ties 0.25 0 256
+CASE torch.float16 (257, 16) ties 0.25 1 128
+CASE torch.float16 (257, 16) ties 0.25 1 256
+CASE torch.float16 (1, 1, 257, 16) extreme 1.0 0 128
+CASE torch.float16 (1, 1, 257, 16) extreme 1.0 0 256
+CASE torch.float16 (1, 1, 257, 16) extreme 1.0 1 128
+CASE torch.float16 (1, 1, 257, 16) extreme 1.0 1 256
+CASE torch.float16 (1, 1, 257, 16) extreme 0.25 0 128
+CASE torch.float16 (1, 1, 257, 16) extreme 0.25 0 256
+CASE torch.float16 (1, 1, 257, 16) extreme 0.25 1 128
+CASE torch.float16 (1, 1, 257, 16) extreme 0.25 1 256
+CASE torch.float16 (257, 16) subnormal 1.0 0 128
+CASE torch.float16 (257, 16) subnormal 1.0 0 256
+CASE torch.float16 (257, 16) subnormal 1.0 1 128
+CASE torch.float16 (257, 16) subnormal 1.0 1 256
+CASE torch.float16 (257, 16) subnormal 0.25 0 128
+CASE torch.float16 (257, 16) subnormal 0.25 0 256
+CASE torch.float16 (257, 16) subnormal 0.25 1 128
+CASE torch.float16 (257, 16) subnormal 0.25 1 256
+CASE torch.float16 (1, 1, 257, 16) all_max 1.0 0 128
+CASE torch.float16 (1, 1, 257, 16) all_max 1.0 0 256
+CASE torch.float16 (1, 1, 257, 16) all_max 1.0 1 128
+CASE torch.float16 (1, 1, 257, 16) all_max 1.0 1 256
+CASE torch.float16 (1, 1, 257, 16) all_max 0.25 0 128
+CASE torch.float16 (1, 1, 257, 16) all_max 0.25 0 256
+CASE torch.float16 (1, 1, 257, 16) all_max 0.25 1 128
+CASE torch.float16 (1, 1, 257, 16) all_max 0.25 1 256
+CASE torch.float16 (1, 1, 257, 16) all_min 1.0 0 128
+CASE torch.float16 (1, 1, 257, 16) all_min 1.0 0 256
+CASE torch.float16 (1, 1, 257, 16) all_min 1.0 1 128
+CASE torch.float16 (1, 1, 257, 16) all_min 1.0 1 256
+CASE torch.float16 (1, 1, 257, 16) all_min 0.25 0 128
+CASE torch.float16 (1, 1, 257, 16) all_min 0.25 0 256
+CASE torch.float16 (1, 1, 257, 16) all_min 0.25 1 128
+CASE torch.float16 (1, 1, 257, 16) all_min 0.25 1 256
+CASE torch.float16 (1, 1, 257, 16) cancellation 1.0 0 128
+CASE torch.float16 (1, 1, 257, 16) cancellation 1.0 0 256
+CASE torch.float16 (1, 1, 257, 16) cancellation 1.0 1 128
+CASE torch.float16 (1, 1, 257, 16) cancellation 1.0 1 256
+CASE torch.float16 (1, 1, 257, 16) cancellation 0.25 0 128
+CASE torch.float16 (1, 1, 257, 16) cancellation 0.25 0 256
+CASE torch.float16 (1, 1, 257, 16) cancellation 0.25 1 128
+CASE torch.float16 (1, 1, 257, 16) cancellation 0.25 1 256
+CASE torch.bfloat16 (257, 2) zero 1.0 0 128
+CASE torch.bfloat16 (257, 2) zero 1.0 0 256
+CASE torch.bfloat16 (257, 2) zero 1.0 1 128
+CASE torch.bfloat16 (257, 2) zero 1.0 1 256
+CASE torch.bfloat16 (257, 2) zero 0.7071067811865475 0 128
+CASE torch.bfloat16 (257, 2) zero 0.7071067811865475 0 256
+CASE torch.bfloat16 (257, 2) zero 0.7071067811865475 1 128
+CASE torch.bfloat16 (257, 2) zero 0.7071067811865475 1 256
+CASE torch.bfloat16 (257, 2) finite 1.0 0 128
+CASE torch.bfloat16 (257, 2) finite 1.0 0 256
+CASE torch.bfloat16 (257, 2) finite 1.0 1 128
+CASE torch.bfloat16 (257, 2) finite 1.0 1 256
+CASE torch.bfloat16 (257, 2) finite 0.7071067811865475 0 128
+CASE torch.bfloat16 (257, 2) finite 0.7071067811865475 0 256
+CASE torch.bfloat16 (257, 2) finite 0.7071067811865475 1 128
+CASE torch.bfloat16 (257, 2) finite 0.7071067811865475 1 256
+CASE torch.bfloat16 (257, 2) ties 1.0 0 128
+CASE torch.bfloat16 (257, 2) ties 1.0 0 256
+CASE torch.bfloat16 (257, 2) ties 1.0 1 128
+CASE torch.bfloat16 (257, 2) ties 1.0 1 256
+CASE torch.bfloat16 (257, 2) ties 0.7071067811865475 0 128
+CASE torch.bfloat16 (257, 2) ties 0.7071067811865475 0 256
+CASE torch.bfloat16 (257, 2) ties 0.7071067811865475 1 128
+CASE torch.bfloat16 (257, 2) ties 0.7071067811865475 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 0.7071067811865475 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 0.7071067811865475 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 0.7071067811865475 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) extreme 0.7071067811865475 1 256
+CASE torch.bfloat16 (257, 2) subnormal 1.0 0 128
+CASE torch.bfloat16 (257, 2) subnormal 1.0 0 256
+CASE torch.bfloat16 (257, 2) subnormal 1.0 1 128
+CASE torch.bfloat16 (257, 2) subnormal 1.0 1 256
+CASE torch.bfloat16 (257, 2) subnormal 0.7071067811865475 0 128
+CASE torch.bfloat16 (257, 2) subnormal 0.7071067811865475 0 256
+CASE torch.bfloat16 (257, 2) subnormal 0.7071067811865475 1 128
+CASE torch.bfloat16 (257, 2) subnormal 0.7071067811865475 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 0.7071067811865475 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 0.7071067811865475 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 0.7071067811865475 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_max 0.7071067811865475 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 0.7071067811865475 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 0.7071067811865475 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 0.7071067811865475 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) all_min 0.7071067811865475 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 0.7071067811865475 0 128
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 0.7071067811865475 0 256
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 0.7071067811865475 1 128
+CASE torch.bfloat16 (1, 1, 257, 2) cancellation 0.7071067811865475 1 256
+CASE torch.bfloat16 (257, 4) zero 1.0 0 128
+CASE torch.bfloat16 (257, 4) zero 1.0 0 256
+CASE torch.bfloat16 (257, 4) zero 1.0 1 128
+CASE torch.bfloat16 (257, 4) zero 1.0 1 256
+CASE torch.bfloat16 (257, 4) zero 0.5 0 128
+CASE torch.bfloat16 (257, 4) zero 0.5 0 256
+CASE torch.bfloat16 (257, 4) zero 0.5 1 128
+CASE torch.bfloat16 (257, 4) zero 0.5 1 256
+CASE torch.bfloat16 (257, 4) finite 1.0 0 128
+CASE torch.bfloat16 (257, 4) finite 1.0 0 256
+CASE torch.bfloat16 (257, 4) finite 1.0 1 128
+CASE torch.bfloat16 (257, 4) finite 1.0 1 256
+CASE torch.bfloat16 (257, 4) finite 0.5 0 128
+CASE torch.bfloat16 (257, 4) finite 0.5 0 256
+CASE torch.bfloat16 (257, 4) finite 0.5 1 128
+CASE torch.bfloat16 (257, 4) finite 0.5 1 256
+CASE torch.bfloat16 (257, 4) ties 1.0 0 128
+CASE torch.bfloat16 (257, 4) ties 1.0 0 256
+CASE torch.bfloat16 (257, 4) ties 1.0 1 128
+CASE torch.bfloat16 (257, 4) ties 1.0 1 256
+CASE torch.bfloat16 (257, 4) ties 0.5 0 128
+CASE torch.bfloat16 (257, 4) ties 0.5 0 256
+CASE torch.bfloat16 (257, 4) ties 0.5 1 128
+CASE torch.bfloat16 (257, 4) ties 0.5 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 0.5 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 0.5 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 0.5 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) extreme 0.5 1 256
+CASE torch.bfloat16 (257, 4) subnormal 1.0 0 128
+CASE torch.bfloat16 (257, 4) subnormal 1.0 0 256
+CASE torch.bfloat16 (257, 4) subnormal 1.0 1 128
+CASE torch.bfloat16 (257, 4) subnormal 1.0 1 256
+CASE torch.bfloat16 (257, 4) subnormal 0.5 0 128
+CASE torch.bfloat16 (257, 4) subnormal 0.5 0 256
+CASE torch.bfloat16 (257, 4) subnormal 0.5 1 128
+CASE torch.bfloat16 (257, 4) subnormal 0.5 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 0.5 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 0.5 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 0.5 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_max 0.5 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 0.5 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 0.5 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 0.5 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) all_min 0.5 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 0.5 0 128
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 0.5 0 256
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 0.5 1 128
+CASE torch.bfloat16 (1, 1, 257, 4) cancellation 0.5 1 256
+CASE torch.bfloat16 (257, 8) zero 1.0 0 128
+CASE torch.bfloat16 (257, 8) zero 1.0 0 256
+CASE torch.bfloat16 (257, 8) zero 1.0 1 128
+CASE torch.bfloat16 (257, 8) zero 1.0 1 256
+CASE torch.bfloat16 (257, 8) zero 0.35355339059327373 0 128
+CASE torch.bfloat16 (257, 8) zero 0.35355339059327373 0 256
+CASE torch.bfloat16 (257, 8) zero 0.35355339059327373 1 128
+CASE torch.bfloat16 (257, 8) zero 0.35355339059327373 1 256
+CASE torch.bfloat16 (257, 8) finite 1.0 0 128
+CASE torch.bfloat16 (257, 8) finite 1.0 0 256
+CASE torch.bfloat16 (257, 8) finite 1.0 1 128
+CASE torch.bfloat16 (257, 8) finite 1.0 1 256
+CASE torch.bfloat16 (257, 8) finite 0.35355339059327373 0 128
+CASE torch.bfloat16 (257, 8) finite 0.35355339059327373 0 256
+CASE torch.bfloat16 (257, 8) finite 0.35355339059327373 1 128
+CASE torch.bfloat16 (257, 8) finite 0.35355339059327373 1 256
+CASE torch.bfloat16 (257, 8) ties 1.0 0 128
+CASE torch.bfloat16 (257, 8) ties 1.0 0 256
+CASE torch.bfloat16 (257, 8) ties 1.0 1 128
+CASE torch.bfloat16 (257, 8) ties 1.0 1 256
+CASE torch.bfloat16 (257, 8) ties 0.35355339059327373 0 128
+CASE torch.bfloat16 (257, 8) ties 0.35355339059327373 0 256
+CASE torch.bfloat16 (257, 8) ties 0.35355339059327373 1 128
+CASE torch.bfloat16 (257, 8) ties 0.35355339059327373 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 0.35355339059327373 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 0.35355339059327373 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 0.35355339059327373 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) extreme 0.35355339059327373 1 256
+CASE torch.bfloat16 (257, 8) subnormal 1.0 0 128
+CASE torch.bfloat16 (257, 8) subnormal 1.0 0 256
+CASE torch.bfloat16 (257, 8) subnormal 1.0 1 128
+CASE torch.bfloat16 (257, 8) subnormal 1.0 1 256
+CASE torch.bfloat16 (257, 8) subnormal 0.35355339059327373 0 128
+CASE torch.bfloat16 (257, 8) subnormal 0.35355339059327373 0 256
+CASE torch.bfloat16 (257, 8) subnormal 0.35355339059327373 1 128
+CASE torch.bfloat16 (257, 8) subnormal 0.35355339059327373 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 0.35355339059327373 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 0.35355339059327373 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 0.35355339059327373 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_max 0.35355339059327373 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 0.35355339059327373 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 0.35355339059327373 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 0.35355339059327373 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) all_min 0.35355339059327373 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 0.35355339059327373 0 128
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 0.35355339059327373 0 256
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 0.35355339059327373 1 128
+CASE torch.bfloat16 (1, 1, 257, 8) cancellation 0.35355339059327373 1 256
+CASE torch.bfloat16 (257, 16) zero 1.0 0 128
+CASE torch.bfloat16 (257, 16) zero 1.0 0 256
+CASE torch.bfloat16 (257, 16) zero 1.0 1 128
+CASE torch.bfloat16 (257, 16) zero 1.0 1 256
+CASE torch.bfloat16 (257, 16) zero 0.25 0 128
+CASE torch.bfloat16 (257, 16) zero 0.25 0 256
+CASE torch.bfloat16 (257, 16) zero 0.25 1 128
+CASE torch.bfloat16 (257, 16) zero 0.25 1 256
+CASE torch.bfloat16 (257, 16) finite 1.0 0 128
+CASE torch.bfloat16 (257, 16) finite 1.0 0 256
+CASE torch.bfloat16 (257, 16) finite 1.0 1 128
+CASE torch.bfloat16 (257, 16) finite 1.0 1 256
+CASE torch.bfloat16 (257, 16) finite 0.25 0 128
+CASE torch.bfloat16 (257, 16) finite 0.25 0 256
+CASE torch.bfloat16 (257, 16) finite 0.25 1 128
+CASE torch.bfloat16 (257, 16) finite 0.25 1 256
+CASE torch.bfloat16 (257, 16) ties 1.0 0 128
+CASE torch.bfloat16 (257, 16) ties 1.0 0 256
+CASE torch.bfloat16 (257, 16) ties 1.0 1 128
+CASE torch.bfloat16 (257, 16) ties 1.0 1 256
+CASE torch.bfloat16 (257, 16) ties 0.25 0 128
+CASE torch.bfloat16 (257, 16) ties 0.25 0 256
+CASE torch.bfloat16 (257, 16) ties 0.25 1 128
+CASE torch.bfloat16 (257, 16) ties 0.25 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 0.25 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 0.25 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 0.25 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) extreme 0.25 1 256
+CASE torch.bfloat16 (257, 16) subnormal 1.0 0 128
+CASE torch.bfloat16 (257, 16) subnormal 1.0 0 256
+CASE torch.bfloat16 (257, 16) subnormal 1.0 1 128
+CASE torch.bfloat16 (257, 16) subnormal 1.0 1 256
+CASE torch.bfloat16 (257, 16) subnormal 0.25 0 128
+CASE torch.bfloat16 (257, 16) subnormal 0.25 0 256
+CASE torch.bfloat16 (257, 16) subnormal 0.25 1 128
+CASE torch.bfloat16 (257, 16) subnormal 0.25 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 0.25 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 0.25 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 0.25 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_max 0.25 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 0.25 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 0.25 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 0.25 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) all_min 0.25 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 1.0 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 1.0 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 1.0 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 1.0 1 256
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 0.25 0 128
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 0.25 0 256
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 0.25 1 128
+CASE torch.bfloat16 (1, 1, 257, 16) cancellation 0.25 1 256
+OVERFLOW_COMPATIBILITY_PASS 512
