@@ -1,0 +1,35 @@
+{
+  "bases": {"nine": "3c0ceccf540233fbe2f23656f71b69268dd811e1", "cuda": "28fb3a95ca8bcdf53a66949cfde23820bf7e4005"},
+  "publication": "local only; wait for user instruction",
+  "nine": {
+    "change": "Broadcast sparse identity coordinates; preserve storage, masking and traces. Fix independently reproduced masked zero-dimensional store bug.",
+    "rounds": 3,
+    "samples": 9,
+    "calls_per_sample": 5,
+    "target_shapes": [[512,512], [8,16,32,32], [257,509]],
+    "target_layouts": ["contiguous", "contiguous", "reversed"],
+    "controls": ["arranged vector affine 4096", "arranged softmax 17x257"],
+    "minimum_target_peak_reduction": 0.20,
+    "max_case_runtime_regression_percent": 5,
+    "trace_digest_equal": true,
+    "memory_metric": "tracemalloc peak during interpret_program; preallocated input/output excluded; warm and cold expression caches; not process RSS; trace runs reported separately"
+  },
+  "cuda": {
+    "change": "Explicit packed quantize_int4 and quantize_int4_out for N<=16; existing default remains original; auto rejected",
+    "rounds": 3,
+    "groups": 7,
+    "target_rows": [4096,16387,65536,131071],
+    "target_dims": [1,2,4,8,16],
+    "threads": [128,256],
+    "dtypes": ["float16","bfloat16"],
+    "graph_nodes": 64,
+    "graph_replays": 10,
+    "host_calls": 500,
+    "max_case_regression_percent": 5,
+    "minimum_device_geomean_speedup": 1.10,
+    "primary_metric": "CUDA event time across CUDA Graph replay of quantize-only kernels; each 64-node graph uses the same input and reusable output buffers; both original and packed use identical block size",
+    "secondary_metric": "Synchronized wall time per ordinary Python call at 256 threads for allocating and reusable-output APIs",
+    "acceptance": "Each round and dtype/thread group device target geomean >=1.10 and no packed target or legacy control median slower by >5%. Host timing is reported separately; no host speedup requirement or auto routing inferred.",
+    "correctness": "Independent CPU oracle and exact old/new output bytes; small-N tails, 2D/4D, extremes/subnormals/rounding ties, guarded output and version counters, streams and changing-input graph replay, invalid layouts rejected before mutation"
+  }
+}
