@@ -482,6 +482,29 @@
       "production_compute_unchanged": true,
       "archive_commit": "704b0b3625cf93048b21ec47ac578f9bc0c32c0b",
       "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/704b0b3625cf93048b21ec47ac578f9bc0c32c0b/03_hadamard_tc/a962695448-rgb/results/integrated-pairs-20260917"
+    },
+    {
+      "kind": "preregistered relative stability confirmation",
+      "production_head": "c72d7b723dae14cc7dc880bd8f2ed83cbbaef41a",
+      "preregistration_commit": "1f97d437370af9f5c102797308ad5fd1a8db9bef",
+      "device": "NVIDIA GeForce RTX 4090 D",
+      "overflow_compatibility_cases": 512,
+      "device_records": 588,
+      "host_records": 588,
+      "target_groups": 24,
+      "same_source_calibrations": 18,
+      "relative_stability_failures": 1,
+      "round_decisions": [
+        "ACCEPT",
+        "REJECT",
+        "ACCEPT"
+      ],
+      "candidate_decision": "REJECT",
+      "production_compute_unchanged": true,
+      "prior_rejections_preserved": true,
+      "repeat_confirmation_stopped": true,
+      "archive_commit": "06b985425e3192fb58e0500ddaffde3476de78ef",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/06b985425e3192fb58e0500ddaffde3476de78ef/03_hadamard_tc/a962695448-rgb/results/relative-stability-confirm-20260918"
     }
   ]
 }
