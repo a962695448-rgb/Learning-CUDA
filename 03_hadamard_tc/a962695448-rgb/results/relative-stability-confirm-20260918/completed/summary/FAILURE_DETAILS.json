@@ -1,0 +1,17 @@
+{
+  "round": 1,
+  "dtype": "torch.float16",
+  "kind": "packed_fused",
+  "rows": 16387,
+  "dim": 2,
+  "threads": 256,
+  "method": "allocating",
+  "speedup": 1.0313109179134392,
+  "paired_speedup": 1.029463957644839,
+  "paired_iqr_percent": 11.840852574685563,
+  "iqr_percent": {
+    "control": 11.328504565161042,
+    "candidate": 1.2405830076849302
+  },
+  "absolute_spread_flag": true
+}

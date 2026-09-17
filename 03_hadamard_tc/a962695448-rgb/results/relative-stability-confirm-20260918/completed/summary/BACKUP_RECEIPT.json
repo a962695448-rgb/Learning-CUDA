@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED",
+  "files": 21,
+  "new_inputs": 8,
+  "base_inputs": 245,
+  "binaries": 3,
+  "supplemental_cases": 512,
+  "candidate_decision": "REJECT",
+  "raw_sha256": "9b44cfad1ea2680e26c8260090812b4c6f66f3010f4dc10b582e538ec1cceef3"
+}

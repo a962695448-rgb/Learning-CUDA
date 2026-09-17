@@ -1,0 +1,10 @@
+test_common_mode_drift_is_recorded_without_relative_instability (test_analysis.AuditTests.test_common_mode_drift_is_recorded_without_relative_instability) ... ok
+test_full_original_matrix (test_analysis.AuditTests.test_full_original_matrix) ... ok
+test_matched_host_regression_is_rejected (test_analysis.AuditTests.test_matched_host_regression_is_rejected) ... ok
+test_missing_case_and_bad_timeline_fail_closed (test_analysis.AuditTests.test_missing_case_and_bad_timeline_fail_closed) ... ok
+test_relative_instability_still_fails (test_analysis.AuditTests.test_relative_instability_still_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.237s
+
+OK
