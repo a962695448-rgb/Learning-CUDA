@@ -505,6 +505,25 @@
       "repeat_confirmation_stopped": true,
       "archive_commit": "06b985425e3192fb58e0500ddaffde3476de78ef",
       "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/06b985425e3192fb58e0500ddaffde3476de78ef/03_hadamard_tc/a962695448-rgb/results/relative-stability-confirm-20260918"
+    },
+    {
+      "kind": "wide transform half-warp candidate complete validation",
+      "base_commit": "bde0256944778d3749547b798045c5a05d0dab35",
+      "device": "NVIDIA GeForce RTX 4090 D",
+      "finite_component_configurations": 416,
+      "overflow_compatibility_configurations": 512,
+      "new_execution_contexts": 64,
+      "full_execution_contexts": 120,
+      "device_records": 678,
+      "host_records": 1356,
+      "target_groups": 24,
+      "same_source_calibrations": 18,
+      "failed_gates": 210,
+      "candidate_decision": "REJECT",
+      "production_compute_unchanged": true,
+      "preregistered_commit": "95b13fa0f9519936e004b3ac6f120ab0a04e84ef",
+      "archive_commit": "c0a105c725343e3332c3465e125384bbd815d8eb",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/c0a105c725343e3332c3465e125384bbd815d8eb/03_hadamard_tc/a962695448-rgb/results/wide-pairs-20260918"
     }
   ]
 }
