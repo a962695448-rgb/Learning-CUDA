@@ -8,6 +8,7 @@
 #include "kernels.cuh"
 #include "contiguous256.cuh"
 #include "packed_rows.cuh"
+#include "packed_pairs.cuh"
 #include "row_policy.hpp"
 #include <ATen/cuda/CUDAContext.h>
 
@@ -93,6 +94,50 @@ void dispatch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
         dispatch_dim<__half, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused, packed_rows);
     else
         dispatch_dim<__nv_bfloat16, Transform, Quantize>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused, packed_rows);
+}
+
+template <class T, int N>
+void launch_pairs(const at::Tensor& input, at::Tensor& packed, at::Tensor& scales,
+                  cudaStream_t stream, int block_threads) {
+    const auto rows = static_cast<std::size_t>(input.numel() / N);
+    const auto blocks = static_cast<unsigned int>((rows - 1) / (block_threads / (N / 2)) + 1);
+    hadamard::quantize_pairs_kernel<T, N><<<blocks, block_threads, 0, stream>>>(
+        reinterpret_cast<const T*>(input.data_ptr()), packed.data_ptr<std::uint8_t>(),
+        scales.data_ptr<float>(), rows);
+    C10_CUDA_KERNEL_LAUNCH_CHECK();
+}
+
+template <class T>
+void dispatch_pairs(const at::Tensor& input, at::Tensor& packed, at::Tensor& scales,
+                    cudaStream_t stream, int block_threads) {
+    // Select the dimension before grid arithmetic so power-of-two divisions
+    // stay compile-time specializations, matching the existing launch path.
+    switch (input.size(-1)) {
+#define PAIR_CASE(N) case N: launch_pairs<T, N>(input, packed, scales, stream, block_threads); break
+        PAIR_CASE(2); PAIR_CASE(4); PAIR_CASE(8); PAIR_CASE(16);
+#undef PAIR_CASE
+        default: TORCH_CHECK(false, "paired quantization requires dimension 2, 4, 8, or 16");
+    }
+}
+
+// Specialize only quantize-only dispatch. Hadamard launch/dispatch templates
+// retain their existing definitions instead of inheriting the new routing body.
+template <>
+void dispatch<false, true>(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
+                           at::Tensor& scales, double scale, int block_threads,
+                           bool contiguous256_fused, bool packed_rows) {
+    const auto stream = c10::cuda::getCurrentCUDAStream(input.get_device()).stream();
+    if (packed_rows && input.size(-1) >= 2) {
+        if (input.scalar_type() == at::kHalf)
+            dispatch_pairs<__half>(input, packed, scales, stream, block_threads);
+        else
+            dispatch_pairs<__nv_bfloat16>(input, packed, scales, stream, block_threads);
+        return;
+    }
+    if (input.scalar_type() == at::kHalf)
+        dispatch_dim<__half, false, true>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused, packed_rows);
+    else
+        dispatch_dim<__nv_bfloat16, false, true>(input, output, packed, scales, static_cast<float>(scale), stream, block_threads, contiguous256_fused, packed_rows);
 }
 
 hadamard::RowChoice row_choice(const at::Tensor& input, const std::string& name,

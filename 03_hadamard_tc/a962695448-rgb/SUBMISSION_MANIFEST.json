@@ -250,8 +250,8 @@
     },
     {
       "path": "src/torch_binding.cu",
-      "git_blob_sha": "98754e43401ed23a1ee6c9c3f825f214bb5d92bc",
-      "sha256": "8fc9618e4fa54181d7800b61fe277878846e7f8ad4606ab3e8398e0d56be69dd",
+      "git_blob_sha": "ca22740b15715725d250e573eb810f0a7807e0e8",
+      "sha256": "950be67c774ed66994e2dee87412a5423b7498a21d62c0072f4ef7a399fdefb1",
       "archive_git_blob_sha": "8919d8e441a2972bc78edb4e0d5b7a23079ad276",
       "archive_sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8"
     },
@@ -297,16 +297,21 @@
       "path": "scripts/verify_singleton_quantization.py",
       "sha256": "e839ed36f6f40c6c07be10d424e750570511b8066ad2f8c83275dc9c520d4977",
       "git_blob_sha": "660b61300e21942499d8bd6a1725c53c3215c800"
+    },
+    {
+      "path": "scripts/verify_paired_quantization.py",
+      "sha256": "e752d64fd429d6923bd2f94bb30d63f682214fc5771951b48199ced908c604c6",
+      "git_blob_sha": "f0249a5fe5cbf7d6a405d76c521994d37384b9bd"
     }
   ],
-  "supplemental_test_scope": "Current hashes and original archive hashes are retained. Three original source/build files have changed; all device kernel files remain unchanged.",
+  "supplemental_test_scope": "Original source/build hashes and archive provenance retained. A new paired quantize-only CUDA kernel is added; original kernel headers remain unchanged.",
   "original_source_changes": [
     "Makefile",
     "include/row_policy.hpp",
     "src/torch_binding.cu"
   ],
   "original_sources_unchanged_count": 48,
-  "compute_kernels_unchanged": true,
+  "compute_kernels_unchanged": false,
   "previous_validations": [
     {
       "base_commit": "c591085756fec139c55f3de59c2a4ba0742dc5cc",
@@ -351,27 +356,63 @@
       "metric": "CUDA Graph device event timing and separate synchronized ordinary Python host wall time",
       "archive_commit": "29bb34a0b2817e282a9554bd92c3911a3c010762",
       "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917"
+    },
+    {
+      "base_commit": "f9da76087f6cbf6aad52e9effa6cf3ac3aabccf0",
+      "feature": "exhaustive singleton INT4 verification; retain existing production kernel",
+      "device": "NVIDIA GeForce RTX 4090 D",
+      "unique_storage_encodings": 131072,
+      "unique_finite_values": 128768,
+      "exhaustive_configurations": 8,
+      "production_kernel_unchanged": true,
+      "correctness": "PASS for control and candidate",
+      "candidate_benchmark_decision": "REJECT",
+      "paired_rounds": 3,
+      "device_benchmark_records": 132,
+      "host_benchmark_records": 132,
+      "candidate_target_geomean_range": [
+        1.0265712845681487,
+        1.0436901022093767
+      ],
+      "minimum_target_geomean": 1.1,
+      "archive_commit": "5e80eadd156c82a299e7cc7991bf46d1904243e6",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/5e80eadd156c82a299e7cc7991bf46d1904243e6/03_hadamard_tc/a962695448-rgb/results/singleton-quantization-20260917"
     }
   ],
   "current_validation": {
-    "base_commit": "f9da76087f6cbf6aad52e9effa6cf3ac3aabccf0",
-    "feature": "exhaustive singleton INT4 verification; retain existing production kernel",
-    "device": "NVIDIA GeForce RTX 4090 D",
-    "unique_storage_encodings": 131072,
-    "unique_finite_values": 128768,
-    "exhaustive_configurations": 8,
-    "production_kernel_unchanged": true,
-    "correctness": "PASS for control and candidate",
-    "candidate_benchmark_decision": "REJECT",
+    "base_commit": "fabe4aa1beb4f623564ba02ce8cdf24af5932b11",
+    "feature": "paired explicit quantize-only kernels with compile-time launch dimensions",
+    "device": "NVIDIA GeForce RTX 4090",
+    "finite_component_encodings": 128768,
+    "component_offset_configurations": 64,
+    "packed_positive_configurations": 700,
+    "packed_negative_conditions": 4,
+    "execution_context_configurations": 16,
+    "legacy_positive_configurations": 372,
+    "legacy_negative_checks": 63,
+    "mutation_checks": 4,
     "paired_rounds": 3,
-    "device_benchmark_records": 132,
-    "host_benchmark_records": 132,
-    "candidate_target_geomean_range": [
-      1.0265712845681487,
-      1.0436901022093767
+    "device_benchmark_records": 288,
+    "host_benchmark_records": 288,
+    "same_function_calibrations": 9,
+    "decision": "ACCEPT",
+    "previous_candidate_decisions": [
+      "REJECT generic launcher",
+      "REJECT runtime-dimension dispatcher",
+      "REJECT long-sampling runtime dispatcher"
     ],
-    "minimum_target_geomean": 1.1,
-    "archive_commit": "5e80eadd156c82a299e7cc7991bf46d1904243e6",
-    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/5e80eadd156c82a299e7cc7991bf46d1904243e6/03_hadamard_tc/a962695448-rgb/results/singleton-quantization-20260917"
-  }
+    "target_device_geomean_range": [
+      1.3609850971796464,
+      1.4253554874534755
+    ],
+    "archive_commit": "9b3bb79f3c67b6c5e284be7ded9559148b5ae448",
+    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/9b3bb79f3c67b6c5e284be7ded9559148b5ae448/03_hadamard_tc/a962695448-rgb/results/paired-quantization-20260917"
+  },
+  "supplemental_kernel_sources": [
+    {
+      "path": "include/packed_pairs.cuh",
+      "sha256": "0678a75afe8b02a0841bb2baad839404bb6ba6e7cdd27e9e42a0258b970d3add",
+      "git_blob_sha": "5314139ffb0aaff02f5330fc6720de214b90deeb"
+    }
+  ]
 }
