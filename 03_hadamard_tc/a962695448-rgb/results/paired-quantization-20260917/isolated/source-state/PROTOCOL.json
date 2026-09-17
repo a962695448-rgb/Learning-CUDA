@@ -1,0 +1,39 @@
+{
+  "bases": {"nine": "f68c88f162c09974ef59686929dd3d89633cb5a1", "cuda": "fabe4aa1beb4f623564ba02ce8cdf24af5932b11"},
+  "publication": "Only accepted implementation changes to existing feature branches; preserve failed candidates in existing evidence branches; no merging",
+  "nine": {
+    "change": "Store active memory-recording offsets in one compact vector, avoiding repeated full-mask gather/scatter",
+    "rounds": 3,
+    "samples": 9,
+    "calls_per_sample": 5,
+    "target_shapes": [[512,512],[8,16,16,32]],
+    "mask_steps": [1,16,64],
+    "target_kinds": ["read","write"],
+    "minimum_target_geomean_speedup": 1.10,
+    "max_case_regression_percent": 5,
+    "exact_event_and_full_trace_digests": true,
+    "controls": "Tiny recorders, empty and unknown accesses; public frontend vector/softmax with tracing both enabled and disabled",
+    "primary_metric": "MemoryRecorder capture/access time; recorder construction and fixture creation excluded; standalone recording layer, not total interpreter speed",
+    "memory_metric": "tracemalloc during one capture/access, excluding existing inputs and masks; no RSS claim"
+  },
+  "cuda": {
+    "change": "Two adjacent values per thread in explicit packed quantize-only paths for N=2/4/8/16; original, fused and N1 routes retained",
+    "rounds": 3,
+    "groups": 7,
+    "target_rows": [16387,65536,262147],
+    "target_dims": [2,4,8,16],
+    "control_rows": [1,257],
+    "threads": [128,256],
+    "dtypes": ["float16","bfloat16"],
+    "graph_nodes": 64,
+    "graph_replays": 10,
+    "host_calls": 500,
+    "minimum_each_dtype_thread_round_target_geomean": 1.10,
+    "max_device_or_host_case_regression_percent": 5,
+    "controls": "Small packed calls, N1 packed, original quantize and packed Hadamard/fused at N8",
+    "correctness": "Independent finite-value CPU oracle, exhaustive finite encodings as selected pair components, midpoint/extreme/subnormal patterns, offsets and guards, tails, allocating/out, stream/graph, legacy validation",
+    "scope": "NVIDIA extension explicit packed quantization only; existing CLI FWHT, Tensor Core, and other backend kernel code unchanged",
+    "primary_metric": "Same-buffer CUDA event time over warmed 64-node graphs, ten replays; old packed implementation as baseline",
+    "secondary_metric": "Synchronized ordinary allocating/out calls at 256 threads; require no case to regress beyond 5%"
+  }
+}

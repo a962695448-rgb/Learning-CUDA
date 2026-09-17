@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "jobs": [
+    {
+      "name": "nine-gpu",
+      "returncode": 0,
+      "seconds": 10.185555338859558
+    },
+    {
+      "name": "nine-address-tests",
+      "returncode": 0,
+      "seconds": 2.5705104917287827
+    }
+  ],
+  "environment": {
+    "python": "3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0]",
+    "numpy": "1.26.4",
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "triton": "3.1.0",
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 4090",
+    "capability": [
+      8,
+      9
+    ],
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+    "nvidia_smi": "Thu Sep 17 09:04:15 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |\n|-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4090        Off |   00000000:9D:00.0 Off |                  Off |\n| 31%   29C    P8             13W /  450W |       4MiB /  24564MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n                                                                                         \n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n"
+  },
+  "manifest_sha256": "9dbdd503afb5dc2be84ef3b8072c6d78398fcc1ae93bf8c60ca8cf2adaa18d06",
+  "runner_sha256": "09c1aea0e491966093de3b379c20a099774d1fd2db83a7491395c269f6001f8a",
+  "protocol_sha256": "97fb3d87a3b071ae320b08510bb65e6e88bc4a499b2860db75c50c61ec4300f5",
+  "binaries": {
+    "control": "15c9d4eeeee5ac7c45d1381cd12d45e3a82d4575788d01e24aadbaf9ecbb9ff1",
+    "candidate": "4d072335a6f5475ce91c086df54aa74b186f942dd7cc69170666d0e07e8156af"
+  },
+  "cuda_decision": "REJECT",
+  "sources_unchanged": true
+}
