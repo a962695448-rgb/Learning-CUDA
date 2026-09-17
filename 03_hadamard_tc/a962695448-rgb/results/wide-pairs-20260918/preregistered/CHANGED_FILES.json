@@ -1,0 +1,6 @@
+[
+  "03_hadamard_tc/a962695448-rgb/include/kernels.cuh",
+  "03_hadamard_tc/a962695448-rgb/src/main.cu",
+  "03_hadamard_tc/a962695448-rgb/src/torch_binding.cu",
+  "03_hadamard_tc/a962695448-rgb/src/tune_launch.cu"
+]

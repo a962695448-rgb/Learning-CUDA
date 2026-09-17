@@ -1,0 +1,22 @@
+{
+  "input_files": 252,
+  "zip_bytes": 1150837,
+  "zip_sha256": "b2e6d2a9bc1aa8676dfa95ed4edfca14e38f73b06cd10a7515c0bb505a8c0332",
+  "parts": [
+    {
+      "name": "wide-pairs-inputs.part00",
+      "bytes": 400000,
+      "sha256": "3331480299cfe508bb6eebeef08e940838b547d64373e1c4ee79a636d11784fb"
+    },
+    {
+      "name": "wide-pairs-inputs.part01",
+      "bytes": 400000,
+      "sha256": "abadfd434887680436c60d75cced8a04934f82eca4b75a145c853b8ac18bd432"
+    },
+    {
+      "name": "wide-pairs-inputs.part02",
+      "bytes": 350837,
+      "sha256": "def7098ca9a0892d6b5c35d6f78ec8e1225339ac39c71cf745851d8c25cbc351"
+    }
+  ]
+}
