@@ -104,3 +104,7 @@ Tensor Core 对照在部分已测场景中慢于 warp，相关结果完整保留
 ## 小维度独立量化
 
 新增显式 `quantize_int4_packed` 与 `quantize_int4_packed_out`，支持 N≤16。RTX4090D 的三轮分组设备加速约 2.87–3.17×，普通 allocating/out 调用整体几何平均约 1.36×/1.89×；原接口签名与默认路径保留。见 [使用方式、完整范围与原始实验取舍](reports/quantize-packed-20260917.md)。原始结果见[固定验证档案](https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917)。
+
+## 单元素量化穷举
+
+新增 [FP16/BF16 单元素量化穷举](reports/singleton-quantization-20260917.md)，覆盖 131,072 种存储编码和 128,768 个有限值的独立参考。计算简化候选未达到预设性能门槛，已保留实验记录并继续使用原生产内核。

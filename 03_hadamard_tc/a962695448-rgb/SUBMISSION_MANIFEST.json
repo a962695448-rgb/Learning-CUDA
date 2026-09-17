@@ -292,6 +292,11 @@
       "path": "scripts/verify_quantize_packed.py",
       "git_blob_sha": "92b63effad45ff1e125c6460cd1d24193d833078",
       "sha256": "a3cfa1fb9e7b08e2e24f5c4855f497e0c1eafd7a79ace722c4822e6c41e7d57d"
+    },
+    {
+      "path": "scripts/verify_singleton_quantization.py",
+      "sha256": "e839ed36f6f40c6c07be10d424e750570511b8066ad2f8c83275dc9c520d4977",
+      "git_blob_sha": "660b61300e21942499d8bd6a1725c53c3215c800"
     }
   ],
   "supplemental_test_scope": "Current hashes and original archive hashes are retained. Three original source/build files have changed; all device kernel files remain unchanged.",
@@ -326,26 +331,47 @@
       "benchmark_records": 216,
       "decision": "ACCEPT",
       "metric": "synchronized ordinary Python host wall time"
+    },
+    {
+      "base_commit": "28fb3a95ca8bcdf53a66949cfde23820bf7e4005",
+      "feature": "explicit packed quantize-only APIs preserving legacy signatures",
+      "device": "NVIDIA GeForce RTX 4090 D",
+      "positive_configurations": 700,
+      "negative_condition_groups": 4,
+      "execution_context_configurations": 16,
+      "graph_replays": 64,
+      "detected_context_negative_controls": 32,
+      "legacy_positive_configurations": 372,
+      "legacy_negative_checks": 63,
+      "mutation_checks": 4,
+      "paired_rounds": 3,
+      "device_benchmark_records": 240,
+      "host_benchmark_records": 240,
+      "decision": "ACCEPT",
+      "metric": "CUDA Graph device event timing and separate synchronized ordinary Python host wall time",
+      "archive_commit": "29bb34a0b2817e282a9554bd92c3911a3c010762",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917"
     }
   ],
   "current_validation": {
-    "base_commit": "28fb3a95ca8bcdf53a66949cfde23820bf7e4005",
-    "feature": "explicit packed quantize-only APIs preserving legacy signatures",
+    "base_commit": "f9da76087f6cbf6aad52e9effa6cf3ac3aabccf0",
+    "feature": "exhaustive singleton INT4 verification; retain existing production kernel",
     "device": "NVIDIA GeForce RTX 4090 D",
-    "positive_configurations": 700,
-    "negative_condition_groups": 4,
-    "execution_context_configurations": 16,
-    "graph_replays": 64,
-    "detected_context_negative_controls": 32,
-    "legacy_positive_configurations": 372,
-    "legacy_negative_checks": 63,
-    "mutation_checks": 4,
+    "unique_storage_encodings": 131072,
+    "unique_finite_values": 128768,
+    "exhaustive_configurations": 8,
+    "production_kernel_unchanged": true,
+    "correctness": "PASS for control and candidate",
+    "candidate_benchmark_decision": "REJECT",
     "paired_rounds": 3,
-    "device_benchmark_records": 240,
-    "host_benchmark_records": 240,
-    "decision": "ACCEPT",
-    "metric": "CUDA Graph device event timing and separate synchronized ordinary Python host wall time",
-    "archive_commit": "29bb34a0b2817e282a9554bd92c3911a3c010762",
-    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917"
+    "device_benchmark_records": 132,
+    "host_benchmark_records": 132,
+    "candidate_target_geomean_range": [
+      1.0265712845681487,
+      1.0436901022093767
+    ],
+    "minimum_target_geomean": 1.1,
+    "archive_commit": "5e80eadd156c82a299e7cc7991bf46d1904243e6",
+    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/5e80eadd156c82a299e7cc7991bf46d1904243e6/03_hadamard_tc/a962695448-rgb/results/singleton-quantization-20260917"
   }
 }

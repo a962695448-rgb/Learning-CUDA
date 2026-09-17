@@ -38,3 +38,9 @@ results 路径属于完整档案检出。新运行可以在当前目录创建自
 
 新增显式 packed 量化入口的完整范围见 [报告](reports/quantize-packed-20260917.md)。
 [固定档案](https://github.com/a962695448-rgb/Learning-CUDA/tree/29bb34a0b2817e282a9554bd92c3911a3c010762/03_hadamard_tc/a962695448-rgb/results/quantize-packed-20260917) 包含最终双重性能门槛、正确性检查、源码和复现准备工具，也保存新增参数引入主机开销的初版实验。当前源文件与新测试哈希已在 SUBMISSION_MANIFEST.json 更新；未将先前的跨卡或国产平台记录当成本轮新入口的实测证据。
+
+## 2026-09-17 单元素穷举与未采用候选
+
+[报告](reports/singleton-quantization-20260917.md) 记录当前生产内核的完整单元素位型检查，以及未达收益门槛的符号简化候选。生产计算源码未变，新工具的指纹已登记；失败候选的源码和计时数据独立保留。
+
+[本轮固定档案](https://github.com/a962695448-rgb/Learning-CUDA/tree/5e80eadd156c82a299e7cc7991bf46d1904243e6/03_hadamard_tc/a962695448-rgb/results/singleton-quantization-20260917) 保存完整原始结果与可验证的准备工具。
