@@ -2,6 +2,12 @@
 
 本项目为 2026 年夏季 InfiniTensor 大模型与人工智能系统训练营 CUDA 方向专业阶段的作业与项目系统。
 
+## Hadamard 项目最终提交
+
+[项目代码与使用说明](03_hadamard_tc/a962695448-rgb/README.md) · [最终验收](03_hadamard_tc/a962695448-rgb/reports/wide-pairs-io-20260918.md) · [上游 PR #69](https://github.com/InfiniTensor/Learning-CUDA/pull/69)
+
+训练营项目目录已整合到本主分支。原根目录作业文件保持，项目请进入上述子目录独立构建；[项目题目说明](2026-summer-projects.md)保留原文。
+
 ## 项目结构
 
 ```text
