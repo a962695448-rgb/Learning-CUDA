@@ -13,13 +13,17 @@
     },
     {
       "path": "include/contiguous256.cuh",
-      "git_blob_sha": "5e940d50e42ddc3048c68d07e2d0a75ab5ef864b",
-      "sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102"
+      "git_blob_sha": "00937d7680368b6ffe54f3c91ea282b497148bf7",
+      "sha256": "885894d568009fdf75ae9131b317ae5a5df4e4272d2f69843e355f86877f0e57",
+      "archive_git_blob_sha": "5e940d50e42ddc3048c68d07e2d0a75ab5ef864b",
+      "archive_sha256": "dd25a633e6740a20b77c1c19ab375ca4ee8190e4a63ea4b82b17669406c46102"
     },
     {
       "path": "include/kernels.cuh",
-      "git_blob_sha": "4618f3fd2964dff2341b6cdbfd402da00e55ae26",
-      "sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe"
+      "git_blob_sha": "9c32fcfcd7f592d2f752d08b20e9b96162947e0e",
+      "sha256": "f5098f9e5e7c1934a2fd21a4d665bf19da6aeda11f58abd4bc555c88672ae4bc",
+      "archive_git_blob_sha": "4618f3fd2964dff2341b6cdbfd402da00e55ae26",
+      "archive_sha256": "12bf5330c4a9825312421fee9836f9fb8a1eeae83ebff346990aac2a29e275fe"
     },
     {
       "path": "include/packed_rows.cuh",
@@ -245,20 +249,24 @@
     },
     {
       "path": "src/main.cu",
-      "git_blob_sha": "6433184a6de7d3ba2abbe661c39728b733c92d16",
-      "sha256": "a77680855fe3bdd907b45651dc5144f6f067c134e7a3e22775d8d27713cac9bc"
+      "git_blob_sha": "24b1ca90681de9ebf7d9512cd7c14baf39913d73",
+      "sha256": "e3a584baf163f4d6e991c92304dce52bde9c8eeb81d24a93527cad2299287d0d",
+      "archive_git_blob_sha": "6433184a6de7d3ba2abbe661c39728b733c92d16",
+      "archive_sha256": "a77680855fe3bdd907b45651dc5144f6f067c134e7a3e22775d8d27713cac9bc"
     },
     {
       "path": "src/torch_binding.cu",
-      "git_blob_sha": "ca22740b15715725d250e573eb810f0a7807e0e8",
-      "sha256": "950be67c774ed66994e2dee87412a5423b7498a21d62c0072f4ef7a399fdefb1",
+      "git_blob_sha": "de75b974d66c574e971aa8fe6feafd0e956c3e1d",
+      "sha256": "d3c4ff3e70c31f9a2866ec9a7511eb725230012e6ddf6f6094d8def81dd2944a",
       "archive_git_blob_sha": "8919d8e441a2972bc78edb4e0d5b7a23079ad276",
       "archive_sha256": "0939e6e08f06080c245a171124c1c04a2342298eb69663d4aef4b583f346bed8"
     },
     {
       "path": "src/tune_launch.cu",
-      "git_blob_sha": "942b15c7d28befedb01fa099471a7312f86110c4",
-      "sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212"
+      "git_blob_sha": "4d5f5b8650de2033bae1ca97ddb14951895ebc47",
+      "sha256": "5632eda25a53aa24ff9823ce57443b3901602de4f4c995d5f1b7eb1723a92850",
+      "archive_git_blob_sha": "942b15c7d28befedb01fa099471a7312f86110c4",
+      "archive_sha256": "8a9899f5180180752af20659aca31275279e3c2b1fc1d1baaea69a8b87198212"
     },
     {
       "path": "tests/cpu_reference_test.cpp",
@@ -310,13 +318,17 @@
       "validated_origin": "initial/isolated source/scripts/verify_paired_hadamard.py; byte-identical body"
     }
   ],
-  "supplemental_test_scope": "Prior source/build provenance retained. New packed Hadamard verification is validated on production b49fff4. Both paired-transform optimization candidates remain only in the evidence archive.",
+  "supplemental_test_scope": "Prior packed Hadamard verifier and rejected low-dimensional paired-transform candidates retain their original scope. The separate N32-256 aligned-IO candidate is now adopted after full frozen three-round validation; see current_validation.",
   "original_source_changes": [
     "Makefile",
+    "include/contiguous256.cuh",
+    "include/kernels.cuh",
     "include/row_policy.hpp",
-    "src/torch_binding.cu"
+    "src/main.cu",
+    "src/torch_binding.cu",
+    "src/tune_launch.cu"
   ],
-  "original_sources_unchanged_count": 48,
+  "original_sources_unchanged_count": 44,
   "compute_kernels_unchanged": false,
   "previous_validations": [
     {
@@ -412,38 +424,58 @@
       ],
       "archive_commit": "9b3bb79f3c67b6c5e284be7ded9559148b5ae448",
       "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/9b3bb79f3c67b6c5e284be7ded9559148b5ae448/03_hadamard_tc/a962695448-rgb/results/paired-quantization-20260917"
+    },
+    {
+      "base_commit": "b49fff4ac57ae6702213077ebf7ff848cb8715d9",
+      "feature": "packed Hadamard verifier and rejected transform-pair experiments",
+      "device": "NVIDIA GeForce RTX 4090",
+      "production_computation_and_build_unchanged_from_base": true,
+      "baseline_component_offset_configurations": 128,
+      "baseline_execution_context_configurations": 24,
+      "finite_component_encodings": 128768,
+      "candidate_overflow_compatibility_cases_each": 512,
+      "candidate_trials": [
+        {
+          "name": "initial",
+          "device_records": 588,
+          "host_records": 588,
+          "failed_host_records": 3,
+          "decision": "REJECT"
+        },
+        {
+          "name": "isolated fused host dispatch",
+          "device_records": 588,
+          "host_records": 588,
+          "failed_host_records": 5,
+          "decision": "REJECT"
+        }
+      ],
+      "verification_decision": "PASS",
+      "optimization_adoption_decision": "REJECT",
+      "decision": "KEEP_BASELINE",
+      "archive_commit": "3ff75126f3b29458c9a2dfb2665349afb3a4e58e",
+      "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/3ff75126f3b29458c9a2dfb2665349afb3a4e58e/03_hadamard_tc/a962695448-rgb/results/paired-hadamard-20260917"
     }
   ],
   "current_validation": {
-    "base_commit": "b49fff4ac57ae6702213077ebf7ff848cb8715d9",
-    "feature": "packed Hadamard verifier and rejected transform-pair experiments",
-    "device": "NVIDIA GeForce RTX 4090",
-    "production_computation_and_build_unchanged_from_base": true,
-    "baseline_component_offset_configurations": 128,
-    "baseline_execution_context_configurations": 24,
-    "finite_component_encodings": 128768,
-    "candidate_overflow_compatibility_cases_each": 512,
-    "candidate_trials": [
-      {
-        "name": "initial",
-        "device_records": 588,
-        "host_records": 588,
-        "failed_host_records": 3,
-        "decision": "REJECT"
-      },
-      {
-        "name": "isolated fused host dispatch",
-        "device_records": 588,
-        "host_records": 588,
-        "failed_host_records": 5,
-        "decision": "REJECT"
-      }
-    ],
-    "verification_decision": "PASS",
-    "optimization_adoption_decision": "REJECT",
-    "decision": "KEEP_BASELINE",
-    "archive_commit": "3ff75126f3b29458c9a2dfb2665349afb3a4e58e",
-    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/3ff75126f3b29458c9a2dfb2665349afb3a4e58e/03_hadamard_tc/a962695448-rgb/results/paired-hadamard-20260917"
+    "base_commit": "3d80bf2e6a9fa595187bf1b1b471c91f3b1aff06",
+    "feature": "aligned 32-bit pair IO for N32-256 with small-batch and alignment fallback",
+    "device": "NVIDIA GeForce RTX 4090 D",
+    "decision": "ACCEPT",
+    "preregistered_commit": "a11ae35c5324864c4945311744e6b3aec2150e57",
+    "archive_commit": "89dbadfa47197c9ada14007c7cc18039f32c1302",
+    "finite_component_configurations": 416,
+    "overflow_compatibility_configurations": 1024,
+    "new_execution_contexts": 128,
+    "full_execution_contexts": 120,
+    "device_records": 1050,
+    "host_records": 2064,
+    "target_groups": 24,
+    "same_source_calibrations": 18,
+    "failed_gates": 0,
+    "sources_unchanged_during_run": true,
+    "frozen_input_count": 254,
+    "evidence_url": "https://github.com/a962695448-rgb/Learning-CUDA/tree/89dbadfa47197c9ada14007c7cc18039f32c1302/03_hadamard_tc/a962695448-rgb/results/wide-pairs-io-20260918"
   },
   "supplemental_kernel_sources": [
     {

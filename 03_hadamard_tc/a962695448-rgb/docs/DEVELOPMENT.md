@@ -8,9 +8,11 @@
 
 实施与后续优化的固定输入、计时和验收标准见 [实施与优化方案](../reports/implementation-optimization-plan.md)。
 
-## 当前状态
+最新采用的N32–256对齐读写见[最终验收报告](../reports/wide-pairs-io-20260918.md)，以下旧平台计数只适用于原归档版本。
 
-当前生产源码为 `24dfef776ad73a4128cb6138674c5886c21e49c0`。N=1/2/4/8/16支持显式packed/auto，默认仍original；新增A100-SXM4-40GB经过独立筛选和留出验证的9条自动规则，已有A800/4090规则不变。详见[A100规则与调用方式报告](../reports/a100-calling-validation.md)。
+## 原始归档时的状态
+
+原始归档源码为 `24dfef776ad73a4128cb6138674c5886c21e49c0`。N=1/2/4/8/16支持显式packed/auto，默认仍original；新增A100-SXM4-40GB经过独立筛选和留出验证的9条自动规则，已有A800/4090规则不变。详见[A100规则与调用方式报告](../reports/a100-calling-validation.md)。
 
 最终源码在A100与4090分别通过同一1876项CLI矩阵的七种模式、原1800项Dao对照、280项大行数/偏移/stream条件及接口/CSV检查。A100另外完成160条原生安全夹具、memcheck和synccheck零错误；两卡nsys执行路径核验完成。全部原始数据、失败与哈希见[本轮档案](https://github.com/a962695448-rgb/Learning-CUDA/blob/3676727fc21ea27bda668d743d10e52d7e138f68/03_hadamard_tc/a962695448-rgb/results/nvidia_a100_calling_20260908/README.md)。
 

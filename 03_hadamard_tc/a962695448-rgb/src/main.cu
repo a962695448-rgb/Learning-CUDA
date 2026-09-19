@@ -277,8 +277,8 @@ private:
                         input.data(), output.data(), nullptr, nullptr, rows, scale);
                     CUDA_CHECK(cudaGetLastError());
                     if (method == Method::SplitInt4) {
-                        hadamard::warp_kernel<T, N, false, true><<<blocks, block_threads>>>(
-                            output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1);
+                        hadamard::launch_warp<T, N, false, true>(
+                            output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1, block_threads);
                         CUDA_CHECK(cudaGetLastError());
                     }
                 }
@@ -300,13 +300,13 @@ private:
                     return;
                 }
             }
-            hadamard::warp_kernel<T, N, true, true><<<blocks, block_threads>>>(input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale);
+            hadamard::launch_warp<T, N, true, true>(input.data(), nullptr, packed.data(), quant_scales.data(), rows, scale, block_threads);
             CUDA_CHECK(cudaGetLastError());
         } else {
-            hadamard::warp_kernel<T, N, true, false><<<blocks, block_threads>>>(input.data(), output.data(), nullptr, nullptr, rows, scale);
+            hadamard::launch_warp<T, N, true, false>(input.data(), output.data(), nullptr, nullptr, rows, scale, block_threads);
             CUDA_CHECK(cudaGetLastError());
             if (method == Method::SplitInt4) {
-                hadamard::warp_kernel<T, N, false, true><<<blocks, block_threads>>>(output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1);
+                hadamard::launch_warp<T, N, false, true>(output.data(), nullptr, packed.data(), quant_scales.data(), rows, 1, block_threads);
                 CUDA_CHECK(cudaGetLastError());
             }
         }

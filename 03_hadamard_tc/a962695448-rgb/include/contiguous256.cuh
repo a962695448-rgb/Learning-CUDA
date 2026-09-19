@@ -4,21 +4,6 @@
 
 namespace hadamard {
 
-template <class T> __device__ inline T storage_from_bits(unsigned short bits);
-template <> __device__ inline __half storage_from_bits<__half>(unsigned short bits) {
-    return __ushort_as_half(bits);
-}
-template <> __device__ inline __nv_bfloat16 storage_from_bits<__nv_bfloat16>(unsigned short bits) {
-    return __ushort_as_bfloat16(bits);
-}
-template <class T> __device__ inline unsigned short storage_bits(T value);
-template <> __device__ inline unsigned short storage_bits(__half value) {
-    return __half_as_ushort(value);
-}
-template <> __device__ inline unsigned short storage_bits(__nv_bfloat16 value) {
-    return __bfloat16_as_ushort(value);
-}
-
 template <class T, bool Transform, bool Quantize>
 __global__ void contiguous256_kernel(const T* input, T* output, std::uint8_t* packed,
                                      float* scales, std::size_t rows, float transform_scale) {

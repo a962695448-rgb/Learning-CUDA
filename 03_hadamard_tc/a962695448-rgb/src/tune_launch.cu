@@ -97,14 +97,13 @@ void run(int rows, float scale, const cudaDeviceProp& gpu, int runtime) {
     CHECK(cudaMemcpyAsync(x.ptr, input.data(), input.size() * sizeof(T),
                           cudaMemcpyHostToDevice, stream.handle));
     auto launch = [&](int block_threads) {
-        const int blocks = (rows + block_threads / 32 - 1) / (block_threads / 32);
-        hadamard::warp_kernel<T, N, true, Quantize><<<blocks, block_threads, 0, stream.handle>>>(
-            x.ptr, y.ptr, packed.ptr, scales.ptr, rows, scale);
+        hadamard::launch_warp<T, N, true, Quantize>(
+            x.ptr, y.ptr, packed.ptr, scales.ptr, rows, scale, block_threads, stream.handle);
         CHECK(cudaGetLastError());
     };
-    // 独立取得原版变换结果，以其实际舍入后的值验证融合量化。
-    hadamard::warp_kernel<T, N, true, false><<<(rows + 3) / 4, 128, 0, stream.handle>>>(
-        x.ptr, y.ptr, nullptr, nullptr, rows, scale);
+    // 取得分步变换结果，以其实际舍入后的值验证融合量化。
+    hadamard::launch_warp<T, N, true, false>(
+        x.ptr, y.ptr, nullptr, nullptr, rows, scale, 128, stream.handle);
     CHECK(cudaGetLastError());
     CHECK(cudaStreamSynchronize(stream.handle));
     const auto transformed = y.read();

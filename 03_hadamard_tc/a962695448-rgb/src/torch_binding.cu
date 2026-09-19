@@ -68,8 +68,8 @@ void launch(const at::Tensor& input, at::Tensor& output, at::Tensor& packed,
             return;
         }
     }
-    hadamard::warp_kernel<T, N, Transform, Quantize><<<blocks, block_threads, 0, stream>>>(
-        source, destination, bytes, row_scales, rows, scale);
+    hadamard::launch_warp<T, N, Transform, Quantize>(
+        source, destination, bytes, row_scales, rows, scale, block_threads, stream);
     C10_CUDA_KERNEL_LAUNCH_CHECK();
 }
 
