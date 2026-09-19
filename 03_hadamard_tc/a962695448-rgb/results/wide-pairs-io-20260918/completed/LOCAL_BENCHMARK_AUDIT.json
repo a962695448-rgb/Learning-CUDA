@@ -1,0 +1,202 @@
+{
+  "status": "AUDIT_PASS",
+  "decision": "ACCEPT",
+  "device_records": 1050,
+  "host_records": 2064,
+  "groups": [
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3868397912955206,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.4081338029337513,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3049109258007148,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.400268284105967,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3873511844015114,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3903957740306236,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3058387285546813,
+      "gate_passed": true
+    },
+    {
+      "round": 0,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3883215379423013,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3858396334696013,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.4047428476589898,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3043153325270889,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3985790324655563,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3868674698430181,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3899100476350905,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3060079243888467,
+      "gate_passed": true
+    },
+    {
+      "round": 1,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3863909850043206,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.38691398952803,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.4071725005224411,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3032858814487123,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.float16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.4007833068493043,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.386290655588702,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 128,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.3904886399943859,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_hadamard",
+      "target_geomean_speedup": 1.3054254435537915,
+      "gate_passed": true
+    },
+    {
+      "round": 2,
+      "dtype": "torch.bfloat16",
+      "threads": 256,
+      "kind": "original_fused",
+      "target_geomean_speedup": 1.387670439508156,
+      "gate_passed": true
+    }
+  ],
+  "aa_cases": 18,
+  "failed_gates": []
+}

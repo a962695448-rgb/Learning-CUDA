@@ -1,0 +1,31 @@
+{
+  "decision": "ACCEPT",
+  "device_records": 1050,
+  "host_records": 2064,
+  "target_groups": 24,
+  "aa_cases": 18,
+  "failed_gates": 0,
+  "source_files": 254,
+  "results_files": 38,
+  "raw_bytes": 100058128,
+  "raw_sha256": "5e26c423662494da54be79eb8188f1f11871ed34c2d908b782f96e0064373ab9",
+  "rounds": 3,
+  "metrics": {
+    "original_fused": {
+      "device_group_range": [
+        1.3863909850043206,
+        1.4081338029337513
+      ],
+      "allocating_target_geomean": 1.2582806937303246,
+      "out_target_geomean": 1.326310501629357
+    },
+    "original_hadamard": {
+      "device_group_range": [
+        1.3032858814487123,
+        1.3873511844015114
+      ],
+      "allocating_target_geomean": 1.2159641107398584,
+      "out_target_geomean": 1.2680964211051733
+    }
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "status": "PASS",
+  "jobs": [
+    {
+      "name": "cli-build-control",
+      "command": [
+        "make",
+        "all",
+        "NVCC=/usr/local/cuda/bin/nvcc",
+        "ARCH=89"
+      ],
+      "returncode": 0,
+      "seconds": 8.427816018462181
+    },
+    {
+      "name": "cli-validation-control",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/run_validation.py",
+        "--label",
+        "wide_io_control"
+      ],
+      "returncode": 0,
+      "seconds": 1.624588742852211
+    },
+    {
+      "name": "cli-selftest-control-packed-256",
+      "command": [
+        "/data/wide-pairs-io-20260918/control/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "packed",
+        "--block-threads",
+        "256"
+      ],
+      "returncode": 0,
+      "seconds": 1.485613040626049
+    },
+    {
+      "name": "cli-build-candidate",
+      "command": [
+        "make",
+        "all",
+        "NVCC=/usr/local/cuda/bin/nvcc",
+        "ARCH=89"
+      ],
+      "returncode": 0,
+      "seconds": 9.3800108730793
+    },
+    {
+      "name": "cli-validation-candidate",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/run_validation.py",
+        "--label",
+        "wide_io_candidate"
+      ],
+      "returncode": 0,
+      "seconds": 1.5211533829569817
+    },
+    {
+      "name": "cli-selftest-candidate-original-256",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "original",
+        "--block-threads",
+        "256"
+      ],
+      "returncode": 0,
+      "seconds": 1.4224550426006317
+    },
+    {
+      "name": "cli-selftest-candidate-packed-128",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "packed",
+        "--block-threads",
+        "128"
+      ],
+      "returncode": 0,
+      "seconds": 1.4281267374753952
+    },
+    {
+      "name": "cli-selftest-candidate-packed-256",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "packed",
+        "--block-threads",
+        "256"
+      ],
+      "returncode": 0,
+      "seconds": 1.4243557676672935
+    },
+    {
+      "name": "cli-selftest-candidate-auto-128",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "auto",
+        "--block-threads",
+        "128"
+      ],
+      "returncode": 0,
+      "seconds": 1.418946422636509
+    },
+    {
+      "name": "cli-selftest-candidate-auto-256",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--row-layout",
+        "auto",
+        "--block-threads",
+        "256"
+      ],
+      "returncode": 0,
+      "seconds": 1.4683767184615135
+    },
+    {
+      "name": "cli-selftest-candidate-contiguous256",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/hadamard",
+        "--self-test",
+        "--fused-layout",
+        "contiguous256",
+        "--block-threads",
+        "128"
+      ],
+      "returncode": 0,
+      "seconds": 1.4755799621343613
+    },
+    {
+      "name": "cpu-reference-and-row-policy",
+      "command": [
+        "make",
+        "cpu-test"
+      ],
+      "returncode": 0,
+      "seconds": 1.0168399512767792
+    },
+    {
+      "name": "tuner-build",
+      "command": [
+        "/usr/local/cuda/bin/nvcc",
+        "-O3",
+        "-std=c++17",
+        "-lineinfo",
+        "-arch=sm_89",
+        "-Iinclude",
+        "src/tune_launch.cu",
+        "-o",
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/tune_launch"
+      ],
+      "returncode": 0,
+      "seconds": 6.676212400197983
+    },
+    {
+      "name": "tuner-validation",
+      "command": [
+        "/data/wide-pairs-io-20260918/candidate/cuda/03_hadamard_tc/a962695448-rgb/build/tune_launch"
+      ],
+      "returncode": 0,
+      "seconds": 8.528238087892532
+    },
+    {
+      "name": "overflow-compatibility",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/data/wide-pairs-io-20260918/tools/verify_overflow_wide.py",
+        "/data/wide-pairs-io-20260918"
+      ],
+      "returncode": 0,
+      "seconds": 6.974436931312084
+    },
+    {
+      "name": "timing-round-0",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/data/wide-pairs-io-20260918/bench.py",
+        "--round",
+        "0"
+      ],
+      "returncode": 0,
+      "seconds": 851.1951878964901
+    },
+    {
+      "name": "timing-round-1",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/data/wide-pairs-io-20260918/bench.py",
+        "--round",
+        "1"
+      ],
+      "returncode": 0,
+      "seconds": 851.8972739353776
+    },
+    {
+      "name": "timing-round-2",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/data/wide-pairs-io-20260918/bench.py",
+        "--round",
+        "2"
+      ],
+      "returncode": 0,
+      "seconds": 851.1436535716057
+    },
+    {
+      "name": "independent-benchmark-audit",
+      "command": [
+        "/usr/bin/python3",
+        "/data/wide-pairs-io-20260918/tools/analyze.py",
+        "/data/wide-pairs-io-20260918/results-remote/benchmark.json",
+        "--output",
+        "/data/wide-pairs-io-20260918/results-remote/BENCHMARK_AUDIT.json"
+      ],
+      "returncode": 0,
+      "seconds": 0.6652018204331398
+    }
+  ],
+  "environment": {
+    "python": "3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0]",
+    "numpy": "1.26.4",
+    "torch": "2.6.0a0+ecf3bae40a.nv25.01",
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4090 D",
+    "capability": [
+      8,
+      9
+    ],
+    "cpu_affinity_before": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "cpu_affinity_pinned": [
+      0
+    ],
+    "torch_cpu_threads": 1,
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Jan_15_19:20:09_PST_2025\nCuda compilation tools, release 12.8, V12.8.61\nBuild cuda_12.8.r12.8/compiler.35404655_0\n",
+    "nvidia_smi_before": "Thu Sep 17 20:56:09 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |\n|-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4090 D      On  |   00000000:34:00.0 Off |                  Off |\n| 33%   33C    P8             15W /  425W |       4MiB /  24564MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n                                                                                         \n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+    "nvidia_smi_after": "Thu Sep 17 21:43:41 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |\n|-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 4090 D      On  |   00000000:34:00.0 Off |                  Off |\n|100%   47C    P5             59W /  425W |     437MiB /  24564MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n                                                                                         \n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n+-----------------------------------------------------------------------------------------+\n"
+  },
+  "manifest_sha256": "f5d4f546af9eb52baecde5821ccb09c9452cbefb46bf63e6370f31869d3f89fd",
+  "protocol_sha256": "06f1807cae6edbc47c58fbd2c735cd5aca448541070cf9bc21d31002a8e12765",
+  "binaries": {
+    "control": "a82918e24bd037dc76cac2a0235cca1d0d2363ff9bcd78db920fd43c383ea7c8",
+    "twin": "3da773a894eecc1062490f264f482a0c5781b019555bc693393ba34800b721c7",
+    "candidate": "a694555a6293f55b9f7ad3db68ecf3aab95c6acb2467e7dcc408489e0d487e50"
+  },
+  "candidate_decision": "ACCEPT",
+  "sources_unchanged": true
+}
